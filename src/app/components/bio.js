@@ -122,7 +122,7 @@ export default function Bio() {
           transition={{ delay: 0.2 }}
         >
           <span className="font-semibold text-gray-100">Cristiano Ronaldo</span>
-          <span className="text-gray-300">39</span>
+          <span className="text-gray-300">40</span>
           <span className="text-gray-300">Portugal</span>
         </motion.div>
 
