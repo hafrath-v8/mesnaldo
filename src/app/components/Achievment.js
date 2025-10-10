@@ -58,7 +58,7 @@ export default function AllTimeTrophies() {
       {/* Single Footer Link */}
       <div className="flex justify-center">
         <Link
-          href="/tropies"
+          href="/Achievments"
           className="text-sm text-blue-400 hover:text-blue-300 flex items-center gap-1"
         >
           Details <ArrowRight className="w-4 h-4" />
