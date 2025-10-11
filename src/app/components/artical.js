@@ -135,8 +135,68 @@ export default function Article() {
         each other to improve but also inspired an entire generation of 
         footballers and fans worldwide.
       </p>
+      
+      {/* Goal-Scoring Prowess */}
+<h2 className="text-2xl font-semibold text-white mt-8 mb-3">
+  Goal-Scoring Prowess
+</h2>
+<p className="mb-4">
+  When it comes to pure goal-scoring, both players have redefined what is possible. 
+  Cristiano Ronaldo has shattered the all-time record for official goals, netting over{" "}
+  <span className="text-amber-400 font-semibold">800 goals</span> for club and country. 
+  His relentless pursuit of goals is highlighted by his record of scoring{" "}
+  <span className="text-amber-400 font-semibold">50+ goals in a calendar year seven times</span>. 
+  Messi, while known for his playmaking, is not far behind in this department, also 
+  surpassing the <span className="text-amber-400 font-semibold">800-goal</span> mark and 
+  holding the unique record for the most goals in a single calendar year ({" "}
+  <span className="text-amber-400 font-semibold">91 goals in 2012</span>).
+</p>
 
-      {/* Conclusion */}
+{/* Trophy Hauls and Team Success */}
+<h2 className="text-2xl font-semibold text-white mt-8 mb-3">
+  Trophy Hauls and Team Success
+</h2>
+<p className="mb-4">
+  The ultimate measure of a player's impact is often the silverware they help their teams win. 
+  Lionel Messi has a slight edge in total career trophies, having won more than{" "}
+  <span className="text-amber-400 font-semibold">40 senior titles</span>. His crowning 
+  achievement was leading Argentina to victory in the{" "}
+  <span className="text-amber-400 font-semibold">2022 FIFA World Cup</span>. Cristiano Ronaldo, 
+  with over <span className="text-amber-400 font-semibold">30 major trophies</span>, has achieved 
+  a unique feat by winning league titles and Champions League trophies in England, Spain, and Italy, 
+  and captained Portugal to their first major honour at the{" "}
+  <span className="text-amber-400 font-semibold">2016 European Championship</span>.
+</p>
+
+{/* Individual Accolades */}
+<h2 className="text-2xl font-semibold text-white mt-8 mb-3">
+  Individual Accolades
+</h2>
+<p className="mb-4">
+  The debate for individual supremacy has been dominated by these two for over a decade. 
+  The Ballon d'Or, awarded to the world's best player, has become a near-duopoly. 
+  Lionel Messi holds the record with{" "}
+  <span className="text-amber-400 font-semibold">eight Ballon d'Or awards</span>, a testament 
+  to his sustained brilliance and creative genius. Cristiano Ronaldo is a five-time winner, with{" "}
+  <span className="text-amber-400 font-semibold">five Ballon d'Or trophies</span>, showcasing 
+  his own era-defining dominance and goal-scoring ruthlessness.
+</p>
+
+{/* Champions League Dominance */}
+<h2 className="text-2xl font-semibold text-white mt-8 mb-3">
+  Champions League Dominance
+</h2>
+<p className="mb-4">
+  The UEFA Champions League is the pinnacle of club football, and both players have left an 
+  indelible mark on the competition. Cristiano Ronaldo is the tournament's all-time top scorer 
+  with over <span className="text-amber-400 font-semibold">140 goals</span> and has won the 
+  trophy <span className="text-amber-400 font-semibold">five times</span>. Messi, with{" "}
+  <span className="text-amber-400 font-semibold">four Champions League titles</span>, is one 
+  of the few players to have scored in multiple finals and is renowned for his iconic, 
+  game-changing performances in the latter stages of the competition.
+</p>
+
+{/* Conclusion */}
       <h2 className="text-2xl font-semibold text-white mt-8 mb-3">Conclusion</h2>
       <p className="mb-4">
         The debate of Messi vs Ronaldo will likely never end. Both have
