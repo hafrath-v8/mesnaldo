@@ -10,6 +10,9 @@ export const metadata = {
   icons: {
     icon: "/goat.svg",
   },
+  verification: {
+    google: "7tc4OfRJ4GU_8LL8QYk31akN-GUUhX_BKf2lO5iUzQU",
+  },
 };
 
 export default function RootLayout({ children }) {
