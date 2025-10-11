@@ -19,9 +19,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* Google Analytics Script */}
+        {/* ✅ Google Analytics Script (replace ID here) */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-QYL8KCLNRF"
+          src="https://www.googletagmanager.com/gtag/js?id=G-736WYQ3H11"
           strategy="afterInteractive"
         />
         <Script
@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-QYL8KCLNRF', {
+              gtag('config', 'G-736WYQ3H11', {
                 page_path: window.location.pathname,
               });
             `,

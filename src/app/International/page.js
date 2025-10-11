@@ -232,7 +232,7 @@ export default function ClubComparisonPage() {
       {/* Season-by-Season Comparison - Polished Table Look */}
       <div className="bg-gray-800 rounded-xl p-4 sm:p-6 shadow-xl">
         <h2 className="text-xl font-bold text-white mb-6 text-center border-b border-gray-700 pb-3">
-            Season-by-Season Comparison
+            Year-by-Year Comparison
         </h2>
         <div className="space-y-4">
           {seasonComparison.map((seasonData, idx) => {
