@@ -10,16 +10,21 @@ export const metadata = {
   icons: {
     icon: "/goat.svg",
   },
-  verification: {
-    google: "7tc4OfRJ4GU_8LL8QYk31akN-GUUhX_BKf2lO5iUzQU",
-  },
+  // Removed old verification, will add meta in <head>
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* ✅ Google Site Verification for mesnaldo.xyz */}
+        <meta
+          name="google-site-verification"
+          content="vhvbGtOi7jMYUXO5Nl_ICQxmRtxW5GtamQSH2UkNxU0"
+        />
+      </head>
       <body>
-        {/* ✅ Google Analytics Script (replace ID here) */}
+        {/* ✅ Google Analytics Script (GA4) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-736WYQ3H11"
           strategy="afterInteractive"
