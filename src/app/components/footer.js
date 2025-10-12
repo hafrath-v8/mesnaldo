@@ -42,7 +42,7 @@ export default function Footer() {
 
         {/* Additional Stats Links Section */}
         <div className="mt-6 text-center">
-          <h3 className="font-semibold text-lg mb-2">Read more about football stats:</h3>
+          <h3 className="font-semibold text-lg mb-2">Data updated as of from</h3>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <a href="https://messivsronaldo.app" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition">MessivsRonaldo.app</a>
             <a href="https://fifa.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition">FIFA.com</a>
