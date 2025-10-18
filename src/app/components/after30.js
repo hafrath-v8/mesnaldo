@@ -6,17 +6,17 @@ export default function GoalsVsAssists() {
   const players = [
     { 
       name: "Messi", 
-      apps: 1129, 
-      goals: 886, 
-      assists: 398,
+      apps: 1125, 
+      goals: 884, 
+      assists: 392,
       goalColor: "bg-blue-400", 
       assistColor: "bg-blue-600",
       img: "/messi.png" 
     },
     { 
       name: "Ronaldo", 
-      apps: 1291, 
-      goals: 948, 
+      apps: 1289, 
+      goals: 946, 
       assists: 258,
       goalColor: "bg-red-400", 
       assistColor: "bg-red-600",
@@ -83,7 +83,7 @@ export default function GoalsVsAssists() {
 
   return (
     <motion.div 
-      className="w-ful mb-4 max-w-5xl mx-auto bg-gray-900 p-6 rounded-lg border border-gray-700"
+      className="w-ful mt-4 max-w-5xl mx-auto bg-gray-900 p-6 rounded-lg border border-gray-700"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -93,7 +93,7 @@ export default function GoalsVsAssists() {
         className="text-center mb-4"
         variants={itemVariants}
       >
-        <h2 className="text-xl font-semibold text-white mb-1">All Time With SPL,MLS</h2>
+        <h2 className="text-xl font-semibold text-white mb-1">Turning After 30 Age</h2>
         <p className="text-sm text-gray-400">Contributions per appearance</p>
       </motion.div>
 

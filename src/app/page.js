@@ -10,6 +10,7 @@ import Tropy from "./components/Achievment"
 import Footer from "./components/footer";
 import Art from "./components/artical"
 import Head from "./components/head"
+import After from "./components/after30"
 
 export default function Home() {
   return (
@@ -20,8 +21,7 @@ export default function Home() {
       <Alltime/>
       <Club/>
       <Outsaudhi/>
-       
-       
+       <After/>
        <Copa/>
        <Inter/>
        <League/>

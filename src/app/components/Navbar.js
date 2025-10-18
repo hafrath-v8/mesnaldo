@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Home, Activity, Globe, Trophy, Info } from "lucide-react";
+import { Home, Activity, Globe, Trophy, Info,Newspaper } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
@@ -9,7 +9,9 @@ export default function Navbar() {
     { href: "/club", icon: Activity, label: "Club" },
     { href: "/International", icon: Globe, label: "International" },
     { href: "/Achievments", icon: Trophy, label: "Achievments" },
+    { href: "/Article", icon: Newspaper, label: "Article" },
     { href: "/About", icon: Info, label: "About" },
+    
   ];
 
   const containerVariants = {
