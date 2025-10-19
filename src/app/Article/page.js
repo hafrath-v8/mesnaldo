@@ -9,78 +9,7 @@ export default function ArticlePage() {
 const [expandedArticle, setExpandedArticle] = useState(null);
 
   const articles = [
-    {
-  id: 1,
-  title: "Honor's Robot Phone Concept Features Fold-Out Camera Arm - Full Details",
-  excerpt: "Honor unveils groundbreaking Robot Phone concept with AI-enabled gimbal camera that unfolds from the phone's rear",
-  readTime: "6 min read",
-  date: "Oct 15, 2025",
-  category: "Tech Innovation",
-  stats: "AI Camera Robot",
-  content: `
-    <h2>Honor's Revolutionary Robot Phone Concept</h2>
-    <p>Honor has announced what it's calling the "Robot Phone," a concept device with an AI-enabled, gimbal-mounted camera that unfolds from the phone's rear and can shoot photos and film video in any direction. The phone — so far only seen in CGI form in a teaser video — looks like a typical, albeit thick, smartphone, but hides revolutionary technology within.</p>
-    
-    <h3>The Fold-Out Camera Arm</h3>
-    <p>Instead of an Honor logo, the device bears an alpha symbol, representing the company's "Alpha Plan" corporate vision. The main giveaway that something's extraordinary is the chunky camera module, split into two parts. From here, a camera arm unfolds with a cartoonish giggle (it really does giggle, at least in the video), revealing that the main camera can flip up to take selfies, but also to shoot from a variety of positions and angles, seemingly moving under its own direction.</p>
-    
-    <p>This makes the Robot Phone a more advanced successor to the likes of 2019's Asus Zenfone 6, which flipped its main cameras up and over to take selfie shots. However, Honor's implementation appears significantly more sophisticated, with the flexible orientation meaning it can film even when the phone is lying down or positioned in various ways.</p>
-    
-    <h3>DJI Osmo Pocket Inspiration</h3>
-    <p>The camera system looks for all the world like the mini gimbal camera on top of the DJI Osmo Pocket, though Honor's video suggests it's been imbued with enough intelligence to frame photographs, soothe babies, and even gaze in astonished wonderment at the stars above. As Dominic Preston notes, "Have you ever wanted a DJI Osmo Pocket built into your phone?" - that's essentially what Honor is promising with this concept.</p>
-    
-    <h3>AI-Powered Emotional Companion</h3>
-    <p>"With the Robot Phone, Honor envisions the future phone as more than just a tool," the company wrote in a press release. "It becomes an emotional companion that senses, adapts, and evolves autonomously like a robot, enriching its users' lives with love, joy, and wisdom." This represents a significant shift from smartphones as mere communication devices to intelligent companions that actively participate in users' lives.</p>
-    
-    <h3>Current Status and Availability</h3>
-    <p>As of October 2025, the Robot Phone remains a concept device shown only in CGI form. Honor has confirmed that we'll find out more about the Robot Phone — and potentially get the chance to see it in the flesh — when the company reveals more at Mobile World Congress next spring. The Robot Phone served as Honor's "One more thing..." announcement at the end of a more typical launch event for Honor's two Magic 8 flagship phones.</p>
-    
-    <h3>What We Know So Far</h3>
-    <p>The device appears to be a thick smartphone when the camera arm is stowed away, maintaining a relatively normal appearance until the robotic features are activated. The camera arm folds neatly into the main camera module when not in use, suggesting thoughtful engineering despite the advanced functionality. While specific technical specifications remain under wraps, the concept clearly points toward a future where smartphones become more interactive and autonomous.</p>
-    
-    <p><em>Reported by Dominic Preston, News Editor with over a decade's experience in journalism. Previously worked at Android Police and Tech Advisor.</em></p>
-  `
-},
-   {
-  id: 2,
-  title: "Vivo X300 Review: Dimensity 9500 Powerhouse with 200MP Camera System",
-  excerpt: "Vivo's latest flagship boasts MediaTek's 3nm Dimensity 9500, 200MP triple camera, and exceptional battery life",
-  readTime: "7 min read",
-  date: "Oct 17, 2025",
-  category: "Flagship Review",
-  stats: "200MP Camera",
-  content: `
-    <h2>Vivo X300: The New Android Powerhouse</h2>
-    <p>Released on October 17, 2025, the Vivo X300 represents the company's most ambitious flagship to date, packing cutting-edge technology into a sleek 8mm thick body weighing just 190g. With its revolutionary camera system and MediaTek's latest 3nm chipset, this device aims to compete with the best smartphones in the market.</p>
-    
-    <h3>Display and Design Excellence</h3>
-    <p>The Vivo X300 features a stunning 6.31-inch LTPO AMOLED display with 1216 x 2640 pixel resolution, delivering an impressive 460 PPI density. What truly sets this screen apart is its incredible 4500 nits peak brightness – one of the highest in any smartphone currently available. The 120Hz refresh rate combined with 2160Hz PWM dimming ensures smooth scrolling while reducing eye strain during extended use.</p>
-    
-    <p>Built with an aluminum alloy frame and glass back, the X300 maintains premium construction while achieving IP68/IP69 dust and water resistance. This means the device can withstand high-pressure water jets and immersion up to 1.5 meters for 30 minutes, offering superior protection compared to standard IP68 ratings.</p>
-    
-    <h3>Performance: MediaTek Dimensity 9500 Unleashed</h3>
-    <p>At the heart of the Vivo X300 lies the MediaTek Dimensity 9500, built on an advanced 3nm process. The octa-core CPU configuration features a groundbreaking 1x4.21 GHz C1-Ultra core, 3x3.5 GHz C1-Premium cores, and 4x2.7 GHz C1-Pro cores, delivering exceptional performance while maintaining power efficiency.</p>
-    
-    <p>Paired with the Arm G1-Ultra GPU and up to 16GB of RAM, the X300 handles everything from intensive gaming to multitasking with ease. The device runs Android 16 with Vivo's OriginOS 6 skin, promising up to 4 major Android upgrades – ensuring long-term software support.</p>
-    
-    <h3>Camera System: 200MP Photography Revolution</h3>
-    <p>The triple camera setup represents Vivo's most ambitious imaging system yet. The primary 200MP sensor features an f/1.7 aperture, 1/1.4" sensor size, and OIS stabilization, capturing exceptional detail in various lighting conditions. The 50MP periscope telephoto lens offers 3x optical zoom with OIS, while the 50MP ultrawide camera covers a 119-degree field of view.</p>
-    
-    <p>Vivo continues its partnership with Zeiss, incorporating Zeiss optics and T* lens coating to reduce reflections and improve light transmission. The camera system supports 4K video recording at up to 120fps with gyro-EIS stabilization, and even 4K@120fps HDR video capture – a feature typically found in professional cameras.</p>
-    
-    <h3>Battery and Charging</h3>
-    <p>The Vivo X300 packs a substantial 6040mAh Si/C Li-Ion battery, achieving an impressive 52:15 hours of endurance rating. With 90W wired charging and 40W wireless charging capabilities, users can quickly power up their device while enjoying all-day battery life. The battery is rated for 1200 charge cycles, ensuring long-term reliability.</p>
-    
-    <h3>Storage and Connectivity</h3>
-    <p>Available in multiple configurations ranging from 256GB to 1TB of UFS 4.1 storage, the X300 caters to all user needs. While there's no microSD card slot, the ample internal storage options should satisfy most users. Connectivity features include Wi-Fi 7 support, Bluetooth 5.4 with aptX HD and LHDC 5 codecs, and comprehensive positioning systems including GPS, GLONASS, BDS, GALILEO, QZSS, and NavIC.</p>
-    
-    <h3>Pricing and Availability</h3>
-    <p>Priced at approximately 530 EUR, the Vivo X300 offers exceptional value considering its premium specifications. Available in Black, Blue, Red, Purple, and Pink color options, the device combines style with substance. According to EU labeling, the X300 achieves Class A energy efficiency, Class B free fall resistance (surviving 180 falls), and Class C repairability rating.</p>
-    
-    <h3>Verdict</h3>
-    <p>The Vivo X300 stands as a compelling flagship alternative, particularly for photography enthusiasts and power users. With its revolutionary 200MP camera system, cutting-edge Dimensity 9500 processor, and exceptional battery life, it delivers a complete premium experience at a competitive price point. The device successfully bridges the gap between innovation and practicality, making it one of the most exciting releases of 2025.</p>
-  `
-},
+  
     {
   id: 3,
   title: "Portugal 2-2 Hungary: Szoboszlai's Last-Gasp Equalizer Denies Ronaldo Record Night",
