@@ -159,15 +159,15 @@ export default function ClubComparisonPage() {
           
           <div className="grid grid-cols-4 gap-3 mb-4">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-red-400">{careerTotals.ronaldo.apps.toLocaleString()}</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-red-400">1173</div>
               <div className="text-gray-400 text-xs uppercase tracking-wider">Apps</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-red-400">{careerTotals.ronaldo.goals.toLocaleString()}</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-red-400">845</div>
               <div className="text-gray-400 text-xs uppercase tracking-wider">Goals</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-red-400">{careerTotals.ronaldo.assists.toLocaleString()}</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-red-400">238</div>
               <div className="text-gray-400 text-xs uppercase tracking-wider">Assists</div>
             </div>
             <div className="text-center">
@@ -205,15 +205,15 @@ export default function ClubComparisonPage() {
           
           <div className="grid grid-cols-4 gap-3 mb-4">
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-blue-400">{careerTotals.messi.apps.toLocaleString()}</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-blue-400">1048</div>
               <div className="text-gray-400 text-xs uppercase tracking-wider">Apps</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-blue-400">{careerTotals.messi.goals.toLocaleString()}</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-blue-400">820</div>
               <div className="text-gray-400 text-xs uppercase tracking-wider">Goals</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-extrabold text-blue-400">{careerTotals.messi.assists.toLocaleString()}</div>
+              <div className="text-2xl sm:text-3xl font-extrabold text-blue-400">362</div>
               <div className="text-gray-400 text-xs uppercase tracking-wider">Assists</div>
             </div>
             <div className="text-center">
