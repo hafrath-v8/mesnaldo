@@ -240,40 +240,54 @@ const [expandedArticle, setExpandedArticle] = useState(null);
         <p>Ronaldo's Premier League record shows 103 goals in 236 appearances across his two spells with Manchester United, averaging 0.44 goals per game. His first spell established him as one of the world's best players, while his return in 2021 demonstrated his enduring quality in what many consider the world's most physically demanding league. Messi, having never played in the Premier League, doesn't have this particular experience in his portfolio, though his success in other leagues remains unquestioned.</p>
       `
     },
+   
     {
       id: 7,
-      title: "Messi vs Ronaldo Hat-tricks: Complete Analysis of Triple Goals",
-      excerpt: "Detailed breakdown of all hat-tricks, big game performances and clutch moments",
-      readTime: "6 min read",
-      date: "Dec 7, 2024",
-      category: "Big Games",
-      stats: "57 vs 63 Hat-tricks",
+      title: "João Félix Hat-trick Inspires Al-Nassr to Dominant 5-1 Victory Over Al-Fateh",
+      excerpt: "Portuguese star shines with perfect hat-trick as Al-Nassr maintain perfect start to Saudi Pro League season",
+      readTime: "5 min read",
+      date: "Oct 19, 2025",
+      category: "Match Report",
+      stats: "5-1 Victory",
       content: `
-        <p>The ability to score hat-tricks consistently separates truly great players from the merely excellent, and both Messi and Ronaldo have demonstrated this skill throughout their careers. Ronaldo currently leads this particular category with 63 official hat-tricks across all competitions, while Messi follows closely with 57 hat-tricks. This six-hat-trick difference reflects Ronaldo's slightly greater volume of goals and his incredible consistency across multiple leagues and competitions.</p>
+        <p>Al-Nassr delivered a spectacular attacking masterclass at Al-Awwal Park, crushing Al-Fateh 5-1 in their Saudi Pro League Round 5 encounter, with João Félix stealing the show with a magnificent hat-trick. The victory maintains Al-Nassr's perfect start to the season, keeping them firmly at the top of the table with maximum points from five matches.</p>
         
-        <p>Breaking down their hat-tricks by competition reveals interesting patterns. Ronaldo holds the record for most international hat-tricks with 10 for Portugal, demonstrating his ability to single-handedly dominate matches for his national team. Messi has scored 3 international hat-tricks for Argentina, with all three coming in important World Cup qualifying matches and friendlies. At club level, Messi has 54 hat-tricks compared to Ronaldo's 51, though Ronaldo's are spread across more clubs and leagues.</p>
+        <p>The home side set the tone early with Félix opening the scoring in the 13th minute, finishing a well-crafted move orchestrated by Sadio Mané. Al-Nassr dominated possession throughout the first half, creating numerous chances but had to settle for a single-goal lead at halftime despite their overwhelming control of the match.</p>
         
-        <p>Both players have scored eight Champions League hat-tricks, sharing the record for most in the competition's history. These European performances often came on the biggest stages against elite opposition, with Messi's hat-trick against Bayern Munich and Ronaldo's treble against Atlético Madrid standing out as particularly memorable. Their ability to produce these explosive scoring performances in crucial matches has defined their careers and terrified defenders across Europe.</p>
+        <p>The second half turned into a goal fest as Al-Nassr's attacking quality proved too much for the struggling visitors. Cristiano Ronaldo doubled the advantage on the hour mark, converting another assist from the influential Sadio Mané to score his team's second goal. Just eight minutes later, the roles reversed as Ronaldo turned provider, setting up Félix for his second goal of the evening.</p>
         
-        <p>When examining hat-trick frequency, Messi averages one every 17.7 games throughout his career, while Ronaldo averages one every 19.1 games. This slight edge in frequency for Messi reflects his incredible efficiency and ability to score goals in clusters. Both rates are unprecedented in modern football and demonstrate their status as once-in-a-generation goal-scorers. The consistency with which both players have produced these multi-goal performances over nearly two decades remains one of the most remarkable aspects of their legendary rivalry.</p>
+        <p>Kingsley Coman joined the scoring party in the 75th minute, making it 4-0 after excellent work from Ângelo, putting the result beyond any doubt. Although Sofiane Bendebka managed to pull one back for Al-Fateh in the 54th minute, it proved to be nothing more than a consolation as Félix completed his well-deserved hat-trick in the 79th minute, sealing a memorable 5-1 victory.</p>
+        
+        <p>The match statistics told the story of Al-Nassr's complete dominance, with the home side enjoying overwhelming possession and creating numerous clear-cut chances. João Félix rightfully earned the Player of the Match award for his exceptional performance, which included three well-taken goals and constant threat throughout the 90 minutes.</p>
+        
+        <p>This comprehensive victory highlights Al-Nassr's status as serious title contenders, showcasing their formidable attacking trio of Félix, Ronaldo, and Mané. The result leaves Al-Nassr sitting comfortably at the summit of the Saudi Pro League with 12 points, while Al-Fateh remain rooted to the bottom of the table with just one point from their opening five matches.</p>
+        
+        <p>Manager Jorge Jesus will be delighted with his team's performance, particularly the growing understanding between his attacking players. The partnership between Félix and Ronaldo appears to be developing rapidly, suggesting Al-Nassr could have one of the most feared attacking units in Asian football this season.</p>
       `
     },
+
     {
       id: 8,
-      title: "Messi vs Ronaldo Free-kicks: Set Piece Statistics & Techniques",
-      excerpt: "Complete analysis of free-kick goals, success rates, and technical comparison",
-      readTime: "5 min read",
-      date: "Dec 8, 2024",
-      category: "Set Pieces",
-      stats: "65 vs 60 Free-kick Goals",
+      title: "Inter Miami CF: Complete Team Profile, Squad Analysis and 2025 Season Preview",
+      excerpt: "Everything you need to know about Inter Miami CF - squad details, key players, transfers and season expectations",
+      readTime: "6 min read",
+      date: "Oct 19, 2025",
+      category: "Team Profile",
+      stats: "MLS 2025 Season",
       content: `
-        <p>The free-kick prowess of Messi and Ronaldo represents one of the most fascinating technical comparisons in their entire rivalry, with both players developing distinct and highly effective methods from dead-ball situations. Messi currently leads this category with 65 free-kick goals throughout his career, compared to Ronaldo's 60 direct free-kick conversions. This five-goal advantage for Messi comes despite Ronaldo having taken more attempts throughout his career.</p>
+        <p>Inter Miami CF, the American professional soccer club based in Fort Lauderdale, Florida, continues to make waves in Major League Soccer under the guidance of coach Javier Mascherano. Founded on January 29, 2018, the club has rapidly established itself as one of the most exciting franchises in North American soccer, playing their home matches at the 21,550-capacity Chase Stadium.</p>
         
-        <p>When examining success rates, the difference becomes more pronounced. Messi converts approximately 8.5% of his free-kick attempts, having scored 65 goals from roughly 765 attempts. Ronaldo's success rate stands at around 6.2%, with 60 goals coming from approximately 970 attempts. This higher efficiency for Messi reflects his technical approach focused on precision and placement rather than pure power.</p>
+        <p>The 2025 season sees Inter Miami boasting a formidable squad featuring global superstar Lionel Messi, who remains the centerpiece of the team's ambitious project. Alongside Messi, the attacking lineup includes veteran striker Luis Suárez, providing one of the most experienced and lethal forward partnerships in MLS history. The recent addition of Argentine midfielder Rodrigo de Paul adds further quality and international experience to an already impressive roster.</p>
         
-        <p>Their technical approaches to free-kicks could hardly be more different. Messi employs a precision-based technique that emphasizes exceptional curl, dip, and placement. He typically targets areas of the goal that are physically impossible for goalkeepers to reach, using his impeccable technique to bend the ball around walls and into the corners. Ronaldo, in contrast, revolutionized free-kick taking with his powerful knuckleball technique that creates unpredictable movement in the air, making it extremely difficult for goalkeepers to judge the ball's trajectory.</p>
+        <p>Inter Miami's current squad comprises 27 players with an average age of 26.3 years, reflecting a balanced mix of experienced veterans and promising young talent. The team features 22 foreign players, highlighting their international recruitment strategy, and includes 6 national team players who bring international tournament experience to the dressing room.</p>
         
-        <p>Their effectiveness from different ranges also varies significantly. Messi is most dangerous from 20-25 yards, where his accuracy and placement are virtually unstoppable. Some of his most memorable free-kicks, including his last-minute winner against Real Madrid in 2017, came from this optimal range. Ronaldo poses a threat from much greater distances, often scoring from 25-35 yards out where his powerful technique can overwhelm goalkeepers. Both approaches have produced iconic moments that will live long in football memory, demonstrating that there are multiple paths to free-kick mastery at the highest level.</p>
+        <p>The midfield is anchored by the experienced Sergio Busquets, whose reading of the game and distribution skills remain world-class. The defensive line is marshaled by former Barcelona teammate Jordi Alba, whose attacking overlaps and defensive awareness continue to be valuable assets. The goalkeeping department features William Yarbrough, Óscar Ustari, and Rocco Ríos Novo, providing strong competition for the starting spot.</p>
+        
+        <p>Inter Miami competes across multiple competitions in the 2025 season, including the MLS regular season, FIFA Club World Cup, CONCACAF Champions Cup, and Leagues Cup. Their next fixture sees them facing Nashville SC on October 18, 2025, in what promises to be an exciting MLS encounter. The team comes into this match with strong momentum, having recently secured an impressive 4-0 victory against Atlanta United.</p>
+        
+        <p>The club's transfer activity has been strategic and ambitious, with 12 new arrivals including Mateo Silvetti, Rodrigo de Paul, and William Yarbrough strengthening key areas of the squad. While experiencing 20 departures, including Benjamin Cremaschi, Drake Callender, and Federico Redondo, the overall quality of the squad has been maintained and enhanced for the challenges ahead.</p>
+        
+        <p>Under Mascherano's leadership, Inter Miami has developed an attractive, possession-based style of football that leverages the technical qualities of their star players. With Messi continuing to perform at an elite level and supported by a strong supporting cast, Inter Miami enters the 2025 season with genuine aspirations for silverware across all competitions.</p>
       `
     },
     {

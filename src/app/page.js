@@ -21,7 +21,6 @@ export default function Home() {
       <Alltime/>
       <Club/>
       <Outsaudhi/>
-       <After/>
        <Copa/>
        <Inter/>
        <League/>

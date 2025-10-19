@@ -6,9 +6,9 @@ export default function GoalsVsAssists() {
     { 
       name: "Messi", 
       // Without MLS stats
-      apps: 1047,
-      goals: 818, 
-      assists: 361,
+      apps: 1048,
+      goals: 820, 
+      assists: 362,
       goalColor: "bg-blue-400", 
       assistColor: "bg-blue-600",
       img: "/messi.png" 
@@ -16,8 +16,8 @@ export default function GoalsVsAssists() {
     { 
       name: "Ronaldo", 
       // Without Saudi stats  
-      apps: 1172,
-      goals: 842,
+      apps: 1173,
+      goals: 845,
       assists: 238,
       goalColor: "bg-red-400", 
       assistColor: "bg-red-600",
