@@ -219,22 +219,31 @@ const [expandedArticle, setExpandedArticle] = useState(null);
         <p>Under Mascherano's leadership, Inter Miami has developed an attractive, possession-based style of football that leverages the technical qualities of their star players. With Messi continuing to perform at an elite level and supported by a strong supporting cast, Inter Miami enters the 2025 season with genuine aspirations for silverware across all competitions.</p>
       `
     },
+
     {
       id: 9,
-      title: "Messi vs Ronaldo Longevity: Career Evolution & Age Analysis",
-      excerpt: "Complete timeline analysis of their career evolution and sustained excellence",
-      readTime: "8 min read",
-      date: "Dec 9, 2024",
-      category: "Career Analysis",
-      stats: "20+ Years Excellence",
+      title: "Messi Brace Leads Inter Miami to 3-1 Playoff Victory Over Nashville SC",
+      excerpt: "Lionel Messi scores twice including dramatic stoppage-time goal to secure crucial MLS playoff win",
+      readTime: "5 min read",
+      date: "Oct 25, 2025",
+      category: "Match Report",
+      stats: "3-1 Victory",
       content: `
-        <p>The career longevity of Messi and Ronaldo represents one of their most remarkable achievements, with both players maintaining world-class performance levels across more than two decades of professional football. Messi made his professional debut for Barcelona in 2003 at just 16 years old and continues to perform at an elite level with Inter Miami in 2024. Ronaldo's professional journey began even earlier with Sporting Lisbon in 2002, and he remains a dominant force with Al Nassr at 39 years old. This sustained excellence across 20+ years is unprecedented in modern football.</p>
+        <p>Inter Miami CF secured a crucial 3-1 victory over Nashville SC in their MLS playoff encounter at Chase Stadium, with Lionel Messi delivering a masterclass performance that included two crucial goals. The victory gives Inter Miami a significant advantage in the Best of 3 playoff series, putting them one win away from advancing to the next round.</p>
         
-        <p>Analyzing their peak performance periods reveals interesting patterns in their career arcs. Messi's absolute peak occurred between ages 22-28 from 2009-2015, during which he scored an incredible 379 goals in just six seasons. This period included his record-breaking 91 goals in a calendar year in 2012 and four consecutive Ballon d'Or wins. Ronaldo's peak came slightly later in his career between ages 28-33 from 2013-2018, where he scored 316 goals while leading Real Madrid to four Champions League titles in five seasons.</p>
+        <p>The home side started brightly and took the lead in the 19th minute when Messi opened the scoring, finishing a well-worked move assisted by veteran striker Luis Suárez. The first half saw Inter Miami controlling possession and creating the better chances, but they had to settle for a narrow 1-0 lead heading into halftime despite their dominance.</p>
         
-        <p>Their ability to adapt and evolve their games as they aged demonstrates their football intelligence and dedication. Messi transitioned from an explosive winger in his early years to a false nine during his peak, and eventually to a deeper-lying playmaker in his later career. This evolution allowed him to maintain his creative influence even as his physical attributes naturally declined. Ronaldo transformed from a tricky, skills-based winger to a complete forward, and finally to a pure penalty-box predator focused on maximizing his goal-scoring efficiency.</p>
+        <p>The second half saw Inter Miami extend their advantage in the 62nd minute when young talent Tadeo Allende found the net, with Ian Fray providing the assist. The goal demonstrated the depth of quality in Inter Miami's squad, with the younger players stepping up alongside the experienced stars.</p>
         
-        <p>Their late-career achievements are particularly impressive given the physical demands of modern football. Messi won his eighth Ballon d'Or at age 36 after leading Argentina to World Cup glory, while Ronaldo continues to score at a remarkable rate in his late 30s, netting over 100 goals after turning 35. Both players have redefined what's possible in terms of career length and late-career performance, setting new standards for future generations of footballers.</p>
+        <p>As the match entered stoppage time, Messi sealed the victory with a dramatic 96th-minute goal, showcasing his enduring class and clutch performance ability. The Argentine maestro's brace ensured Inter Miami would take a comfortable lead into the next match of the playoff series.</p>
+        
+        <p>Nashville SC managed to pull one back in the 101st minute through Hany Mukhtar, but it proved to be nothing more than a consolation goal as Inter Miami saw out the remaining moments to secure a well-deserved 3-1 victory.</p>
+        
+        <p>The match statistics reflected Inter Miami's control throughout the game, with the home side enjoying the majority of possession and creating more clear-cut chances. Messi rightfully earned the Player of the Match award for his influential performance, which included two goals and constant threat to the Nashville defense.</p>
+        
+        <p>This victory continues Inter Miami's impressive record against Nashville SC, having now won 8 of their last 10 encounters. Under coach Javier Mascherano, the team has developed a strong understanding and tactical discipline that was evident throughout the match.</p>
+        
+        <p>The win puts Inter Miami in a commanding position in the playoff series, with the team needing just one more victory to advance. With Messi in such scintillating form and the supporting cast performing well, Inter Miami will be confident of progressing further in their quest for MLS Cup glory.</p>
       `
     },
     {
