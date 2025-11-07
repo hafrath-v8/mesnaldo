@@ -171,29 +171,32 @@ const [expandedArticle, setExpandedArticle] = useState(null);
     },
    
     {
-      id: 7,
-      title: "João Félix Hat-trick Inspires Al-Nassr to Dominant 5-1 Victory Over Al-Fateh",
-      excerpt: "Portuguese star shines with perfect hat-trick as Al-Nassr maintain perfect start to Saudi Pro League season",
-      readTime: "5 min read",
-      date: "Oct 19, 2025",
-      category: "Match Report",
-      stats: "5-1 Victory",
-      content: `
-        <p>Al-Nassr delivered a spectacular attacking masterclass at Al-Awwal Park, crushing Al-Fateh 5-1 in their Saudi Pro League Round 5 encounter, with João Félix stealing the show with a magnificent hat-trick. The victory maintains Al-Nassr's perfect start to the season, keeping them firmly at the top of the table with maximum points from five matches.</p>
-        
-        <p>The home side set the tone early with Félix opening the scoring in the 13th minute, finishing a well-crafted move orchestrated by Sadio Mané. Al-Nassr dominated possession throughout the first half, creating numerous chances but had to settle for a single-goal lead at halftime despite their overwhelming control of the match.</p>
-        
-        <p>The second half turned into a goal fest as Al-Nassr's attacking quality proved too much for the struggling visitors. Cristiano Ronaldo doubled the advantage on the hour mark, converting another assist from the influential Sadio Mané to score his team's second goal. Just eight minutes later, the roles reversed as Ronaldo turned provider, setting up Félix for his second goal of the evening.</p>
-        
-        <p>Kingsley Coman joined the scoring party in the 75th minute, making it 4-0 after excellent work from Ângelo, putting the result beyond any doubt. Although Sofiane Bendebka managed to pull one back for Al-Fateh in the 54th minute, it proved to be nothing more than a consolation as Félix completed his well-deserved hat-trick in the 79th minute, sealing a memorable 5-1 victory.</p>
-        
-        <p>The match statistics told the story of Al-Nassr's complete dominance, with the home side enjoying overwhelming possession and creating numerous clear-cut chances. João Félix rightfully earned the Player of the Match award for his exceptional performance, which included three well-taken goals and constant threat throughout the 90 minutes.</p>
-        
-        <p>This comprehensive victory highlights Al-Nassr's status as serious title contenders, showcasing their formidable attacking trio of Félix, Ronaldo, and Mané. The result leaves Al-Nassr sitting comfortably at the summit of the Saudi Pro League with 12 points, while Al-Fateh remain rooted to the bottom of the table with just one point from their opening five matches.</p>
-        
-        <p>Manager Jorge Jesus will be delighted with his team's performance, particularly the growing understanding between his attacking players. The partnership between Félix and Ronaldo appears to be developing rapidly, suggesting Al-Nassr could have one of the most feared attacking units in Asian football this season.</p>
-      `
-    },
+  id: 7,
+  title: "Cristiano Ronaldo Opens Up in Explosive Interview with Piers Morgan",
+  excerpt: "Ronaldo reveals untold truths about his career, Manchester United exit, and future ambitions in a candid conversation with Piers Morgan.",
+  readTime: "6 min read",
+  date: "Oct 19, 2025",
+  category: "Exclusive Interview",
+  stats: "Exclusive Insights",
+  content: `
+    <p>In a deeply revealing and emotional interview with British journalist Piers Morgan, Cristiano Ronaldo spoke openly about his football journey, personal struggles, and his ambitions for the future. The conversation, which has quickly gone viral across social media, offered fans a rare and unfiltered glimpse into the mindset of one of football’s greatest icons.</p>
+
+    <p>During the interview, Ronaldo discussed the challenges he faced during his second spell at Manchester United, expressing disappointment with how the club handled internal matters and his eventual departure. He also touched on his relationships with teammates, coaching staff, and management, making several bold statements that have reignited debates in the football world.</p>
+
+    <p>Ronaldo reflected on his motivation and discipline, saying that his competitive spirit and love for the game remain as strong as ever. “I’ve always believed in hard work, dedication, and self-belief. People see the goals, but they don’t see the sacrifices,” he said.</p>
+
+    <p>The Portuguese superstar also opened up about his life beyond football — including family, legacy, and how he continues to inspire younger players around the world. Ronaldo emphasized the importance of maintaining mental strength and staying true to one’s values even in the face of criticism and adversity.</p>
+
+    <p>Throughout the discussion, Piers Morgan’s questions touched on sensitive topics — from the state of modern football to Ronaldo’s view of media narratives surrounding him. Ronaldo’s responses were measured yet powerful, showcasing his maturity and self-awareness as he enters the later stages of his legendary career.</p>
+
+    <p>The full interview is available on YouTube, offering fans the complete uncut version of this must-watch conversation: 
+      <a href="https://www.youtube.com/watch?v=H3m1HmfXY3A" target="_blank">Watch the interview here</a>.
+    </p>
+
+    <p>This interview reaffirms Cristiano Ronaldo’s position not only as one of football’s most accomplished players but also as a global figure unafraid to speak his truth. His honesty and passion continue to inspire millions across the world, making this one of the most talked-about football interviews in recent memory.</p>
+  `
+}
+
 
     {
       id: 8,
