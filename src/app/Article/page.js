@@ -195,7 +195,7 @@ const [expandedArticle, setExpandedArticle] = useState(null);
 
     <p>This interview reaffirms Cristiano Ronaldo’s position not only as one of football’s most accomplished players but also as a global figure unafraid to speak his truth. His honesty and passion continue to inspire millions across the world, making this one of the most talked-about football interviews in recent memory.</p>
   `
-}
+},
 
 
     {
