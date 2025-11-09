@@ -250,23 +250,26 @@ const [expandedArticle, setExpandedArticle] = useState(null);
       `
     },
     {
-      id: 10,
-      title: "Messi vs Ronaldo Advanced Stats: xG, Dribbling & Modern Metrics",
-      excerpt: "Complete analysis using expected goals, progressive carries, and advanced football analytics",
-      readTime: "7 min read",
-      date: "Dec 10, 2024",
-      category: "Advanced Stats",
-      stats: "Data-Driven Analysis",
-      content: `
-        <p>Modern football analytics provide deeper insights into the performances of Messi and Ronaldo, revealing nuances that traditional statistics might miss. Expected Goals (xG) analysis shows both players significantly outperforming their expected numbers throughout their careers, indicating exceptional finishing quality. Messi has scored 821 goals from an xG of 658, meaning he's scored 163 more goals than the average player would be expected to score from the same chances. Ronaldo shows similar overperformance with 885 goals from 732 xG, exceeding expectations by 153 goals.</p>
-        
-        <p>The dribbling statistics highlight one of the most significant differences in their playing styles. Messi averages 3.7 successful dribbles per 90 minutes throughout his career, demonstrating his unparalleled ability to beat defenders and progress the ball through individual skill. Ronaldo, while still an effective dribbler particularly in his younger years, averages 1.8 successful dribbles per 90 minutes. This substantial difference reflects Messi's role as both primary creator and scorer, often initiating attacks from deeper positions.</p>
-        
-        <p>Progressive carries and passing metrics further emphasize their contrasting approaches to influencing games. Messi averages 12.3 progressive carries per 90 minutes, frequently driving Barcelona and Argentina forward through his dribbling and ball progression. He also completes 8.1 progressive passes per 90, consistently breaking defensive lines with his vision and passing range. Ronaldo averages 6.8 progressive carries and 4.3 progressive passes per 90, reflecting his more advanced positioning and focus on finishing moves rather than building them.</p>
-        
-        <p>Defensive contributions, while not the primary strength of either player, also show interesting patterns. Messi applies 15.2 pressures per 90 minutes compared to Ronaldo's 11.8 pressures per 90, indicating slightly more engagement in defensive actions. However, both players are primarily judged on their offensive output, and their defensive numbers reflect their roles as attacking focal points who conserve energy for creating and scoring goals. The advanced metrics collectively paint a picture of two all-time greats with distinct but equally effective approaches to dominating football matches.</p>
-      `
-    }
+  id: 10,
+  title: "Messi vs Ronaldo Advanced Stats: xG, Dribbling & Modern Metrics",
+  excerpt: "Complete analysis using expected goals, progressive carries, and advanced football analytics",
+  readTime: "7 min read",
+  date: "Nov 11, 2025",
+  category: "Advanced Stats",
+  stats: "Data-Driven Analysis",
+  content: `
+    <p>Modern football analytics provide deeper insights into the performances of Messi and Ronaldo, revealing nuances that traditional statistics might miss. Expected Goals (xG) analysis shows both players significantly outperforming their expected numbers throughout their careers, indicating exceptional finishing quality. Messi has scored 821 goals from an xG of 658, meaning he's scored 163 more goals than the average player would be expected to score from the same chances. Ronaldo shows similar overperformance with 885 goals from 732 xG, exceeding expectations by 153 goals.</p>
+    
+    <p>Additionally, Messi has contributed 400 assists in 1,133 games, highlighting his incredible playmaking ability alongside his goal-scoring prowess. This makes him not only a prolific scorer but also one of the most creative players in modern football history.</p>
+
+    <p>The dribbling statistics highlight one of the most significant differences in their playing styles. Messi averages 3.7 successful dribbles per 90 minutes throughout his career, demonstrating his unparalleled ability to beat defenders and progress the ball through individual skill. Ronaldo, while still an effective dribbler particularly in his younger years, averages 1.8 successful dribbles per 90 minutes. This substantial difference reflects Messi's role as both primary creator and scorer, often initiating attacks from deeper positions.</p>
+    
+    <p>Progressive carries and passing metrics further emphasize their contrasting approaches to influencing games. Messi averages 12.3 progressive carries per 90 minutes, frequently driving Barcelona and Argentina forward through his dribbling and ball progression. He also completes 8.1 progressive passes per 90, consistently breaking defensive lines with his vision and passing range. Ronaldo averages 6.8 progressive carries and 4.3 progressive passes per 90, reflecting his more advanced positioning and focus on finishing moves rather than building them.</p>
+    
+    <p>Defensive contributions, while not the primary strength of either player, also show interesting patterns. Messi applies 15.2 pressures per 90 minutes compared to Ronaldo's 11.8 pressures per 90, indicating slightly more engagement in defensive actions. However, both players are primarily judged on their offensive output, and their defensive numbers reflect their roles as attacking focal points who conserve energy for creating and scoring goals. The advanced metrics collectively paint a picture of two all-time greats with distinct but equally effective approaches to dominating football matches.</p>
+  `
+}
+
   ];
 
   const handleReadAnalysis = (articleId, number) => {

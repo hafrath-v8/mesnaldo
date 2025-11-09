@@ -6,17 +6,17 @@ export default function GoalsVsAssists() {
   const players = [
     { 
       name: "Messi", 
-      apps: 1132, 
-      goals: 892, 
-      assists: 399,
+      apps: 1133, 
+      goals: 894, 
+      assists: 400,
       goalColor: "bg-blue-400", 
       assistColor: "bg-blue-600",
       img: "/messi.png" 
     },
     { 
       name: "Ronaldo", 
-      apps: 1295, 
-      goals: 952, 
+      apps: 1296, 
+      goals: 953, 
       assists: 259,
       goalColor: "bg-red-400", 
       assistColor: "bg-red-600",
