@@ -19,17 +19,17 @@ export const metadata = {
 
   ],
   icons: {
-    icon: "/favicon.svg",
+    icon: "/goat.png",
   },
   openGraph: {
     title: "Mesnaldo | Messi vs Ronaldo Stats Comparison",
     description:
       "Dive into the ultimate Messi vs Ronaldo comparison with goals, assists, trophies, and more!",
-    url: "https://mesnaldo.xyz/",
+    url: "https://mesnaldo.com/",
     siteName: "Mesnaldo",
     images: [
       {
-        url: "https://mesnaldo.xyz/og-image.jpg", // upload your OG image to /public
+        url: "https://mesnaldo.com/og-image.jpg", // upload your OG image to /public
         width: 1200,
         height: 630,
         alt: "Messi vs Ronaldo Comparison",
@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
           content="vhvbGtOi7jMYUXO5Nl_ICQxmRtxW5GtamQSH2UkNxU0"
         />
           {/* ✅ Canonical URL */}
-        <link rel="canonical" href="https://mesnaldo.xyz/" />
+        <link rel="canonical" href="https://mesnaldo.com/" />
 
         {/* ✅ Robots tag */}
         <meta name="robots" content="index, follow" />
@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#000000" />
 
         {/* ✅ Favicon */}
-        <link rel="icon" href="/goat.svg" type="image/svg+xml" />
+        <link rel="icon" href="/goat.png" type="image/png" />
       </head>
       <body>
         {/* ✅ Google Analytics Script (GA4) */}

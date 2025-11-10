@@ -39,7 +39,7 @@ export default function HeroHeader() {
 
   return (
     <motion.div 
-      className="w-full bg-gray-900 border-t-2 border-x-2 border-yellow-500  py-4 px-4  "
+      className="w-full bg-gray-900    py-4 px-4  "
       initial="hidden"
       animate="visible"
       variants={containerVariants}

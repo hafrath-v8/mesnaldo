@@ -55,7 +55,7 @@ export default function Bio() {
   };
 
   return (
-    <div className={`w-full bg-gray-900 border-x-2 border-yellow-500 p-3 sm:p-4 ${inter.className}`}>
+    <div className={`w-full bg-gray-900   p-3 sm:p-4 ${inter.className}`}>
       {/* Top player images and VS */}
       <div className="flex max-w-4xl mx-auto justify-between items-center">
         {/* Ronaldo */}
