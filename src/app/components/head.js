@@ -39,12 +39,12 @@ export default function HeroHeader() {
 
   return (
     <motion.div 
-      className="w-full bg-gray-900    py-4 px-4  "
+      className="w-full bg-gray-900 rounded-t-lg border border-b-0 border-gray-700 py-4 px-4  "
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="max-w-4xl  mx-auto text-center">
         {/* Main Title */}
         <motion.h1 
           className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight"
