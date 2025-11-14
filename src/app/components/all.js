@@ -15,7 +15,7 @@ export default function GoalsVsAssists() {
     },
     { 
       name: "Ronaldo", 
-      apps: 1296, 
+      apps: 1297, 
       goals: 953, 
       assists: 259,
       goalColor: "bg-red-400", 

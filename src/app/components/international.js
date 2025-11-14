@@ -16,7 +16,7 @@ export default function InternationalAllTime() {
     { 
       name: "Ronaldo", 
       tournament: "International Career",
-      apps: 225, 
+      apps: 226, 
       goals: 143, 
       assists: 37,
       goalColor: "bg-red-400", 
