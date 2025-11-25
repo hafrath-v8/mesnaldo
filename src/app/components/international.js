@@ -6,9 +6,9 @@ export default function InternationalAllTime() {
     { 
       name: "Messi", 
       tournament: "International Career",
-      apps: 195, 
-      goals: 114, 
-      assists: 60,
+      apps: 196, 
+      goals: 115, 
+      assists: 61,
       goalColor: "bg-blue-400", 
       assistColor: "bg-blue-600",
       img: "/messi.png" 
