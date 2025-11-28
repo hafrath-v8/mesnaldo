@@ -44,8 +44,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5264237385052398"
-     crossorigin="anonymous"></script>
+        {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5264237385052398"
+     crossorigin="anonymous"></script> */}
         {/* ✅ Google Site Verification for mesnaldo.xyz */}
         <meta
           name="google-site-verification"
