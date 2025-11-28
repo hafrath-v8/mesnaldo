@@ -44,34 +44,8 @@ export default function HeroHeader() {
       animate="visible"
       variants={containerVariants}
     >
-      <div className="max-w-4xl  mx-auto text-center">
-        {/* Main Title */}
-        <motion.h1 
-          className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 tracking-tight"
-          variants={titleVariants}
-        >
-          <span className="text-white">MESSI </span>
-          <span className="text-amber-500 mx-2 md:mx-4">VS</span>
-          <span className="text-white">RONALDO</span>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p 
-          className="text-base md:text-lg text-gray-300 mb-4 font-normal"
-          variants={itemVariants}
-        >
-          The Ultimate Football Rivalry Analysis
-        </motion.p>
-
-        {/* Motto */}
-        <motion.div 
-          className="mt-2 pt-4 border-t border-gray-700 rounded-lg"
-          variants={itemVariants}
-        >
-          <p className="text-sm text-gray-400 max-w-2xl mx-auto">
-            Analyzing every statistic in the greatest football rivalry of all time
-          </p>
-        </motion.div>
+      <div className="max-w-4xl h-20 md:h-30 mx-auto text-center">
+        
       </div>
     </motion.div>
   );
