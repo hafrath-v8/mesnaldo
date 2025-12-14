@@ -5,7 +5,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
-  title: "Mesnaldo | Messi vs Ronaldo Stats Comparison",
+  title: "Mesnaldo | Messi vs Ronaldo Goals, Assists, Trophies & Records – Full Comparison",
   description:
     "Compare Lionel Messi and Cristiano Ronaldo's career stats — goals, assists, trophies, and achievements. The ultimate Messi vs Ronaldo debate with real-time updates!",
   keywords: [
@@ -15,6 +15,10 @@ export const metadata = {
     "Messi vs Ronaldo comparison",
     "messi,ronaldo detailed goals,assists",
     "who is goat",
+    "messi all time goals",
+    "ronaldo all time goals",
+    "messi trophies",
+    "ronaldo trophies",
 
 
   ],
