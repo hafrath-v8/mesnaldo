@@ -6,9 +6,9 @@ export default function LeagueAllTime() {
     { 
       name: "Messi", 
       tournament: "All-Time League Career",
-      apps: 627, 
-      goals: 541, 
-      assists: 245,
+      apps: 631, 
+      goals: 546, 
+      assists: 250,
       goalColor: "bg-blue-400", 
       assistColor: "bg-blue-600",
       img: "/messi.png" 
@@ -16,9 +16,9 @@ export default function LeagueAllTime() {
     { 
       name: "Ronaldo", 
       tournament: "All-Time League Career",
-      apps: 732, 
-      goals: 576, 
-      assists: 160,
+      apps: 746, 
+      goals: 589, 
+      assists: 161,
       goalColor: "bg-red-400", 
       assistColor: "bg-red-600",
       img: "/rony.png" 
