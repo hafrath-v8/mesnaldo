@@ -38,7 +38,8 @@ export default function MessiMatches({ matches, total }: MatchesProps) {
           >
             <option value="all">All Competitions</option>
             {competitions.slice(0, 15).map((comp) => (
-              <option key={comp} value={comp}>{comp}</option>
+              <option key={comp} value={comp ?? ""}>{comp}
+              </option>
             ))}
           </select>
           <input

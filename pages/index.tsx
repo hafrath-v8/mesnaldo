@@ -225,8 +225,8 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
 
   const imgV = { hidden: { scale: 0.9, opacity: 0 }, visible: { scale: 1, opacity: 1, transition: { duration: 0.5 } } }
   const statV = { hidden: { y: 10, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.4 } } }
-  const vsV = { hidden: { scale: 0, opacity: 0 }, visible: { scale: 1, opacity: 1, transition: { duration: 0.6, type: "spring" } } }
-  const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: { duration: 2, repeat: Infinity } } }
+const vsV = { hidden: { scale: 0, opacity: 0 }, visible: { scale: 1, opacity: 1, transition: { duration: 0.6, type: "spring" as const } } }  
+const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: { duration: 2, repeat: Infinity } } }
 
   const quickLinks = [
     { href: "/goals", label: "Goals" },
