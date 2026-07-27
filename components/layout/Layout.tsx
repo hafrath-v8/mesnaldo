@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import { ReactNode, useState, useEffect } from "react"
 import { Menu, X, Goal, BarChart3, Trophy, PenLine, Vote } from "lucide-react"
-
+import Script from "next/script"
 interface LayoutProps {
   children: ReactNode
   title?: string
@@ -273,6 +273,25 @@ export default function Layout({
           </div>
         </div>
       </footer>
+
+      {/* ─── GOOGLE ANALYTICS ─── */}
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-EVYPF04DX0"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-EVYPF04DX0');
+          `,
+        }}
+      />
     </>
   )
 }
+
