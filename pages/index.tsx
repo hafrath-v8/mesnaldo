@@ -6,7 +6,10 @@ import { GetStaticProps } from "next"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer, Legend } from "recharts"
+import dynamic from "next/dynamic"
+import { PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer, Legend } from "recharts"
+
+const RadarChart = dynamic(() => import("recharts").then(mod => mod.RadarChart), { ssr: false })
 import { Trophy, Award } from "lucide-react"
 
 
@@ -134,14 +137,14 @@ function GoalsOnlyCard({ label, messi, ronaldo, index }: { label: string; messi:
       </div>
       <div className="flex items-center justify-center gap-2 sm:gap-3 mb-5 sm:mb-6 p-3 sm:p-4 bg-gray-800/60 rounded-xl border border-gray-700/50">
         <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-amber-400/30">
-          <Image src={winner === "Messi" ? "/images/messi.png" : "/images/ronaldo.png"} alt={winner} fill className="object-cover" />
+          <Image src={winner === "Messi" ? "/images/messi.webp" : "/images/ronaldo.webp"} alt={winner} fill className="object-cover" />
         </div>
         <span className="text-[11px] sm:text-xs lg:text-sm font-medium text-amber-400">Most goals: <span className="font-semibold text-amber-300">{winner}</span> ({maxGoals.toLocaleString()})</span>
       </div>
       <div className="space-y-5 sm:space-y-6">
         {[
-          { name: "Messi", img: "/images/messi.png", goals: messi.goals, apps: messi.apps, goalEff: mGoalEff, gc: "bg-blue-500" },
-          { name: "Ronaldo", img: "/images/ronaldo.png", goals: ronaldo.goals, apps: ronaldo.apps, goalEff: rGoalEff, gc: "bg-red-500" },
+          { name: "Messi", img: "/images/messi.webp", goals: messi.goals, apps: messi.apps, goalEff: mGoalEff, gc: "bg-blue-500" },
+          { name: "Ronaldo", img: "/images/ronaldo.webp", goals: ronaldo.goals, apps: ronaldo.apps, goalEff: rGoalEff, gc: "bg-red-500" },
         ].map((p) => (
           <div key={p.name} className="space-y-2">
             <div className="flex items-center justify-between gap-2">
