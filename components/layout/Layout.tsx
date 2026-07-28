@@ -165,10 +165,12 @@ export default function Layout({
             </nav>
 
             {/* Mobile Toggle */}
-            <button onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 -mr-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors">
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+            <button 
+  onClick={() => setMobileOpen(!mobileOpen)}
+  aria-label={mobileOpen ? "Close menu" : "Open menu"}
+  className="lg:hidden p-2 -mr-2 text-gray-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors">
+  {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+</button>
           </div>
         </div>
 

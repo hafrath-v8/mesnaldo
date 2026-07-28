@@ -87,7 +87,7 @@ function FullCard({ label, messi, ronaldo, index }: { label: string; messi: Scop
       </div>
       <div className="space-y-5 sm:space-y-6">
         {[
-          { name: "Messi", img: "/images/messi.webp", goals: messi.goals, assists: messi.assists, apps: messi.apps, goalEff: mGoalEff, assistEff: mAssistEff, total: mTotal, gc: "bg-blue-500", ac: "bg-blue-700" },
+          { name: "Messi", img: "/images/messi.webp", goals: messi.goals, assists: messi.assists, apps: messi.apps, goalEff: mGoalEff, assistEff: mAssistEff, total: mTotal, gc: "bg-blue-500", ac: "bg-blue-700 " },
           { name: "Ronaldo", img: "/images/ronaldo.webp", goals: ronaldo.goals, assists: ronaldo.assists, apps: ronaldo.apps, goalEff: rGoalEff, assistEff: rAssistEff, total: rTotal, gc: "bg-red-500", ac: "bg-red-700" },
         ].map((p) => (
           <div key={p.name} className="space-y-2">
@@ -253,8 +253,7 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
               <div className="absolute -inset-3 bg-red-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <motion.div className="bg-red-500 w-3 h-3 sm:w-4 sm:h-4 absolute -top-1.5 -right-1.5 rounded-full z-10 ring-2 ring-gray-900 shadow-lg shadow-red-500/50" variants={pulseV} animate="pulse" />
               <div className="relative w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-3xl overflow-hidden border-2 border-red-500/40 shadow-2xl shadow-red-500/20 transition-all duration-300 group-hover:border-red-500/60 group-hover:shadow-red-500/30">
-                <Image src="/images/ronaldo.png" alt="Ronaldo" width={288} height={288} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" priority />
-              </div>
+<Image src="/images/ronaldo.webp" alt="Ronaldo" width={288} height={288} sizes="(max-width: 768px) 50vw, 288px" className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" priority />              </div>
             </motion.div>
             <motion.div className="flex flex-col items-center flex-shrink-0 px-2 sm:px-4" initial="hidden" animate="visible" variants={vsV}>
               <span className="relative text-3xl sm:text-5xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500">VS</span>
@@ -263,8 +262,7 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
               <div className="absolute -inset-3 bg-blue-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <motion.div className="bg-blue-500 w-3 h-3 sm:w-4 sm:h-4 absolute -top-1.5 -right-1.5 rounded-full z-10 ring-2 ring-gray-900 shadow-lg shadow-blue-500/50" variants={pulseV} animate="pulse" />
               <div className="relative w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-3xl overflow-hidden border-2 border-blue-500/40 shadow-2xl shadow-blue-500/20 transition-all duration-300 group-hover:border-blue-500/60 group-hover:shadow-blue-500/30">
-                <Image src="/images/messi.png" alt="Messi" width={288} height={288} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" priority />
-              </div>
+<Image src="/images/messi.webp" alt="Messi" width={288} height={288} sizes="(max-width: 768px) 50vw, 288px" className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" priority />              </div>
             </motion.div>
           </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 xs:gap-4 max-w-2xl mx-auto place-items-center">            
@@ -328,7 +326,7 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
           <section>
             <SectionHeading title="Last 10 Matches" subtitle="Recent performances" />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
-              {[{ name: "Messi", matches: messiRecent || [], color: "blue", img: "/images/messi.png" }, { name: "Ronaldo", matches: ronaldoRecent || [], color: "red", img: "/images/ronaldo.png" }].map(({ name, matches, color, img }) => (
+              {[{ name: "Messi", matches: messiRecent || [], color: "blue", img: "/images/messi.webp" }, { name: "Ronaldo", matches: ronaldoRecent || [], color: "red", img: "/images/ronaldo.webp" }].map(({ name, matches, color, img }) => (
                 <div key={name} className={`${CARD_BASE} p-5 sm:p-6`}>
                   <div className="flex items-center gap-3 mb-4">
                     <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-gray-600"><Image src={img} alt={name} fill className="object-cover" /></div>
