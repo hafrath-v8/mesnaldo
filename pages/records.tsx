@@ -59,8 +59,10 @@ export default function Records({ records }: RecordsPageProps) {
   const filteredCount = filteredRecords.length
 
   return (
-    <Layout title="Records - Messi vs Ronaldo">
-      <div className="bg-black">
+   <Layout 
+  title="Records - Messi vs Ronaldo" 
+  description="World records held by Messi and Ronaldo. Over 258 verified records including Ballon d'Or, Champions League, and international milestones.">
+    <div className="bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-8">
 
           <div className="text-center">

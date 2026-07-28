@@ -182,8 +182,9 @@ export default function Goals(props: GoalsPageProps) {
   ]
 
   return (
-    <Layout title="Goals Comparison - Messi vs Ronaldo">
-      <div className="bg-black">
+<Layout 
+  title="Goals Comparison - Messi vs Ronaldo" 
+  description="Compare Messi vs Ronaldo goals: total career goals, goals per season, free kicks, penalties, headers, and every goal breakdown.">      <div className="bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-14 sm:space-y-16 lg:space-y-20">
 
           <div className="text-center">

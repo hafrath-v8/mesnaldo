@@ -82,8 +82,10 @@ export default function HeadToHead({ matches }: H2HPageProps) {
   }, [filteredMatches])
 
   return (
-    <Layout title="Head to Head - Messi vs Ronaldo">
-      <div className="bg-black">
+<Layout 
+  title="Head to Head - Messi vs Ronaldo" 
+  description="All 36 head-to-head matches between Messi and Ronaldo. El Clásico, Champions League, and international encounters compared.">     
+   <div className="bg-black">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-12 sm:space-y-16">
 
           {/* HEADER */}

@@ -244,6 +244,7 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
 
   return (
     <Layout>
+      <h1 className="sr-only">Lionel Messi vs Cristiano Ronaldo - Ultimate Career Comparison, Goals, Stats & Records</h1>
       <section className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-900/95 to-black border-b border-gray-800/50 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(59,130,246,0.15),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(239,68,68,0.15),transparent_50%),radial-gradient(circle_at_50%_80%,rgba(245,158,11,0.08),transparent_50%)]" />

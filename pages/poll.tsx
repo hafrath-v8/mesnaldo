@@ -64,8 +64,10 @@ export default function Poll({ messiVotes, ronaldoVotes }: PollPageProps) {
   }
 
   return (
-    <Layout title="Poll - Who is the GOAT?">
-      <div className="bg-black min-h-screen">
+<Layout 
+  title="GOAT Poll - Messi vs Ronaldo" 
+  description="Vote for who is the GOAT: Messi or Ronaldo. See live poll results and join thousands of fans in football's greatest debate.">    
+    <div className="bg-black min-h-screen">
         
         <section className="relative border-b border-gray-800 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.08),transparent_50%)]" />

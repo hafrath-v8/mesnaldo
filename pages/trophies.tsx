@@ -50,8 +50,10 @@ export default function Trophies({ messi, ronaldo }: TrophiesPageProps) {
   const ronaldoWins = TROPHY_DATA.filter(t => t.ronaldo > t.messi).length
 
   return (
-    <Layout title="Trophies & Awards - Messi vs Ronaldo">
-      <div className="bg-black">
+<Layout 
+  title="Trophies Comparison - Messi vs Ronaldo" 
+  description="Messi vs Ronaldo trophy comparison: 48 vs 37 trophies. Compare La Liga, Champions League, World Cup, and every title won.">      
+  <div className="bg-black">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-16 sm:space-y-20">
 
           {/* ─── HEADER ─── */}

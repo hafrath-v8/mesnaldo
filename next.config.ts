@@ -14,11 +14,21 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   experimental: {
-  staleTimes: {
-    dynamic: 30,
-    static: 180,
+    staleTimes: {
+      dynamic: 30,
+      static: 180,
+    },
   },
-},
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.mesnaldo.com' }],
+        destination: 'https://mesnaldo.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

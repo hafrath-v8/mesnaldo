@@ -135,8 +135,12 @@ export default function MessiProfile({ careerStats, allMatches, clubBreakdown, g
   ]
 
   return (
-    <Layout title="Lionel Messi - Complete Profile">
-      <div className="bg-black">
+<Layout 
+  title="Lionel Messi - Complete Profile, Stats & Career History" 
+  description="Complete Lionel Messi profile: career stats, goals, assists, trophies, match history, and season-by-season breakdown. The definitive Messi statistics page.">    
+  
+    <div className="bg-black">
+
         
         {/* ─── HERO ─── */}
         <section className="relative bg-gradient-to-b from-blue-900/20 via-gray-900 to-black border-b border-gray-800 overflow-hidden">

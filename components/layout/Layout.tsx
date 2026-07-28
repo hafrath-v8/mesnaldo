@@ -88,6 +88,7 @@ export default function Layout({
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Mesnaldo" />
+        <link rel="canonical" href={`https://mesnaldo.com${router.pathname}`} />
       </Head>
 
       {/* ─── NAVBAR ─── */}
