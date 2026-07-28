@@ -108,7 +108,7 @@ export default function Poll({ messiVotes, ronaldoVotes }: PollPageProps) {
                   <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                   <div className="relative">
                     <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-blue-500/40 mx-auto mb-5 shadow-2xl shadow-blue-500/20 group-hover:scale-105 transition-transform">
-                      <Image src="/images/messi.png" alt="Messi" fill className="object-cover" />
+                      <Image src="/images/messi.webp" alt="Messi" fill className="object-cover" />
                     </div>
                     <h2 className="text-xl sm:text-2xl font-black text-white mb-1">Lionel Messi</h2>
                     <p className="text-blue-400 text-xs font-medium mb-5">🇦🇷 Argentina · Inter Miami</p>
@@ -132,7 +132,7 @@ export default function Poll({ messiVotes, ronaldoVotes }: PollPageProps) {
                   <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                   <div className="relative">
                     <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-red-500/40 mx-auto mb-5 shadow-2xl shadow-red-500/20 group-hover:scale-105 transition-transform">
-                      <Image src="/images/ronaldo.png" alt="Ronaldo" fill className="object-cover" />
+                      <Image src="/images/ronaldo.webp" alt="Ronaldo" fill className="object-cover" />
                     </div>
                     <h2 className="text-xl sm:text-2xl font-black text-white mb-1">Cristiano Ronaldo</h2>
                     <p className="text-red-400 text-xs font-medium mb-5">🇵🇹 Portugal · Al Nassr</p>
@@ -167,7 +167,7 @@ export default function Poll({ messiVotes, ronaldoVotes }: PollPageProps) {
                   <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}
                     className="bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-3xl p-6 text-center">
                     <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-blue-500/30 mx-auto mb-3">
-                      <Image src="/images/messi.png" alt="Messi" fill className="object-cover" />
+                      <Image src="/images/messi.webp" alt="Messi" fill className="object-cover" />
                     </div>
                     <div className="relative w-24 h-24 mx-auto mb-3">
                       <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
@@ -189,7 +189,7 @@ export default function Poll({ messiVotes, ronaldoVotes }: PollPageProps) {
                   <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}
                     className="bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-3xl p-6 text-center">
                     <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-red-500/30 mx-auto mb-3">
-                      <Image src="/images/ronaldo.png" alt="Ronaldo" fill className="object-cover" />
+                      <Image src="/images/ronaldo.webp" alt="Ronaldo" fill className="object-cover" />
                     </div>
                     <div className="relative w-24 h-24 mx-auto mb-3">
                       <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">

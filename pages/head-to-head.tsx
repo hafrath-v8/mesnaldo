@@ -104,7 +104,7 @@ export default function HeadToHead({ matches }: H2HPageProps) {
                 {/* Messi */}
                 <div className="text-center">
                   <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-blue-500/40 mx-auto mb-3 shadow-xl shadow-blue-500/20">
-                    <Image src="/images/messi.png" alt="Messi" fill className="object-cover" />
+                    <Image src="/images/messi.webp" alt="Messi" fill className="object-cover" />
                   </div>
                   <p className="text-3xl sm:text-4xl lg:text-5xl font-black text-blue-400">{stats.messiWins}</p>
                   <p className="text-xs text-gray-500 mt-1">Wins</p>
@@ -120,7 +120,7 @@ export default function HeadToHead({ matches }: H2HPageProps) {
                 {/* Ronaldo */}
                 <div className="text-center">
                   <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-red-500/40 mx-auto mb-3 shadow-xl shadow-red-500/20">
-                    <Image src="/images/ronaldo.png" alt="Ronaldo" fill className="object-cover" />
+                    <Image src="/images/ronaldo.webp" alt="Ronaldo" fill className="object-cover" />
                   </div>
                   <p className="text-3xl sm:text-4xl lg:text-5xl font-black text-red-400">{stats.ronaldoWins}</p>
                   <p className="text-xs text-gray-500 mt-1">Wins</p>

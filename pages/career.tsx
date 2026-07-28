@@ -230,7 +230,7 @@ export default function Career({ messiSeasons, ronaldoSeasons, messiClubs, ronal
           <div className="bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-2xl p-6 sm:p-8">
             <div className="flex items-center justify-center gap-4 mb-6">
               <div className={`relative w-14 h-14 rounded-full overflow-hidden border-2 ${activePlayer === "messi" ? "border-blue-500/40" : "border-red-500/40"}`}>
-                <Image src={activePlayer === "messi" ? "/images/messi.png" : "/images/ronaldo.png"} alt="" fill className="object-cover" />
+                <Image src={activePlayer === "messi" ? "/images/messi.webp" : "/images/ronaldo.webp"} alt="" fill className="object-cover" />
               </div>
               <div>
                 <p className="text-lg font-bold text-white">{activePlayer === "messi" ? "Lionel Messi" : "Cristiano Ronaldo"}</p>

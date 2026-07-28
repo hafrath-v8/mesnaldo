@@ -81,14 +81,14 @@ function FullCard({ label, messi, ronaldo, index }: { label: string; messi: Scop
       </div>
       <div className="flex items-center justify-center gap-2 sm:gap-3 mb-5 sm:mb-6 p-3 sm:p-4 bg-gray-800/60 rounded-xl border border-gray-700/50">
         <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-amber-400/30">
-          <Image src={winner === "Messi" ? "/images/messi.png" : "/images/ronaldo.png"} alt={winner} fill className="object-cover" />
+          <Image src={winner === "Messi" ? "/images/messi.webp" : "/images/ronaldo.webp"} alt={winner} fill className="object-cover" />
         </div>
         <span className="text-[11px] sm:text-xs lg:text-sm font-medium text-amber-400">Highest: <span className="font-semibold text-amber-300">{winner}</span> ({maxTotal.toFixed(1)}%)</span>
       </div>
       <div className="space-y-5 sm:space-y-6">
         {[
-          { name: "Messi", img: "/images/messi.png", goals: messi.goals, assists: messi.assists, apps: messi.apps, goalEff: mGoalEff, assistEff: mAssistEff, total: mTotal, gc: "bg-blue-500", ac: "bg-blue-700" },
-          { name: "Ronaldo", img: "/images/ronaldo.png", goals: ronaldo.goals, assists: ronaldo.assists, apps: ronaldo.apps, goalEff: rGoalEff, assistEff: rAssistEff, total: rTotal, gc: "bg-red-500", ac: "bg-red-700" },
+          { name: "Messi", img: "/images/messi.webp", goals: messi.goals, assists: messi.assists, apps: messi.apps, goalEff: mGoalEff, assistEff: mAssistEff, total: mTotal, gc: "bg-blue-500", ac: "bg-blue-700" },
+          { name: "Ronaldo", img: "/images/ronaldo.webp", goals: ronaldo.goals, assists: ronaldo.assists, apps: ronaldo.apps, goalEff: rGoalEff, assistEff: rAssistEff, total: rTotal, gc: "bg-red-500", ac: "bg-red-700" },
         ].map((p) => (
           <div key={p.name} className="space-y-2">
             <div className="flex items-center justify-between gap-2">
