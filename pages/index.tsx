@@ -486,7 +486,7 @@ export const getStaticProps: GetStaticProps = async () => {
         messi, ronaldo, scopes, messiRecent, ronaldoRecent, 
         recentBlogs: recentBlogs || [] 
       })), 
-      revalidate: 3600 
+      revalidate: 60
     }
   } catch (e) {
     console.error("Error:", e)
