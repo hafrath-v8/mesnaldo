@@ -59,8 +59,8 @@ const footerLinks = {
 
 export default function Layout({
   children,
-  title = "Mesnaldo - Messi vs Ronaldo | Ultimate Football Comparison",
-  description = "The most comprehensive head-to-head comparison of Lionel Messi and Cristiano Ronaldo. Goals, assists, trophies, records, and complete career statistics.",
+  title = "Messi vs Ronaldo: Who is Better? Complete Stats & Records Comparison",
+  description = "Who is better Messi or Ronaldo? Compare goals, assists, trophies, records, and complete career statistics. The ultimate data-driven Messi vs Ronaldo comparison.",
 }: LayoutProps) {
   const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
