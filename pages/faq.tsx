@@ -192,8 +192,9 @@ export default function FAQ() {
   }
 
   return (
-    <Layout title="FAQ - Messi vs Ronaldo | Complete Guide & Frequently Asked Questions"
-      description="Everything you need to know about the Messi vs Ronaldo rivalry. Stats, records, head-to-head data, and answers to the most common questions about football's greatest debate.">
+    <Layout 
+  title="Messi vs Ronaldo FAQ: Who is Better? Stats, Records & GOAT Debate" 
+  description="Who is better Messi or Ronaldo? How many goals does Ronaldo have? Get answers to the most asked questions about football's greatest rivalry with complete stats.">
       
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />

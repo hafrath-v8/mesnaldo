@@ -136,8 +136,8 @@ export default function MessiProfile({ careerStats, allMatches, clubBreakdown, g
 
   return (
 <Layout 
-  title="Lionel Messi - Complete Profile, Stats & Career History" 
-  description="Complete Lionel Messi profile: career stats, goals, assists, trophies, match history, and season-by-season breakdown. The definitive Messi statistics page.">    
+  title="Lionel Messi: Complete Stats, Goals, Assists & Career History" 
+  description="Lionel Messi complete profile: total goals, assists, trophies, match history. Argentina player Messi's full career statistics and records.">   
   
     <div className="bg-black">
 

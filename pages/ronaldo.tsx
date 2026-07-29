@@ -118,8 +118,8 @@ export default function RonaldoProfile({ careerStats, allMatches, clubBreakdown,
 
   return (
 <Layout 
-  title="Cristiano Ronaldo - Complete Profile, Stats & Career History" 
-  description="Complete Cristiano Ronaldo profile: career stats, goals, assists, trophies, match history, and season-by-season breakdown. The definitive Ronaldo statistics page.">     
+  title="Cristiano Ronaldo: Complete Stats, Goals & Career History" 
+  description="Cristiano Ronaldo complete profile: total goals, assists, trophies, match history. CR7's full career statistics, records, and achievements.">    
    <div className="bg-black">
         
         {/* ─── HERO ─── */}
