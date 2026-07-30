@@ -266,7 +266,7 @@ export default function Layout({
           {/* Bottom */}
           <div className="mt-12 pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-gray-600">
-              &copy; {new Date().getFullYear()} ©2026 Mesnaldo. Built by a team of football data analysts and developers.
+              &copy; {new Date().getFullYear()} Mesnaldo. Built by a team of football data analysts and developers.
             </p>
             <div className="flex items-center gap-4 text-xs text-gray-600">
               <Link href="/privacy" className="hover:text-gray-400 transition-colors">Privacy</Link>
