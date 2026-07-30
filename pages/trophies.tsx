@@ -25,12 +25,13 @@ function SectionHeading({ title, subtitle }: { title: string; subtitle?: string 
 const TROPHY_DATA = [
   { icon: Trophy, label: "League Titles", messi: 13, ronaldo: 8 },
   { icon: Star, label: "Champions League", messi: 4, ronaldo: 5 },
+  { icon: Award, label: "Domestic Cup", messi: 8, ronaldo: 6 },
+  { icon: Medal, label: "Domestic Super Cup", messi: 9, ronaldo: 7 },
+  { icon: Medal, label: "UEFA Super Cup", messi: 3, ronaldo: 3 },
   { icon: Globe, label: "Club World Cup", messi: 3, ronaldo: 4 },
-  { icon: Award, label: "Domestic Cup", messi: 7, ronaldo: 6 },
-  { icon: Medal, label: "Super Cup", messi: 11, ronaldo: 8 },
-  { icon: Globe, label: "World Cup", messi: 1, ronaldo: 0 },
-  { icon: Star, label: "Continental", messi: 2, ronaldo: 1 },
-  { icon: Users, label: "Other Intl.", messi: 1, ronaldo: 1 },
+  { icon: Trophy, label: "Other Club Titles", messi: 2, ronaldo: 1 },
+  { icon: Globe, label: "International", messi: 4, ronaldo: 3 },
+  { icon: Users, label: "Other International", messi: 2, ronaldo: 0 },
 ]
 
 export default function Trophies({ messi, ronaldo }: TrophiesPageProps) {
