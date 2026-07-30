@@ -8,8 +8,12 @@
   <url><loc>https://mesnaldo.com/career</loc><priority>0.8</priority></url>
   <url><loc>https://mesnaldo.com/records</loc><priority>0.8</priority></url>
   <url><loc>https://mesnaldo.com/poll</loc><priority>0.8</priority></url>
+  <url><loc>https://mesnaldo.com/messi</loc><priority>0.8</priority></url>
+  <url><loc>https://mesnaldo.com/ronaldo</loc><priority>0.8</priority></url>
   <url><loc>https://mesnaldo.com/blog</loc><priority>0.7</priority></url>
   <url><loc>https://mesnaldo.com/about</loc><priority>0.6</priority></url>
   <url><loc>https://mesnaldo.com/faq</loc><priority>0.6</priority></url>
   <url><loc>https://mesnaldo.com/contact</loc><priority>0.5</priority></url>
+  <url><loc>https://mesnaldo.com/privacy</loc><priority>0.4</priority></url>
+  <url><loc>https://mesnaldo.com/terms</loc><priority>0.4</priority></url>
 </urlset>
