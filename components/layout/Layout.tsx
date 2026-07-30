@@ -239,7 +239,7 @@ export default function Layout({
                 </span>
               </Link>
               <p className="text-sm text-gray-500 leading-relaxed mb-5">
-                The most comprehensive comparison of football&apos;s two greatest icons. Every stat, every record, every moment.
+                The most detailed comparison of football&apos;s two greatest icons. Every stat, every record, every moment.
               </p>
               <Link href="/poll" className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl text-xs font-bold hover:bg-amber-500/20 transition-colors">
                 <Vote className="w-3.5 h-3.5" /> Cast Your GOAT Vote
@@ -266,7 +266,7 @@ export default function Layout({
           {/* Bottom */}
           <div className="mt-12 pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-gray-600">
-              &copy; {new Date().getFullYear()} Mesnaldo. Independent fan project. Not affiliated with any player, club, or governing body.
+              &copy; {new Date().getFullYear()} ©2026 Mesnaldo. Built by a team of football data analysts and developers.
             </p>
             <div className="flex items-center gap-4 text-xs text-gray-600">
               <Link href="/privacy" className="hover:text-gray-400 transition-colors">Privacy</Link>
