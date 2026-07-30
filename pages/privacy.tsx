@@ -12,7 +12,6 @@ export default function Privacy() {
       
       <Head>
         <meta name="keywords" content="Mesnaldo privacy policy, football statistics privacy, data protection, cookie policy" />
-        <link rel="canonical" href="https://messivsronaldo.app/privacy" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebPage",

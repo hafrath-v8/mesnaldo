@@ -10,7 +10,6 @@ export default function Terms() {
       
       <Head>
         <meta name="keywords" content="Mesnaldo terms, terms of service, football statistics terms, Messi vs Ronaldo terms" />
-        <link rel="canonical" href="https://messivsronaldo.app/terms" />
       </Head>
 
       <div className="bg-black min-h-screen">

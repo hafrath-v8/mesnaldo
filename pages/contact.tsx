@@ -30,7 +30,6 @@ export default function Contact() {
       
       <Head>
         <meta name="keywords" content="contact Mesnaldo, Messi vs Ronaldo contact, football statistics feedback, report data error" />
-        <link rel="canonical" href="https://messivsronaldo.app/contact" />
       </Head>
 
       <div className="bg-black min-h-screen">

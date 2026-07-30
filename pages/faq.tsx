@@ -199,7 +199,6 @@ export default function FAQ() {
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
         <meta name="keywords" content="Messi vs Ronaldo FAQ, football comparison questions, GOAT debate FAQ, Messi Ronaldo stats explained, football statistics help" />
-        <link rel="canonical" href="https://messivsronaldo.app/faq" />
       </Head>
 
       <div className="bg-black min-h-screen">

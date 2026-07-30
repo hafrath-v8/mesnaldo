@@ -76,7 +76,6 @@ export default function About() {
       
       <Head>
         <meta name="keywords" content="Mesnaldo, Messi vs Ronaldo website, football comparison platform, about Mesnaldo, football statistics website, GOAT debate platform" />
-        <link rel="canonical" href="https://messivsronaldo.app/about" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "AboutPage",
