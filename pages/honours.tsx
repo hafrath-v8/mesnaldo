@@ -103,7 +103,7 @@ export default function Awards() {
       description="Every individual honour: Ballon d'Or (8-5), FIFA Best, Golden Shoe, Pichichi, Champions League top scorer, and 100+ more. Complete Messi vs Ronaldo honours comparison."
     >
       <div className="bg-black min-h-screen">
-        <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
           
          {/* Title Card */}
 {/* Title Card - Professional */}
