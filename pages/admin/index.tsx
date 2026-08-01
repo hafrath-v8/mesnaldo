@@ -107,7 +107,7 @@ export default function AdminDashboard() {
   const fetchPollData = async () => {
     const { data: initial } = await supabase.from("vote_counts").select("*")
     const messiInit = initial?.find((c: any) => c.player === "messi")?.initial_count || 436459
-    const ronaldoInit = initial?.find((c: any) => c.player === "ronaldo")?.initial_count || 686132
+    const ronaldoInit = initial?.find((c: any) => c.player === "ronaldo")?.initial_count || 586132
     const { count: ml } = await supabase.from("poll_votes").select("*", { count: "exact", head: true }).eq("player", "messi")
     const { count: rl } = await supabase.from("poll_votes").select("*", { count: "exact", head: true }).eq("player", "ronaldo")
     setPollData({ messiVotes: messiInit, ronaldoVotes: ronaldoInit, messiLive: ml || 0, ronaldoLive: rl || 0 })
