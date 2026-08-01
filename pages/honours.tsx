@@ -262,7 +262,7 @@ export default function Awards() {
     </div>
 
     {/* Two Columns */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+    <div className="grid grid-cols-1 md:grid-cols-1 gap-10 md:gap-14">
 
       {/* Messi */}
       <div>
