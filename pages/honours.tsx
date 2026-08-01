@@ -250,74 +250,140 @@ export default function Awards() {
 {/* SEO Content Section */}
 <div className="mt-20 pt-14 border-t border-gray-800/50">
   <div className="max-w-3xl">
-    
+
     {/* Section Title */}
     <div className="mb-10">
       <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">
         Messi vs Ronaldo Individual Awards
       </h2>
       <p className="text-sm text-gray-500">
-        The complete record of football's two most decorated players
+        Comparing every major individual honour won by Lionel Messi and Cristiano Ronaldo throughout their careers.
       </p>
     </div>
 
-    {/* Two Column Content */}
+    {/* Two Columns */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
-      
-      {/* Messi Column */}
+
+      {/* Messi */}
       <div>
         <div className="flex items-center gap-3 mb-5">
           <div className="w-7 h-7 rounded-full overflow-hidden border border-blue-500/30 flex-shrink-0">
-            <Image src="/images/messi.webp" alt="Messi" width={28} height={28} className="object-cover" />
+            <Image
+              src="/images/messi.webp"
+              alt="Lionel Messi"
+              width={28}
+              height={28}
+              className="object-cover"
+            />
           </div>
-          <h3 className="text-base font-bold text-blue-400">Lionel Messi</h3>
+          <h3 className="text-base font-bold text-blue-400">
+            Lionel Messi
+          </h3>
         </div>
+
         <p className="text-sm text-gray-400 leading-7">
-          Lionel Messi has won a record <strong className="text-white">8 Ballon d'Or awards</strong> — the most in football history — spanning 2009, 2010, 2011, 2012, 2015, 2019, 2021, and 2023. He also holds <strong className="text-white">8 FIFA World Player of the Year / The Best awards</strong>, making him the most decorated individual player the sport has ever seen.
+          Lionel Messi has built one of the greatest individual award collections in football history. His
+          <strong className="text-white"> eight Ballon d'Or titles</strong> remain unmatched, while his
+          <strong className="text-white"> eight FIFA Best / World Player awards</strong> underline how consistently he has been recognised as the world's best player.
         </p>
+
         <p className="text-sm text-gray-400 leading-7 mt-4">
-          Messi has claimed the <strong className="text-white">European Golden Shoe 6 times</strong>, the <strong className="text-white">Pichichi (La Liga top scorer) 8 times</strong>, and the <strong className="text-white">Champions League top scorer award 6 times</strong>. On the international stage, he won <strong className="text-white">2 FIFA World Cup Golden Balls</strong> (2014, 2022), <strong className="text-white">2 Copa América Golden Balls</strong>, and the <strong className="text-white">Laureus World Sportsman of the Year award twice</strong>.
+          Across domestic football, Messi won
+          <strong className="text-white"> six European Golden Shoes</strong>,
+          <strong className="text-white"> eight Pichichi trophies</strong> as La Liga's top scorer,
+          and finished as the
+          <strong className="text-white"> UEFA Champions League top scorer six times</strong>.
+          His ability to score while creating chances for teammates made him one of the most complete attacking players ever.
         </p>
+
         <p className="text-sm text-gray-400 leading-7 mt-4">
-          With <strong className="text-white">17 FIFPro World XI appearances</strong>, <strong className="text-white">16 Olimpia de Plata awards</strong>, and numerous other individual honours, Messi's trophy cabinet stands alone at the pinnacle of football history.
+          Internationally, Messi's honours include
+          <strong className="text-white"> two FIFA World Cup Golden Balls</strong>,
+          <strong className="text-white"> two Copa América Golden Balls</strong>,
+          <strong className="text-white"> 17 FIFPro World XI selections</strong>,
+          and
+          <strong className="text-white"> 16 Olimpia de Plata awards</strong>.
+          These achievements reflect both his longevity and his influence across club and international football.
         </p>
       </div>
 
-      {/* Ronaldo Column */}
+      {/* Ronaldo */}
       <div>
         <div className="flex items-center gap-3 mb-5">
           <div className="w-7 h-7 rounded-full overflow-hidden border border-red-500/30 flex-shrink-0">
-            <Image src="/images/ronaldo.webp" alt="Ronaldo" width={28} height={28} className="object-cover" />
+            <Image
+              src="/images/ronaldo.webp"
+              alt="Cristiano Ronaldo"
+              width={28}
+              height={28}
+              className="object-cover"
+            />
           </div>
-          <h3 className="text-base font-bold text-red-400">Cristiano Ronaldo</h3>
+          <h3 className="text-base font-bold text-red-400">
+            Cristiano Ronaldo
+          </h3>
         </div>
+
         <p className="text-sm text-gray-400 leading-7">
-          Cristiano Ronaldo has won <strong className="text-white">5 Ballon d'Or awards</strong> (2008, 2013, 2014, 2016, 2017) and <strong className="text-white">5 FIFA World Player of the Year / The Best awards</strong>. He is the <strong className="text-white">Champions League all-time top scorer</strong> with 140+ goals and has won the <strong className="text-white">UCL top scorer award a record 7 times</strong>.
+          Cristiano Ronaldo's career is defined by remarkable consistency across multiple leagues.
+          He has won
+          <strong className="text-white"> five Ballon d'Or awards</strong> and
+          <strong className="text-white"> five FIFA Best / World Player awards</strong>,
+          establishing himself among football's greatest players.
         </p>
+
         <p className="text-sm text-gray-400 leading-7 mt-4">
-          Ronaldo has claimed the <strong className="text-white">European Golden Shoe 4 times</strong>, the <strong className="text-white">Pichichi 3 times</strong>, and made history as the <strong className="text-white">first player to win league top scorer awards</strong> in the Premier League, La Liga, and Serie A. He also won the <strong className="text-white">UEFA Euros Golden Boot in 2021</strong> and the <strong className="text-white">Globe Soccer Best Player award 6 times</strong>.
+          Ronaldo owns the record for
+          <strong className="text-white"> seven UEFA Champions League Top Scorer awards</strong>
+          and became the first player to finish as league top scorer in
+          <strong className="text-white"> England, Spain, Italy and Saudi Arabia</strong>.
+          His success across different countries highlights an ability to adapt that few players have matched.
         </p>
+
         <p className="text-sm text-gray-400 leading-7 mt-4">
-          With <strong className="text-white">15 FIFPro World XI appearances</strong>, the <strong className="text-white">Guinness World Record for most international goals</strong> (135+), and <strong className="text-white">5 Portuguese Player of the Year awards</strong>, Ronaldo's individual legacy is cemented across four different countries.
+          Beyond his goal-scoring records, Ronaldo has earned
+          <strong className="text-white"> 15 FIFPro World XI selections</strong>,
+          <strong className="text-white"> six Globe Soccer Best Player awards</strong>,
+          and
+          <strong className="text-white"> five Portuguese Player of the Year honours</strong>.
+          Combined with his international scoring records, they complete one of the most decorated individual careers in football.
         </p>
       </div>
+
     </div>
 
-    {/* Bottom Summary */}
+    {/* Summary */}
     <div className="mt-14 pt-10 border-t border-gray-800/50">
       <h3 className="text-lg font-bold text-amber-400 mb-5">
-        The Verdict: Who Has More Individual Awards?
+        Who Has More Individual Awards?
       </h3>
+
       <div className="space-y-4 text-sm text-gray-400 leading-7">
+
         <p>
-          When comparing <strong className="text-white">Messi vs Ronaldo individual awards</strong>, Messi leads in the most prestigious categories — Ballon d'Or (8-5), FIFA Best (8-5), European Golden Shoes (6-4), and La Liga top scorer titles (8-3). His dominance in playmaking is reflected in his <strong className="text-white">5 IFFHS Best Playmaker awards</strong>, a category Ronaldo has never won.
+          Looking at the biggest individual honours,
+          <strong className="text-white"> Lionel Messi leads in total awards</strong>.
+          He has won more Ballon d'Or titles (8-5), FIFA Best / World Player awards (8-5),
+          European Golden Shoes (6-4), Pichichi trophies (8-3), World Cup Golden Balls (2-0),
+          and IFFHS World's Best Playmaker awards (5-0).
         </p>
+
         <p>
-          However, Ronaldo holds the edge in <strong className="text-white">Champions League top scorer awards (7-6)</strong>, <strong className="text-white">Globe Soccer Awards (6-1)</strong>, and league-specific honours across <strong className="text-white">four different countries</strong> — a testament to his remarkable versatility. He also leads in <strong className="text-white">Ballon d'Or nominations (18-16)</strong>.
+          Cristiano Ronaldo, meanwhile, holds the advantage in several categories of his own.
+          He has won more
+          <strong className="text-white"> Champions League Top Scorer awards (7-6)</strong>,
+          more
+          <strong className="text-white"> Globe Soccer Best Player awards (6-1)</strong>,
+          and remains the only player to claim league Golden Boot honours in four different countries.
+          He also has more Ballon d'Or nominations than Messi.
         </p>
+
         <p>
-          Ultimately, Messi holds more individual awards overall, but both players have accumulated trophy collections that may never be surpassed. The debate over individual superiority depends on which honours you value most — but one thing is certain: <strong className="text-white">football has never seen two players this decorated compete in the same era.</strong>
+          The numbers show why the Messi vs Ronaldo debate continues. Messi leads in overall individual recognition,
+          while Ronaldo's achievements across multiple leagues and competitions are equally extraordinary.
+          Together, they have set standards for individual excellence that may not be matched for generations.
         </p>
+
       </div>
     </div>
 
