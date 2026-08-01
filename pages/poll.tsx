@@ -265,7 +265,7 @@ export default function Poll({ messiVotes, ronaldoVotes }: PollPageProps) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const MESSI_INITIAL = 436459
-  const RONALDO_INITIAL = 686132
+  const RONALDO_INITIAL = 586132
 
   try {
     const { count: messiLiveVotes } = await supabase
