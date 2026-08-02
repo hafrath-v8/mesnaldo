@@ -149,7 +149,7 @@ export default function MessiProfile({ careerStats, allMatches, clubBreakdown, g
             <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 text-center sm:text-left">
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}
                 className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-3xl overflow-hidden border-2 border-blue-500/40 shadow-2xl shadow-blue-500/20 flex-shrink-0">
-                <Image src="/images/messi.png" alt="Lionel Messi" fill className="object-cover" />
+                <Image src="/images/messi.webp" alt="Lionel Messi" fill className="object-cover" />
               </motion.div>
               <div>
                 <p className="text-blue-400 text-sm font-bold mb-1">🇦🇷 Argentina</p>

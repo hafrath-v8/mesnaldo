@@ -129,7 +129,7 @@ export default function RonaldoProfile({ careerStats, allMatches, clubBreakdown,
             <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 text-center sm:text-left">
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}
                 className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-3xl overflow-hidden border-2 border-red-500/40 shadow-2xl shadow-red-500/20 flex-shrink-0">
-                <Image src="/images/ronaldo.png" alt="Cristiano Ronaldo" fill className="object-cover" />
+                <Image src="/images/ronaldo.webp" alt="Cristiano Ronaldo" fill className="object-cover" />
               </motion.div>
               <div>
                 <p className="text-red-400 text-sm font-bold mb-1">🇵🇹 Portugal</p>

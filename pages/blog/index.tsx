@@ -55,10 +55,10 @@ export default function Blog({ posts, featuredPost, categories, totalPosts }: Bl
   })
 
   return (
-    <Layout 
-      title="Blog - Mesnaldo | Messi vs Ronaldo News, Analysis & Stories"
-      description="Read the latest articles, analysis, and stories about the Messi vs Ronaldo rivalry. In-depth comparisons, record breakdowns, and football history.">
-      
+    <Layout
+  title="Messi vs Ronaldo Blog | News, Analysis & Comparison Stories"
+  description="Read the latest Messi vs Ronaldo news, in-depth analysis, comparison stories, statistics, records, and football history on Mesnaldo."
+>
       <div className="bg-black min-h-screen">
         
         {/* HERO */}

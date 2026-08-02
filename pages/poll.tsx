@@ -65,7 +65,7 @@ export default function Poll({ messiVotes, ronaldoVotes }: PollPageProps) {
 
   return (
 <Layout 
-  title="GOAT Poll - Messi vs Ronaldo" 
+  title="Messi vs Ronaldo Poll: Vote for the GOAT | Live Results" 
   description="Vote for who is the GOAT: Messi or Ronaldo. See live poll results and join thousands of fans in football's greatest debate.">    
     <div className="bg-black min-h-screen">
         

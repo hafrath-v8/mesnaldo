@@ -161,8 +161,11 @@ export default function Assists(props: AssistsPageProps) {
   const ronaldoMinutes = safeNum(ronaldo.total_minutes) || 1
 
   return (
-    <Layout title="Assists Comparison - Messi vs Ronaldo">
-      <div className="bg-black">
+<Layout
+  title="Messi vs Ronaldo Assists | Complete Assists Comparison"
+  description="Compare Messi vs Ronaldo assists, including career assists, club and international assists, assist records, and detailed statistics updated for 2026."
+>
+        <div className="bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-14 sm:space-y-16 lg:space-y-20">
 
           <div className="text-center">
@@ -175,7 +178,7 @@ export default function Assists(props: AssistsPageProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-2xl mx-auto">
               <div className={`${CARD_BASE} p-6 sm:p-8 text-center`}>
                 <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-blue-500/40 mx-auto mb-4 shadow-xl shadow-blue-500/20">
-                  <Image src="/images/messi.png" alt="Messi" fill className="object-cover" />
+                  <Image src="/images/messi.webp" alt="Messi" fill className="object-cover" />
                 </div>
                 <motion.p initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ type: "spring" }}
                   className="text-4xl sm:text-5xl lg:text-6xl font-black text-blue-400">{messiTotal.toLocaleString()}</motion.p>
@@ -183,7 +186,7 @@ export default function Assists(props: AssistsPageProps) {
               </div>
               <div className={`${CARD_BASE} p-6 sm:p-8 text-center`}>
                 <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-red-500/40 mx-auto mb-4 shadow-xl shadow-red-500/20">
-                  <Image src="/images/ronaldo.png" alt="Ronaldo" fill className="object-cover" />
+                  <Image src="/images/ronaldo.webp" alt="Ronaldo" fill className="object-cover" />
                 </div>
                 <motion.p initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ type: "spring" }}
                   className="text-4xl sm:text-5xl lg:text-6xl font-black text-red-400">{ronaldoTotal.toLocaleString()}</motion.p>
@@ -204,8 +207,8 @@ export default function Assists(props: AssistsPageProps) {
           <section>
             <SectionHeading title="Assists by Team" subtitle="Distribution across clubs & country" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
-              <TeamBreakdownChart player="Lionel Messi" data={messiTeamBreakdown} color="blue" img="/images/messi.png" />
-              <TeamBreakdownChart player="Cristiano Ronaldo" data={ronaldoTeamBreakdown} color="red" img="/images/ronaldo.png" />
+              <TeamBreakdownChart player="Lionel Messi" data={messiTeamBreakdown} color="blue" img="/images/messi.webp" />
+              <TeamBreakdownChart player="Cristiano Ronaldo" data={ronaldoTeamBreakdown} color="red" img="/images/ronaldo.webp" />
             </div>
           </section>
 

@@ -17,7 +17,7 @@ export default function Privacy() {
           "@type": "WebPage",
           "name": "Privacy Policy",
           "description": "Privacy Policy for Mesnaldo - Messi vs Ronaldo comparison platform",
-          "url": "https://messivsronaldo.app/privacy"
+"url": "https://mesnaldo.com/privacy"
         }) }} />
       </Head>
 
@@ -226,7 +226,7 @@ export default function Privacy() {
               If you have any questions about this Privacy Policy, please contact us:
             </p>
             <ul className="space-y-2">
-              <li>📧 Email: <a href="mailto:privacy@mesnaldo.app" className="text-amber-400 hover:underline">privacy@mesnaldo.app</a></li>
+              <li>📧 Email: <a href="mailto:privacy@mesnaldo.com" className="text-amber-400 hover:underline">privacy@mesnaldo.com</a></li>
               <li>📝 Contact Form: <Link href="/contact" className="text-amber-400 hover:underline">Contact Page</Link></li>
               <li>⏱️ Response Time: We typically respond within 48 hours</li>
             </ul>

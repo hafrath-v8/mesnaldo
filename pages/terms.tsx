@@ -145,7 +145,7 @@ export default function Terms() {
               For any questions about these Terms of Service, please contact us at:
             </p>
             <p className="mt-2">
-              📧 <a href="mailto:hello@mesnaldo.app" className="text-amber-400 hover:underline">hello@mesnaldo.app</a>
+              📧 <a href="mailto:hello@mesnaldo.com" className="text-amber-400 hover:underline">hello@mesnaldo.com</a>
             </p>
             <p>
               Or visit our <a href="/contact" className="text-amber-400 hover:underline">Contact page</a>.

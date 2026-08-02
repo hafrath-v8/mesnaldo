@@ -193,8 +193,11 @@ export default function Career({ messiSeasons, ronaldoSeasons, messiClubs, ronal
   }, [seasons])
 
   return (
-    <Layout title="Career - Messi vs Ronaldo">
-      <div className="bg-black min-h-screen">
+<Layout
+  title="Messi vs Ronaldo Career | Complete Career Comparison"
+  description="Compare Messi vs Ronaldo's careers, including goals, assists, trophies, records, individual awards, and career statistics in one complete comparison."
+>
+        <div className="bg-black min-h-screen">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-10">
 
           {/* HEADER */}
@@ -214,14 +217,14 @@ export default function Career({ messiSeasons, ronaldoSeasons, messiClubs, ronal
               className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all ${
                 activePlayer === "messi" ? "bg-blue-500 text-white shadow-lg shadow-blue-500/30" : "text-gray-400 bg-gray-900 border border-gray-800 hover:text-white"
               }`}>
-              <div className="relative w-6 h-6 rounded-full overflow-hidden"><Image src="/images/messi.png" alt="" fill className="object-cover" /></div>
+              <div className="relative w-6 h-6 rounded-full overflow-hidden"><Image src="/images/messi.webp" alt="" fill className="object-cover" /></div>
               Messi
             </button>
             <button onClick={() => setActivePlayer("ronaldo")}
               className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all ${
                 activePlayer === "ronaldo" ? "bg-red-500 text-white shadow-lg shadow-red-500/30" : "text-gray-400 bg-gray-900 border border-gray-800 hover:text-white"
               }`}>
-              <div className="relative w-6 h-6 rounded-full overflow-hidden"><Image src="/images/ronaldo.png" alt="" fill className="object-cover" /></div>
+              <div className="relative w-6 h-6 rounded-full overflow-hidden"><Image src="/images/ronaldo.webp" alt="" fill className="object-cover" /></div>
               Ronaldo
             </button>
           </div>

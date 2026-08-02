@@ -52,7 +52,7 @@ export default function Trophies({ messi, ronaldo }: TrophiesPageProps) {
 
   return (
 <Layout 
-  title="Trophies Comparison - Messi vs Ronaldo" 
+title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
   description="Messi vs Ronaldo trophy comparison: 48 vs 37 trophies. Compare La Liga, Champions League, World Cup, and every title won.">      
   <div className="bg-black">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-16 sm:space-y-20">
@@ -71,7 +71,7 @@ export default function Trophies({ messi, ronaldo }: TrophiesPageProps) {
               {/* Messi */}
               <div className="text-center">
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-blue-500/30 mx-auto mb-3">
-                  <Image src="/images/messi.png" alt="Messi" fill className="object-cover" />
+                  <Image src="/images/messi.webp" alt="Messi" fill className="object-cover" />
                 </div>
                 <p className="text-xs text-gray-500 mb-1">Lionel Messi</p>
                 <p className="text-4xl sm:text-5xl lg:text-6xl font-black text-blue-400">{messiTotal}</p>
@@ -91,7 +91,7 @@ export default function Trophies({ messi, ronaldo }: TrophiesPageProps) {
               {/* Ronaldo */}
               <div className="text-center">
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-red-500/30 mx-auto mb-3">
-                  <Image src="/images/ronaldo.png" alt="Ronaldo" fill className="object-cover" />
+                  <Image src="/images/ronaldo.webp" alt="Ronaldo" fill className="object-cover" />
                 </div>
                 <p className="text-xs text-gray-500 mb-1">Cristiano Ronaldo</p>
                 <p className="text-4xl sm:text-5xl lg:text-6xl font-black text-red-400">{ronaldoTotal}</p>

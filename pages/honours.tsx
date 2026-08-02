@@ -99,7 +99,7 @@ export default function Awards() {
 
   return (
     <Layout 
-      title="Individual Honours - Messi vs Ronaldo | 100+ Awards Compared"
+title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
       description="Every individual honour: Ballon d'Or (8-5), FIFA Best, Golden Shoe, Pichichi, Champions League top scorer, and 100+ more. Complete Messi vs Ronaldo honours comparison."
     >
       <div className="bg-black min-h-screen">

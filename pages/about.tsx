@@ -71,9 +71,10 @@ const MISSION = [
 
 export default function About() {
   return (
-    <Layout title="About Mesnaldo - The Ultimate Messi vs Ronaldo Comparison"
-      description="Learn about Mesnaldo — the most comprehensive Lionel Messi vs Cristiano Ronaldo comparison platform. Our mission, story, and why we built the ultimate football statistics website.">
-      
+    <Layout
+  title="About Mesnaldo | The Ultimate Messi vs Ronaldo Comparison Platform"
+  description="Learn about Mesnaldo, the ultimate Messi vs Ronaldo comparison platform. Discover our mission, how we collect football statistics, and why millions of fans trust our comprehensive comparisons."
+>
       <Head>
         <meta name="keywords" content="Mesnaldo, Messi vs Ronaldo website, football comparison platform, about Mesnaldo, football statistics website, GOAT debate platform" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -81,7 +82,7 @@ export default function About() {
           "@type": "AboutPage",
           "name": "About Mesnaldo",
           "description": "Mesnaldo is the most comprehensive Messi vs Ronaldo comparison platform on the internet. We track every goal, assist, trophy, and record.",
-          "url": "https://messivsronaldo.app/about"
+"url": "https://mesnaldo.com/about"
         }) }} />
       </Head>
 
