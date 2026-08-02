@@ -17,7 +17,7 @@ export default function AdminLogin() {
     setError("")
 
     // Simple authentication - replace with Supabase Auth later
-    if (email === "admin@mesnaldo.app" && password === "mesnaldo2026") {
+    if (email === "admin@hafrath.app" && password === "parrotbeak") {
       localStorage.setItem("admin_auth", "true")
       router.push("/admin")
     } else {
@@ -51,7 +51,7 @@ export default function AdminLogin() {
             <div>
               <label className="text-xs text-gray-400 mb-1.5 block font-medium">Email</label>
               <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@mesnaldo.app"
+                placeholder="example@domain.com"
                 className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-gray-500" />
             </div>
             <div>
@@ -67,7 +67,7 @@ export default function AdminLogin() {
           </form>
 
           <p className="text-center text-xs text-gray-600 mt-6">
-            Default: admin@mesnaldo.app / mesnaldo2026
+  
           </p>
         </motion.div>
       </div>
