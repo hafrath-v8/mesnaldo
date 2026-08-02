@@ -242,7 +242,7 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
   ]
 
   return (
-<Layout title="Messi vs Ronaldo: Who is Better? Complete Stats & Records Comparison">    
+<Layout title="Messi vs Ronaldo: Who is Better? Complete Stats Comparison">    
 <h1 className="sr-only">Messi vs Ronaldo: Who is Better? Complete Stats, Records & Career Comparison</h1>
       <section className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-900/95 to-black border-b border-gray-800/50 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -427,7 +427,143 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
               </div>
             </section>
           )}
+{/* SEO Content Section */}
+<div className="mt-20 pt-14 border-t border-gray-800/50">
+  <div className="max-w-4xl mx-auto">
 
+    <h2 className="text-2xl sm:text-3xl font-black text-white mb-6 text-center">
+      Messi vs Ronaldo: The Ultimate Football Comparison
+    </h2>
+
+    <div className="space-y-6 text-sm text-gray-400 leading-8">
+
+      <p>
+        <strong className="text-white">Messi vs Ronaldo</strong> is the greatest individual rivalry in football history.
+        For more than 15 years, <strong className="text-white">Lionel Messi</strong> and
+        <strong className="text-white"> Cristiano Ronaldo</strong> have dominated world football,
+        breaking records, winning major trophies, and inspiring millions of fans across the globe.
+        Whether you're searching for <strong className="text-white">Messi vs Ronaldo stats</strong>,
+        goals, assists, trophies, Ballon d'Or awards, or head-to-head records, Mesnaldo brings
+        everything together in one complete comparison platform.
+      </p>
+
+      <p>
+        Our mission is simple: provide the most accurate and comprehensive
+        <strong className="text-white"> Messi vs Ronaldo comparison</strong> available online.
+        Every statistic is carefully verified, regularly updated, and presented in an easy-to-understand format.
+        Instead of searching multiple websites, football fans can compare every aspect of both legends in one place.
+      </p>
+
+      <h3 className="text-xl font-bold text-white">
+        Compare Every Career Statistic
+      </h3>
+
+      <p>
+        Mesnaldo covers every major category that football fans care about.
+        Compare <strong className="text-white">Messi vs Ronaldo goals</strong>,
+        assists, appearances, goals per game, minutes per goal, penalties,
+        free kicks, hat-tricks, international statistics, Champions League records,
+        league performances, and much more.
+      </p>
+
+      <p>
+        Beyond statistics, you can also compare
+        <strong className="text-white"> Messi vs Ronaldo trophies</strong>,
+        individual awards, Ballon d'Or victories, Golden Boots,
+        FIFA awards, Guinness World Records, and career milestones.
+        Every comparison is updated to reflect the latest matches and competitions.
+      </p>
+
+      <h3 className="text-xl font-bold text-white">
+        Messi vs Ronaldo Records
+      </h3>
+
+      <p>
+        Both players have rewritten football history.
+        Lionel Messi holds numerous records for assists, Ballon d'Or awards,
+        World Cup achievements, and playmaking excellence.
+        Cristiano Ronaldo is football's all-time leading goalscorer,
+        with incredible records in the UEFA Champions League,
+        international football, and goals across multiple leagues.
+        Our detailed records section allows fans to explore every achievement side by side.
+      </p>
+
+      <h3 className="text-xl font-bold text-white">
+        Head-to-Head Comparison
+      </h3>
+
+      <p>
+        One of the most popular sections on Mesnaldo is the
+        <strong className="text-white"> Messi vs Ronaldo Head-to-Head</strong> comparison.
+        Explore every official meeting between the two legends,
+        including El Clásico encounters, UEFA Champions League matches,
+        international fixtures, goals, assists, victories, and overall records.
+      </p>
+
+      <h3 className="text-xl font-bold text-white">
+        Interactive GOAT Poll
+      </h3>
+
+      <p>
+        Football fans have debated the GOAT for years.
+        Our interactive <strong className="text-white">Messi vs Ronaldo Poll</strong>
+        allows supporters from around the world to vote and see live results.
+        Thousands of fans have already participated,
+        making it one of the most engaging features on Mesnaldo.
+      </p>
+
+      <h3 className="text-xl font-bold text-white">
+        Updated After Every Match
+      </h3>
+
+      <p>
+        Football statistics constantly change.
+        Whenever Lionel Messi or Cristiano Ronaldo plays,
+        our database is updated to reflect the latest goals,
+        assists, appearances, trophies, and records.
+        This ensures visitors always have access to current and reliable information.
+      </p>
+
+      <h3 className="text-xl font-bold text-white">
+        Built for Football Fans
+      </h3>
+
+      <p>
+        Whether you're a lifelong Messi supporter,
+        a dedicated Cristiano Ronaldo fan,
+        a journalist, researcher, or simply curious about football history,
+        Mesnaldo provides trusted comparisons backed by official competition data.
+        Our goal is to make comparing two of football's greatest players simple,
+        transparent, and enjoyable.
+      </p>
+
+      <h3 className="text-xl font-bold text-white">
+        Why Millions Search "Messi vs Ronaldo"
+      </h3>
+
+      <p>
+        Every football generation has its defining rivalry,
+        and none has matched the impact of Messi versus Ronaldo.
+        Their careers have shaped modern football through extraordinary consistency,
+        record-breaking performances, unforgettable matches,
+        and countless individual achievements.
+        Comparing their careers isn't just about numbers—it's about understanding
+        two completely different styles that changed the sport forever.
+      </p>
+
+      <p>
+        If you're looking for
+        <strong className="text-white"> Messi vs Ronaldo career stats</strong>,
+        goals, assists, trophies, records,
+        Ballon d'Or comparisons,
+        head-to-head results,
+        or simply want to decide who deserves the title of football's greatest player,
+        Mesnaldo is your complete destination.
+      </p>
+
+    </div>
+  </div>
+</div>
           <section>
             <SectionHeading title="Explore More" />
             <div className="flex flex-wrap items-center justify-center gap-2">
@@ -440,6 +576,7 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
           </section>
 
         </div>
+        
       </div>
     </Layout>
   )
