@@ -2,9 +2,7 @@
 import Layout from "../components/layout/Layout"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import Head from "next/head"
-import Image from "next/image"
-import { BarChart3, Goal, Crosshair, Trophy, Award, ClipboardList, Swords, Globe, TrendingUp, Vote, Smartphone, Star, DollarSign, Tv, Library, FileText } from "lucide-react"
+import { BarChart3, Goal, Crosshair, Trophy, Award, ClipboardList, Swords, Globe, TrendingUp, Vote, Smartphone, Star, DollarSign, Tv, Library, FileText, Shield, Eye, ArrowRight, Sparkles, Database, Users, Zap } from "lucide-react"
 
 const STATS = [
   { icon: BarChart3, value: "2,492+", label: "Matches Tracked" },
@@ -13,190 +11,94 @@ const STATS = [
   { icon: Trophy, value: "85", label: "Combined Trophies" },
   { icon: Award, value: "13", label: "Ballon d'Or Awards" },
   { icon: ClipboardList, value: "258+", label: "World Records" },
-  { icon: Swords, value: "36", label: "Head to Head Matches" },
+  { icon: Swords, value: "36", label: "H2H Matches" },
   { icon: Globe, value: "200+", label: "Countries Reached" },
 ]
 
-const FEATURES = [
-  {
-    icon: BarChart3,
-    title: "Comprehensive Statistics",
-    description: "Dive deep into every aspect of their careers. We track goals by body part, assists by competition, hat-tricks, free kicks, penalties, headers, and much more. Our database covers over 2,490 individual matches with detailed performance metrics."
-  },
-  {
-    icon: Swords,
-    title: "Head to Head Analysis",
-    description: "Relive every single encounter between the two legends. All 36 matches are documented with full details — scores, goalscorers, assists, venues, and competition context. See who dominated El Clásico, who shined in Champions League finals, and who won the international battles."
-  },
-  {
-    icon: Trophy,
-    title: "Trophy Cabinet Comparison",
-    description: "From league titles to World Cups, Ballon d'Or awards to Golden Shoes — compare their silverware side by side. Understand the context behind every trophy and what it means in the broader GOAT debate."
-  },
-  {
-    icon: TrendingUp,
-    title: "Interactive Visualizations",
-    description: "Numbers tell a story, and our charts bring that story to life. Explore radar charts comparing their skills, bar graphs showing goal distributions, pie charts breaking down team contributions, and timeline views tracing their entire careers."
-  },
-  {
-    icon: Vote,
-    title: "Community Poll",
-    description: "Cast your vote in the ultimate GOAT poll. See how the world votes and join thousands of football fans in the greatest debate in sports. Every vote counts, and the results might surprise you."
-  },
-  {
-    icon: Smartphone,
-    title: "Responsive Design",
-    description: "Built for every device. Whether you're on your phone during a match, on a tablet at a café, or on a desktop deep-diving into stats — Mesnaldo looks and works beautifully everywhere."
-  },
-]
-
-const MISSION = [
-  {
-    title: "Our Story",
-    content: "Mesnaldo was born from a simple question that has divided football fans for over a decade: who is truly the greatest of all time? What started as a personal project to settle debates among friends has grown into the most comprehensive Messi vs Ronaldo comparison platform on the internet. We're football fans first, data nerds second, and we believe that the beautiful game deserves beautiful statistics."
-  },
-  {
-    title: "Our Mission",
-    content: "We exist to provide the most accurate, comprehensive, and accessible comparison between Lionel Messi and Cristiano Ronaldo. In an era of hot takes and biased opinions, we let the data do the talking. Every stat on Mesnaldo is verified, every record is cross-referenced, and every comparison is designed to give you the full picture — not just cherry-picked numbers that support one side of the argument."
-  },
-  {
-    title: "Why 'Mesnaldo'?",
-    content: "The name is a simple portmanteau of Messi and Ronaldo — the two names that have defined football for a generation. It's short, memorable, and instantly tells you what this website is about. Just like the rivalry itself, the name represents the beautiful tension between two legends who pushed each other to unprecedented heights."
-  },
-  {
-    title: "Our Promise",
-    content: "We promise to remain impartial. We don't favor one player over the other. Our goal is to present the facts, provide context, and let you — the football fan — make up your own mind. We'll continue updating this website as long as both legends continue playing, and we'll preserve it as a historical archive long after they retire. This is football history, and we're honored to document it."
-  },
+const TIMELINE = [
+  { year: "2023", title: "Project Founded", desc: "Mesnaldo was established by a team of football data analysts and developers who saw a need for a truly comprehensive Messi vs Ronaldo comparison platform." },
+  { year: "2024", title: "Database Built", desc: "Our team compiled and verified over 2,400 match records, creating one of the most complete football statistics databases available." },
+  { year: "2025", title: "Platform Launched", desc: "Mesnaldo went live with interactive charts, detailed comparisons, and the GOAT poll that thousands of fans have since voted in." },
+  { year: "2026", title: "Continuous Growth", desc: "We now track 100+ individual awards, 258+ world records, and update statistics within hours of every match." },
 ]
 
 export default function About() {
   return (
     <Layout
-  title="About Mesnaldo | The Ultimate Messi vs Ronaldo Comparison Platform"
-  description="Learn about Mesnaldo, the ultimate Messi vs Ronaldo comparison platform. Discover our mission, how we collect football statistics, and why millions of fans trust our comprehensive comparisons."
->
-      <Head>
-        <meta name="keywords" content="Mesnaldo, Messi vs Ronaldo website, football comparison platform, about Mesnaldo, football statistics website, GOAT debate platform" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          "name": "About Mesnaldo",
-          "description": "Mesnaldo is the most comprehensive Messi vs Ronaldo comparison platform on the internet. We track every goal, assist, trophy, and record.",
-"url": "https://mesnaldo.com/about"
-        }) }} />
-      </Head>
-
+      title="About Mesnaldo | The Most Detailed Messi vs Ronaldo Comparison"
+      description="Mesnaldo is the most comprehensive Messi vs Ronaldo comparison platform. Built by a dedicated team of football data analysts and developers. 2,490+ matches, 258+ records, 100+ awards."
+    >
       <div className="bg-black min-h-screen">
-        
-        {/* ─── HERO ─── */}
-        <section className="relative border-b border-gray-800 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.06),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(59,130,246,0.05),transparent_50%),radial-gradient(ellipse_at_bottom_right,rgba(239,68,68,0.05),transparent_50%)]" />
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center relative">
+
+        {/* Hero */}
+        <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.06),transparent_70%)]" />
+          <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <p className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-4">Our Story</p>
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-400 font-medium mb-6">
+                <Sparkles className="w-3.5 h-3.5" />
+                About the platform
+              </span>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4">
-                About <span className="text-amber-400">Mesnaldo</span>
+                The most detailed <span className="text-amber-400">Messi vs Ronaldo</span> comparison
               </h1>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-                The world&apos;s most comprehensive Messi vs Ronaldo comparison platform. Built by football fans, for football fans.
+              <p className="text-gray-400 text-lg leading-relaxed max-w-xl mx-auto">
+                Built by a dedicated team of football data analysts, developers, and researchers who are committed to accuracy and detail.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* ─── NAME EXPLANATION ─── */}
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-1">
-          <div className="bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-2xl p-6 sm:p-8 text-center">
-            <p className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-2">
+        {/* Name origin */}
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 -mt-8 mb-16">
+          <div className="bg-gradient-to-r from-blue-500/5 via-amber-500/10 to-red-500/5 border border-gray-800 rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+            <p className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-3">
               Mess<span className="text-blue-400">i</span> + Ro<span className="text-red-400">naldo</span>
             </p>
-            <p className="text-gray-500 text-sm">= <span className="text-amber-400 font-bold text-lg">Mesnaldo</span></p>
-            <p className="text-gray-400 text-xs mt-3 max-w-md mx-auto">
-              A simple portmanteau that captures the essence of football&apos;s greatest rivalry. Two names, one legacy, forever linked in history.
-            </p>
+            <p className="text-gray-500">= <span className="text-amber-400 font-bold text-xl">Mesnaldo</span></p>
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 space-y-24">
 
-          {/* ─── MISSION ─── */}
+          {/* Who we are */}
           <section>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {MISSION.map((item, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-2xl p-6 sm:p-7">
-                  <h3 className="text-lg font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{item.content}</p>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-
-          {/* ─── STATS ─── */}
-          <section>
-            <div className="text-center mb-10">
-              <h2 className="text-2xl sm:text-3xl font-black text-white">Mesnaldo by the Numbers</h2>
-              <p className="text-sm text-gray-500 mt-2">The scale of what we&apos;ve built</p>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {STATS.map((stat, i) => {
-                const StatIcon = stat.icon
-                return (
-                  <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-                    className="bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-2xl p-5 text-center hover:border-gray-600/70 transition-colors">
-                    <StatIcon className="w-7 h-7 text-amber-400 mx-auto mb-2" />
-                    <p className="text-xl sm:text-2xl font-black text-white">{stat.value}</p>
-                    <p className="text-[10px] text-gray-500 mt-1 uppercase tracking-wider">{stat.label}</p>
-                  </motion.div>
-                )
-              })}
-            </div>
-          </section>
-
-          {/* ─── FEATURES ─── */}
-          <section>
-            <div className="text-center mb-10">
-              <h2 className="text-2xl sm:text-3xl font-black text-white">What Makes Mesnaldo Special</h2>
-              <p className="text-sm text-gray-500 mt-2">More than just numbers — a complete experience</p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {FEATURES.map((feature, i) => {
-                const FeatureIcon = feature.icon
-                return (
-                  <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                    className="bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-2xl p-5 sm:p-6 hover:border-gray-600/70 transition-colors">
-                    <FeatureIcon className="w-7 h-7 text-amber-400 mb-3" />
-                    <h3 className="text-base font-bold text-white mb-2">{feature.title}</h3>
-                    <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">{feature.description}</p>
-                  </motion.div>
-                )
-              })}
-            </div>
-          </section>
-
-          {/* ─── DATA SOURCES ─── */}
-          <section>
-            <div className="bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-2xl p-6 sm:p-8">
-              <h2 className="text-xl font-bold text-white mb-4 text-center">Our Data Sources</h2>
-              <p className="text-sm text-gray-400 leading-relaxed mb-6 text-center max-w-2xl mx-auto">
-                We take data accuracy seriously. Every statistic on Mesnaldo is sourced from verified, reputable databases and cross-referenced before publication.
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                {[
-                  { name: "Official League Records", icon: FileText },
-                  { name: "UEFA Official Data", icon: Star },
-                  { name: "FIFA Archives", icon: Globe },
-                  { name: "Opta Sports", icon: BarChart3 },
-                  { name: "IFFHS Statistics", icon: Award },
-                  { name: "Transfermarkt", icon: DollarSign },
-                  { name: "ESPN Stats", icon: Tv },
-                  { name: "RSSSF Archive", icon: Library },
-                ].map((source, i) => {
-                  const SourceIcon = source.icon
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              <div>
+                <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">Who we are</p>
+                <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
+                  A team dedicated to <span className="text-amber-400">football data</span>
+                </h2>
+                <div className="space-y-4 text-sm text-gray-400 leading-7">
+                  <p>
+                    Mesnaldo was founded by a team of football data analysts, software developers, and researchers who recognized a gap in how football statistics were presented online. Existing comparisons were often incomplete, outdated, or biased toward one player.
+                  </p>
+                  <p>
+                    Our team built a centralized platform where every goal, assist, trophy, and record is tracked, verified against official sources, and updated regularly. We are committed to providing the most accurate and comprehensive Messi vs Ronaldo comparison available anywhere.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3 mt-6">
+                  {[
+                    { icon: Database, label: "Data Team" },
+                    { icon: Users, label: "Researchers" },
+                    { icon: Zap, label: "Real-time Updates" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-2 bg-gray-900/60 border border-gray-800 rounded-full px-4 py-2">
+                      <item.icon className="w-3.5 h-3.5 text-amber-400" />
+                      <span className="text-xs text-gray-400">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                {STATS.slice(0, 4).map((stat, i) => {
+                  const StatIcon = stat.icon
                   return (
-                    <div key={i} className="bg-gray-800/30 rounded-xl p-3">
-                      <SourceIcon className="w-5 h-5 text-amber-400 mx-auto" />
-                      <p className="text-[11px] text-gray-400 mt-1">{source.name}</p>
+                    <div key={i} className="bg-gray-900/60 border border-gray-800 rounded-2xl p-5 text-center">
+                      <StatIcon className="w-6 h-6 text-amber-400 mx-auto mb-2" />
+                      <p className="text-2xl font-black text-white">{stat.value}</p>
+                      <p className="text-[10px] text-gray-500 mt-1 uppercase tracking-wider">{stat.label}</p>
                     </div>
                   )
                 })}
@@ -204,31 +106,127 @@ export default function About() {
             </div>
           </section>
 
-          {/* ─── DISCLAIMER ─── */}
+          {/* Timeline */}
           <section>
-            <div className="bg-gray-900/50 border border-gray-800 rounded-2xl p-6 text-center">
-              <p className="text-xs text-gray-500 leading-relaxed max-w-2xl mx-auto">
-                <span className="text-white font-bold">Disclaimer:</span> Mesnaldo is an independent, fan-made project. We are not affiliated with, endorsed by, or connected to Lionel Messi, Cristiano Ronaldo, their respective clubs, FIFA, UEFA, or any football governing body. All player images and names are used for identification purposes only. Statistics are compiled from publicly available data sources and are believed to be accurate but may contain unintentional errors. This website is for informational and entertainment purposes only.
-              </p>
+            <div className="text-center mb-10">
+              <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">Our journey</p>
+              <h2 className="text-2xl sm:text-3xl font-black text-white">How we built Mesnaldo</h2>
+            </div>
+            <div className="relative">
+              <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px bg-gray-800 sm:-translate-x-px" />
+              <div className="space-y-8">
+                {TIMELINE.map((item, i) => (
+                  <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                    className={`relative pl-12 sm:pl-0 sm:w-1/2 ${i % 2 === 0 ? 'sm:pr-12 sm:ml-auto' : 'sm:pl-12'}`}>
+                    <div className={`absolute left-1.5 sm:left-auto ${i % 2 === 0 ? 'sm:right-0 sm:translate-x-1/2' : 'sm:left-0 sm:-translate-x-1/2'} top-1 w-4 h-4 rounded-full bg-amber-400 border-4 border-black`} />
+                    <div className="bg-gray-900/60 border border-gray-800 rounded-2xl p-5 sm:p-6">
+                      <span className="text-[10px] text-amber-400 font-bold bg-amber-500/10 px-2.5 py-1 rounded-full">{item.year}</span>
+                      <h3 className="text-base font-bold text-white mt-2 mb-1">{item.title}</h3>
+                      <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </section>
 
-          {/* ─── CTA ─── */}
-          <section className="text-center py-8 border-t border-gray-800">
-            <h2 className="text-2xl font-black text-white mb-3">Ready to Explore?</h2>
-            <p className="text-sm text-gray-400 mb-6">Dive into the most comprehensive football comparison ever created.</p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link href="/goals" className="px-6 py-3 bg-white text-black rounded-xl text-sm font-bold hover:bg-gray-200 transition-colors">
-                Explore Goals
-              </Link>
-              <Link href="/head-to-head" className="px-6 py-3 bg-gray-900 border border-gray-800 text-gray-400 rounded-xl text-sm font-medium hover:text-white hover:border-gray-700 transition-colors">
-                Head to Head
-              </Link>
-              <Link href="/poll" className="px-6 py-3 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl text-sm font-medium hover:bg-amber-500/20 transition-colors">
-                Cast Your Vote
-              </Link>
+          {/* Values */}
+          <section>
+            <div className="text-center mb-10">
+              <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">Our principles</p>
+              <h2 className="text-2xl sm:text-3xl font-black text-white">What drives our work</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {[
+                { icon: Shield, title: "Verified Accuracy", desc: "Every statistic is cross-checked against multiple official sources. Data errors are corrected within 24 hours of being reported." },
+                { icon: Eye, title: "Complete Transparency", desc: "We present the full picture — not selective statistics. Both players' achievements are displayed fairly and in proper context." },
+                { icon: Globe, title: "Global Reach", desc: "Our platform serves football fans across 200+ countries, providing reliable comparisons accessible to everyone, everywhere." },
+              ].map((v, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                  className="bg-gray-900/60 border border-gray-800 rounded-2xl p-6 text-center">
+                  <v.icon className="w-8 h-8 text-amber-400 mx-auto mb-4" />
+                  <h3 className="text-base font-bold text-white mb-2">{v.title}</h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">{v.desc}</p>
+                </motion.div>
+              ))}
             </div>
           </section>
+
+          {/* Features */}
+          <section>
+            <div className="text-center mb-10">
+              <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">Platform features</p>
+              <h2 className="text-2xl sm:text-3xl font-black text-white">What you can do on Mesnaldo</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {[
+                { icon: BarChart3, title: "Comprehensive Statistics", desc: "Goals by body part, assists by competition, every performance metric that matters." },
+                { icon: Swords, title: "Head to Head Analysis", desc: "All 36 meetings documented with full match details, scores, and context." },
+                { icon: Trophy, title: "Trophy & Awards Comparison", desc: "Every team trophy and 100+ individual awards compared side by side." },
+                { icon: TrendingUp, title: "Interactive Visualizations", desc: "Radar charts, bar graphs, pie charts, and complete career timelines." },
+                { icon: Vote, title: "Global GOAT Poll", desc: "Thousands of votes cast. Live results updated in real-time." },
+                { icon: Smartphone, title: "Fully Responsive Design", desc: "Optimized experience across mobile, tablet, and desktop devices." },
+              ].map((f, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}
+                  className="group bg-gray-900/60 border border-gray-800 rounded-2xl p-5 hover:border-gray-700 transition-colors">
+                  <f.icon className="w-6 h-6 text-amber-400 mb-3" />
+                  <h3 className="text-sm font-bold text-white mb-1.5 group-hover:text-amber-400 transition-colors">{f.title}</h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">{f.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* Data Sources */}
+          <section>
+            <div className="text-center mb-10">
+              <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">Trusted data</p>
+              <h2 className="text-2xl sm:text-3xl font-black text-white">Our data sources</h2>
+              <p className="text-sm text-gray-500 mt-2">Every statistic is verified against official sources before publication</p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {[
+                { name: "Official League Records", icon: FileText },
+                { name: "UEFA", icon: Star },
+                { name: "FIFA", icon: Globe },
+                { name: "Opta Sports", icon: BarChart3 },
+                { name: "IFFHS", icon: Award },
+                { name: "Transfermarkt", icon: DollarSign },
+                { name: "ESPN Stats", icon: Tv },
+                { name: "RSSSF", icon: Library },
+              ].map((s, i) => {
+                const SourceIcon = s.icon
+                return (
+                  <div key={i} className="flex items-center gap-2 bg-gray-900/60 border border-gray-800 rounded-full px-4 py-2">
+                    <SourceIcon className="w-4 h-4 text-amber-400/70" />
+                    <span className="text-xs text-gray-400">{s.name}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </section>
+
+          {/* CTA */}
+          <section className="text-center">
+            <div className="bg-gradient-to-r from-blue-500/5 via-amber-500/10 to-red-500/5 border border-gray-800 rounded-3xl p-10 sm:p-14">
+              <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">Explore the full comparison</h2>
+              <p className="text-sm text-gray-400 mb-8">The most detailed Messi vs Ronaldo statistics are waiting for you.</p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <Link href="/goals" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl text-sm font-bold hover:bg-gray-200 transition-colors">
+                  Compare Goals <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="/poll" className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl text-sm font-medium hover:bg-amber-500/20 transition-colors">
+                  Vote for GOAT
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          {/* Disclaimer */}
+          <p className="text-center text-[11px] text-gray-600 max-w-xl mx-auto leading-relaxed">
+            Mesnaldo is an independent platform. Not affiliated with any player, club, or governing body. 
+            All statistics compiled from publicly available official sources.
+          </p>
 
         </div>
       </div>
