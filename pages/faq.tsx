@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { useState } from "react"
 import Link from "next/link"
 import Head from "next/head"
-import { Rocket, BarChart3, Swords, Trophy, Monitor, Globe, ChevronDown, ThumbsUp, ThumbsDown, MessageCircle } from "lucide-react"
+import { Rocket, BarChart3, Swords, Trophy, Monitor, Globe, ChevronDown, ThumbsUp, ThumbsDown, MessageCircle, Star, Target, Users } from "lucide-react"
 
 const FAQS = [
   {
@@ -12,146 +12,182 @@ const FAQS = [
     icon: Rocket,
     questions: [
       {
-        q: "What exactly is Messi vs Ronaldo and why should I care?",
-        a: "Think of Messi vs Ronaldo as the ultimate football Bible for the greatest debate in sports history. We've built the most comprehensive, data-driven comparison platform that tracks every single goal, assist, trophy, record, and head-to-head encounter between Lionel Messi and Cristiano Ronaldo. Whether you're Team Messi, Team Ronaldo, or just a football fanatic who loves diving deep into stats, this is your home. We don't just show you numbers — we tell the story behind them with interactive charts, detailed breakdowns, and historical context that you won't find anywhere else."
+        q: "What is Mesnaldo and what makes it different from other football stats websites?",
+        a: "Mesnaldo is the most comprehensive data-driven comparison platform for the Messi vs Ronaldo debate. Unlike other websites that give you a table of numbers and call it a day, we track every single goal, assist, trophy, record, and head-to-head encounter with interactive charts, detailed breakdowns, and historical context. You can explore goals by body part, assists by competition, compare specific seasons, and relive all 36 times they faced each other. Every statistic is verified against official sources before publication. If you spot an error, we fix it within 24 hours."
       },
       {
-        q: "Is this just another stats website? What makes it different?",
-        a: "Absolutely not. While other websites might give you a table of numbers, we give you the full picture. Every statistic is interactive — you can click, filter, compare, and explore. Want to see Messi's goals by body part? Done. Curious how Ronaldo performs in knockout matches versus group stages? We've got it. Want to re-live every single El Clásico where both legends faced off? We have all 36 matches catalogued with minute-by-minute details. Plus, our data is verified against official sources and updated regularly. This isn't just a website — it's a living archive of football history."
+        q: "Is Mesnaldo free to use? Do I need to create an account?",
+        a: "Completely free. No account required, no paywalls, no hidden fees. You can browse every page, explore every statistic, and vote in the GOAT poll without signing up for anything. We believe football statistics should be available to everyone."
       },
       {
-        q: "How do I navigate this website to find what I'm looking for?",
-        a: "We've designed the site to be intuitive. The navigation bar at the top gives you quick access to all major sections: Home (overview comparison), Goals (deep dive into scoring stats), Assists (playmaking breakdown), Trophies (silverware comparison), Head to Head (direct encounters), Career (season-by-season timeline), Records (world records and milestones), and Poll (cast your GOAT vote). Each page has filters and interactive elements. If you're ever lost, just hit the Home button — it gives you the complete overview at a glance."
+        q: "How do I find what I'm looking for on this site?",
+        a: "The navigation bar at the top covers every major section. Home gives you the complete overview with radar charts and recent matches. Goals breaks down every type of goal they've scored. Assists covers playmaking. Trophies compares silverware. Head to Head documents all 36 meetings. Career shows season-by-season timelines. Records lists over 258 verified achievements. Honours compares 100+ individual awards. And the Poll lets you cast your GOAT vote. Every page has filters — click around and explore."
       },
       {
-        q: "Is this website free to use? Do I need to create an account?",
-        a: "100% free. No account required. No paywalls. No hidden fees. We built this for the love of football and the community. You can browse every page, explore every stat, and even vote in our GOAT poll without signing up. We believe football statistics should be accessible to everyone, not locked behind subscription walls."
+        q: "How often is the data updated?",
+        a: "Within hours of any match featuring Messi or Ronaldo. Our team monitors every game and updates the database as soon as the final whistle blows. Stat pages are rebuilt regularly to reflect the latest numbers."
       },
     ]
   },
   {
-    category: "The Data Behind the Scenes",
+    category: "The Data & Accuracy",
     icon: BarChart3,
     questions: [
       {
-        q: "Where does all this data come from? How do I know it's accurate?",
-        a: "Great question — accuracy is our obsession. Our data is sourced from multiple verified channels: official league databases (La Liga, Premier League, Serie A, Ligue 1, MLS, Saudi Pro League), UEFA official records, FIFA tournament archives, and reputable football statistics providers like Opta and IFFHS. Every match entry in our database includes the date, competition, venue, opponent, goals scored, assists, minutes played, and result. Our team cross-references data points across multiple sources before they're published. If you ever spot something that doesn't look right, we have a correction process — just reach out and we'll investigate within 24 hours."
+        q: "Where does your data come from and how do I know it's accurate?",
+        a: "We source from multiple verified channels: official league databases (La Liga, Premier League, Serie A, Ligue 1, MLS, Saudi Pro League), UEFA official records, FIFA tournament archives, and reputable statistics providers including Opta and IFFHS. Every match in our database includes date, competition, venue, opponent, goals, assists, minutes played, and result. Each data point is cross-referenced against at least one other source before being published."
       },
       {
-        q: "How do you categorize goals? What counts as a 'left foot' goal versus a 'right foot' goal?",
-        a: "Every goal in our database is classified by multiple attributes: body part (left foot, right foot, header, other), location (inside the box, outside the box), and situation (open play, penalty, free kick). These classifications come from official match reports, verified video footage, and statistical agencies. For example, a left-footed volley from outside the box during open play gets tagged with all three attributes. This granular approach lets us create detailed breakdowns like 'Messi has scored 772 left-footed goals, including 108 from outside the box and 72 from free kicks.' The level of detail is what makes our comparison truly comprehensive."
+        q: "How are goals categorized by body part?",
+        a: "Every goal is classified by three attributes: body part (left foot, right foot, header, other), location (inside box, outside box), and situation (open play, penalty, free kick). These come from official match reports and verified video footage. So a left-footed volley from outside the box in open play gets all three tags. This lets us create breakdowns like 'Messi has scored 772 left-footed goals including 108 from outside the box.'"
       },
       {
-        q: "What's the difference between 'career_stats' and 'matches' data? Which one is more accurate?",
-        a: "Think of it this way: the 'career_stats' table is like the official scoreboard — it contains the verified, authoritative totals for each player (total goals, total games, penalties scored, etc.). The 'matches' table is like the detailed play-by-play — it has every individual match record. Sometimes the matches table might not have 100% of historical data (especially for very old matches where detailed breakdowns weren't recorded), so the career_stats totals should always be considered the source of truth for overall numbers. We use the matches table for detailed breakdowns and filters, and career_stats for the big-picture totals."
+        q: "What's the difference between career_stats and matches data?",
+        a: "The career_stats table contains verified totals — total goals, games, penalties scored, and so on. The matches table has every individual match record. The career_stats totals are always the source of truth for overall numbers. We use the matches table for detailed breakdowns and filters."
       },
       {
-        q: "How are 'International Goals' different from 'Club Goals'?",
-        a: "This is one of our most common questions. International goals are scored when the player is representing their national team — Argentina for Messi, Portugal for Ronaldo. This includes FIFA World Cup matches, continental championships (Copa América, UEFA Euros), World Cup qualifiers, Nations League matches, and international friendlies. Club goals are everything else — goals scored for Barcelona, Real Madrid, PSG, Juventus, Inter Miami, Al Nassr, and all other club teams throughout their careers. We calculate club goals as: Total Goals minus International Goals = Club Goals. This gives you the most accurate split."
-      },
-      {
-        q: "How often is the data refreshed? Can I see real-time updates?",
-        a: "Our data is updated within hours of matches being played. When Messi scores for Inter Miami or Ronaldo finds the net for Al Nassr, our team updates the database promptly. The website fetches fresh data on every page load for key sections like the Poll, while detailed stat pages are rebuilt periodically for performance. We're exploring real-time updates for live match days — stay tuned!"
+        q: "How do you define club goals versus international goals?",
+        a: "International goals are scored for the national team — Argentina for Messi, Portugal for Ronaldo. This includes World Cups, continental championships, qualifiers, Nations League, and friendlies. Club goals are everything else — Barcelona, Real Madrid, PSG, Juventus, Inter Miami, Al Nassr, and all other clubs. We calculate club goals as total goals minus international goals."
       },
     ]
   },
   {
-    category: "The Rivalry Decoded",
-    icon: Swords,
+    category: "Goals, Assists & Statistics",
+    icon: Target,
     questions: [
       {
-        q: "How many times have Messi and Ronaldo actually played against each other? What's the head-to-head record?",
-        a: "As of our latest data, Messi and Ronaldo have faced each other 36 times across all competitions. The head-to-head record stands at: Messi 16 wins, Ronaldo 11 wins, and 9 draws. These matches span multiple competitions — La Liga (when Messi was at Barcelona and Ronaldo at Real Madrid), the Champions League, Copa del Rey, Supercopa de España, and even international friendlies (Argentina vs Portugal). The most famous encounters are the El Clásico matches, but they've also met when Messi was at PSG and Ronaldo at Al Nassr. Every single one of these 36 matches is documented on our Head to Head page with full details — scores, goalscorers, assists, venues, and more."
+        q: "Who has scored more career goals — Messi or Ronaldo?",
+        a: "Cristiano Ronaldo leads with 976 career goals compared to Lionel Messi's 919. Ronaldo has played more matches (1,330 vs 1,162), which partly explains the gap. Messi has a slightly better goals-per-game ratio (0.79 vs 0.73) and significantly more assists (418 vs 261). When you combine goals and assists, the gap narrows considerably."
       },
       {
-        q: "Who has scored more goals in Messi vs Ronaldo matches?",
-        a: "In their 36 direct encounters, the goal tally is incredibly close — as you'd expect from the two greatest players ever. For the exact numbers, we recommend visiting the Head to Head page where you can see a match-by-match breakdown with both players' goal and assist counts for every single game. It's fascinating to see how they performed against each other on the biggest stages."
+        q: "How many goals has Messi scored in his career?",
+        a: "Lionel Messi has scored 919 career goals for club and country as of 2026. This includes 794 club goals and 125 international goals for Argentina. He averages 0.79 goals per game and scores every 104 minutes."
       },
       {
-        q: "What was their first match against each other? And their most recent?",
-        a: "Their first competitive encounter was in the 2007-08 Champions League semi-final between Manchester United (Ronaldo) and Barcelona (Messi). Their most recent meeting was a friendly between Paris Saint-Germain (Messi) and an All-Star team including Ronaldo in 2023. The full timeline of all 36 matches is available on our Head to Head page, sorted chronologically so you can trace their rivalry from beginning to present day."
+        q: "How many goals has Ronaldo scored in his career?",
+        a: "Cristiano Ronaldo has scored 976 career goals, the most in football history. He has 830 club goals and 146 international goals for Portugal. He averages 0.73 goals per game and scores every 111 minutes."
       },
       {
-        q: "Which competition has hosted the most Messi vs Ronaldo matches?",
-        a: "La Liga leads the way with 18 encounters during the peak El Clásico era (2009-2018). The Champions League hosted 6 meetings, the Copa del Rey saw 5, the Supercopa de España had 5, and international friendlies account for the remaining matches. This distribution shows how their rivalry was primarily defined by the Barcelona-Real Madrid dynamic during those incredible La Liga seasons."
+        q: "Who has more assists?",
+        a: "Messi has significantly more assists — 418 compared to Ronaldo's 261. This reflects Messi's more creative playing style. He averages 0.36 assists per game compared to Ronaldo's 0.20. In the Champions League, the numbers are much closer: Messi 40 assists, Ronaldo 41."
       },
       {
-        q: "Did they ever play together on the same team?",
-        a: "No — Messi and Ronaldo have never played on the same club team. They've spent their entire careers on opposite sides, which is exactly what makes their rivalry so compelling. The closest they came to being teammates was in friendly charity matches and FIFA FIFPro World XI selections. Some fans have dreamed of what it would look like if they'd ever joined forces — but their rivalry is what made football so special for over 15 years."
+        q: "Who has more hat-tricks?",
+        a: "Ronaldo has 66 career hat-tricks compared to Messi's 61. In terms of frequency, Messi scores a hat-trick every 19.1 games, Ronaldo every 20.2 games. In the Champions League, both have 8 hat-tricks each."
       },
     ]
   },
   {
-    category: "Records, Trophies & The GOAT Debate",
+    category: "Trophies & Awards",
     icon: Trophy,
     questions: [
       {
-        q: "Who has won more Ballon d'Or awards?",
-        a: "Lionel Messi has won 8 Ballon d'Or awards (2009, 2010, 2011, 2012, 2015, 2019, 2021, 2023) — the most in football history. Cristiano Ronaldo has won 5 (2008, 2013, 2014, 2016, 2017). Messi also holds records for most consecutive Ballon d'Or wins (4 from 2009-2012), most appearances in the top 3 (14 times), and being the only player to win the award in three different decades. Ronaldo holds the record for most Ballon d'Or nominations (18 times). Both players dominated the award for over a decade — from 2008 to 2023, they won 13 of the 15 Ballon d'Or awards between them."
+        q: "Who has won more trophies overall?",
+        a: "Lionel Messi leads with 48 career trophies compared to Cristiano Ronaldo's 37. Messi's collection includes 13 league titles, 4 Champions League titles, the World Cup, 2 Copa América titles, and an Olympic gold medal. Ronaldo has 8 league titles across four countries, 5 Champions League titles, and the European Championship with Portugal."
       },
       {
-        q: "Who has scored more total career goals?",
-        a: "Cristiano Ronaldo currently leads with 976 career goals, while Lionel Messi has 919 goals. Ronaldo has played more matches (1,330 vs 1,162) which partially explains the gap. However, Messi has a better goals-per-game ratio and significantly more assists (416 vs 261). When you factor in goal contributions (goals + assists), the numbers get much closer: Messi 1,335 vs Ronaldo 1,237. This is why the GOAT debate is so complex — it depends on which metrics you value most."
+        q: "Who has more Champions League titles?",
+        a: "Cristiano Ronaldo has 5 Champions League titles (1 with Manchester United, 4 with Real Madrid) compared to Messi's 4 (all with Barcelona). Ronaldo also holds the record for most Champions League goals (140) and has been top scorer 7 times."
       },
       {
-        q: "Who has more trophies?",
-        a: "Messi leads with 48 career trophies compared to Ronaldo's 37. This includes club trophies (league titles, Champions Leagues, domestic cups, etc.) and international trophies (World Cup, Copa América, UEFA Euros, Nations League). Messi's trophy cabinet includes the 2022 FIFA World Cup and two Copa América titles. Ronaldo's includes the 2016 UEFA European Championship and the 2019 UEFA Nations League. Both have achieved the ultimate prizes for their countries."
+        q: "How many Ballon d'Or awards has Messi won?",
+        a: "Lionel Messi has won a record 8 Ballon d'Or awards (2009, 2010, 2011, 2012, 2015, 2019, 2021, 2023). He also holds records for most consecutive wins (4) and most top-3 finishes (14 times)."
       },
       {
-        q: "What world records does each player hold?",
-        a: "Both players hold numerous Guinness World Records and football records. Messi holds records for: most Ballon d'Or awards (8), most goals in a calendar year (91 in 2012), most goals for a single club (672 for Barcelona), most assists in World Cup history (12), and many more. Ronaldo holds records for: most international goals (146), most Champions League goals (140), most goals in top-level competition (976), most international caps (233), and many others. Our Records page has the complete list with over 200 verified records between them."
+        q: "How many Ballon d'Or awards has Ronaldo won?",
+        a: "Cristiano Ronaldo has won 5 Ballon d'Or awards (2008, 2013, 2014, 2016, 2017). He holds the record for most nominations (18 times) and has finished in the top 3 twelve times."
       },
       {
-        q: "So... who is actually the GOAT?",
-        a: "Ah, the billion-dollar question! The honest answer is: it depends on what you value most. Messi fans point to his superior playmaking (more assists), better goals-per-game ratio, World Cup victory, and more Ballon d'Or awards. Ronaldo fans highlight his higher total goal count, Champions League dominance, success across four different leagues, and unmatched international scoring record. The beauty of this debate is that there's no wrong answer — both players have transcended the sport and achieved things that may never be replicated. Our website gives you all the data to make your own informed decision. And if you feel strongly about it — head over to our Poll page and cast your vote!"
+        q: "Who has more individual awards?",
+        a: "Messi leads in total individual honours. Visit our Honours page for a complete comparison of 100+ individual awards including Ballon d'Or, FIFA Best, Golden Shoe, Pichichi, Champions League top scorer, and more."
       },
     ]
   },
   {
-    category: "Using the Website",
+    category: "Head to Head & The Rivalry",
+    icon: Swords,
+    questions: [
+      {
+        q: "How many times have Messi and Ronaldo played against each other?",
+        a: "They have faced each other 36 times across all competitions. The record stands at Messi 16 wins, Ronaldo 11 wins, and 9 draws. Matches span La Liga, Champions League, Copa del Rey, Supercopa de España, and international friendlies."
+      },
+      {
+        q: "Who has scored more goals in head-to-head matches?",
+        a: "The goal tally in their 36 meetings is remarkably close. For the exact numbers, visit our Head to Head page where every match is documented with goals, assists, scores, venues, and competition context."
+      },
+      {
+        q: "What was their first match against each other?",
+        a: "Their first competitive meeting was the 2007-08 Champions League semi-final between Manchester United (Ronaldo) and Barcelona (Messi). Their most recent was a 2023 friendly between PSG (Messi) and an All-Star team including Ronaldo."
+      },
+      {
+        q: "Which competition has hosted the most Messi vs Ronaldo matches?",
+        a: "La Liga leads with 18 encounters during the El Clásico era (2009-2018). The Champions League hosted 6 meetings, Copa del Rey 5, Supercopa de España 5, and international friendlies account for the rest."
+      },
+      {
+        q: "Did they ever play on the same team?",
+        a: "Never at club level. They spent their entire careers on opposite sides, which is precisely what made their rivalry so compelling. The closest was friendly charity matches and FIFA FIFPro World XI selections."
+      },
+    ]
+  },
+  {
+    category: "The GOAT Debate",
+    icon: Star,
+    questions: [
+      {
+        q: "Who is actually the better player — Messi or Ronaldo?",
+        a: "This is the question that has divided football fans for over 15 years, and the honest answer depends on what you value most. Messi supporters point to his superior playmaking, better goals-per-game ratio, World Cup victory, and more Ballon d'Or awards. Ronaldo supporters highlight his higher total goal count, Champions League dominance, success across four different leagues, and unmatched international scoring record. Both players have achieved things that may never be replicated. Our website exists to give you all the data so you can make your own informed decision."
+      },
+      {
+        q: "Who is better at international level?",
+        a: "Both have exceptional international records. Messi has won the World Cup, 2 Copa América titles, a Finalissima, and an Olympic gold medal. He has 125 goals in 207 games. Ronaldo has won the European Championship and the Nations League, and is the all-time leading international goalscorer with 146 goals in 233 games. Messi has more international trophies and individual tournament awards; Ronaldo has more goals."
+      },
+      {
+        q: "Who has performed better in big matches?",
+        a: "Ronaldo is widely regarded as the more decisive big-game player, particularly in the Champions League knockout stages where he has scored 67 goals compared to Messi's 49. Messi, however, has scored in two Champions League finals and delivered in multiple World Cup knockout matches including two goals in the 2022 final. Both have proven themselves on the biggest stages repeatedly."
+      },
+      {
+        q: "Who has more world records?",
+        a: "Both hold numerous Guinness World Records. Messi holds records for most Ballon d'Or awards (8), most goals in a calendar year (91), and most goals for a single club. Ronaldo holds records for most international goals (146), most Champions League goals (140), and most goals in top-level football. Visit our Records page for the full list of 258+ verified records."
+      },
+    ]
+  },
+  {
+    category: "Using Mesnaldo",
     icon: Monitor,
     questions: [
       {
-        q: "How does the Poll work? Can I vote more than once?",
-        a: "The Poll lets you cast one vote for who you believe is the GOAT. Your vote is saved in your browser's local storage, which means you can only vote once per device. The results show live vote counts and percentages, including our initial seed votes that reflect the broader football community's sentiment. If you want to change your vote, there's a 'Reset my vote' option available after you've voted. The poll is meant to be fun and engaging — it's not a scientific survey, just a way for fans to show their support."
+        q: "How does the GOAT Poll work?",
+        a: "Cast one vote for who you believe is the GOAT. Your vote is saved in your browser's local storage, limiting you to one vote per device. Results show live counts and percentages. A 'Reset my vote' option is available if you change your mind."
       },
       {
         q: "Can I compare specific seasons or filter by competition?",
-        a: "Absolutely! Most of our stat pages have filter options. On the Goals page, you can filter by competition type (club vs international, league vs Champions League). On the Career page, you can view season-by-season breakdowns and switch between timeline and club views. The Head to Head page lets you filter by competition to see only El Clásico matches, Champions League encounters, or international friendlies. The Matches tab on player profiles has powerful search and filter capabilities. We've designed every page to be interactive — click around and explore!"
+        a: "Yes. Most stat pages have filters. On Goals, you can filter by competition type. On Career, you can view season-by-season breakdowns. The Head to Head page lets you filter by competition. Player profile pages have search and filter for match histories."
       },
       {
-        q: "Is the website mobile-friendly?",
-        a: "Yes! We've built the entire website to be fully responsive. Whether you're on a phone, tablet, or desktop, the experience is optimized for your screen size. Charts resize, tables become scrollable, and cards stack properly on smaller screens. We believe football stats should be accessible wherever you are — at the stadium, on the couch, or in the middle of a heated debate with friends."
+        q: "Does the site work on mobile?",
+        a: "Yes, fully responsive. Every page, chart, and table is optimized for phones, tablets, and desktops."
       },
       {
-        q: "Can I download the data or access an API?",
-        a: "We don't currently offer a public API or bulk data downloads, but we're considering it for future updates. If you're a researcher, journalist, or content creator who needs data access, please reach out through our Contact page. We're always happy to collaborate with people who share our passion for football statistics."
-      },
-      {
-        q: "How can I report an error or suggest an improvement?",
-        a: "We love hearing from our users! If you spot an error in our data, have a suggestion for a new feature, or just want to say hello, visit our Contact page. We take data accuracy seriously and typically respond to corrections within 24-48 hours. Many of our best features have come from user suggestions — so don't be shy!"
+        q: "How can I report an error?",
+        a: "Visit our Contact page. We take accuracy seriously and typically respond to corrections within 24-48 hours. Many of our best improvements have come from user feedback."
       },
     ]
   },
   {
-    category: "The Bigger Picture",
+    category: "About The Platform",
     icon: Globe,
     questions: [
       {
+        q: "Who built Mesnaldo?",
+        a: "Mesnaldo was built by a dedicated team of football data analysts, software developers, and researchers committed to creating the most accurate and comprehensive Messi vs Ronaldo comparison platform available. Our data is verified against multiple official sources, and we update within hours of every match."
+      },
+      {
         q: "How long will this website be maintained?",
-        a: "As long as the beautiful game is played! Both Messi and Ronaldo are still active, and we're committed to tracking every remaining match of their legendary careers. Even after they retire, this website will remain as a historical archive — a digital museum of football's greatest rivalry. We're continuously adding new features, improving the design, and expanding our data coverage."
+        a: "We track every remaining match of both players' careers. Even after they retire, Mesnaldo will remain as a historical archive — a permanent record of football's greatest rivalry."
       },
       {
-        q: "What happens when they retire? Will the website still be relevant?",
-        a: "Absolutely. In fact, retirement will make the comparison even more meaningful because we'll have their complete, final career statistics. The Messi vs Ronaldo debate will continue for decades — just like people still debate Pelé vs Maradona vs Cruyff. This website will serve as the definitive historical record of their careers, with every goal, assist, trophy, and record preserved for future generations of football fans."
-      },
-      {
-        q: "How can I support this project?",
-        a: "The best way to support us is by using the website, sharing it with fellow football fans, and engaging with our content. Spread the word on social media, link to our stats in your debates, and let people know this resource exists. If you're interested in contributing data, writing articles, or helping with development, reach out through our Contact page. This is a community-driven project, and every bit of support helps!"
-      },
-      {
-        q: "Is this the most complete Messi vs Ronaldo comparison on the internet?",
-        a: "We believe so, and our users tell us the same. With over 2,400+ matches catalogued, 200+ world records documented, 36 head-to-head encounters analyzed, and interactive tools that let you explore the data in ways no other website offers — yes, this is the most comprehensive comparison available. But we're not complacent. We're always working to make it even better. If you find something missing, let us know!"
+        q: "How can I support Mesnaldo?",
+        a: "Use the site, share it with fellow fans, link to our stats in discussions, and follow us on Instagram and Facebook. If you're interested in contributing, reach out through our Contact page."
       },
     ]
   },
@@ -175,7 +211,6 @@ export default function FAQ() {
     setOpenQuestions(newSet)
   }
 
-  // Schema for SEO
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -193,17 +228,15 @@ export default function FAQ() {
 
   return (
     <Layout 
-  title="Messi vs Ronaldo FAQ: Who is Better? Stats, Records & GOAT Debate" 
-  description="Who is better Messi or Ronaldo? How many goals does Ronaldo have? Get answers to the most asked questions about football's greatest rivalry with complete stats.">
-      
+      title="Messi vs Ronaldo FAQ: Who is Better? Stats, Records & GOAT Debate" 
+      description="Who is better Messi or Ronaldo? How many goals does Ronaldo have? Who has more trophies? Get answers to the most asked questions about football's greatest rivalry."
+    >
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-        <meta name="keywords" content="Messi vs Ronaldo FAQ, football comparison questions, GOAT debate FAQ, Messi Ronaldo stats explained, football statistics help" />
       </Head>
 
       <div className="bg-black min-h-screen">
         
-        {/* ─── HERO ─── */}
         <section className="relative border-b border-gray-800 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.06),transparent_50%)]" />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center relative">
@@ -213,21 +246,19 @@ export default function FAQ() {
                 Frequently Asked <span className="text-amber-400">Questions</span>
               </h1>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-                Everything you need to know about the ultimate football comparison platform — from how we collect our data to understanding the greatest rivalry in sports history.
+                Everything you need to know about the Messi vs Ronaldo debate, our data, and how to use Mesnaldo.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* ─── FAQ CONTENT ─── */}
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-4">
 
-          {/* Category Quick Links */}
           <div className="flex flex-wrap gap-2 mb-10 justify-center">
             {FAQS.map(cat => {
               const CatIcon = cat.icon
               return (
-                <button key={cat.category} onClick={() => { setOpenCategory(cat.category) }}
+                <button key={cat.category} onClick={() => setOpenCategory(cat.category)}
                   className={`flex items-center gap-2 px-5 py-2.5 text-xs rounded-full transition-all font-medium ${
                     openCategory === cat.category 
                       ? "bg-white text-black shadow-lg" 
@@ -240,13 +271,11 @@ export default function FAQ() {
             })}
           </div>
 
-          {/* Questions */}
           <div className="space-y-3">
             {FAQS.map((category, catIndex) => (
               <motion.div key={category.category} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: catIndex * 0.05 }}
                 className="bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-2xl overflow-hidden">
                 
-                {/* Category Header */}
                 <button onClick={() => toggleCategory(category.category)}
                   className="w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-gray-800/30 transition-colors">
                   <div className="flex items-center gap-3">
@@ -256,13 +285,11 @@ export default function FAQ() {
                       <p className="text-[10px] text-gray-500 mt-0.5">{category.questions.length} questions</p>
                     </div>
                   </div>
-                  <motion.span animate={{ rotate: openCategory === category.category ? 180 : 0 }} transition={{ duration: 0.3 }}
-                    className="text-gray-400">
+                  <motion.span animate={{ rotate: openCategory === category.category ? 180 : 0 }} transition={{ duration: 0.3 }} className="text-gray-400">
                     <ChevronDown className="w-4 h-4" />
                   </motion.span>
                 </button>
 
-                {/* Questions List */}
                 {openCategory === category.category && (
                   <div className="border-t border-gray-700/50">
                     {category.questions.map((item, i) => (
@@ -272,8 +299,7 @@ export default function FAQ() {
                           <span className={`text-sm pr-4 transition-colors ${openQuestions.has(item.q) ? "text-amber-400 font-medium" : "text-gray-300 group-hover:text-white"}`}>
                             {item.q}
                           </span>
-                          <motion.span animate={{ rotate: openQuestions.has(item.q) ? 180 : 0 }} transition={{ duration: 0.3 }}
-                            className="text-gray-500 flex-shrink-0">
+                          <motion.span animate={{ rotate: openQuestions.has(item.q) ? 180 : 0 }} transition={{ duration: 0.3 }} className="text-gray-500 flex-shrink-0">
                             <ChevronDown className="w-3 h-3" />
                           </motion.span>
                         </button>
@@ -299,19 +325,18 @@ export default function FAQ() {
             ))}
           </div>
 
-          {/* Still have questions */}
           <div className="text-center py-12 mt-8 border-t border-gray-800">
             <MessageCircle className="w-10 h-10 text-amber-400 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-white mb-2">Still have questions?</h3>
             <p className="text-sm text-gray-400 mb-6 max-w-md mx-auto">
-              Can&apos;t find the answer you&apos;re looking for? We&apos;re here to help. Reach out and we&apos;ll get back to you as soon as possible.
+              Can&apos;t find what you&apos;re looking for? Reach out and we&apos;ll respond within 24-48 hours.
             </p>
             <div className="flex items-center justify-center gap-3">
               <Link href="/contact" className="px-6 py-3 bg-white text-black rounded-xl text-sm font-bold hover:bg-gray-200 transition-colors">
                 Contact Us
               </Link>
               <Link href="/about" className="px-6 py-3 bg-gray-900 border border-gray-800 text-gray-400 rounded-xl text-sm font-medium hover:text-white hover:border-gray-700 transition-colors">
-                About Us
+                About Mesnaldo
               </Link>
             </div>
           </div>
