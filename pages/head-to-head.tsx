@@ -261,7 +261,518 @@ title="Messi vs Ronaldo Head to Head | Complete H2H Stats & Results"
               </div>
             )}
           </section>
+{/* =========================================================
+    SEO CONTENT SECTION - HEAD TO HEAD PAGE
+========================================================= */}
 
+<section className="mt-20 pt-14 border-t border-gray-800/50">
+  <div className="max-w-4xl mx-auto">
+
+    <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
+      Messi vs Ronaldo Head to Head: Complete Direct Match Comparison
+    </h2>
+
+    <div className="space-y-7 text-sm text-gray-400 leading-8">
+
+      <p>
+        The <strong className="text-white">Messi vs Ronaldo head-to-head</strong>{" "}
+        comparison focuses only on matches in which Lionel Messi and Cristiano
+        Ronaldo directly faced each other. Instead of comparing their entire
+        careers, this page looks at the games where the two football legends
+        were on opposite sides of the same match.
+      </p>
+
+      <p>
+        These meetings include some of the most memorable matches of their
+        careers, particularly during the Barcelona and Real Madrid rivalry,
+        as well as encounters in European and international football.
+      </p>
+
+      <p>
+        The comparison below uses the direct encounters currently available
+        in the Mesnaldo match database and measures wins, draws, goals,
+        assists and individual contributions from each player.
+      </p>
+
+
+      {/* TOTAL MEETINGS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        How Many Times Have Messi and Ronaldo Played Against Each Other?
+      </h3>
+
+      <p>
+        In the current dataset, Messi and Ronaldo have faced each other{" "}
+        <strong className="text-white">{stats.total}</strong>{" "}
+        times in direct competitive encounters.
+      </p>
+
+      <p>
+        These matches span different competitions and periods of their
+        careers. The majority came during the years when Messi represented
+        Barcelona and Ronaldo played for Real Madrid, when El Clásico became
+        one of the defining fixtures of their rivalry.
+      </p>
+
+
+      {/* WINS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Head-to-Head Wins
+      </h3>
+
+      <p>
+        Lionel Messi&apos;s teams have recorded{" "}
+        <strong className="text-blue-400">{stats.messiWins}</strong>{" "}
+        wins in the direct encounters currently shown on this page, while
+        Cristiano Ronaldo&apos;s teams have recorded{" "}
+        <strong className="text-red-400">{stats.ronaldoWins}</strong>.
+      </p>
+
+      <p>
+        The remaining{" "}
+        <strong className="text-amber-400">{stats.draws}</strong>{" "}
+        matches ended in draws.
+      </p>
+
+      {stats.messiWins > stats.ronaldoWins ? (
+        <p>
+          Based on the current match data, Messi holds the advantage in
+          head-to-head team victories by{" "}
+          <strong className="text-white">
+            {stats.messiWins - stats.ronaldoWins}
+          </strong>{" "}
+          wins.
+        </p>
+      ) : stats.ronaldoWins > stats.messiWins ? (
+        <p>
+          Based on the current match data, Ronaldo holds the advantage in
+          head-to-head team victories by{" "}
+          <strong className="text-white">
+            {stats.ronaldoWins - stats.messiWins}
+          </strong>{" "}
+          wins.
+        </p>
+      ) : (
+        <p>
+          Messi and Ronaldo are currently level in direct-match team wins
+          according to this dataset.
+        </p>
+      )}
+
+
+      {/* GOALS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Goals Against Each Other
+      </h3>
+
+      <p>
+        Messi has scored{" "}
+        <strong className="text-blue-400">{stats.messiGoals}</strong>{" "}
+        goals in the direct encounters included here, while Ronaldo has scored{" "}
+        <strong className="text-red-400">{stats.ronaldoGoals}</strong>.
+      </p>
+
+      <p>
+        Head-to-head goals are especially interesting because they remove
+        many of the differences created by playing in separate leagues or
+        competitions. In these matches, both players were competing in the
+        same fixture and under the same match conditions.
+      </p>
+
+      {stats.messiGoals > stats.ronaldoGoals ? (
+        <p>
+          Messi currently leads the direct scoring comparison by{" "}
+          <strong className="text-white">
+            {stats.messiGoals - stats.ronaldoGoals}
+          </strong>{" "}
+          goals.
+        </p>
+      ) : stats.ronaldoGoals > stats.messiGoals ? (
+        <p>
+          Ronaldo currently leads the direct scoring comparison by{" "}
+          <strong className="text-white">
+            {stats.ronaldoGoals - stats.messiGoals}
+          </strong>{" "}
+          goals.
+        </p>
+      ) : (
+        <p>
+          The two players are currently level for goals in their direct
+          meetings.
+        </p>
+      )}
+
+
+      {/* ASSISTS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Assists in Head-to-Head Matches
+      </h3>
+
+      <p>
+        Lionel Messi has registered{" "}
+        <strong className="text-blue-400">{stats.messiAssists}</strong>{" "}
+        assists in these direct meetings, while Cristiano Ronaldo has recorded{" "}
+        <strong className="text-red-400">{stats.ronaldoAssists}</strong>.
+      </p>
+
+      <p>
+        Assist totals provide additional context beyond goals because they
+        capture chances created for teammates. This is useful when comparing
+        the overall attacking contribution of Messi and Ronaldo in matches
+        against each other.
+      </p>
+
+
+      {/* GOAL CONTRIBUTIONS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Head-to-Head Goal Contributions
+      </h3>
+
+      <p>
+        Combining goals and assists, Messi has{" "}
+        <strong className="text-blue-400">
+          {stats.messiGoals + stats.messiAssists}
+        </strong>{" "}
+        recorded goal contributions in the direct encounters shown here,
+        while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {stats.ronaldoGoals + stats.ronaldoAssists}
+        </strong>.
+      </p>
+
+      <p>
+        Goal contributions give a broader measure of attacking influence,
+        although they still do not capture every part of a player&apos;s
+        performance, such as chance creation, dribbling, pressing or
+        involvement earlier in an attacking move.
+      </p>
+
+
+      {/* EL CLASICO */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo in El Clásico
+      </h3>
+
+      <p>
+        The Barcelona vs Real Madrid rivalry formed the most famous chapter of
+        the Messi-Ronaldo head-to-head story. During Ronaldo&apos;s time at
+        Real Madrid and Messi&apos;s years at Barcelona, the two regularly
+        met in one of world football&apos;s biggest fixtures.
+      </p>
+
+      <p>
+        El Clásico meetings could take place in domestic league competition,
+        domestic cups and other competitions, meaning the rivalry was not
+        limited to one tournament.
+      </p>
+
+      <p>
+        The competition filter above allows visitors to isolate specific
+        competitions from the complete head-to-head dataset and compare the
+        resulting wins, goals, assists and match results.
+      </p>
+
+
+      {/* CHAMPIONS LEAGUE */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Champions League Head to Head
+      </h3>
+
+      <p>
+        Messi and Ronaldo also faced each other in UEFA Champions League
+        football. These meetings are especially significant because the
+        Champions League represented the highest level of European club
+        competition during much of their peak rivalry.
+      </p>
+
+      <p>
+        Their European encounters came in high-pressure knockout situations
+        where qualification depended on performances across one or two legs.
+        The competition filter can be used to view only Champions League
+        meetings when they are included in the database.
+      </p>
+
+
+      {/* INTERNATIONAL */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo International Head-to-Head Matches
+      </h3>
+
+      <p>
+        Their rivalry was not limited to club football. Messi representing
+        Argentina and Ronaldo representing Portugal also created the
+        possibility of direct international meetings.
+      </p>
+
+      <p>
+        International encounters provide a different comparison because both
+        players operate with different teammates, tactical systems and
+        national-team environments from those they experienced at club level.
+      </p>
+
+
+      {/* MATCH BY MATCH */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Match-by-Match Results
+      </h3>
+
+      <p>
+        The match list on this page provides more detail than an overall
+        scoreboard. Each encounter includes the date, competition, score,
+        teams, Messi&apos;s goals and assists, Ronaldo&apos;s goals and assists,
+        venue and competition round when that information is available.
+      </p>
+
+      <p>
+        Looking at individual matches helps explain how the overall numbers
+        were produced and allows users to examine particular periods of the
+        rivalry rather than relying only on career totals.
+      </p>
+
+
+      {/* COMPETITION FILTER */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Head-to-Head Record by Competition
+      </h3>
+
+      <p>
+        Messi and Ronaldo did not meet under the same circumstances every
+        time. Some encounters came in league matches, while others occurred
+        in cup or European competition.
+      </p>
+
+      <p>
+        Selecting a competition above recalculates the comparison using only
+        matches from that competition. The number of meetings, wins, draws,
+        goals and assists therefore changes dynamically with the selected
+        filter.
+      </p>
+
+
+      {/* HEAD TO HEAD CONTEXT */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        What Does the Head-to-Head Record Actually Tell Us?
+      </h3>
+
+      <p>
+        Head-to-head statistics are useful because they compare Messi and
+        Ronaldo within the same matches. However, team results should not be
+        treated as purely individual statistics.
+      </p>
+
+      <p>
+        A win or defeat depends on the full team, including teammates,
+        tactics, substitutions and defensive performance. Messi and Ronaldo
+        could both perform well individually even when their team did not win.
+      </p>
+
+      <p>
+        For that reason, this page separates team results from individual
+        goals and assists.
+      </p>
+
+
+      {/* TEAM WINS VS PLAYER PERFORMANCE */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Team Wins vs Individual Performance
+      </h3>
+
+      <p>
+        Head-to-head wins measure which player&apos;s team won more often, while
+        goals and assists measure more direct individual attacking
+        contributions.
+      </p>
+
+      <p>
+        Neither should automatically replace the other. A player may score in
+        a defeat, fail to score in a victory, or make an important contribution
+        that is not reflected by goals and assists.
+      </p>
+
+      <p>
+        The most useful approach is therefore to examine the match result and
+        individual statistics together.
+      </p>
+
+
+      {/* RIVALRY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Why the Messi vs Ronaldo Head-to-Head Rivalry Matters
+      </h3>
+
+      <p>
+        Messi and Ronaldo spent many of their peak years competing at the same
+        time, and for a major part of that period they played for Barcelona
+        and Real Madrid. That made their rivalry unusual because two of
+        football&apos;s greatest players regularly met in direct competition.
+      </p>
+
+      <p>
+        Their encounters became part of a wider rivalry involving domestic
+        titles, Champions League success, individual awards and scoring
+        records. Head-to-head matches therefore represent only one part of the
+        overall Messi vs Ronaldo comparison, but they remain one of the most
+        interesting parts of it.
+      </p>
+
+
+      {/* METHODOLOGY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        How Mesnaldo Identifies Messi vs Ronaldo Direct Meetings
+      </h3>
+
+      <p>
+        Mesnaldo identifies direct encounters by matching games from the Messi
+        and Ronaldo match datasets where the match date is the same and each
+        player&apos;s team is listed as the opponent of the other player&apos;s
+        team.
+      </p>
+
+      <p>
+        Once a direct match is identified, the page uses Messi&apos;s match
+        record to display the score, competition, round and venue while
+        combining the goals and assists recorded for both players.
+      </p>
+
+      <p>
+        This approach keeps the comparison tied to the available match data.
+        If historical source data is corrected or expanded, the head-to-head
+        totals can also change.
+      </p>
+
+
+      {/* FAQ */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Head-to-Head FAQ
+      </h2>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        How many times have Messi and Ronaldo played against each other?
+      </h3>
+
+      <p>
+        The current Mesnaldo database contains{" "}
+        <strong className="text-white">{stats.total}</strong>{" "}
+        direct encounters between Lionel Messi and Cristiano Ronaldo.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more head-to-head wins, Messi or Ronaldo?
+      </h3>
+
+      <p>
+        Messi&apos;s teams have{" "}
+        <strong className="text-blue-400">{stats.messiWins}</strong>{" "}
+        wins, while Ronaldo&apos;s teams have{" "}
+        <strong className="text-red-400">{stats.ronaldoWins}</strong>{" "}
+        wins in the matches currently included on this page.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        How many draws are there between Messi and Ronaldo?
+      </h3>
+
+      <p>
+        There are currently{" "}
+        <strong className="text-amber-400">{stats.draws}</strong>{" "}
+        draws in the direct-match dataset.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who scored more goals against each other?
+      </h3>
+
+      <p>
+        Messi has{" "}
+        <strong className="text-blue-400">{stats.messiGoals}</strong>{" "}
+        goals in the direct meetings shown here, while Ronaldo has{" "}
+        <strong className="text-red-400">{stats.ronaldoGoals}</strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more assists in Messi vs Ronaldo matches?
+      </h3>
+
+      <p>
+        Messi has recorded{" "}
+        <strong className="text-blue-400">{stats.messiAssists}</strong>{" "}
+        assists, compared with Ronaldo&apos;s{" "}
+        <strong className="text-red-400">{stats.ronaldoAssists}</strong>{" "}
+        in the current direct-match dataset.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Did Messi and Ronaldo play against each other in El Clásico?
+      </h3>
+
+      <p>
+        Yes. A large part of their direct rivalry came when Messi played for
+        Barcelona and Ronaldo represented Real Madrid. Those Barcelona vs
+        Real Madrid fixtures became some of the most famous meetings between
+        the two players.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Can I compare their head-to-head record by competition?
+      </h3>
+
+      <p>
+        Yes. The competition filter on this page allows the available direct
+        encounters to be separated by competition. The displayed wins, draws,
+        goals and assists update based on the selected competition.
+      </p>
+
+
+      {/* CONCLUSION */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Direct Encounters
+      </h2>
+
+      <p>
+        The Messi vs Ronaldo head-to-head record provides a unique way to
+        compare the two players because it focuses on matches where they
+        actually faced each other rather than separate career statistics.
+      </p>
+
+      <p>
+        Their direct meetings include team wins, draws, goals, assists and
+        some of the most memorable fixtures of the Barcelona-Real Madrid era.
+        Each statistic tells a different part of the story, so the strongest
+        comparison considers both the match results and the players&apos;
+        individual contributions.
+      </p>
+
+      <p>
+        Mesnaldo presents these encounters match by match and allows them to be
+        filtered by competition, making it easier to explore how the rivalry
+        developed across different stages and tournaments.
+      </p>
+
+    </div>
+  </div>
+</section>
         </div>
       </div>
     </Layout>

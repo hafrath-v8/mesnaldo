@@ -227,7 +227,532 @@ export default function Records({ records }: RecordsPageProps) {
           <div className="text-center pt-8 border-t border-gray-800">
             <p className="text-[10px] text-gray-600">Records updated regularly.</p>
           </div>
+{/* =========================================================
+    SEO CONTENT SECTION - RECORDS PAGE
+========================================================= */}
 
+<section className="mt-20 pt-14 border-t border-gray-800/50">
+  <div className="max-w-4xl mx-auto">
+
+    <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
+      Messi vs Ronaldo Records: Complete Career Record Comparison
+    </h2>
+
+    <div className="space-y-7 text-sm text-gray-400 leading-8">
+
+      <p>
+        The <strong className="text-white">Messi vs Ronaldo records comparison</strong>{" "}
+        brings together the major milestones and records associated with
+        Lionel Messi and Cristiano Ronaldo across club football,
+        international football and individual achievement.
+      </p>
+
+      <p>
+        Instead of comparing only career goals or trophies, this page focuses
+        on specific records and milestones. The records currently stored in
+        the Mesnaldo database are organised by category and record type so
+        visitors can explore the areas in which each player has established
+        notable achievements.
+      </p>
+
+      <p>
+        The current database contains{" "}
+        <strong className="text-white">{records.length}</strong>{" "}
+        active record entries, including{" "}
+        <strong className="text-blue-400">{messiCount}</strong>{" "}
+        associated with Messi and{" "}
+        <strong className="text-red-400">{ronaldoCount}</strong>{" "}
+        associated with Ronaldo.
+      </p>
+
+
+      {/* RECORD TOTALS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Record Totals
+      </h3>
+
+      <p>
+        Messi currently has{" "}
+        <strong className="text-blue-400">{messiCount}</strong>{" "}
+        record entries in the Mesnaldo records database, while Ronaldo has{" "}
+        <strong className="text-red-400">{ronaldoCount}</strong>.
+      </p>
+
+      <p>
+        These totals should not automatically be treated as a simple measure
+        of which player had the better career. Different records can vary
+        greatly in importance, difficulty and historical significance.
+      </p>
+
+      <p>
+        A major world record and a smaller competition-specific milestone are
+        both individual record entries, even though their significance may be
+        very different. For that reason, the category and description of each
+        record are more informative than the raw total alone.
+      </p>
+
+
+      {/* WORLD RECORDS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo World Records
+      </h3>
+
+      <p>
+        Both Messi and Ronaldo have set records at the highest levels of
+        football. Their careers include milestones connected with goals,
+        appearances, major tournaments, individual awards, club competitions
+        and international football.
+      </p>
+
+      <p>
+        World-level records are particularly important because they compare a
+        player against a much wider historical field rather than only players
+        from one club, league or country.
+      </p>
+
+      <p>
+        Use the record-type filters above to isolate the types of achievements
+        available in the current database.
+      </p>
+
+
+      {/* EUROPEAN RECORDS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        European Records
+      </h3>
+
+      <p>
+        A large part of the Messi-Ronaldo rivalry developed in European
+        football. Both players spent many of their peak seasons competing in
+        major UEFA competitions and top European domestic leagues.
+      </p>
+
+      <p>
+        Their European records therefore form an important part of the wider
+        comparison. These records can relate to goals, appearances,
+        tournament performances, scoring consistency or other achievements
+        reached during their European careers.
+      </p>
+
+
+      {/* CLUB RECORDS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Club Records
+      </h3>
+
+      <p>
+        Club records measure achievements reached while representing teams
+        such as Barcelona, Real Madrid, Manchester United, Juventus,
+        Paris Saint-Germain, Inter Miami, Sporting CP and Al Nassr.
+      </p>
+
+      <p>
+        Club-specific records are useful because they show how dominant a
+        player was within the history of a particular team. A record may
+        involve goals, appearances, assists, tournament performance or other
+        milestones.
+      </p>
+
+      <p>
+        Messi&apos;s long Barcelona career produced many records connected with
+        one club, while Ronaldo&apos;s career spread major achievements across
+        several clubs and leagues.
+      </p>
+
+
+      {/* INTERNATIONAL RECORDS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo International Records
+      </h3>
+
+      <p>
+        International football represents another major area of comparison.
+        Messi&apos;s records with Argentina and Ronaldo&apos;s records with Portugal
+        reflect careers played across international tournaments, qualifiers,
+        friendlies and other national-team competitions.
+      </p>
+
+      <p>
+        International records can include scoring milestones, appearances,
+        tournament achievements and other national-team accomplishments.
+      </p>
+
+      <p>
+        These records should be considered separately from club statistics
+        because international football has a different schedule, competitive
+        structure and number of matches.
+      </p>
+
+
+      {/* CHAMPIONS LEAGUE */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Champions League Records
+      </h3>
+
+      <p>
+        The UEFA Champions League was one of the most important competitions
+        during the peak years of the Messi-Ronaldo rivalry.
+      </p>
+
+      <p>
+        Both players produced major Champions League milestones through
+        goals, appearances, knockout performances and long-term consistency.
+        Records from this competition are especially significant because they
+        were achieved against elite clubs from across Europe.
+      </p>
+
+      <p>
+        Where Champions League records are present in the database, they can
+        be explored through the available categories and filters above.
+      </p>
+
+
+      {/* GOAL RECORDS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Goalscoring Records
+      </h3>
+
+      <p>
+        Goalscoring records form a major part of both careers. Messi and
+        Ronaldo reached extraordinary scoring milestones across domestic
+        leagues, European competitions, international football and complete
+        career totals.
+      </p>
+
+      <p>
+        Some records measure total goals, while others relate to scoring in a
+        particular competition, season, stage or sequence of matches.
+      </p>
+
+      <p>
+        These distinctions are important because two records involving goals
+        may measure very different achievements.
+      </p>
+
+
+      {/* AWARD RECORDS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Individual Award Records
+      </h3>
+
+      <p>
+        Messi and Ronaldo also hold records connected with individual
+        recognition. These can include repeated wins, nominations or other
+        milestones associated with major football awards.
+      </p>
+
+      <p>
+        Individual award records are different from team trophies because
+        they primarily recognise the performance or career of one player
+        rather than the success of an entire club or national team.
+      </p>
+
+
+      {/* LONGEVITY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Longevity and Career Milestone Records
+      </h3>
+
+      <p>
+        One of the defining features of both Messi and Ronaldo is longevity.
+        Their careers remained at elite level across many seasons, allowing
+        both players to reach milestones that require sustained performance
+        over a long period.
+      </p>
+
+      <p>
+        Appearance totals, long-term scoring records, repeated tournament
+        participation and achievements across different stages of their
+        careers all contribute to this aspect of the rivalry.
+      </p>
+
+
+      {/* DIFFERENT TYPES */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Different Types of Messi and Ronaldo Records
+      </h3>
+
+      <p>
+        Football records do not all measure the same thing. Some are based on
+        career totals, while others apply only to one competition, league,
+        club, national team or period of time.
+      </p>
+
+      <p>
+        The record-type filters on this page make it possible to separate the
+        available records rather than treating every achievement as one large
+        undifferentiated list.
+      </p>
+
+
+      {/* CATEGORY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Records by Category
+      </h3>
+
+      <p>
+        The records are grouped into categories so related achievements can
+        be viewed together. This helps visitors explore specific parts of the
+        Messi-Ronaldo debate instead of manually searching through the full
+        record collection.
+      </p>
+
+      <p>
+        Category grouping is particularly useful when several records concern
+        the same competition, type of achievement or stage of a player&apos;s
+        career.
+      </p>
+
+
+      {/* SIDE BY SIDE */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Records Side by Side
+      </h3>
+
+      <p>
+        The Side by Side view provides a direct category-based comparison.
+        Messi&apos;s records and Ronaldo&apos;s records are displayed next to each
+        other within the same category.
+      </p>
+
+      <p>
+        This makes it easier to identify where one player has more recorded
+        achievements in a particular area without moving between separate
+        pages.
+      </p>
+
+
+      {/* SEARCH */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Search Messi and Ronaldo Records
+      </h3>
+
+      <p>
+        The search feature allows specific records to be found using words
+        from their titles or descriptions.
+      </p>
+
+      <p>
+        Visitors can combine search with the Messi, Ronaldo and record-type
+        filters to narrow the database to the records most relevant to their
+        comparison.
+      </p>
+
+
+      {/* RECORD COUNT CONTEXT */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Does Having More Records Make One Player Better?
+      </h3>
+
+      <p>
+        Not necessarily. Simply counting record entries does not measure the
+        importance of each record.
+      </p>
+
+      <p>
+        One historically significant career record may carry more weight than
+        several smaller milestones. Different records also measure different
+        skills, competitions and periods of a player&apos;s career.
+      </p>
+
+      <p>
+        For that reason, Mesnaldo shows the title, description and value of
+        each record rather than presenting the total number as a definitive
+        answer to the Messi vs Ronaldo debate.
+      </p>
+
+
+      {/* RECORDS VS TROPHIES */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Records vs Trophies
+      </h3>
+
+      <p>
+        Records and trophies measure different aspects of football success.
+        A trophy is won by a team or awarded to an individual, while a record
+        describes a statistical or historical achievement.
+      </p>
+
+      <p>
+        A player can therefore hold a record without receiving a trophy for
+        it. Likewise, winning a trophy does not automatically create a record.
+      </p>
+
+      <p>
+        These categories should remain separate when comparing the careers of
+        Messi and Ronaldo.
+      </p>
+
+
+      {/* RECORDS VS AWARDS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Records vs Individual Awards
+      </h3>
+
+      <p>
+        Individual awards recognise player performance through a voting,
+        judging or statistical process. Records instead identify a milestone
+        or benchmark achieved in football history.
+      </p>
+
+      <p>
+        Some individual awards can themselves become records when a player
+        wins them more times than anyone else. However, the award and the
+        resulting record are still conceptually different.
+      </p>
+
+
+      {/* DATABASE METHOD */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        How the Mesnaldo Records Database Works
+      </h3>
+
+      <p>
+        This page loads active records from the Mesnaldo records database.
+        Each entry contains a player, record type, category, title,
+        description and record value.
+      </p>
+
+      <p>
+        The records can then be filtered by player or type, searched using
+        their titles and descriptions, and grouped by category for easier
+        comparison.
+      </p>
+
+      <p>
+        Because the page is built from database entries, records can be
+        corrected, expanded or deactivated when the underlying information
+        needs to be updated.
+      </p>
+
+
+      {/* FAQ */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Records FAQ
+      </h2>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        How many Messi and Ronaldo records are listed?
+      </h3>
+
+      <p>
+        The current database contains{" "}
+        <strong className="text-white">{records.length}</strong>{" "}
+        active record entries in total.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        How many Messi records are listed?
+      </h3>
+
+      <p>
+        There are currently{" "}
+        <strong className="text-blue-400">{messiCount}</strong>{" "}
+        record entries associated with Lionel Messi.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        How many Ronaldo records are listed?
+      </h3>
+
+      <p>
+        There are currently{" "}
+        <strong className="text-red-400">{ronaldoCount}</strong>{" "}
+        record entries associated with Cristiano Ronaldo.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Can I compare Messi and Ronaldo records side by side?
+      </h3>
+
+      <p>
+        Yes. Select the Side by Side view to display Messi and Ronaldo
+        records next to each other within the same record categories.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Can I search for a specific record?
+      </h3>
+
+      <p>
+        Yes. The search box checks the title and description of the active
+        records and displays matching results.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Can the records be filtered?
+      </h3>
+
+      <p>
+        Yes. Records can be filtered by Messi, Ronaldo or all players, and
+        they can also be filtered using the record types stored in the
+        database.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Does having more listed records prove who is better?
+      </h3>
+
+      <p>
+        No. The total number of record entries does not measure the
+        significance of each achievement. The type, competition, historical
+        context and difficulty of each record should also be considered.
+      </p>
+
+
+      {/* CONCLUSION */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Records Comparison
+      </h2>
+
+      <p>
+        The record books provide another perspective on the careers of Lionel
+        Messi and Cristiano Ronaldo. Both players have reached extraordinary
+        milestones across club football, international football and major
+        competitions.
+      </p>
+
+      <p>
+        Rather than relying only on the number of records, the strongest
+        comparison looks at what each achievement represents and the context
+        in which it was reached.
+      </p>
+
+      <p>
+        Mesnaldo organises those achievements by player, type and category so
+        visitors can explore the Messi vs Ronaldo record debate in greater
+        detail.
+      </p>
+
+    </div>
+  </div>
+</section>
         </div>
       </div>
     </Layout>

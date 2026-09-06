@@ -33,7 +33,28 @@ const LEAGUE = new Set(["La Liga","MLS","Ligue 1","Premier League","Saudi Pro Le
 const UCL = new Set(["Champs League","Champions League"])
 const WC = new Set(["World Cup"])
 
+
 const CARD_BASE = "bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-2xl transition-all duration-300 hover:border-gray-600/70 hover:bg-gray-900/90"
+
+function safeNum(value: unknown): number {
+  return typeof value === "number" && Number.isFinite(value) ? value : 0
+}
+
+function getAge(birthDate: string): number {
+  const today = new Date()
+  const birth = new Date(`${birthDate}T00:00:00`)
+
+  let age = today.getFullYear() - birth.getFullYear()
+
+  const birthdayPassed =
+    today.getMonth() > birth.getMonth() ||
+    (today.getMonth() === birth.getMonth() &&
+      today.getDate() >= birth.getDate())
+
+  if (!birthdayPassed) age--
+
+  return age
+}
 
 function calcFull(rows: Match[]): ScopeStats {
   return { goals: rows.reduce((s,r)=>s+(r.goals||0),0), assists: rows.reduce((s,r)=>s+(r.assists||0),0), apps: rows.length }
@@ -198,7 +219,10 @@ async function fetchAllMatches(playerId: number) {
 export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecent, recentBlogs }: HomeProps) {
   if (!messi || !ronaldo) {
     return (
-<Layout title="Messi vs Ronaldo: Who is Better? Complete Stats & Records Comparison">        <div className="flex items-center justify-center min-h-screen bg-black">
+<Layout
+        title="Messi vs Ronaldo: Goals, Assists, Trophies, Records & Career Stats"
+        description="Compare Lionel Messi vs Cristiano Ronaldo career stats including goals, assists, appearances, trophies, Champions League, World Cup, international records, recent matches and more."
+      >        <div className="flex items-center justify-center min-h-screen bg-black">
           <div className="w-10 h-10 rounded-full border-2 border-white/10 border-t-blue-500 border-r-red-500 animate-spin" />
         </div> 
       </Layout>
@@ -206,20 +230,20 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
   }
 
   const scopeCards = scopes.slice(0, 8)
-  const messiAge = new Date().getFullYear() - 1987
-  const ronaldoAge = new Date().getFullYear() - 1985
+  const messiAge = getAge("1987-06-24")
+  const ronaldoAge = getAge("1985-02-05")
 
   const radarRaw = [
-    { stat: "Goals", ronaldo: ronaldo.total_goals, messi: messi.total_goals },
-    { stat: "Assists", ronaldo: ronaldo.total_assists, messi: messi.total_assists },
-    { stat: "Games", ronaldo: ronaldo.total_games, messi: messi.total_games },
-    { stat: "Wins", ronaldo: ronaldo.total_wins, messi: messi.total_wins },
+    { stat: "Goals", ronaldo: safeNum(ronaldo.total_goals), messi: safeNum(messi.total_goals) },
+    { stat: "Assists", ronaldo: safeNum(ronaldo.total_assists), messi: safeNum(messi.total_assists) },
+    { stat: "Games", ronaldo: safeNum(ronaldo.total_games), messi: safeNum(messi.total_games) },
+    { stat: "Wins", ronaldo: safeNum(ronaldo.total_wins), messi: safeNum(messi.total_wins) },
     { stat: "Trophies", ronaldo: TROPHIES.ronaldo.total, messi: TROPHIES.messi.total },
-    { stat: "Left Foot", ronaldo: ronaldo.left_foot_goals, messi: messi.left_foot_goals },
-    { stat: "Right Foot", ronaldo: ronaldo.right_foot_goals, messi: messi.right_foot_goals },
-    { stat: "Headers", ronaldo: ronaldo.header_goals, messi: messi.header_goals },
-    { stat: "Free Kicks", ronaldo: ronaldo.free_kick_goals, messi: messi.free_kick_goals },
-    { stat: "Penalties", ronaldo: ronaldo.penalties_scored, messi: messi.penalties_scored },
+    { stat: "Left Foot", ronaldo: safeNum(ronaldo.left_foot_goals), messi: safeNum(messi.left_foot_goals) },
+    { stat: "Right Foot", ronaldo: safeNum(ronaldo.right_foot_goals), messi: safeNum(messi.right_foot_goals) },
+    { stat: "Headers", ronaldo: safeNum(ronaldo.header_goals), messi: safeNum(messi.header_goals) },
+    { stat: "Free Kicks", ronaldo: safeNum(ronaldo.free_kick_goals), messi: safeNum(messi.free_kick_goals) },
+    { stat: "Penalties", ronaldo: safeNum(ronaldo.penalties_scored), messi: safeNum(messi.penalties_scored) },
   ]
   const radarData = radarRaw.map(r => { const mx = Math.max(r.ronaldo, r.messi) || 1; return { ...r, ronaldo: +((r.ronaldo / mx) * 100).toFixed(1), messi: +((r.messi / mx) * 100).toFixed(1) } })
   const ronaldoAvg = (radarData.reduce((s, r) => s + r.ronaldo, 0) / radarData.length).toFixed(1)
@@ -242,7 +266,10 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
   ]
 
   return (
-<Layout title="Messi vs Ronaldo: Who is Better? Complete Stats Comparison">    
+<Layout
+      title="Messi vs Ronaldo: Goals, Assists, Trophies, Records & Career Stats"
+      description="Compare Lionel Messi vs Cristiano Ronaldo career stats including goals, assists, appearances, trophies, Champions League, World Cup, international records, recent matches and more."
+    >    
 <h1 className="sr-only">Messi vs Ronaldo: Who is Better? Complete Stats, Records & Career Comparison</h1>
       <section className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-900/95 to-black border-b border-gray-800/50 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -427,138 +454,1114 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
               </div>
             </section>
           )}
-{/* SEO Content Section */}
+{/* =========================================================
+    HOMEPAGE LONG-FORM SEO CONTENT
+========================================================= */}
+
 <div className="mt-20 pt-14 border-t border-gray-800/50">
   <div className="max-w-4xl mx-auto">
 
-    <h2 className="text-2xl sm:text-3xl font-black text-white mb-6 text-center">
-      Messi vs Ronaldo: The Ultimate Football Comparison
+    <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
+      Messi vs Ronaldo: Complete Career Stats, Goals, Assists, Trophies & Records
     </h2>
 
-    <div className="space-y-6 text-sm text-gray-400 leading-8">
+    <div className="space-y-7 text-sm text-gray-400 leading-8">
+
+      {/* =====================================================
+          INTRODUCTION
+      ====================================================== */}
 
       <p>
-        <strong className="text-white">Messi vs Ronaldo</strong> is the greatest individual rivalry in football history.
-        For more than 15 years, <strong className="text-white">Lionel Messi</strong> and
-        <strong className="text-white"> Cristiano Ronaldo</strong> have dominated world football,
-        breaking records, winning major trophies, and inspiring millions of fans across the globe.
-        Whether you're searching for <strong className="text-white">Messi vs Ronaldo stats</strong>,
-        goals, assists, trophies, Ballon d'Or awards, or head-to-head records, Mesnaldo brings
-        everything together in one complete comparison platform.
+        <strong className="text-white">Lionel Messi vs Cristiano Ronaldo</strong>{" "}
+        is a football comparison that has lasted across generations,
+        competitions, clubs and countries. For well over a decade, the two
+        players competed at the highest level while collecting extraordinary
+        numbers in goals, assists, appearances, trophies and individual
+        awards. Their rivalry became especially intense during their years in
+        Spanish football, but the debate stretches far beyond Barcelona and
+        Real Madrid.
       </p>
 
       <p>
-        Our mission is simple: provide the most accurate and comprehensive
-        <strong className="text-white"> Messi vs Ronaldo comparison</strong> available online.
-        Every statistic is carefully verified, regularly updated, and presented in an easy-to-understand format.
-        Instead of searching multiple websites, football fans can compare every aspect of both legends in one place.
+        Mesnaldo is built around one simple idea: make it easier to compare
+        the careers of{" "}
+        <strong className="text-white">Lionel Messi and Cristiano Ronaldo</strong>{" "}
+        without reducing the debate to a single statistic. Goals are
+        important, but so are assists, efficiency, Champions League
+        performances, international football, World Cup records, trophies,
+        individual awards, penalties, free kicks, headers and many other
+        parts of an attacking player's career.
       </p>
 
-      <h3 className="text-xl font-bold text-white">
-        Compare Every Career Statistic
+      <p>
+        Instead of presenting one isolated number, this page combines several
+        areas of their careers and lets you explore them side by side. The
+        statistics shown throughout the site are connected to the underlying
+        player and match data, allowing the comparison to reflect the values
+        stored in the Mesnaldo database.
+      </p>
+
+
+      {/* =====================================================
+          DYNAMIC CAREER OVERVIEW
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Career Stats
       </h3>
 
       <p>
-        Mesnaldo covers every major category that football fans care about.
-        Compare <strong className="text-white">Messi vs Ronaldo goals</strong>,
-        assists, appearances, goals per game, minutes per goal, penalties,
-        free kicks, hat-tricks, international statistics, Champions League records,
-        league performances, and much more.
+        Career statistics provide the broadest starting point for comparing
+        Messi and Ronaldo. Both players have accumulated enormous totals over
+        exceptionally long careers, but the numbers become more meaningful
+        when goals, assists and appearances are considered together.
       </p>
 
       <p>
-        Beyond statistics, you can also compare
-        <strong className="text-white"> Messi vs Ronaldo trophies</strong>,
-        individual awards, Ballon d'Or victories, Golden Boots,
-        FIFA awards, Guinness World Records, and career milestones.
-        Every comparison is updated to reflect the latest matches and competitions.
+        According to the current career data on Mesnaldo,{" "}
+        <strong className="text-blue-400">Lionel Messi</strong> has{" "}
+        <strong className="text-white">
+          {messi.total_goals.toLocaleString()} goals
+        </strong>{" "}
+        and{" "}
+        <strong className="text-white">
+          {messi.total_assists.toLocaleString()} assists
+        </strong>{" "}
+        across{" "}
+        <strong className="text-white">
+          {messi.total_games.toLocaleString()} appearances
+        </strong>.
+        Cristiano Ronaldo currently has{" "}
+        <strong className="text-white">
+          {ronaldo.total_goals.toLocaleString()} goals
+        </strong>,{" "}
+        <strong className="text-white">
+          {ronaldo.total_assists.toLocaleString()} assists
+        </strong>{" "}
+        and{" "}
+        <strong className="text-white">
+          {ronaldo.total_games.toLocaleString()} appearances
+        </strong>.
       </p>
 
-      <h3 className="text-xl font-bold text-white">
+      <p>
+        These raw totals already demonstrate the extraordinary longevity of
+        both players, but they should not be read as the final answer to the
+        Messi vs Ronaldo debate. One player may lead a cumulative category
+        because of additional appearances, while another may have a stronger
+        goals-per-game or goal-contribution rate. That is why the performance
+        sections above also compare output relative to appearances.
+      </p>
+
+
+      {/* =====================================================
+          GOAL CONTRIBUTIONS
+      ====================================================== */}
+
+      {(() => {
+        const messiGA = messi.total_goals + messi.total_assists
+        const ronaldoGA = ronaldo.total_goals + ronaldo.total_assists
+
+        const messiRate =
+          messi.total_games > 0 ? messiGA / messi.total_games : 0
+        const ronaldoRate =
+          ronaldo.total_games > 0 ? ronaldoGA / ronaldo.total_games : 0
+
+        return (
+          <>
+            <h3 className="text-xl font-bold text-white mt-10">
+              Messi vs Ronaldo Goals and Assists
+            </h3>
+
+            <p>
+              Goals and assists together provide a broader measure of direct
+              attacking contribution. Messi currently has{" "}
+              <strong className="text-blue-400">
+                {messiGA.toLocaleString()}
+              </strong>{" "}
+              combined goals and assists in the career data, while Ronaldo has{" "}
+              <strong className="text-red-400">
+                {ronaldoGA.toLocaleString()}
+              </strong>.
+            </p>
+
+            <p>
+              Relative to appearances, that represents approximately{" "}
+              <strong className="text-blue-400">
+                {messiRate.toFixed(2)}
+              </strong>{" "}
+              goal contributions per match for Messi and{" "}
+              <strong className="text-red-400">
+                {ronaldoRate.toFixed(2)}
+              </strong>{" "}
+              for Ronaldo. Comparing both totals and per-game output gives
+              more context than simply looking at who has accumulated the
+              larger career number.
+            </p>
+          </>
+        )
+      })()}
+
+
+      {/* =====================================================
+          GOALS
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Goals: Who Has Scored More?
+      </h3>
+
+      <p>
+        Goal scoring sits at the centre of the rivalry. Cristiano Ronaldo and
+        Lionel Messi have both produced scoring totals that would represent
+        several elite careers combined. Their goals have come in domestic
+        leagues, continental competitions, domestic cups and international
+        football.
+      </p>
+
+      {(() => {
+        const difference = Math.abs(
+          ronaldo.total_goals - messi.total_goals
+        )
+
+        const leader =
+          messi.total_goals > ronaldo.total_goals
+            ? "Messi"
+            : ronaldo.total_goals > messi.total_goals
+              ? "Ronaldo"
+              : null
+
+        return (
+          <p>
+            The current Mesnaldo career totals show Messi with{" "}
+            <strong className="text-blue-400">
+              {messi.total_goals.toLocaleString()}
+            </strong>{" "}
+            goals and Ronaldo with{" "}
+            <strong className="text-red-400">
+              {ronaldo.total_goals.toLocaleString()}
+            </strong>.
+            {leader
+              ? ` ${leader} currently leads the overall career-goal total by ${difference.toLocaleString()} goals according to the data displayed here.`
+              : " The two players are currently level in the overall career-goal total."}
+          </p>
+        )
+      })()}
+
+      <p>
+        Total goals tell us who has scored more over the full period covered
+        by the database, but scoring efficiency adds another layer. Comparing
+        goals per appearance helps account for different numbers of matches,
+        while separate sections for league, Champions League and
+        international football show where those goals were scored.
+      </p>
+
+
+      {/* =====================================================
+          GOALS PER GAME
+      ====================================================== */}
+
+      {(() => {
+        const mRate =
+          messi.total_games > 0
+            ? messi.total_goals / messi.total_games
+            : 0
+
+        const rRate =
+          ronaldo.total_games > 0
+            ? ronaldo.total_goals / ronaldo.total_games
+            : 0
+
+        return (
+          <>
+            <h3 className="text-xl font-bold text-white mt-10">
+              Messi vs Ronaldo Goals Per Game
+            </h3>
+
+            <p>
+              Goals per appearance is useful because it measures scoring
+              frequency rather than only career volume. Based on the current
+              totals, Messi averages approximately{" "}
+              <strong className="text-blue-400">
+                {mRate.toFixed(3)}
+              </strong>{" "}
+              goals per appearance, while Ronaldo averages approximately{" "}
+              <strong className="text-red-400">
+                {rRate.toFixed(3)}
+              </strong>.
+            </p>
+
+            <p>
+              This does not make total goals irrelevant. Career volume and
+              per-game efficiency answer different questions. One measures
+              how much a player accumulated, while the other describes how
+              frequently he scored during the appearances represented in the
+              data.
+            </p>
+          </>
+        )
+      })()}
+
+
+      {/* =====================================================
+          ASSISTS
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Assists and Playmaking
+      </h3>
+
+      {(() => {
+        const difference = Math.abs(
+          messi.total_assists - ronaldo.total_assists
+        )
+
+        return (
+          <>
+            <p>
+              Goal scoring receives most of the attention, but assists are
+              essential when comparing complete attacking contribution.
+              Messi currently has{" "}
+              <strong className="text-blue-400">
+                {messi.total_assists.toLocaleString()}
+              </strong>{" "}
+              assists in the career database compared with Ronaldo's{" "}
+              <strong className="text-red-400">
+                {ronaldo.total_assists.toLocaleString()}
+              </strong>.
+              {messi.total_assists !== ronaldo.total_assists &&
+                ` The difference between their current totals is ${difference.toLocaleString()} assists.`}
+            </p>
+
+            <p>
+              Assist numbers are particularly important in this comparison
+              because the two players have often occupied different attacking
+              roles. Messi has frequently combined finishing with deeper
+              creative involvement, while Ronaldo's later career became more
+              heavily focused on movement and finishing around the penalty
+              area.
+            </p>
+          </>
+        )
+      })()}
+
+
+      {/* =====================================================
+          COMPETITION BREAKDOWN
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Comparing Messi and Ronaldo Across Different Competitions
+      </h3>
+
+      <p>
+        A career total combines performances from very different environments.
+        Mesnaldo therefore separates the comparison into multiple competition
+        scopes, including all-time career, club football, domestic leagues,
+        UEFA Champions League, international football and the FIFA World Cup.
+        This makes it possible to study where each player's goals and assists
+        were produced rather than treating every competition as identical.
+      </p>
+
+
+      {/* =====================================================
+          DYNAMIC SCOPES
+      ====================================================== */}
+
+      {scopes
+        .filter(
+          s =>
+            ["club", "league", "ucl", "intl", "wc"].includes(s.key) &&
+            (s.messi.apps > 0 || s.ronaldo.apps > 0)
+        )
+        .map(scope => {
+
+          const mGA = scope.messi.goals + scope.messi.assists
+          const rGA = scope.ronaldo.goals + scope.ronaldo.assists
+
+          const mGoalRate =
+            scope.messi.apps > 0
+              ? scope.messi.goals / scope.messi.apps
+              : 0
+
+          const rGoalRate =
+            scope.ronaldo.apps > 0
+              ? scope.ronaldo.goals / scope.ronaldo.apps
+              : 0
+
+          return (
+            <div key={`seo-${scope.key}`} className="space-y-3">
+
+              <h4 className="text-lg font-bold text-white">
+                Messi vs Ronaldo — {scope.label}
+              </h4>
+
+              <p>
+                In{" "}
+                <strong className="text-white">
+                  {scope.label}
+                </strong>,
+                Messi has recorded{" "}
+                <strong className="text-blue-400">
+                  {scope.messi.goals.toLocaleString()} goals
+                </strong>
+
+                {scope.cardType === "full" && (
+                  <>
+                    {" "}and{" "}
+                    <strong className="text-blue-400">
+                      {scope.messi.assists.toLocaleString()} assists
+                    </strong>
+                  </>
+                )}
+
+                {" "}across{" "}
+                <strong className="text-white">
+                  {scope.messi.apps.toLocaleString()} appearances
+                </strong>.
+                Ronaldo has{" "}
+                <strong className="text-red-400">
+                  {scope.ronaldo.goals.toLocaleString()} goals
+                </strong>
+
+                {scope.cardType === "full" && (
+                  <>
+                    {" "}and{" "}
+                    <strong className="text-red-400">
+                      {scope.ronaldo.assists.toLocaleString()} assists
+                    </strong>
+                  </>
+                )}
+
+                {" "}across{" "}
+                <strong className="text-white">
+                  {scope.ronaldo.apps.toLocaleString()} appearances
+                </strong>.
+              </p>
+
+              <p>
+                Their current scoring rates in this scope are approximately{" "}
+                <strong className="text-blue-400">
+                  {mGoalRate.toFixed(3)}
+                </strong>{" "}
+                goals per match for Messi and{" "}
+                <strong className="text-red-400">
+                  {rGoalRate.toFixed(3)}
+                </strong>{" "}
+                for Ronaldo.
+
+                {scope.cardType === "full" &&
+                  ` Their combined goal-and-assist totals in this category are ${mGA.toLocaleString()} for Messi and ${rGA.toLocaleString()} for Ronaldo.`}
+              </p>
+
+            </div>
+          )
+        })}
+
+
+      {/* =====================================================
+          CHAMPIONS LEAGUE
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Champions League Stats
+      </h3>
+
+      <p>
+        The UEFA Champions League is one of the most important chapters of
+        this rivalry. Both players produced historic performances in European
+        competition and were central to teams that regularly reached the
+        latter stages of the tournament. Comparing their Champions League
+        appearances, goals, assists and trophies gives a more focused view
+        than simply using overall career numbers.
+      </p>
+
+      <p>
+        Ronaldo has won{" "}
+        <strong className="text-red-400">
+          {TROPHIES.ronaldo.ucl}
+        </strong>{" "}
+        Champions League titles according to the trophy data used on this
+        page, while Messi has won{" "}
+        <strong className="text-blue-400">
+          {TROPHIES.messi.ucl}
+        </strong>.
+        Their European careers form one of the strongest arguments for why
+        both belong among football's most successful players.
+      </p>
+
+
+      {/* =====================================================
+          INTERNATIONAL
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo International Stats
+      </h3>
+
+      <p>
+        International football adds another major dimension to the debate.
+        Messi represents Argentina while Ronaldo represents Portugal, and both
+        have spent many years as central figures for their national teams.
+        International statistics include World Cup matches, continental
+        tournaments, qualifiers, Nations League fixtures and other official
+        national-team competitions represented by the database.
+      </p>
+
+      <p>
+        Club statistics can be influenced by transfer decisions and league
+        environments, while international football places players into a
+        different tactical setting with fewer matches and less preparation
+        time. That makes national-team performance an important independent
+        part of the comparison.
+      </p>
+
+
+      {/* =====================================================
+          WORLD CUP
+      ====================================================== */}
+
+      {(() => {
+        const wc = scopes.find(s => s.key === "wc")
+
+        if (!wc) return null
+
+        return (
+          <>
+            <h3 className="text-xl font-bold text-white mt-10">
+              Messi vs Ronaldo World Cup Stats
+            </h3>
+
+            <p>
+              The FIFA World Cup carries unique importance because players
+              receive only a limited number of opportunities to participate
+              during their careers. In the World Cup matches included in the
+              Mesnaldo database, Messi has{" "}
+              <strong className="text-blue-400">
+                {wc.messi.goals.toLocaleString()}
+              </strong>{" "}
+              goals in{" "}
+              <strong className="text-white">
+                {wc.messi.apps.toLocaleString()}
+              </strong>{" "}
+              appearances, while Ronaldo has{" "}
+              <strong className="text-red-400">
+                {wc.ronaldo.goals.toLocaleString()}
+              </strong>{" "}
+              goals in{" "}
+              <strong className="text-white">
+                {wc.ronaldo.apps.toLocaleString()}
+              </strong>{" "}
+              appearances.
+            </p>
+
+            <p>
+              World Cup statistics represent only one part of their
+              international careers, but the tournament's importance means
+              performances there have played a major role in how the careers
+              of both players are remembered.
+            </p>
+          </>
+        )
+      })()}
+
+
+      {/* =====================================================
+          TROPHIES
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Trophies
+      </h3>
+
+      <p>
+        Individual statistics describe what a player contributes on the
+        pitch, while trophies record what his teams ultimately achieved.
+        According to the trophy totals currently configured on this page,
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {TROPHIES.messi.total}
+        </strong>{" "}
+        career trophies and Ronaldo has{" "}
+        <strong className="text-red-400">
+          {TROPHIES.ronaldo.total}
+        </strong>.
+      </p>
+
+      <p>
+        Messi's total currently includes{" "}
+        <strong className="text-white">
+          {TROPHIES.messi.league} league titles
+        </strong>,{" "}
+        <strong className="text-white">
+          {TROPHIES.messi.ucl} Champions League titles
+        </strong>, a World Cup and other major honours represented by the
+        site's trophy data. Ronaldo's total includes{" "}
+        <strong className="text-white">
+          {TROPHIES.ronaldo.league} league titles
+        </strong>,{" "}
+        <strong className="text-white">
+          {TROPHIES.ronaldo.ucl} Champions League titles
+        </strong>{" "}
+        and his other domestic and international honours.
+      </p>
+
+      <p>
+        Trophies should also be interpreted differently from individual
+        statistics because football is a team sport. A great player can
+        influence the probability of winning, but trophies also depend on
+        teammates, managers, opposition and the competitive environment.
+        They remain an important part of the debate, but they should be read
+        alongside individual performance data rather than replacing it.
+      </p>
+
+
+      {/* =====================================================
+          BALLON D'OR
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Ballon d&apos;Or Awards
+      </h3>
+
+      <p>
+        The Ballon d&apos;Or rivalry became one of the defining features of
+        the Messi-Ronaldo era. Messi has won{" "}
+        <strong className="text-blue-400">
+          {BALLON.messi.total}
+        </strong>{" "}
+        Ballon d&apos;Or awards in the data used by Mesnaldo, while Ronaldo
+        has won{" "}
+        <strong className="text-red-400">
+          {BALLON.ronaldo.total}
+        </strong>.
+      </p>
+
+      <p>
+        The comparison extends beyond victories. Messi has been represented
+        in the site's data with{" "}
+        <strong className="text-white">
+          {BALLON.messi.top2} top-two finishes
+        </strong>{" "}
+        and{" "}
+        <strong className="text-white">
+          {BALLON.messi.top3} top-three finishes
+        </strong>,
+        while Ronaldo has{" "}
+        <strong className="text-white">
+          {BALLON.ronaldo.top2} top-two finishes
+        </strong>{" "}
+        and{" "}
+        <strong className="text-white">
+          {BALLON.ronaldo.top3} top-three finishes
+        </strong>.
+        Their sustained presence near the top of individual award voting
+        illustrates how long both remained among football's elite.
+      </p>
+
+
+      {/* =====================================================
+          FOOTED GOALS
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Left Foot, Right Foot and Header Goals
+      </h3>
+
+      <p>
+        Breaking goals down by body part helps reveal another major stylistic
+        difference between Messi and Ronaldo. Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messi.left_foot_goals.toLocaleString()}
+        </strong>{" "}
+        left-footed goals and{" "}
+        <strong className="text-blue-400">
+          {messi.right_foot_goals.toLocaleString()}
+        </strong>{" "}
+        right-footed goals in the career dataset. Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldo.left_foot_goals.toLocaleString()}
+        </strong>{" "}
+        with his left foot and{" "}
+        <strong className="text-red-400">
+          {ronaldo.right_foot_goals.toLocaleString()}
+        </strong>{" "}
+        with his right.
+      </p>
+
+      <p>
+        In heading, Messi has{" "}
+        <strong className="text-blue-400">
+          {messi.header_goals.toLocaleString()}
+        </strong>{" "}
+        goals compared with Ronaldo's{" "}
+        <strong className="text-red-400">
+          {ronaldo.header_goals.toLocaleString()}
+        </strong>.
+        These numbers help explain the contrasting technical and physical
+        profiles that have characterized their careers.
+      </p>
+
+
+      {/* =====================================================
+          FREE KICKS
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Free Kick Goals
+      </h3>
+
+      <p>
+        Direct free kicks represent a highly specialized type of scoring.
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messi.free_kick_goals.toLocaleString()}
+        </strong>{" "}
+        free-kick goals in the Mesnaldo career data, compared with Ronaldo's{" "}
+        <strong className="text-red-400">
+          {ronaldo.free_kick_goals.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Both players became famous for different free-kick techniques during
+        their careers. Ronaldo was particularly associated with powerful,
+        low-spin attempts during the earlier part of his career, while Messi
+        became known for precise curling efforts over and around defensive
+        walls. The numerical comparison shows how often those techniques
+        ultimately produced goals.
+      </p>
+
+
+      {/* =====================================================
+          PENALTIES
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Penalty Goals
+      </h3>
+
+      <p>
+        Penalties are another important component of the total-goal
+        comparison. Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldo.penalties_scored.toLocaleString()}
+        </strong>{" "}
+        penalties scored in the current career dataset, while Messi has{" "}
+        <strong className="text-blue-400">
+          {messi.penalties_scored.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Penalty totals should not automatically be removed from career
+        statistics because penalties remain official goals and require
+        execution under pressure. At the same time, comparing penalty and
+        non-penalty output separately can provide additional context when
+        studying open-play scoring.
+      </p>
+
+
+      {/* =====================================================
+          DIFFERENT STYLES
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Two Different Paths to Football Greatness
+      </h3>
+
+      <p>
+        The most interesting part of the Messi vs Ronaldo comparison is that
+        their greatness has never looked identical. Messi's career has often
+        combined elite scoring with creative involvement, close control,
+        dribbling and passing. Ronaldo's career has featured extraordinary
+        scoring volume, explosive movement, aerial ability, two-footed
+        finishing and repeated adaptation to different tactical environments.
+      </p>
+
+      <p>
+        Their roles also changed over time. Ronaldo began as a highly direct
+        wide attacker before developing into an increasingly goal-focused
+        forward. Messi played wide, centrally and in deeper creative
+        positions at different stages of his career. Looking at their entire
+        careers therefore means comparing not only two players but also
+        several versions of each player.
+      </p>
+
+
+      {/* =====================================================
+          LONGEVITY
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Longevity and Career Consistency
+      </h3>
+
+      <p>
+        Longevity is one of the most remarkable parts of this rivalry.
+        Accumulating elite numbers for a few seasons is difficult; maintaining
+        world-class production over many years requires adaptation,
+        durability and consistency. Both players continued to score and
+        contribute after moving away from the clubs most closely associated
+        with the peak of their rivalry.
+      </p>
+
+      <p>
+        Career totals therefore measure more than a player's highest level.
+        They also reflect the ability to remain productive across different
+        managers, teammates, leagues and stages of physical development.
+        This is one reason why appearance totals, efficiency rates and
+        competition-specific statistics are all useful when evaluating the
+        two careers.
+      </p>
+
+
+      {/* =====================================================
+          HEAD TO HEAD
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Head-to-Head
+      </h3>
+
+      <p>
+        Direct meetings between Messi and Ronaldo form one of the most
+        memorable parts of their rivalry. Their most famous encounters came
+        during the Barcelona-Real Madrid era, when El Clásico regularly placed
+        two of the world's best teams — and two of the world's best players —
+        directly against one another.
+      </p>
+
+      <p>
+        Mesnaldo's dedicated head-to-head section allows fans to look beyond
+        general career totals and focus specifically on matches where their
+        teams faced each other. Goals, assists, team results and competition
+        context can then be considered together rather than relying on memory
+        or isolated highlights.
+      </p>
+
+      <div className="my-7">
+        <Link
+          href="/head-to-head"
+          className="inline-flex items-center text-amber-400 hover:text-amber-300 font-semibold transition-colors"
+        >
+          View the complete Messi vs Ronaldo head-to-head comparison →
+        </Link>
+      </div>
+
+
+      {/* =====================================================
+          RECORDS
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
         Messi vs Ronaldo Records
       </h3>
 
       <p>
-        Both players have rewritten football history.
-        Lionel Messi holds numerous records for assists, Ballon d'Or awards,
-        World Cup achievements, and playmaking excellence.
-        Cristiano Ronaldo is football's all-time leading goalscorer,
-        with incredible records in the UEFA Champions League,
-        international football, and goals across multiple leagues.
-        Our detailed records section allows fans to explore every achievement side by side.
+        Both players hold an extraordinary collection of individual,
+        club-level and international records. Some relate to total goals,
+        others to individual competitions, consecutive scoring runs, awards
+        or career milestones. Because records describe different
+        achievements, a complete comparison is more useful than simply
+        counting how many record headlines each player has.
       </p>
 
-      <h3 className="text-xl font-bold text-white">
-        Head-to-Head Comparison
+      <p>
+        Mesnaldo separates records from the basic career-statistics section
+        so that fans can explore them with the appropriate context. This
+        helps distinguish a career total from a competition record, an
+        individual award from a team trophy, and a longevity achievement from
+        a single-season performance.
+      </p>
+
+      <div className="my-7">
+        <Link
+          href="/records"
+          className="inline-flex items-center text-amber-400 hover:text-amber-300 font-semibold transition-colors"
+        >
+          Explore Messi vs Ronaldo records →
+        </Link>
+      </div>
+
+
+      {/* =====================================================
+          WHY STATS NEED CONTEXT
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Why Messi vs Ronaldo Statistics Need Context
       </h3>
 
       <p>
-        One of the most popular sections on Mesnaldo is the
-        <strong className="text-white"> Messi vs Ronaldo Head-to-Head</strong> comparison.
-        Explore every official meeting between the two legends,
-        including El Clásico encounters, UEFA Champions League matches,
-        international fixtures, goals, assists, victories, and overall records.
+        Statistics are extremely useful, but football numbers should always
+        be interpreted carefully. A raw total can be affected by the number
+        of games played. An assist depends partly on a teammate converting
+        the chance. Trophies depend on the strength of an entire team.
+        International competitions occur less frequently than domestic
+        leagues, and players do not necessarily occupy the same tactical role
+        throughout their careers.
       </p>
 
-      <h3 className="text-xl font-bold text-white">
-        Interactive GOAT Poll
+      <p>
+        This is why Mesnaldo presents multiple views of the rivalry. Career
+        totals can be compared with per-game efficiency. Club numbers can be
+        separated from international numbers. Champions League performance
+        can be viewed independently from domestic leagues, while individual
+        achievements can be studied separately from team trophies.
+      </p>
+
+      <p>
+        The objective is not to manipulate statistics until one player wins
+        every argument. The goal is to make the differences visible so fans
+        can understand what each number actually represents.
+      </p>
+
+
+      {/* =====================================================
+          WHO IS BETTER
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi or Ronaldo: Who Is Better?
       </h3>
 
       <p>
-        Football fans have debated the GOAT for years.
-        Our interactive <strong className="text-white">Messi vs Ronaldo Poll</strong>
-        allows supporters from around the world to vote and see live results.
-        Thousands of fans have already participated,
-        making it one of the most engaging features on Mesnaldo.
+        The answer depends heavily on what a supporter values most. Someone
+        who places greater weight on creative involvement, assisting,
+        dribbling and all-round attacking participation may interpret the
+        numbers differently from someone who prioritizes scoring volume,
+        aerial ability, Champions League achievements or longevity.
       </p>
 
-      <h3 className="text-xl font-bold text-white">
-        Updated After Every Match
+      <p>
+        Statistics can make the debate more informed, but they cannot decide
+        every football question automatically. Tactical responsibility,
+        quality of opposition, teammates, era, competition and individual
+        preference all influence how supporters interpret greatness.
+      </p>
+
+      <p>
+        That is why the Messi vs Ronaldo debate continues even after thousands
+        of matches and an enormous collection of records. The two careers
+        offer different arguments for greatness, and the strongest comparison
+        is one that examines those differences rather than pretending they do
+        not exist.
+      </p>
+
+
+      {/* =====================================================
+          POLL
+      ====================================================== */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Vote in the Messi vs Ronaldo GOAT Poll
       </h3>
 
       <p>
-        Football statistics constantly change.
-        Whenever Lionel Messi or Cristiano Ronaldo plays,
-        our database is updated to reflect the latest goals,
-        assists, appearances, trophies, and records.
-        This ensures visitors always have access to current and reliable information.
+        Statistics provide evidence, but football supporters will always have
+        their own interpretation of the GOAT debate. Mesnaldo therefore also
+        includes a community poll where visitors can choose between Lionel
+        Messi and Cristiano Ronaldo and compare the current vote results.
       </p>
 
-      <h3 className="text-xl font-bold text-white">
-        Built for Football Fans
+      <div className="my-7">
+        <Link
+          href="/poll"
+          className="inline-flex items-center text-amber-400 hover:text-amber-300 font-semibold transition-colors"
+        >
+          Vote in the Messi vs Ronaldo GOAT poll →
+        </Link>
+      </div>
+
+
+      {/* =====================================================
+          FAQ
+      ====================================================== */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Frequently Asked Questions About Messi vs Ronaldo
+      </h2>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more career goals, Messi or Ronaldo?
       </h3>
 
       <p>
-        Whether you're a lifelong Messi supporter,
-        a dedicated Cristiano Ronaldo fan,
-        a journalist, researcher, or simply curious about football history,
-        Mesnaldo provides trusted comparisons backed by official competition data.
-        Our goal is to make comparing two of football's greatest players simple,
-        transparent, and enjoyable.
+        According to the current Mesnaldo career data, Messi has{" "}
+        <strong className="text-blue-400">
+          {messi.total_goals.toLocaleString()}
+        </strong>{" "}
+        goals and Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldo.total_goals.toLocaleString()}
+        </strong>.
+        These figures are displayed dynamically from the career data used by
+        the site.
       </p>
 
-      <h3 className="text-xl font-bold text-white">
-        Why Millions Search "Messi vs Ronaldo"
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more assists, Messi or Ronaldo?
       </h3>
 
       <p>
-        Every football generation has its defining rivalry,
-        and none has matched the impact of Messi versus Ronaldo.
-        Their careers have shaped modern football through extraordinary consistency,
-        record-breaking performances, unforgettable matches,
-        and countless individual achievements.
-        Comparing their careers isn't just about numbers—it's about understanding
-        two completely different styles that changed the sport forever.
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messi.total_assists.toLocaleString()}
+        </strong>{" "}
+        career assists in the Mesnaldo dataset compared with Ronaldo's{" "}
+        <strong className="text-red-400">
+          {ronaldo.total_assists.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has won more Ballon d&apos;Or awards?
+      </h3>
+
+      <p>
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {BALLON.messi.total}
+        </strong>{" "}
+        Ballon d&apos;Or awards in the current comparison, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {BALLON.ronaldo.total}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more Champions League titles?
+      </h3>
+
+      <p>
+        Ronaldo has{" "}
+        <strong className="text-red-400">
+          {TROPHIES.ronaldo.ucl}
+        </strong>{" "}
+        Champions League titles in the trophy data used here, while Messi has{" "}
+        <strong className="text-blue-400">
+          {TROPHIES.messi.ucl}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more trophies, Messi or Ronaldo?
+      </h3>
+
+      <p>
+        The current trophy totals on this page list Messi with{" "}
+        <strong className="text-blue-400">
+          {TROPHIES.messi.total}
+        </strong>{" "}
+        and Ronaldo with{" "}
+        <strong className="text-red-400">
+          {TROPHIES.ronaldo.total}
+        </strong>.
+        Trophy definitions can vary between statistical sources, so the
+        comparison should use a consistent methodology for both players.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has scored more free kicks?
+      </h3>
+
+      <p>
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messi.free_kick_goals.toLocaleString()}
+        </strong>{" "}
+        free-kick goals in the site's career data, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldo.free_kick_goals.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has scored more penalties?
+      </h3>
+
+      <p>
+        The current database lists Ronaldo with{" "}
+        <strong className="text-red-400">
+          {ronaldo.penalties_scored.toLocaleString()}
+        </strong>{" "}
+        penalties scored and Messi with{" "}
+        <strong className="text-blue-400">
+          {messi.penalties_scored.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has scored more headers?
+      </h3>
+
+      <p>
+        Ronaldo currently has{" "}
+        <strong className="text-red-400">
+          {ronaldo.header_goals.toLocaleString()}
+        </strong>{" "}
+        headed goals in the Mesnaldo career data compared with Messi's{" "}
+        <strong className="text-blue-400">
+          {messi.header_goals.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Are Messi vs Ronaldo statistics updated?
+      </h3>
+
+      <p>
+        The homepage statistics are generated from the player and match data
+        fetched by the site. When those underlying database values are
+        updated and the page regenerates, the dynamic numbers displayed in
+        this section reflect the current stored data.
+      </p>
+
+
+      {/* =====================================================
+          CONCLUSION
+      ====================================================== */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        The Complete Messi vs Ronaldo Comparison
+      </h2>
+
+      <p>
+        Lionel Messi and Cristiano Ronaldo have built careers so large that
+        comparing them through one statistic will always leave out important
+        information. Career goals tell one story. Assists tell another.
+        Champions League performance, international football, World Cups,
+        trophies, Ballon d&apos;Or awards, free kicks, penalties, headers and
+        scoring efficiency each add another part of the picture.
       </p>
 
       <p>
-        If you're looking for
-        <strong className="text-white"> Messi vs Ronaldo career stats</strong>,
-        goals, assists, trophies, records,
-        Ballon d'Or comparisons,
-        head-to-head results,
-        or simply want to decide who deserves the title of football's greatest player,
-        Mesnaldo is your complete destination.
+        Mesnaldo brings those different areas together so football fans can
+        move beyond isolated social-media statistics and examine the rivalry
+        category by category. The numbers above are not intended to tell fans
+        what they must believe. They provide the information needed to make a
+        more informed comparison.
+      </p>
+
+      <p>
+        Whether you are researching{" "}
+        <strong className="text-white">Messi vs Ronaldo goals</strong>,
+        comparing{" "}
+        <strong className="text-white">Messi vs Ronaldo assists</strong>,
+        checking Champions League records, studying World Cup performances,
+        comparing trophies or deciding who deserves the GOAT title, the rest
+        of Mesnaldo provides dedicated pages for exploring each part of their
+        careers in greater detail.
       </p>
 
     </div>
@@ -584,8 +1587,20 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { data: messi } = await supabase.from("career_stats").select("*").eq("player_id", 1).single()
-    const { data: ronaldo } = await supabase.from("career_stats").select("*").eq("player_id", 2).single()
+    const { data: messi, error: messiError } = await supabase
+      .from("career_stats")
+      .select("*")
+      .eq("player_id", 1)
+      .maybeSingle()
+
+    const { data: ronaldo, error: ronaldoError } = await supabase
+      .from("career_stats")
+      .select("*")
+      .eq("player_id", 2)
+      .maybeSingle()
+
+    if (messiError) console.error("Messi career stats error:", messiError)
+    if (ronaldoError) console.error("Ronaldo career stats error:", ronaldoError)
 
     const messiAll = await fetchAllMatches(1)
     const ronaldoAll = await fetchAllMatches(2)
@@ -599,21 +1614,37 @@ export const getStaticProps: GetStaticProps = async () => {
     const ronaldoRecent = ronaldoAll.slice(-10).reverse()
 
     // Fetch recent blog posts
-    const { data: recentBlogs } = await supabase
+    const { data: recentBlogs, error: blogError } = await supabase
       .from("blog_posts")
       .select("title, slug, excerpt, category, featured_image, published_at, read_time")
       .eq("is_published", true)
       .order("published_at", { ascending: false })
       .limit(3)
 
+    if (blogError) {
+      console.error("Homepage blog fetch error:", blogError)
+    }
+
     if (scopes.length === 0 && messi && ronaldo) {
+      // If match-level data is temporarily unavailable, do not invent
+      // competition-specific figures. Show only the career totals that
+      // actually came from career_stats.
       scopes = [
-        {key:"all", label:"All Time Career", messi:{goals:messi.total_goals, assists:messi.total_assists, apps:messi.total_games}, ronaldo:{goals:ronaldo.total_goals, assists:ronaldo.total_assists, apps:ronaldo.total_games}, cardType:"full"},
-        {key:"club", label:"All Time Club", messi:{goals:807, assists:361, apps:964}, ronaldo:{goals:846, assists:231, apps:1127}, cardType:"full"},
-        {key:"league", label:"All Time League", messi:{goals:520, assists:220, apps:680}, ronaldo:{goals:560, assists:160, apps:750}, cardType:"full"},
-        {key:"ucl", label:"UEFA Champions League", messi:{goals:129, assists:45, apps:163}, ronaldo:{goals:145, assists:42, apps:187}, cardType:"full"},
-        {key:"intl", label:"Internationals", messi:{goals:112, assists:55, apps:198}, ronaldo:{goals:130, assists:30, apps:203}, cardType:"full"},
-        {key:"wc", label:"World Cup", messi:{goals:13, assists:8, apps:26}, ronaldo:{goals:8, assists:2, apps:22}, cardType:"goalsOnly"},
+        {
+          key: "all",
+          label: "All Time Career",
+          messi: {
+            goals: safeNum(messi.total_goals),
+            assists: safeNum(messi.total_assists),
+            apps: safeNum(messi.total_games),
+          },
+          ronaldo: {
+            goals: safeNum(ronaldo.total_goals),
+            assists: safeNum(ronaldo.total_assists),
+            apps: safeNum(ronaldo.total_games),
+          },
+          cardType: "full",
+        },
       ]
     }
 

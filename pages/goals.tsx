@@ -308,7 +308,1009 @@ export default function Goals(props: GoalsPageProps) {
               <StatCard label="Minutes Per Goal" messiValue={Math.round(messiMinutes / messiTotal)} ronaldoValue={Math.round(ronaldoMinutes / ronaldoTotal)} suffix=" min" lowerIsBetter />
             </div>
           </section>
+{/* =========================================================
+    SEO CONTENT SECTION - GOALS PAGE
+========================================================= */}
 
+<section className="mt-20 pt-14 border-t border-gray-800/50">
+  <div className="max-w-4xl mx-auto">
+
+    <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
+      Messi vs Ronaldo Goals: Complete Career Goal Comparison
+    </h2>
+
+    <div className="space-y-7 text-sm text-gray-400 leading-8">
+
+      {/* INTRODUCTION */}
+
+      <p>
+        The <strong className="text-white">Messi vs Ronaldo goals</strong>{" "}
+        debate is one of the most discussed statistical comparisons in
+        football history. Lionel Messi and Cristiano Ronaldo have spent
+        more than two decades scoring at the highest level, producing
+        extraordinary numbers for their clubs and national teams.
+      </p>
+
+      <p>
+        Looking only at total goals, however, does not tell the complete
+        story. A detailed comparison also needs to consider appearances,
+        goals per game, minutes per goal, club goals, international goals,
+        Champions League goals, non-penalty goals, penalties, free kicks,
+        headers, knockout matches, finals and multi-goal performances.
+      </p>
+
+      <p>
+        This page brings those goal-scoring categories together using the
+        current statistics stored in the Mesnaldo database. Rather than
+        relying on one headline number, you can compare how Messi and
+        Ronaldo scored their goals, where they scored them and how
+        efficiently they converted appearances into goals.
+      </p>
+
+
+      {/* TOTAL CAREER GOALS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        How Many Career Goals Do Messi and Ronaldo Have?
+      </h3>
+
+      <p>
+        According to the current career statistics used on this page,{" "}
+        <strong className="text-blue-400">Lionel Messi</strong> has scored{" "}
+        <strong className="text-white">
+          {messiTotal.toLocaleString()}
+        </strong>{" "}
+        career goals, while{" "}
+        <strong className="text-red-400">Cristiano Ronaldo</strong> has scored{" "}
+        <strong className="text-white">
+          {ronaldoTotal.toLocaleString()}
+        </strong>.
+      </p>
+
+      {(() => {
+        const difference = Math.abs(ronaldoTotal - messiTotal)
+
+        if (ronaldoTotal === messiTotal) {
+          return (
+            <p>
+              Messi and Ronaldo are currently level on total career goals
+              according to the figures shown on this page.
+            </p>
+          )
+        }
+
+        const leader =
+          ronaldoTotal > messiTotal ? "Cristiano Ronaldo" : "Lionel Messi"
+
+        return (
+          <p>
+            Based on these totals,{" "}
+            <strong className="text-white">{leader}</strong> currently leads
+            the overall goal count by{" "}
+            <strong className="text-white">
+              {difference.toLocaleString()}
+            </strong>{" "}
+            goals. This difference should still be considered alongside the
+            number of matches each player has played, because career totals
+            are influenced by longevity as well as scoring efficiency.
+          </p>
+        )
+      })()}
+
+
+      {/* GOALS PER GAME */}
+
+      {(() => {
+        const messiGPG = messiTotal / messiGames
+        const ronaldoGPG = ronaldoTotal / ronaldoGames
+
+        return (
+          <>
+            <h3 className="text-xl font-bold text-white mt-10">
+              Messi vs Ronaldo Goals Per Game
+            </h3>
+
+            <p>
+              Goals per game gives additional context to raw career totals.
+              Messi currently averages approximately{" "}
+              <strong className="text-blue-400">
+                {messiGPG.toFixed(3)}
+              </strong>{" "}
+              goals per appearance, while Ronaldo averages approximately{" "}
+              <strong className="text-red-400">
+                {ronaldoGPG.toFixed(3)}
+              </strong>{" "}
+              goals per appearance.
+            </p>
+
+            <p>
+              Total goals and goals per game answer two different questions.
+              Total goals reward accumulated production across an entire
+              career, while goals per game measures how frequently each
+              player scored when he appeared. Looking at both figures gives
+              a more balanced view of their goal-scoring records.
+            </p>
+          </>
+        )
+      })()}
+
+
+      {/* MINUTES PER GOAL */}
+
+      {(() => {
+        const messiMPG =
+          messiTotal > 0 ? Math.round(messiMinutes / messiTotal) : 0
+
+        const ronaldoMPG =
+          ronaldoTotal > 0 ? Math.round(ronaldoMinutes / ronaldoTotal) : 0
+
+        return (
+          <>
+            <h3 className="text-xl font-bold text-white mt-10">
+              Messi vs Ronaldo Minutes Per Goal
+            </h3>
+
+            <p>
+              Minutes per goal is another useful efficiency statistic because
+              it considers actual playing time rather than appearances alone.
+              Messi currently scores approximately once every{" "}
+              <strong className="text-blue-400">
+                {messiMPG.toLocaleString()} minutes
+              </strong>,
+              while Ronaldo scores approximately once every{" "}
+              <strong className="text-red-400">
+                {ronaldoMPG.toLocaleString()} minutes
+              </strong>.
+            </p>
+
+            <p>
+              Unlike most categories on this page, a lower minutes-per-goal
+              figure represents greater scoring frequency because it means a
+              player requires fewer minutes on the pitch to produce a goal.
+            </p>
+          </>
+        )
+      })()}
+
+
+      {/* CLUB GOALS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Club Goals
+      </h3>
+
+      <p>
+        Club football accounts for the largest portion of both players&apos;
+        careers. Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messiClubGoals.toLocaleString()}
+        </strong>{" "}
+        club goals in the data used on this page, compared with Ronaldo&apos;s{" "}
+        <strong className="text-red-400">
+          {ronaldoClubGoals.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        These totals cover goals produced while representing their clubs
+        across domestic leagues, cup competitions and continental football
+        included in the database. Because both players have represented
+        multiple teams and competitions during their careers, club totals are
+        useful for separating professional club production from
+        international-team goals.
+      </p>
+
+
+      {/* INTERNATIONAL GOALS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo International Goals
+      </h3>
+
+      <p>
+        International goal scoring is another major part of the rivalry.
+        Lionel Messi has currently scored{" "}
+        <strong className="text-blue-400">
+          {messiIntlGoals.toLocaleString()}
+        </strong>{" "}
+        goals for Argentina according to the matches included in the database,
+        while Cristiano Ronaldo has scored{" "}
+        <strong className="text-red-400">
+          {ronaldoIntlGoals.toLocaleString()}
+        </strong>{" "}
+        for Portugal.
+      </p>
+
+      <p>
+        International goals come in a different competitive environment from
+        club football. National teams play fewer matches, preparation periods
+        are shorter and major international tournaments are separated by
+        several years. For that reason, international goal totals should be
+        considered as their own category rather than simply being absorbed
+        into the overall career number.
+      </p>
+
+
+      {/* CHAMPIONS LEAGUE */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Champions League Goals
+      </h3>
+
+      <p>
+        The UEFA Champions League played a major role in establishing both
+        Messi and Ronaldo among the greatest goal scorers in football
+        history. In the Champions League competitions recognised by this
+        page, Messi has{" "}
+        <strong className="text-blue-400">
+          {messiUclGoals.toLocaleString()}
+        </strong>{" "}
+        goals, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoUclGoals.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Champions League goals are particularly significant because they are
+        scored against teams qualifying from Europe&apos;s strongest domestic
+        competitions. Both players produced memorable group-stage and
+        knockout performances, making their European records one of the most
+        important parts of the overall comparison.
+      </p>
+
+
+      {/* COMPETITIVE GOALS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Competitive Goals vs Friendly Goals
+      </h3>
+
+      <p>
+        Not every match carries the same competitive importance. The current
+        data separates goals scored in competitive fixtures from goals scored
+        in international friendlies.
+      </p>
+
+      <p>
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {messiCompetitiveGoals.toLocaleString()}
+        </strong>{" "}
+        competitive goals and{" "}
+        <strong className="text-blue-400">
+          {messiFriendlyGoals.toLocaleString()}
+        </strong>{" "}
+        friendly goals. Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoCompetitiveGoals.toLocaleString()}
+        </strong>{" "}
+        competitive goals and{" "}
+        <strong className="text-red-400">
+          {ronaldoFriendlyGoals.toLocaleString()}
+        </strong>{" "}
+        friendly goals.
+      </p>
+
+      <p>
+        Separating these categories provides useful context for supporters who
+        prefer to compare goals scored in competitive fixtures independently
+        from international friendly matches.
+      </p>
+
+
+      {/* NON PENALTY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Non-Penalty Goals
+      </h3>
+
+      <p>
+        Non-penalty goals are frequently used when comparing elite scorers
+        because they remove goals scored from the penalty spot and focus on
+        other forms of finishing.
+      </p>
+
+      <p>
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messiNonPenaltyGoals.toLocaleString()}
+        </strong>{" "}
+        non-penalty goals, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoNonPenaltyGoals.toLocaleString()}
+        </strong>.
+        These figures are calculated by subtracting penalties scored from the
+        overall career-goal total.
+      </p>
+
+      <p>
+        Penalty goals are still legitimate official goals and should not
+        simply be ignored. However, separating them allows a different
+        question to be answered: how many goals did each player score through
+        open play, free kicks and other non-penalty situations?
+      </p>
+
+
+      {/* PENALTIES */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Penalty Goals
+      </h3>
+
+      <p>
+        Penalties have contributed to the goal totals of both players.
+        Messi has converted{" "}
+        <strong className="text-blue-400">
+          {safeNum(messi.penalties_scored).toLocaleString()}
+        </strong>{" "}
+        penalties in the current career dataset, while Ronaldo has converted{" "}
+        <strong className="text-red-400">
+          {safeNum(ronaldo.penalties_scored).toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        The current penalty-conversion figures on this page are{" "}
+        <strong className="text-blue-400">
+          {messiPenaltyConversion}%
+        </strong>{" "}
+        for Messi and{" "}
+        <strong className="text-red-400">
+          {ronaldoPenaltyConversion}%
+        </strong>{" "}
+        for Ronaldo. Conversion percentage gives useful context because
+        scoring more penalties can partly reflect taking more attempts.
+      </p>
+
+
+      {/* FREE KICKS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Free Kick Goals
+      </h3>
+
+      <p>
+        Direct free kicks became another recognizable part of both
+        players&apos; careers. Messi currently has{" "}
+        <strong className="text-blue-400">
+          {safeNum(messi.free_kick_goals).toLocaleString()}
+        </strong>{" "}
+        free-kick goals, compared with Ronaldo&apos;s{" "}
+        <strong className="text-red-400">
+          {safeNum(ronaldo.free_kick_goals).toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Their free-kick styles have also differed. Ronaldo became famous for
+        powerful, low-spin strikes, particularly during the earlier stages of
+        his career. Messi became closely associated with controlled curling
+        shots designed to move over defensive walls and into the corners of
+        the goal.
+      </p>
+
+
+      {/* LEFT & RIGHT FOOT */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Left-Foot and Right-Foot Goals
+      </h3>
+
+      <p>
+        Breaking goals down by preferred foot clearly illustrates part of the
+        stylistic difference between the two forwards. Messi has scored{" "}
+        <strong className="text-blue-400">
+          {safeNum(messi.left_foot_goals).toLocaleString()}
+        </strong>{" "}
+        goals with his left foot and{" "}
+        <strong className="text-blue-400">
+          {safeNum(messi.right_foot_goals).toLocaleString()}
+        </strong>{" "}
+        with his right.
+      </p>
+
+      <p>
+        Ronaldo has recorded{" "}
+        <strong className="text-red-400">
+          {safeNum(ronaldo.right_foot_goals).toLocaleString()}
+        </strong>{" "}
+        right-footed goals and{" "}
+        <strong className="text-red-400">
+          {safeNum(ronaldo.left_foot_goals).toLocaleString()}
+        </strong>{" "}
+        left-footed goals.
+      </p>
+
+      <p>
+        These totals reflect both their preferred finishing techniques and
+        the positions from which they have typically attacked throughout
+        their careers.
+      </p>
+
+
+      {/* HEADERS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Header Goals
+      </h3>
+
+      <p>
+        Heading is one of the clearest areas in which their scoring profiles
+        differ. Messi currently has{" "}
+        <strong className="text-blue-400">
+          {safeNum(messi.header_goals).toLocaleString()}
+        </strong>{" "}
+        headed goals, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {safeNum(ronaldo.header_goals).toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Ronaldo&apos;s height, jumping ability, timing and aerial movement have
+        made heading an important part of his career goal total. Messi has
+        naturally relied less heavily on aerial scoring, with a greater
+        proportion of his goals coming from his feet.
+      </p>
+
+
+      {/* INSIDE / OUTSIDE BOX */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Goals Inside and Outside the Penalty Area
+      </h3>
+
+      <p>
+        Goal location can help explain how each player has created scoring
+        opportunities. Messi currently has{" "}
+        <strong className="text-blue-400">
+          {safeNum(messi.inside_box_goals).toLocaleString()}
+        </strong>{" "}
+        goals from inside the penalty area and{" "}
+        <strong className="text-blue-400">
+          {safeNum(messi.outside_box_goals).toLocaleString()}
+        </strong>{" "}
+        from outside the box.
+      </p>
+
+      <p>
+        Ronaldo has{" "}
+        <strong className="text-red-400">
+          {safeNum(ronaldo.inside_box_goals).toLocaleString()}
+        </strong>{" "}
+        goals from inside the box and{" "}
+        <strong className="text-red-400">
+          {safeNum(ronaldo.outside_box_goals).toLocaleString()}
+        </strong>{" "}
+        from outside the penalty area.
+      </p>
+
+      <p>
+        Inside-the-box totals usually reflect movement, positioning and
+        close-range finishing, while outside-the-box goals can highlight
+        long-range shooting, free-space creation and striking technique.
+      </p>
+
+
+      {/* HAT TRICKS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Hat-Tricks
+      </h3>
+
+      <p>
+        Hat-tricks are among the most memorable individual scoring
+        performances in football. In the match data used on this page, Messi
+        has recorded{" "}
+        <strong className="text-blue-400">
+          {messiHatTricks.toLocaleString()}
+        </strong>{" "}
+        matches with at least three goals, while Ronaldo has recorded{" "}
+        <strong className="text-red-400">
+          {ronaldoHatTricks.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Hat-trick totals illustrate a player&apos;s ability to dominate a single
+        match through repeated finishing. Because this page calculates them
+        from matches containing three or more goals, performances with four
+        or more goals are included in this category as well.
+      </p>
+
+
+      {/* BRACES */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Braces and Multi-Goal Matches
+      </h3>
+
+      <p>
+        Scoring twice in a match is another useful measure of repeated
+        match-winning output. Messi has{" "}
+        <strong className="text-blue-400">
+          {messiBraceCount.toLocaleString()}
+        </strong>{" "}
+        matches with exactly two goals, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoBraceCount.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        When every match containing at least two goals is counted, Messi has{" "}
+        <strong className="text-blue-400">
+          {messiMultiGoalMatches.toLocaleString()}
+        </strong>{" "}
+        multi-goal matches and Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoMultiGoalMatches.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      {/* KNOCKOUT */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Knockout Stage Goals
+      </h3>
+
+      <p>
+        Goals in knockout matches receive special attention because a poor
+        result can immediately end a team&apos;s tournament. Based on the
+        knockout-round classifications used in the match database, Messi has{" "}
+        <strong className="text-blue-400">
+          {messiKnockoutGoals.toLocaleString()}
+        </strong>{" "}
+        knockout-stage goals and Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoKnockoutGoals.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        This category includes matches whose round descriptions identify
+        finals, semi-finals, quarter-finals, round-of-16 style stages and
+        other knockout or play-off rounds represented in the database.
+      </p>
+
+
+      {/* FINALS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Goals in Finals
+      </h3>
+
+      <p>
+        Finals represent some of the highest-pressure matches of a football
+        career. Messi has scored{" "}
+        <strong className="text-blue-400">
+          {messiFinalsGoals.toLocaleString()}
+        </strong>{" "}
+        goals in matches identified as finals in the dataset, while Ronaldo
+        has scored{" "}
+        <strong className="text-red-400">
+          {ronaldoFinalsGoals.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Finals goals are particularly memorable because they occur when
+        trophies are directly at stake. However, they should be considered
+        alongside appearances in finals, competition strength and overall
+        knockout performance rather than interpreted in isolation.
+      </p>
+
+
+      {/* WINNING GOALS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Winning Goals
+      </h3>
+
+      <p>
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {messiWinningGoals.toLocaleString()}
+        </strong>{" "}
+        winning-goal performances according to the logic used by this page,
+        compared with{" "}
+        <strong className="text-red-400">
+          {ronaldoWinningGoals.toLocaleString()}
+        </strong>{" "}
+        for Ronaldo.
+      </p>
+
+      <p>
+        On this page, the winning-goal statistic is calculated from victories
+        decided by a one-goal margin in which the player scored. It should
+        therefore be understood as a specific match-data calculation rather
+        than a universal definition of every possible match-winning goal.
+      </p>
+
+
+      {/* HOME / AWAY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Home and Away Goals
+      </h3>
+
+      <p>
+        Venue splits can show whether scoring production changes between home
+        and away matches. Messi has{" "}
+        <strong className="text-blue-400">
+          {messiHomeGoals.toLocaleString()}
+        </strong>{" "}
+        home goals and{" "}
+        <strong className="text-blue-400">
+          {messiAwayGoals.toLocaleString()}
+        </strong>{" "}
+        away goals in the available match records.
+      </p>
+
+      <p>
+        Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoHomeGoals.toLocaleString()}
+        </strong>{" "}
+        home goals and{" "}
+        <strong className="text-red-400">
+          {ronaldoAwayGoals.toLocaleString()}
+        </strong>{" "}
+        away goals.
+      </p>
+
+      <p>
+        Away scoring can be particularly interesting because players often
+        face different tactical conditions and less favourable crowd
+        environments than they do at home.
+      </p>
+
+
+      {/* MATCH RESULT */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Goals in Wins, Draws and Losses
+      </h3>
+
+      <p>
+        Another way to interpret goal scoring is by examining the final match
+        result. Messi has scored{" "}
+        <strong className="text-blue-400">
+          {messiGoalsInWins.toLocaleString()}
+        </strong>{" "}
+        goals in wins,{" "}
+        <strong className="text-blue-400">
+          {messiGoalsInDraws.toLocaleString()}
+        </strong>{" "}
+        in draws and{" "}
+        <strong className="text-blue-400">
+          {messiGoalsInLosses.toLocaleString()}
+        </strong>{" "}
+        in defeats.
+      </p>
+
+      <p>
+        Ronaldo has scored{" "}
+        <strong className="text-red-400">
+          {ronaldoGoalsInWins.toLocaleString()}
+        </strong>{" "}
+        goals in victories,{" "}
+        <strong className="text-red-400">
+          {ronaldoGoalsInDraws.toLocaleString()}
+        </strong>{" "}
+        in draws and{" "}
+        <strong className="text-red-400">
+          {ronaldoGoalsInLosses.toLocaleString()}
+        </strong>{" "}
+        in defeats.
+      </p>
+
+      <p>
+        This does not directly measure how responsible a player was for a team
+        result, but it adds useful context by showing how their goals are
+        distributed across winning and non-winning performances.
+      </p>
+
+
+      {/* STARTER / SUB */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Goals as a Starter and Substitute
+      </h3>
+
+      <p>
+        The match data also provides a view of goals relative to playing
+        time. Messi has{" "}
+        <strong className="text-blue-400">
+          {messiStarterGoals.toLocaleString()}
+        </strong>{" "}
+        goals in matches classified by this page as starter-level playing
+        time and{" "}
+        <strong className="text-blue-400">
+          {messiSuperSubGoals.toLocaleString()}
+        </strong>{" "}
+        goals in appearances of 30 minutes or fewer.
+      </p>
+
+      <p>
+        Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoStarterGoals.toLocaleString()}
+        </strong>{" "}
+        starter goals and{" "}
+        <strong className="text-red-400">
+          {ronaldoSuperSubGoals.toLocaleString()}
+        </strong>{" "}
+        goals in appearances lasting 30 minutes or fewer.
+      </p>
+
+
+      {/* DERBY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Derby Goals
+      </h3>
+
+      <p>
+        Goals against major rivals are remembered differently from goals in
+        ordinary league fixtures. Based on the derby opponents currently
+        classified by this page, Messi has{" "}
+        <strong className="text-blue-400">
+          {messiDerbyGoals.toLocaleString()}
+        </strong>{" "}
+        derby goals and Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoDerbyGoals.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Derby statistics can be useful for examining performance in
+        high-profile rivalry matches, although definitions of which fixtures
+        qualify as a derby can differ between datasets.
+      </p>
+
+
+      {/* SCORING STYLES */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        How Messi and Ronaldo Score Differently
+      </h3>
+
+      <p>
+        The numbers on this page highlight two different scoring profiles.
+        Messi&apos;s goals have often been associated with close control,
+        combination play, left-footed finishing, dribbling into central areas
+        and precise placement. Ronaldo&apos;s scoring career has included
+        powerful right-footed finishing, strong off-ball movement, aerial
+        goals and repeated attacks into high-value positions inside the box.
+      </p>
+
+      <p>
+        Those styles have also changed over time. Ronaldo developed from a
+        wide dribbler into an increasingly penalty-area-focused scorer.
+        Messi has operated as a winger, false nine, central attacker and
+        deeper creator while remaining a high-volume goal scorer.
+      </p>
+
+      <p>
+        That is why comparing only one type of goal can be misleading. Left
+        foot, right foot, headers, penalties, free kicks, inside-box goals and
+        outside-box goals all describe different parts of the same overall
+        scoring record.
+      </p>
+
+
+      {/* HOW TO INTERPRET */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        How to Interpret Messi vs Ronaldo Goal Statistics
+      </h3>
+
+      <p>
+        No single goal statistic gives a complete answer to the Messi vs
+        Ronaldo debate. Total goals reward longevity and accumulated output.
+        Goals per game emphasise frequency. Minutes per goal measures scoring
+        relative to actual playing time. Non-penalty goals reduce the effect
+        of penalty-taking opportunities, while Champions League and knockout
+        statistics focus on specific competitive environments.
+      </p>
+
+      <p>
+        The fairest approach is therefore to compare several metrics at the
+        same time. A player can lead one area while trailing another, and that
+        does not make either statistic invalid. It simply means the two
+        careers have produced different strengths.
+      </p>
+
+
+      {/* FAQ */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Goals FAQ
+      </h2>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more career goals, Messi or Ronaldo?
+      </h3>
+
+      <p>
+        The current statistics shown on Mesnaldo list Messi with{" "}
+        <strong className="text-blue-400">
+          {messiTotal.toLocaleString()}
+        </strong>{" "}
+        goals and Ronaldo with{" "}
+        <strong className="text-red-400">
+          {ronaldoTotal.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has the better goals-per-game ratio?
+      </h3>
+
+      <p>
+        Based on the current career totals and appearances used by this page,
+        Messi averages{" "}
+        <strong className="text-blue-400">
+          {(messiTotal / messiGames).toFixed(3)}
+        </strong>{" "}
+        goals per appearance and Ronaldo averages{" "}
+        <strong className="text-red-400">
+          {(ronaldoTotal / ronaldoGames).toFixed(3)}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more non-penalty goals?
+      </h3>
+
+      <p>
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messiNonPenaltyGoals.toLocaleString()}
+        </strong>{" "}
+        non-penalty goals compared with Ronaldo&apos;s{" "}
+        <strong className="text-red-400">
+          {ronaldoNonPenaltyGoals.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more international goals?
+      </h3>
+
+      <p>
+        In the international match data used by this page, Messi has{" "}
+        <strong className="text-blue-400">
+          {messiIntlGoals.toLocaleString()}
+        </strong>{" "}
+        goals for Argentina and Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoIntlGoals.toLocaleString()}
+        </strong>{" "}
+        goals for Portugal.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more Champions League goals?
+      </h3>
+
+      <p>
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {messiUclGoals.toLocaleString()}
+        </strong>{" "}
+        Champions League goals in the competitions recognised by this page,
+        while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoUclGoals.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more hat-tricks?
+      </h3>
+
+      <p>
+        The current match database produces{" "}
+        <strong className="text-blue-400">
+          {messiHatTricks.toLocaleString()}
+        </strong>{" "}
+        hat-trick matches for Messi and{" "}
+        <strong className="text-red-400">
+          {ronaldoHatTricks.toLocaleString()}
+        </strong>{" "}
+        for Ronaldo.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more free-kick goals?
+      </h3>
+
+      <p>
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {safeNum(messi.free_kick_goals).toLocaleString()}
+        </strong>{" "}
+        direct free-kick goals in the career dataset, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {safeNum(ronaldo.free_kick_goals).toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more headed goals?
+      </h3>
+
+      <p>
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {safeNum(messi.header_goals).toLocaleString()}
+        </strong>{" "}
+        headed goals, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {safeNum(ronaldo.header_goals).toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Are these Messi vs Ronaldo goal statistics dynamic?
+      </h3>
+
+      <p>
+        Yes. The values displayed throughout this section come from the same
+        career statistics and match-derived values supplied to the Goals
+        page. When the underlying database is updated, the comparisons in
+        this section use those updated values on the next server-rendered
+        request.
+      </p>
+
+
+      {/* CONCLUSION */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Goal Scoring Comparison
+      </h2>
+
+      <p>
+        Lionel Messi and Cristiano Ronaldo have produced two of the most
+        remarkable scoring careers football has ever seen. Their enormous
+        goal totals are only the beginning of the comparison. The differences
+        become clearer when the numbers are divided into club goals,
+        international goals, Champions League goals, non-penalty goals,
+        penalties, free kicks, headers, knockout matches, finals and
+        efficiency.
+      </p>
+
+      <p>
+        One player may lead in overall volume while another performs better
+        in a particular type of goal or efficiency measure. That is why this
+        page is designed around multiple categories rather than a single
+        winner.
+      </p>
+
+      <p>
+        Mesnaldo&apos;s goal comparison lets you examine the data and decide
+        which achievements matter most to you. As the careers continue and
+        the underlying statistics change, the dynamic values displayed here
+        can continue to reflect the latest data stored by the site.
+      </p>
+
+    </div>
+  </div>
+</section>
         </div>
       </div>
     </Layout>

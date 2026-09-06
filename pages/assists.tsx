@@ -242,7 +242,734 @@ export default function Assists(props: AssistsPageProps) {
               <StatCard label="G+A Per Game" messiValue={+((safeNum(messi.total_goals) + messiTotal) / messiGames).toFixed(2)} ronaldoValue={+((safeNum(ronaldo.total_goals) + ronaldoTotal) / ronaldoGames).toFixed(2)} />
             </div>
           </section>
+{/* =========================================================
+    SEO CONTENT SECTION - ASSISTS PAGE
+========================================================= */}
 
+<section className="mt-20 pt-14 border-t border-gray-800/50">
+  <div className="max-w-4xl mx-auto">
+
+    <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
+      Messi vs Ronaldo Assists: Complete Career Playmaking Comparison
+    </h2>
+
+    <div className="space-y-7 text-sm text-gray-400 leading-8">
+
+      {/* INTRODUCTION */}
+
+      <p>
+        The <strong className="text-white">Messi vs Ronaldo assists</strong>{" "}
+        comparison is one of the best ways to understand the creative side of
+        their rivalry. Both Lionel Messi and Cristiano Ronaldo are known
+        primarily for extraordinary goal-scoring careers, but they have also
+        created a huge number of goals for teammates through passing, crossing,
+        combination play and chance creation.
+      </p>
+
+      <p>
+        Assists add another dimension to the Messi vs Ronaldo debate because
+        football is not only about who finishes an attack. A complete attacking
+        player can score goals while also creating them. Looking at career
+        assists, assists per game, minutes per assist, club assists,
+        international assists and Champions League assists gives a clearer
+        picture of how involved each player has been in creating goals.
+      </p>
+
+      <p>
+        This page uses the current assist data stored in Mesnaldo to compare
+        Lionel Messi and Cristiano Ronaldo across several different
+        playmaking categories. The statistics below come from the same player
+        and match data used by the comparison cards above.
+      </p>
+
+
+      {/* TOTAL CAREER ASSISTS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Total Career Assists
+      </h3>
+
+      <p>
+        According to the current career statistics on this page,{" "}
+        <strong className="text-blue-400">Lionel Messi</strong> has recorded{" "}
+        <strong className="text-white">
+          {messiTotal.toLocaleString()}
+        </strong>{" "}
+        career assists, while{" "}
+        <strong className="text-red-400">Cristiano Ronaldo</strong> has{" "}
+        <strong className="text-white">
+          {ronaldoTotal.toLocaleString()}
+        </strong>.
+      </p>
+
+      {(() => {
+        const difference = Math.abs(messiTotal - ronaldoTotal)
+
+        if (messiTotal === ronaldoTotal) {
+          return (
+            <p>
+              Messi and Ronaldo are currently level in total assists according
+              to the data displayed on this page.
+            </p>
+          )
+        }
+
+        const leader =
+          messiTotal > ronaldoTotal ? "Lionel Messi" : "Cristiano Ronaldo"
+
+        return (
+          <p>
+            Based on the current figures,{" "}
+            <strong className="text-white">{leader}</strong> leads the career
+            assist comparison by{" "}
+            <strong className="text-white">
+              {difference.toLocaleString()}
+            </strong>{" "}
+            assists. However, total assists should also be considered
+            alongside appearances and playing time because the two players
+            have played different numbers of matches.
+          </p>
+        )
+      })()}
+
+
+      {/* ASSISTS PER GAME */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Assists Per Game
+      </h3>
+
+      <p>
+        Total assists measure career volume, while assists per game show how
+        frequently each player creates a recorded goal for a teammate.
+        Messi currently averages approximately{" "}
+        <strong className="text-blue-400">
+          {messiAssistsPerGame.toFixed(2)}
+        </strong>{" "}
+        assists per appearance, compared with Ronaldo&apos;s{" "}
+        <strong className="text-red-400">
+          {ronaldoAssistsPerGame.toFixed(2)}
+        </strong>.
+      </p>
+
+      <p>
+        This comparison is useful because a player with more appearances may
+        accumulate a higher raw total even if another player creates assists
+        at a greater rate. Looking at both career totals and per-game numbers
+        therefore provides more context.
+      </p>
+
+
+      {/* MINUTES PER ASSIST */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Minutes Per Assist
+      </h3>
+
+      <p>
+        Minutes per assist measures how much playing time each player needs,
+        on average, to register an assist. In the current career data, Messi
+        records an assist approximately once every{" "}
+        <strong className="text-blue-400">
+          {messiMinutesPerAssist.toLocaleString()} minutes
+        </strong>,
+        while Ronaldo records one approximately every{" "}
+        <strong className="text-red-400">
+          {ronaldoMinutesPerAssist.toLocaleString()} minutes
+        </strong>.
+      </p>
+
+      <p>
+        Unlike total assists, lower is better in this category because fewer
+        minutes per assist means the player creates assisted goals more
+        frequently relative to actual playing time.
+      </p>
+
+
+      {/* CLUB ASSISTS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Club Assists
+      </h3>
+
+      <p>
+        Club football represents the largest portion of both players&apos;
+        careers. Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messiClubAssists.toLocaleString()}
+        </strong>{" "}
+        club assists in the data used by Mesnaldo, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoClubAssists.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Club assists include the creative contributions produced for the
+        teams they have represented across domestic and continental
+        competitions in the available dataset. Comparing this category
+        separately from international football makes it easier to see where
+        most of their career playmaking has taken place.
+      </p>
+
+
+      {/* INTERNATIONAL ASSISTS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo International Assists
+      </h3>
+
+      <p>
+        In international football, Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messiIntlAssists.toLocaleString()}
+        </strong>{" "}
+        assists for Argentina in the matches represented in the database,
+        while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoIntlAssists.toLocaleString()}
+        </strong>{" "}
+        assists for Portugal.
+      </p>
+
+      <p>
+        International assists can be particularly interesting because
+        national teams operate in a different environment from club football.
+        Players spend less time training together, matches are less frequent,
+        and major tournaments such as the World Cup and continental
+        championships carry unique tactical pressures.
+      </p>
+
+
+      {/* UCL ASSISTS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Champions League Assists
+      </h3>
+
+      <p>
+        The UEFA Champions League was one of the defining competitions of the
+        Messi-Ronaldo era. In the Champions League competitions recognised by
+        this page, Messi has{" "}
+        <strong className="text-blue-400">
+          {messiUclAssists.toLocaleString()}
+        </strong>{" "}
+        assists and Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoUclAssists.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Champions League assists highlight the creative contribution each
+        player made against elite European opposition. These figures add
+        important context to their Champions League goal totals because they
+        measure not only finishing, but also direct involvement in creating
+        goals for teammates.
+      </p>
+
+
+      {/* GOAL CONTRIBUTIONS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Goal Contributions
+      </h3>
+
+      <p>
+        One of the best ways to combine scoring and playmaking is to look at
+        total goal contributions, calculated as goals plus assists.
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messiGoalContributions.toLocaleString()}
+        </strong>{" "}
+        career goal contributions, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoGoalContributions.toLocaleString()}
+        </strong>.
+      </p>
+
+      {(() => {
+        const messiGAperGame =
+          (safeNum(messi.total_goals) + messiTotal) / messiGames
+
+        const ronaldoGAperGame =
+          (safeNum(ronaldo.total_goals) + ronaldoTotal) / ronaldoGames
+
+        return (
+          <p>
+            Relative to appearances, Messi currently averages approximately{" "}
+            <strong className="text-blue-400">
+              {messiGAperGame.toFixed(2)}
+            </strong>{" "}
+            goals plus assists per game, compared with Ronaldo&apos;s{" "}
+            <strong className="text-red-400">
+              {ronaldoGAperGame.toFixed(2)}
+            </strong>.
+            This combines scoring and assisting into one broad measure of
+            direct attacking output.
+          </p>
+        )
+      })()}
+
+
+      {/* PLAYING STYLES */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi and Ronaldo as Playmakers
+      </h3>
+
+      <p>
+        The assist comparison also helps highlight differences in playing
+        style. Lionel Messi has frequently operated as both a scorer and
+        creator, dropping into deeper attacking positions to receive the ball,
+        combine with teammates and make the final pass.
+      </p>
+
+      <p>
+        Cristiano Ronaldo has also provided assists throughout his career,
+        particularly during periods when he played as a winger or wide
+        forward. As his role gradually became more focused on finishing and
+        penalty-area movement, his creative responsibilities changed.
+      </p>
+
+      <p>
+        This makes career assist totals especially useful when comparing the
+        evolution of both players. Their final numbers reflect not only
+        ability, but also tactical role, team structure, position and the
+        different phases of their careers.
+      </p>
+
+
+      {/* ASSISTS BY RESULT */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Assists in Wins, Draws and Losses
+      </h3>
+
+      <p>
+        Mesnaldo also separates assists according to the final result of the
+        match. Messi has recorded{" "}
+        <strong className="text-blue-400">
+          {messiAssistsInWins.toLocaleString()}
+        </strong>{" "}
+        assists in wins,{" "}
+        <strong className="text-blue-400">
+          {messiAssistsInDraws.toLocaleString()}
+        </strong>{" "}
+        in draws and{" "}
+        <strong className="text-blue-400">
+          {messiAssistsInLosses.toLocaleString()}
+        </strong>{" "}
+        in defeats.
+      </p>
+
+      <p>
+        Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoAssistsInWins.toLocaleString()}
+        </strong>{" "}
+        assists in victories,{" "}
+        <strong className="text-red-400">
+          {ronaldoAssistsInDraws.toLocaleString()}
+        </strong>{" "}
+        in draws and{" "}
+        <strong className="text-red-400">
+          {ronaldoAssistsInLosses.toLocaleString()}
+        </strong>{" "}
+        in defeats.
+      </p>
+
+      <p>
+        These values do not prove that an assist directly caused the final
+        result, but they show how each player&apos;s creative contributions are
+        distributed across different match outcomes.
+      </p>
+
+
+      {/* HOME AWAY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Home and Away Assists
+      </h3>
+
+      <p>
+        Venue splits provide another way to examine playmaking consistency.
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {messiHomeAssists.toLocaleString()}
+        </strong>{" "}
+        home assists and{" "}
+        <strong className="text-blue-400">
+          {messiAwayAssists.toLocaleString()}
+        </strong>{" "}
+        away assists in the available match data.
+      </p>
+
+      <p>
+        Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoHomeAssists.toLocaleString()}
+        </strong>{" "}
+        home assists and{" "}
+        <strong className="text-red-400">
+          {ronaldoAwayAssists.toLocaleString()}
+        </strong>{" "}
+        away assists.
+      </p>
+
+      <p>
+        Away matches can involve different tactical conditions, crowd
+        pressure and game states, making home-versus-away splits an
+        interesting additional comparison.
+      </p>
+
+
+      {/* MULTI ASSIST */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Multi-Assist Matches
+      </h3>
+
+      <p>
+        Providing two or more assists in one match represents a particularly
+        strong creative performance. Messi has recorded{" "}
+        <strong className="text-blue-400">
+          {messiMultiAssistMatches.toLocaleString()}
+        </strong>{" "}
+        matches with at least two assists in the available data, while
+        Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoMultiAssistMatches.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        These performances show occasions where a player influenced several
+        scoring moves within the same match rather than producing only one
+        final pass.
+      </p>
+
+
+      {/* HAT TRICK ASSISTS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Matches With Three or More Assists
+      </h3>
+
+      <p>
+        An even rarer creative performance is producing at least three
+        assists in a single match. Messi has{" "}
+        <strong className="text-blue-400">
+          {messiHatTrickAssists.toLocaleString()}
+        </strong>{" "}
+        such matches in the database, compared with Ronaldo&apos;s{" "}
+        <strong className="text-red-400">
+          {ronaldoHatTrickAssists.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Because this statistic counts matches with three or more assists, a
+        performance containing four assists would also be included.
+      </p>
+
+
+      {/* STARTER / SUB */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Assists as a Starter and Substitute
+      </h3>
+
+      <p>
+        Playing time can also affect assist opportunities. Messi has{" "}
+        <strong className="text-blue-400">
+          {messiStarterAssists.toLocaleString()}
+        </strong>{" "}
+        assists in appearances classified by this page as starter-level
+        playing time, and{" "}
+        <strong className="text-blue-400">
+          {messiSuperSubAssists.toLocaleString()}
+        </strong>{" "}
+        assists in appearances lasting 30 minutes or fewer.
+      </p>
+
+      <p>
+        Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoStarterAssists.toLocaleString()}
+        </strong>{" "}
+        starter assists and{" "}
+        <strong className="text-red-400">
+          {ronaldoSuperSubAssists.toLocaleString()}
+        </strong>{" "}
+        assists in appearances of 30 minutes or fewer.
+      </p>
+
+
+      {/* ASSISTS BY TEAM */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Assists by Club and National Team
+      </h3>
+
+      <p>
+        The team breakdown above shows where Messi and Ronaldo accumulated
+        their assists across the clubs and national teams represented in the
+        database. This helps show how their creative output changed as they
+        moved between teams, leagues and tactical systems.
+      </p>
+
+      <p>
+        A player&apos;s assist numbers are partly influenced by the quality and
+        movement of teammates around him. Playing in a possession-heavy team
+        can create different passing opportunities from playing in a direct
+        counter-attacking system, so team context remains important when
+        interpreting assist totals.
+      </p>
+
+
+      {/* WHAT COUNTS AS ASSIST */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Why Assist Statistics Can Differ Between Sources
+      </h3>
+
+      <p>
+        Assist totals sometimes vary between football databases because not
+        every provider applies exactly the same definition. Some competitions
+        and historical records may classify deflections, rebounds, penalties
+        won or goalkeeper touches differently.
+      </p>
+
+      <p>
+        For that reason, the most reliable Messi vs Ronaldo comparison is one
+        that uses a consistent dataset and methodology for both players. The
+        numbers on this page should be read according to the match and career
+        data stored by Mesnaldo rather than mixing totals from different
+        providers.
+      </p>
+
+
+      {/* ASSIST VS GOAL */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Goals vs Assists: Which Matters More?
+      </h3>
+
+      <p>
+        Goals and assists measure different parts of attacking football.
+        Goals record the final action of a scoring move, while assists measure
+        the final credited pass or action before the goal.
+      </p>
+
+      <p>
+        A great scorer can decide games through finishing, while a great
+        creator can repeatedly produce opportunities for teammates. Messi and
+        Ronaldo have both combined these abilities, but the balance between
+        scoring and assisting has differed throughout their careers.
+      </p>
+
+      <p>
+        That is why goal contributions can be useful alongside separate goals
+        and assists. They provide one combined number while still allowing
+        visitors to examine where that attacking output came from.
+      </p>
+
+
+      {/* HOW TO INTERPRET */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        How to Interpret Messi vs Ronaldo Assist Statistics
+      </h3>
+
+      <p>
+        No single assist statistic should decide the entire comparison.
+        Career assists measure total production. Assists per game account for
+        appearances. Minutes per assist consider playing time, while
+        competition-specific figures show where the assists were produced.
+      </p>
+
+      <p>
+        Tactical role is also essential. A player operating deeper and
+        receiving more possession may naturally have more opportunities to
+        create chances than a forward whose primary responsibility is to
+        finish attacks inside the penalty area.
+      </p>
+
+      <p>
+        The best way to compare Messi and Ronaldo as creators is therefore to
+        consider several categories together rather than looking only at one
+        total.
+      </p>
+
+
+      {/* FAQ */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Assists FAQ
+      </h2>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more career assists, Messi or Ronaldo?
+      </h3>
+
+      <p>
+        According to the current Mesnaldo career data, Messi has{" "}
+        <strong className="text-blue-400">
+          {messiTotal.toLocaleString()}
+        </strong>{" "}
+        assists and Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoTotal.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has the better assists-per-game rate?
+      </h3>
+
+      <p>
+        Messi currently averages{" "}
+        <strong className="text-blue-400">
+          {messiAssistsPerGame.toFixed(2)}
+        </strong>{" "}
+        assists per game, while Ronaldo averages{" "}
+        <strong className="text-red-400">
+          {ronaldoAssistsPerGame.toFixed(2)}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more club assists?
+      </h3>
+
+      <p>
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messiClubAssists.toLocaleString()}
+        </strong>{" "}
+        club assists compared with Ronaldo&apos;s{" "}
+        <strong className="text-red-400">
+          {ronaldoClubAssists.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more international assists?
+      </h3>
+
+      <p>
+        In the national-team matches represented in this database, Messi has{" "}
+        <strong className="text-blue-400">
+          {messiIntlAssists.toLocaleString()}
+        </strong>{" "}
+        assists for Argentina and Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoIntlAssists.toLocaleString()}
+        </strong>{" "}
+        for Portugal.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more Champions League assists?
+      </h3>
+
+      <p>
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messiUclAssists.toLocaleString()}
+        </strong>{" "}
+        Champions League assists in the competitions recognised by this page,
+        while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoUclAssists.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more total goal contributions?
+      </h3>
+
+      <p>
+        Messi currently has{" "}
+        <strong className="text-blue-400">
+          {messiGoalContributions.toLocaleString()}
+        </strong>{" "}
+        combined goals and assists, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoGoalContributions.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who creates assists more frequently?
+      </h3>
+
+      <p>
+        The minutes-per-assist statistic currently shows Messi at approximately{" "}
+        <strong className="text-blue-400">
+          {messiMinutesPerAssist.toLocaleString()} minutes
+        </strong>{" "}
+        per assist and Ronaldo at approximately{" "}
+        <strong className="text-red-400">
+          {ronaldoMinutesPerAssist.toLocaleString()} minutes
+        </strong>{" "}
+        per assist. In this category, the lower number represents the more
+        frequent assist rate.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Are these Messi vs Ronaldo assist statistics updated dynamically?
+      </h3>
+
+      <p>
+        Yes. The values in this section are rendered from the same career and
+        match-derived assist data supplied to the page. When the underlying
+        database changes, the server-rendered comparison reflects the current
+        stored values on the next request.
+      </p>
+
+
+      {/* CONCLUSION */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Playmaking Comparison
+      </h2>
+
+      <p>
+        The Messi vs Ronaldo rivalry is often described as a goal-scoring
+        debate, but assists show that their attacking influence extends beyond
+        finishing. Both players have created goals for teammates across club
+        football, international competition and the Champions League.
+      </p>
+
+      <p>
+        Total career assists provide the headline number, while assists per
+        game, minutes per assist, multi-assist matches, home and away splits
+        and goal contributions provide deeper context. Together, these
+        statistics help explain how each player contributed to attacking
+        football in different ways.
+      </p>
+
+      <p>
+        Mesnaldo&apos;s assist comparison is designed to make those differences
+        easy to explore. Rather than relying on a single statistic, visitors
+        can compare the complete playmaking profile of Lionel Messi and
+        Cristiano Ronaldo and decide which aspects of creative performance
+        matter most to them.
+      </p>
+
+    </div>
+  </div>
+</section>
         </div>
       </div>
     </Layout>

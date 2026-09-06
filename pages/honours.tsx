@@ -247,148 +247,574 @@ title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
               </motion.div>
             ))}
           </div>
-{/* SEO Content Section */}
-<div className="mt-20 pt-14 border-t border-gray-800/50">
-  <div className="max-w-3xl">
+{/* =========================================================
+    SEO CONTENT SECTION - INDIVIDUAL AWARDS PAGE
+========================================================= */}
 
-    {/* Section Title */}
-    <div className="mb-10">
-      <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">
-        Messi vs Ronaldo Individual Awards
-      </h2>
-      <p className="text-sm text-gray-500">
-        Comparing every major individual honour won by Lionel Messi and Cristiano Ronaldo throughout their careers.
+<section className="mt-20 pt-14 border-t border-gray-800/50">
+  <div className="max-w-4xl mx-auto">
+
+    <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
+      Messi vs Ronaldo Individual Awards: Complete Career Honours Comparison
+    </h2>
+
+    <div className="space-y-7 text-sm text-gray-400 leading-8">
+
+      {/* INTRO */}
+
+      <p>
+        The <strong className="text-white">Messi vs Ronaldo individual awards</strong>{" "}
+        comparison shows how often Lionel Messi and Cristiano Ronaldo have been
+        recognised for their personal performances throughout their careers.
+        While team trophies measure collective success, individual awards focus
+        more directly on the achievements of the player.
       </p>
-    </div>
 
-    {/* Two Columns */}
-    <div className="grid grid-cols-1 md:grid-cols-1 gap-10 md:gap-14">
+      <p>
+        Both football legends have collected major honours across world,
+        continental, league and tournament competitions. Their individual
+        records include Ballon d&apos;Or awards, FIFA player awards, European
+        Golden Shoes, league top-scorer awards, UEFA honours, World Cup
+        individual awards and many other recognitions.
+      </p>
 
-      {/* Messi */}
-      <div>
-        <div className="flex items-center gap-3 mb-5">
-          <div className="w-7 h-7 rounded-full overflow-hidden border border-blue-500/30 flex-shrink-0">
-            <Image
-              src="/images/messi.webp"
-              alt="Lionel Messi"
-              width={28}
-              height={28}
-              className="object-cover"
-            />
-          </div>
-          <h3 className="text-base font-bold text-blue-400">
-            Lionel Messi
-          </h3>
-        </div>
+      <p>
+        This page compares those awards category by category so that the
+        Messi vs Ronaldo debate can be examined beyond goals, assists and team
+        trophies.
+      </p>
 
-        <p className="text-sm text-gray-400 leading-7">
-          Lionel Messi has built one of the greatest individual award collections in football history. His
-          <strong className="text-white"> eight Ballon d'Or titles</strong> remain unmatched, while his
-          <strong className="text-white"> eight FIFA Best / World Player awards</strong> underline how consistently he has been recognised as the world's best player.
-        </p>
 
-        <p className="text-sm text-gray-400 leading-7 mt-4">
-          Across domestic football, Messi won
-          <strong className="text-white"> six European Golden Shoes</strong>,
-          <strong className="text-white"> eight Pichichi trophies</strong> as La Liga's top scorer,
-          and finished as the
-          <strong className="text-white"> UEFA Champions League top scorer six times</strong>.
-          His ability to score while creating chances for teammates made him one of the most complete attacking players ever.
-        </p>
+      {/* BALLON D'OR */}
 
-        <p className="text-sm text-gray-400 leading-7 mt-4">
-          Internationally, Messi's honours include
-          <strong className="text-white"> two FIFA World Cup Golden Balls</strong>,
-          <strong className="text-white"> two Copa América Golden Balls</strong>,
-          <strong className="text-white"> 17 FIFPro World XI selections</strong>,
-          and
-          <strong className="text-white"> 16 Olimpia de Plata awards</strong>.
-          These achievements reflect both his longevity and his influence across club and international football.
-        </p>
-      </div>
-
-      {/* Ronaldo */}
-      <div>
-        <div className="flex items-center gap-3 mb-5">
-          <div className="w-7 h-7 rounded-full overflow-hidden border border-red-500/30 flex-shrink-0">
-            <Image
-              src="/images/ronaldo.webp"
-              alt="Cristiano Ronaldo"
-              width={28}
-              height={28}
-              className="object-cover"
-            />
-          </div>
-          <h3 className="text-base font-bold text-red-400">
-            Cristiano Ronaldo
-          </h3>
-        </div>
-
-        <p className="text-sm text-gray-400 leading-7">
-          Cristiano Ronaldo's career is defined by remarkable consistency across multiple leagues.
-          He has won
-          <strong className="text-white"> five Ballon d'Or awards</strong> and
-          <strong className="text-white"> five FIFA Best / World Player awards</strong>,
-          establishing himself among football's greatest players.
-        </p>
-
-        <p className="text-sm text-gray-400 leading-7 mt-4">
-          Ronaldo owns the record for
-          <strong className="text-white"> seven UEFA Champions League Top Scorer awards</strong>
-          and became the first player to finish as league top scorer in
-          <strong className="text-white"> England, Spain, Italy and Saudi Arabia</strong>.
-          His success across different countries highlights an ability to adapt that few players have matched.
-        </p>
-
-        <p className="text-sm text-gray-400 leading-7 mt-4">
-          Beyond his goal-scoring records, Ronaldo has earned
-          <strong className="text-white"> 15 FIFPro World XI selections</strong>,
-          <strong className="text-white"> six Globe Soccer Best Player awards</strong>,
-          and
-          <strong className="text-white"> five Portuguese Player of the Year honours</strong>.
-          Combined with his international scoring records, they complete one of the most decorated individual careers in football.
-        </p>
-      </div>
-
-    </div>
-
-    {/* Summary */}
-    <div className="mt-14 pt-10 border-t border-gray-800/50">
-      <h3 className="text-lg font-bold text-amber-400 mb-5">
-        Who Has More Individual Awards?
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Ballon d&apos;Or Awards
       </h3>
 
-      <div className="space-y-4 text-sm text-gray-400 leading-7">
+      <p>
+        The Ballon d&apos;Or is one of the most recognised individual awards in
+        football. Lionel Messi has won{" "}
+        <strong className="text-blue-400">8 Ballon d&apos;Or awards</strong>,
+        while Cristiano Ronaldo has won{" "}
+        <strong className="text-red-400">5</strong>.
+      </p>
 
-        <p>
-          Looking at the biggest individual honours,
-          <strong className="text-white"> Lionel Messi leads in total awards</strong>.
-          He has won more Ballon d'Or titles (8-5), FIFA Best / World Player awards (8-5),
-          European Golden Shoes (6-4), Pichichi trophies (8-3), World Cup Golden Balls (2-0),
-          and IFFHS World's Best Playmaker awards (5-0).
-        </p>
+      <p>
+        Messi&apos;s victories came in 2009, 2010, 2011, 2012, 2015, 2019,
+        2021 and 2023. Ronaldo won in 2008, 2013, 2014, 2016 and 2017.
+      </p>
 
-        <p>
-          Cristiano Ronaldo, meanwhile, holds the advantage in several categories of his own.
-          He has won more
-          <strong className="text-white"> Champions League Top Scorer awards (7-6)</strong>,
-          more
-          <strong className="text-white"> Globe Soccer Best Player awards (6-1)</strong>,
-          and remains the only player to claim league Golden Boot honours in four different countries.
-          He also has more Ballon d'Or nominations than Messi.
-        </p>
+      <p>
+        These awards show the remarkable length of their rivalry. Both players
+        repeatedly returned to the highest level of individual recognition
+        across different stages of their careers.
+      </p>
 
-        <p>
-          The numbers show why the Messi vs Ronaldo debate continues. Messi leads in overall individual recognition,
-          while Ronaldo's achievements across multiple leagues and competitions are equally extraordinary.
-          Together, they have set standards for individual excellence that may not be matched for generations.
-        </p>
 
-      </div>
+      {/* FIFA BEST */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo FIFA Best Player Awards
+      </h3>
+
+      <p>
+        FIFA&apos;s major individual player awards are another important part of
+        the comparison. According to the categories listed on this page,
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {MAJOR_AWARDS.find(
+            a => a.title === "FIFA The Best / World Player of the Year"
+          )?.messi.count ?? 0}
+        </strong>{" "}
+        wins in this combined category, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {MAJOR_AWARDS.find(
+            a => a.title === "FIFA The Best / World Player of the Year"
+          )?.ronaldo.count ?? 0}
+        </strong>.
+      </p>
+
+      <p>
+        FIFA&apos;s award structure has changed over time, so historical
+        comparisons should always consider the name and format of the award in
+        each era rather than treating every season as identical.
+      </p>
+
+
+      {/* GOLDEN SHOE */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo European Golden Shoe Awards
+      </h3>
+
+      <p>
+        The European Golden Shoe recognises the leading league scorer across
+        European domestic competitions. Messi has won{" "}
+        <strong className="text-blue-400">
+          {MAJOR_AWARDS.find(a => a.title === "European Golden Shoe")?.messi.count ?? 0}
+        </strong>{" "}
+        European Golden Shoes, while Ronaldo has won{" "}
+        <strong className="text-red-400">
+          {MAJOR_AWARDS.find(a => a.title === "European Golden Shoe")?.ronaldo.count ?? 0}
+        </strong>.
+      </p>
+
+      <p>
+        This award is especially useful in the Messi vs Ronaldo comparison
+        because it reflects league scoring performance across multiple seasons
+        rather than a single tournament.
+      </p>
+
+
+      {/* WORLD CUP */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo World Cup Individual Awards
+      </h3>
+
+      <p>
+        World Cup individual awards highlight performances on football&apos;s
+        biggest international stage. The awards listed on this page include
+        categories such as the FIFA World Cup Golden Ball, Silver Ball and
+        Silver Boot.
+      </p>
+
+      <p>
+        Messi has multiple World Cup individual honours recorded in the
+        comparison, while Ronaldo has fewer in these specific categories.
+        Tournament awards should be considered separately from career-long
+        awards because they reflect performance during one competition rather
+        than an entire season.
+      </p>
+
+
+      {/* INTERNATIONAL */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        International Tournament Individual Awards
+      </h3>
+
+      <p>
+        The page also includes individual honours from major international
+        competitions. Messi&apos;s list contains Copa América awards, while
+        Ronaldo&apos;s includes European Championship and UEFA Nations League
+        honours.
+      </p>
+
+      <p>
+        These categories are not directly identical because Messi represents
+        Argentina in CONMEBOL competitions and Ronaldo represents Portugal in
+        UEFA competitions. They are best interpreted as evidence of individual
+        performance within each player&apos;s international environment.
+      </p>
+
+
+      {/* UCL TOP SCORER */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Champions League Top Scorer Awards
+      </h3>
+
+      <p>
+        Cristiano Ronaldo has finished as Champions League top scorer{" "}
+        <strong className="text-red-400">
+          {MAJOR_AWARDS.find(a => a.title === "Champions League Top Scorer")
+            ?.ronaldo.count ?? 0}
+        </strong>{" "}
+        times in the comparison, while Messi has done so{" "}
+        <strong className="text-blue-400">
+          {MAJOR_AWARDS.find(a => a.title === "Champions League Top Scorer")
+            ?.messi.count ?? 0}
+        </strong>{" "}
+        times.
+      </p>
+
+      <p>
+        This category is particularly significant because both players were
+        dominant Champions League scorers during much of the same era.
+      </p>
+
+
+      {/* DOMESTIC TOP SCORERS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        League Top Scorer Awards
+      </h3>
+
+      <p>
+        Domestic top-scorer awards provide another direct comparison of their
+        finishing ability. Messi has multiple Pichichi awards from La Liga,
+        while Ronaldo&apos;s career includes top-scorer honours in La Liga,
+        the Premier League, Serie A and the Saudi Pro League.
+      </p>
+
+      <p>
+        The page also records Messi&apos;s MLS top-scorer achievement. These
+        awards show how the two players continued to produce scoring success
+        across different leagues and stages of their careers.
+      </p>
+
+
+      {/* UEFA AWARDS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo UEFA Individual Awards
+      </h3>
+
+      <p>
+        UEFA awards provide recognition specifically for performances in
+        European football. The comparison includes UEFA Club Footballer of
+        the Year, UEFA Best Player in Europe and UEFA Best Forward in Europe.
+      </p>
+
+      <p>
+        Messi and Ronaldo both won major UEFA individual awards during their
+        peak years, showing how strongly their rivalry shaped European club
+        football.
+      </p>
+
+
+      {/* LEAGUE PLAYER AWARDS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Domestic League Player of the Year Awards
+      </h3>
+
+      <p>
+        Individual success was not limited to global awards. Messi earned
+        numerous La Liga player and forward awards, while Ronaldo collected
+        major honours in the Premier League, La Liga and Serie A.
+      </p>
+
+      <p>
+        These league-specific awards help show how each player was viewed
+        within the domestic competitions where he played rather than only at
+        the global level.
+      </p>
+
+
+      {/* FIFPRO */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo FIFPro World XI Appearances
+      </h3>
+
+      <p>
+        FIFPro World XI selections provide another measure of long-term elite
+        recognition. Messi has{" "}
+        <strong className="text-blue-400">
+          {MAJOR_AWARDS.find(a => a.title === "FIFPro World XI Appearances")
+            ?.messi.count ?? 0}
+        </strong>{" "}
+        appearances listed on this page, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {MAJOR_AWARDS.find(a => a.title === "FIFPro World XI Appearances")
+            ?.ronaldo.count ?? 0}
+        </strong>.
+      </p>
+
+      <p>
+        Repeated inclusion in an elite world team is useful when discussing
+        longevity because it shows that both players remained among the most
+        highly rated footballers over many seasons.
+      </p>
+
+
+      {/* IFFHS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo IFFHS Awards
+      </h3>
+
+      <p>
+        The page also compares several IFFHS honours, including best
+        playmaker, top goalscorer, international goalscorer and top-division
+        goalscorer awards.
+      </p>
+
+      <p>
+        These categories highlight different strengths. Some reward creative
+        production, while others focus on goals across club or international
+        football.
+      </p>
+
+
+      {/* PUSKAS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo FIFA Puskás Award
+      </h3>
+
+      <p>
+        Cristiano Ronaldo has won the FIFA Puskás Award{" "}
+        <strong className="text-red-400">
+          {MAJOR_AWARDS.find(a => a.title === "FIFA Puskás Award")
+            ?.ronaldo.count ?? 0}
+        </strong>{" "}
+        time in the comparison, while Messi has{" "}
+        <strong className="text-blue-400">
+          {MAJOR_AWARDS.find(a => a.title === "FIFA Puskás Award")
+            ?.messi.count ?? 0}
+        </strong>{" "}
+        wins.
+      </p>
+
+      <p>
+        The page also records Puskás Award nominations separately, which is
+        useful because winning the award and simply reaching the final
+        nomination stages are different achievements.
+      </p>
+
+
+      {/* PLAYMAKING */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Playmaking Awards
+      </h3>
+
+      <p>
+        Individual awards can also reveal differences in playing style. Messi
+        has several IFFHS World&apos;s Best Playmaker honours in the current
+        dataset, reflecting his role not only as a scorer but also as a
+        creator.
+      </p>
+
+      <p>
+        Ronaldo&apos;s award profile contains a particularly strong collection
+        of goalscoring and forward-related honours, reflecting the evolution
+        of his career toward becoming one of football&apos;s most prolific
+        finishers.
+      </p>
+
+
+      {/* LONGEVITY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Longevity of Messi and Ronaldo&apos;s Individual Success
+      </h3>
+
+      <p>
+        One of the most remarkable aspects of this comparison is the length of
+        time both players remained competitive for major individual honours.
+        Their awards span many years, leagues, clubs and international
+        tournaments.
+      </p>
+
+      <p>
+        This long period of recognition is important because peak performance
+        for one or two seasons is different from maintaining elite standards
+        across a large part of a career.
+      </p>
+
+
+      {/* CATEGORY LEADERS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Who Leads More Individual Award Categories?
+      </h3>
+
+      <p>
+        Across the award categories currently listed on this page, Messi leads{" "}
+        <strong className="text-blue-400">
+          {MAJOR_AWARDS.filter(a => a.messi.count > a.ronaldo.count).length}
+        </strong>{" "}
+        categories, Ronaldo leads{" "}
+        <strong className="text-red-400">
+          {MAJOR_AWARDS.filter(a => a.ronaldo.count > a.messi.count).length}
+        </strong>,
+        and{" "}
+        <strong className="text-white">
+          {MAJOR_AWARDS.filter(a => a.messi.count === a.ronaldo.count).length}
+        </strong>{" "}
+        categories are tied.
+      </p>
+
+      <p>
+        This does not mean every category has equal importance. A Ballon
+        d&apos;Or, a league scoring award, a nomination and a regional award
+        measure different achievements. The category count is best used as an
+        overview rather than a single definitive ranking.
+      </p>
+
+
+      {/* WHY COUNTS ARE TRICKY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Why Total Individual Award Counts Can Be Misleading
+      </h3>
+
+      <p>
+        Unlike goals or appearances, individual awards cannot always be added
+        together into one simple career total. Some awards are global, some
+        are regional, some are tournament-specific, and others represent
+        nominations or second-place finishes rather than outright victories.
+      </p>
+
+      <p>
+        Some organisations have also changed award names and formats over
+        time. For that reason, comparing the individual categories directly is
+        usually more meaningful than presenting one giant combined number.
+      </p>
+
+
+      {/* AWARDS VS TROPHIES */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Individual Awards vs Team Trophies
+      </h3>
+
+      <p>
+        Individual awards and team trophies measure different types of
+        achievement. A Champions League or league title belongs to a team,
+        while the Ballon d&apos;Or, Golden Shoe or player-of-the-year award
+        recognises one player.
+      </p>
+
+      <p>
+        A balanced Messi vs Ronaldo comparison should therefore examine both.
+        Team honours show collective success, while individual awards provide
+        stronger evidence of how consistently each player was recognised for
+        personal performance.
+      </p>
+
+
+      {/* FAQ */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Individual Awards FAQ
+      </h2>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more Ballon d&apos;Or awards, Messi or Ronaldo?
+      </h3>
+
+      <p>
+        Lionel Messi has won{" "}
+        <strong className="text-blue-400">8 Ballon d&apos;Or awards</strong>,
+        compared with Cristiano Ronaldo&apos;s{" "}
+        <strong className="text-red-400">5</strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        How many European Golden Shoes has Messi won?
+      </h3>
+
+      <p>
+        Messi has won{" "}
+        <strong className="text-blue-400">
+          {MAJOR_AWARDS.find(a => a.title === "European Golden Shoe")
+            ?.messi.count ?? 0}
+        </strong>{" "}
+        European Golden Shoes according to the award data on this page.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        How many European Golden Shoes has Ronaldo won?
+      </h3>
+
+      <p>
+        Ronaldo has won{" "}
+        <strong className="text-red-400">
+          {MAJOR_AWARDS.find(a => a.title === "European Golden Shoe")
+            ?.ronaldo.count ?? 0}
+        </strong>{" "}
+        European Golden Shoes.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more Champions League top-scorer awards?
+      </h3>
+
+      <p>
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {MAJOR_AWARDS.find(a => a.title === "Champions League Top Scorer")
+            ?.messi.count ?? 0}
+        </strong>{" "}
+        Champions League top-scorer finishes, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {MAJOR_AWARDS.find(a => a.title === "Champions League Top Scorer")
+            ?.ronaldo.count ?? 0}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more FIFPro World XI appearances?
+      </h3>
+
+      <p>
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {MAJOR_AWARDS.find(a => a.title === "FIFPro World XI Appearances")
+            ?.messi.count ?? 0}
+        </strong>{" "}
+        appearances listed in this comparison, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {MAJOR_AWARDS.find(a => a.title === "FIFPro World XI Appearances")
+            ?.ronaldo.count ?? 0}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Does this page include only major global awards?
+      </h3>
+
+      <p>
+        No. The comparison includes global awards, continental honours,
+        tournament awards, league-specific prizes, scoring awards and several
+        other recognised individual distinctions. Because these categories
+        have different importance and criteria, they are displayed separately
+        rather than treated as identical.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Are team trophies included in this individual awards comparison?
+      </h3>
+
+      <p>
+        No. This page focuses on individual honours. Team trophies such as
+        league titles, Champions League titles and international championships
+        should be compared separately on the trophies page.
+      </p>
+
+
+      {/* CONCLUSION */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Awards Comparison
+      </h2>
+
+      <p>
+        Lionel Messi and Cristiano Ronaldo have accumulated an extraordinary
+        range of individual awards across more than two decades of elite
+        football. Their honours recognise scoring, playmaking, tournament
+        performances, league performances and overall excellence.
+      </p>
+
+      <p>
+        Messi holds the advantage in several major categories, including the
+        Ballon d&apos;Or and European Golden Shoe, while Ronaldo leads or
+        remains highly competitive in several scoring, UEFA and league-related
+        awards.
+      </p>
+
+      <p>
+        The strongest comparison comes from looking at each award separately.
+        Rather than treating every honour as equal, Mesnaldo allows visitors
+        to compare the type of award, number of wins and the years in which
+        each player received it.
+      </p>
+
     </div>
-
   </div>
-</div>
+</section>
         </div>
       </div>
     </Layout>

@@ -343,7 +343,541 @@ export default function Career({ messiSeasons, ronaldoSeasons, messiClubs, ronal
               Data calculated from {activePlayer === "messi" ? "1,162" : "1,330"} match records in database
             </p>
           </div>
+{/* =========================================================
+    SEO CONTENT SECTION - CAREER PAGE
+========================================================= */}
 
+<section className="mt-20 pt-14 border-t border-gray-800/50">
+  <div className="max-w-4xl mx-auto">
+
+    <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
+      Messi vs Ronaldo Career: Complete Season-by-Season Comparison
+    </h2>
+
+    <div className="space-y-7 text-sm text-gray-400 leading-8">
+
+      <p>
+        The <strong className="text-white">Messi vs Ronaldo career comparison</strong>{" "}
+        looks at how Lionel Messi and Cristiano Ronaldo developed across
+        different seasons, clubs, leagues and stages of their careers.
+        Rather than focusing on only one statistic, this page combines
+        appearances, goals, assists and season-by-season performance.
+      </p>
+
+      <p>
+        Both players built extraordinary careers across multiple decades.
+        Messi became closely associated with Barcelona before later playing
+        for Paris Saint-Germain and Inter Miami, while Ronaldo represented
+        Sporting CP, Manchester United, Real Madrid, Juventus and Al Nassr.
+      </p>
+
+      <p>
+        The career timeline above allows each player to be viewed separately,
+        making it easier to see how their production changed from one season
+        to another.
+      </p>
+
+
+      {/* TOTAL CAREER */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Career Statistics
+      </h3>
+
+      <p>
+        According to the match records currently available in the Mesnaldo
+        database, Lionel Messi has played{" "}
+        <strong className="text-blue-400">
+          {messiTotals.apps.toLocaleString()}
+        </strong>{" "}
+        matches, scored{" "}
+        <strong className="text-blue-400">
+          {messiTotals.goals.toLocaleString()}
+        </strong>{" "}
+        goals and recorded{" "}
+        <strong className="text-blue-400">
+          {messiTotals.assists.toLocaleString()}
+        </strong>{" "}
+        assists.
+      </p>
+
+      <p>
+        Cristiano Ronaldo has played{" "}
+        <strong className="text-red-400">
+          {ronaldoTotals.apps.toLocaleString()}
+        </strong>{" "}
+        matches, scored{" "}
+        <strong className="text-red-400">
+          {ronaldoTotals.goals.toLocaleString()}
+        </strong>{" "}
+        goals and recorded{" "}
+        <strong className="text-red-400">
+          {ronaldoTotals.assists.toLocaleString()}
+        </strong>{" "}
+        assists in the current dataset.
+      </p>
+
+
+      {/* APPEARANCES */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Career Appearances
+      </h3>
+
+      <p>
+        Career appearances are one of the clearest measures of longevity.
+        Ronaldo currently has{" "}
+        <strong className="text-red-400">
+          {ronaldoTotals.apps.toLocaleString()}
+        </strong>{" "}
+        recorded appearances on this page, compared with Messi&apos;s{" "}
+        <strong className="text-blue-400">
+          {messiTotals.apps.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Appearance totals show how long a player has remained active at senior
+        level, but they should be interpreted together with goals, assists,
+        minutes played and the competitions in which those matches occurred.
+      </p>
+
+
+      {/* GOALS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Career Goals
+      </h3>
+
+      <p>
+        Goals are one of the most important statistics in the Messi vs Ronaldo
+        debate. Messi has{" "}
+        <strong className="text-blue-400">
+          {messiTotals.goals.toLocaleString()}
+        </strong>{" "}
+        goals in the current career dataset, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoTotals.goals.toLocaleString()}
+        </strong>.
+      </p>
+
+      {ronaldoTotals.goals > messiTotals.goals ? (
+        <p>
+          Ronaldo currently leads the career goal total in this dataset by{" "}
+          <strong className="text-white">
+            {(ronaldoTotals.goals - messiTotals.goals).toLocaleString()}
+          </strong>{" "}
+          goals.
+        </p>
+      ) : messiTotals.goals > ronaldoTotals.goals ? (
+        <p>
+          Messi currently leads the career goal total in this dataset by{" "}
+          <strong className="text-white">
+            {(messiTotals.goals - ronaldoTotals.goals).toLocaleString()}
+          </strong>{" "}
+          goals.
+        </p>
+      ) : (
+        <p>
+          Messi and Ronaldo are level for career goals in the current dataset.
+        </p>
+      )}
+
+
+      {/* ASSISTS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Career Assists
+      </h3>
+
+      <p>
+        The career comparison also includes assists. Messi has{" "}
+        <strong className="text-blue-400">
+          {messiTotals.assists.toLocaleString()}
+        </strong>{" "}
+        recorded assists, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoTotals.assists.toLocaleString()}
+        </strong>.
+      </p>
+
+      <p>
+        Assist totals provide additional context because they show how often
+        each player directly created goals for teammates. They are especially
+        useful when comparing Messi&apos;s broader creative role with
+        Ronaldo&apos;s scoring output.
+      </p>
+
+
+      {/* G+A */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Career Goal Contributions
+      </h3>
+
+      <p>
+        Combining goals and assists, Messi has{" "}
+        <strong className="text-blue-400">
+          {(messiTotals.goals + messiTotals.assists).toLocaleString()}
+        </strong>{" "}
+        recorded goal contributions in the current dataset.
+      </p>
+
+      <p>
+        Ronaldo has{" "}
+        <strong className="text-red-400">
+          {(ronaldoTotals.goals + ronaldoTotals.assists).toLocaleString()}
+        </strong>{" "}
+        recorded goal contributions.
+      </p>
+
+      <p>
+        Goal contributions provide a broader attacking measure than goals
+        alone because they include both finishing and direct creation.
+      </p>
+
+
+      {/* SEASON TIMELINE */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Season-by-Season Career Timeline
+      </h3>
+
+      <p>
+        The timeline view groups the available match records into football
+        seasons. Each season shows appearances, goals, assists and the main
+        team associated with that season.
+      </p>
+
+      <p>
+        Looking at performance season by season is useful because career totals
+        can hide important changes. A player may have an exceptional scoring
+        peak in one period, a more creative role in another, or fewer
+        appearances because of injuries, transfers or changes in competition.
+      </p>
+
+
+      {/* BEST SEASONS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi and Ronaldo&apos;s Best Scoring Seasons
+      </h3>
+
+      {messiSeasons.length > 0 && (
+        <p>
+          Messi&apos;s highest-scoring season in the current dataset is{" "}
+          <strong className="text-blue-400">
+            {[...messiSeasons].sort((a, b) => b.goals - a.goals)[0].season}
+          </strong>
+          , when he scored{" "}
+          <strong className="text-blue-400">
+            {[...messiSeasons].sort((a, b) => b.goals - a.goals)[0].goals}
+          </strong>{" "}
+          goals.
+        </p>
+      )}
+
+      {ronaldoSeasons.length > 0 && (
+        <p>
+          Ronaldo&apos;s highest-scoring season in the current dataset is{" "}
+          <strong className="text-red-400">
+            {[...ronaldoSeasons].sort((a, b) => b.goals - a.goals)[0].season}
+          </strong>
+          , when he scored{" "}
+          <strong className="text-red-400">
+            {[...ronaldoSeasons].sort((a, b) => b.goals - a.goals)[0].goals}
+          </strong>{" "}
+          goals.
+        </p>
+      )}
+
+      <p>
+        Peak-season comparisons are useful, but one season alone does not
+        define an entire career. Consistency across many seasons is equally
+        important when discussing longevity.
+      </p>
+
+
+      {/* CLUB CAREERS */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Club Career Comparison
+      </h3>
+
+      <p>
+        The Clubs tab groups each player&apos;s statistics by team and displays
+        appearances, goals and assists. This makes it possible to see how each
+        player performed across the different clubs represented in the match
+        database.
+      </p>
+
+      <p>
+        Messi&apos;s career is strongly associated with Barcelona, where he
+        spent the largest part of his European career, before later moving to
+        Paris Saint-Germain and Inter Miami.
+      </p>
+
+      <p>
+        Ronaldo&apos;s career was spread across more major European leagues,
+        with spells at Sporting CP, Manchester United, Real Madrid and
+        Juventus before his move to Al Nassr.
+      </p>
+
+
+      {/* BARCELONA */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi&apos;s Barcelona Career
+      </h3>
+
+      <p>
+        Barcelona represents the longest and most influential period of
+        Messi&apos;s club career. It was there that he developed from a young
+        player into one of the most productive attackers in football history.
+      </p>
+
+      <p>
+        His Barcelona years contributed a major share of the appearances,
+        goals and assists displayed in the club breakdown on this page.
+      </p>
+
+
+      {/* REAL MADRID */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Ronaldo&apos;s Real Madrid Career
+      </h3>
+
+      <p>
+        Real Madrid represents one of the most productive periods of
+        Ronaldo&apos;s career. During those seasons, he produced extremely high
+        scoring numbers and competed directly with Messi in La Liga and
+        El Clásico.
+      </p>
+
+      <p>
+        The Real Madrid period is therefore especially important when
+        comparing the peak years of Messi and Ronaldo.
+      </p>
+
+
+      {/* DIFFERENT LEAGUES */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Across Different Leagues
+      </h3>
+
+      <p>
+        The two careers followed different paths. Messi spent the majority of
+        his prime years in La Liga before later playing in Ligue 1 and Major
+        League Soccer.
+      </p>
+
+      <p>
+        Ronaldo competed in the Premier League, La Liga, Serie A and later the
+        Saudi Pro League, giving his career a wider spread across different
+        domestic competitions.
+      </p>
+
+      <p>
+        League changes matter because playing styles, schedules, opponents and
+        tactical environments differ between competitions. Raw career totals
+        should therefore be viewed alongside the context in which they were
+        produced.
+      </p>
+
+
+      {/* LONGEVITY */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        Messi vs Ronaldo Career Longevity
+      </h3>
+
+      <p>
+        Longevity is one of the strongest features of both careers. Messi and
+        Ronaldo remained productive for far longer than the typical peak
+        period of an elite footballer.
+      </p>
+
+      <p>
+        Their timelines show how they adapted as they aged. Both players
+        changed roles, teams and tactical responsibilities while continuing
+        to contribute goals and assists.
+      </p>
+
+      <p>
+        Career longevity should therefore be evaluated using a combination of
+        appearances, total production, efficiency and sustained performance
+        across many seasons.
+      </p>
+
+
+      {/* PLAYING STYLE */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        How Their Careers Developed Differently
+      </h3>
+
+      <p>
+        Messi and Ronaldo did not follow identical football paths. Messi spent
+        much of his career combining scoring with chance creation and deeper
+        involvement in attacking play.
+      </p>
+
+      <p>
+        Ronaldo developed from a wide attacking player into a more
+        goal-focused forward, becoming increasingly specialised around
+        finishing, movement and penalty-area scoring.
+      </p>
+
+      <p>
+        These differences help explain why comparing only career goals or only
+        assists does not provide the full picture.
+      </p>
+
+
+      {/* DATA METHOD */}
+
+      <h3 className="text-xl font-bold text-white mt-10">
+        How Career Statistics Are Calculated on Mesnaldo
+      </h3>
+
+      <p>
+        The career statistics on this page are calculated from individual
+        match records stored in the Mesnaldo database. Every available match
+        contributes one appearance, while the recorded goals and assists are
+        summed to create the career totals.
+      </p>
+
+      <p>
+        Matches are also grouped into seasons and clubs to generate the
+        timeline and club breakdowns. The displayed totals therefore reflect
+        the scope and completeness of the match data currently stored in the
+        database.
+      </p>
+
+      <p>
+        If historical records are corrected or additional matches are added,
+        the displayed career totals can change automatically.
+      </p>
+
+
+      {/* FAQ */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Career FAQ
+      </h2>
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has played more career matches, Messi or Ronaldo?
+      </h3>
+
+      <p>
+        In the current Mesnaldo dataset, Messi has{" "}
+        <strong className="text-blue-400">
+          {messiTotals.apps.toLocaleString()}
+        </strong>{" "}
+        recorded appearances, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoTotals.apps.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more career goals?
+      </h3>
+
+      <p>
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {messiTotals.goals.toLocaleString()}
+        </strong>{" "}
+        goals and Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoTotals.goals.toLocaleString()}
+        </strong>{" "}
+        according to the match records currently used on this page.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Who has more career assists?
+      </h3>
+
+      <p>
+        Messi has{" "}
+        <strong className="text-blue-400">
+          {messiTotals.assists.toLocaleString()}
+        </strong>{" "}
+        recorded assists, while Ronaldo has{" "}
+        <strong className="text-red-400">
+          {ronaldoTotals.assists.toLocaleString()}
+        </strong>.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Does this page show Messi and Ronaldo season by season?
+      </h3>
+
+      <p>
+        Yes. The career timeline groups the available match data by season and
+        displays appearances, goals and assists for each season.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Can I compare their statistics by club?
+      </h3>
+
+      <p>
+        Yes. The Clubs tab groups the available career records by team and
+        displays appearances, goals and assists for each club represented in
+        the database.
+      </p>
+
+
+      <h3 className="text-lg font-bold text-white mt-8">
+        Are the career statistics manually entered?
+      </h3>
+
+      <p>
+        The totals displayed on this page are calculated from the individual
+        match records available in the database rather than being manually
+        hardcoded into the page.
+      </p>
+
+
+      {/* CONCLUSION */}
+
+      <h2 className="text-2xl font-black text-white mt-14">
+        Messi vs Ronaldo Complete Career Comparison
+      </h2>
+
+      <p>
+        The careers of Lionel Messi and Cristiano Ronaldo are difficult to
+        reduce to a single statistic. Ronaldo&apos;s career is notable for
+        longevity, goalscoring and success across several leagues, while
+        Messi&apos;s career combines elite scoring with exceptional creative
+        output and sustained production across different roles.
+      </p>
+
+      <p>
+        The most useful comparison considers appearances, goals, assists,
+        season-by-season performance and club records together rather than
+        relying on one career total.
+      </p>
+
+      <p>
+        Mesnaldo&apos;s career timeline provides that broader view by allowing
+        visitors to explore each player&apos;s development season by season and
+        club by club.
+      </p>
+
+    </div>
+  </div>
+</section>
         </div>
       </div>
     </Layout>
