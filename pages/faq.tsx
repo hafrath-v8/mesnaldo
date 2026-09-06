@@ -106,10 +106,8 @@ const EMPTY_PLAYER: PlayerStats = {
 function safeNum(
   value: unknown
 ): number {
-  return typeof value === "number" &&
-    Number.isFinite(value)
-    ? value
-    : 0
+  const num = Number(value)
+  return Number.isFinite(num) ? num : 0
 }
 
 
@@ -1673,46 +1671,28 @@ export const getStaticProps:
       ===================================================== */
 
       const {
-        data:
-          messiData,
-
-        error:
-          messiError,
-      } =
-        await supabase
-          .from(
-            "career_stats"
-          )
-          .select(
-            [
-              "total_goals",
-              "total_assists",
-              "total_games",
-
-              "total_wins",
-              "total_draws",
-              "total_losses",
-
-              "total_minutes",
-
-              "penalties_scored",
-              "penalties_missed",
-
-              "free_kick_goals",
-
-              "header_goals",
-
-              "left_foot_goals",
-              "right_foot_goals",
-
-              "outside_box_goals",
-            ].join(",")
-          )
-          .eq(
-            "player_id",
-            1
-          )
-          .maybeSingle()
+        data: messiData,
+        error: messiError,
+      } = await supabase
+        .from("career_stats")
+        .select(`
+          total_goals,
+          total_assists,
+          total_games,
+          total_wins,
+          total_draws,
+          total_losses,
+          total_minutes,
+          penalties_scored,
+          penalties_missed,
+          free_kick_goals,
+          header_goals,
+          left_foot_goals,
+          right_foot_goals,
+          outside_box_goals
+        `)
+        .eq("player_id", 1)
+        .maybeSingle()
 
 
       /* =====================================================
@@ -1720,46 +1700,28 @@ export const getStaticProps:
       ===================================================== */
 
       const {
-        data:
-          ronaldoData,
-
-        error:
-          ronaldoError,
-      } =
-        await supabase
-          .from(
-            "career_stats"
-          )
-          .select(
-            [
-              "total_goals",
-              "total_assists",
-              "total_games",
-
-              "total_wins",
-              "total_draws",
-              "total_losses",
-
-              "total_minutes",
-
-              "penalties_scored",
-              "penalties_missed",
-
-              "free_kick_goals",
-
-              "header_goals",
-
-              "left_foot_goals",
-              "right_foot_goals",
-
-              "outside_box_goals",
-            ].join(",")
-          )
-          .eq(
-            "player_id",
-            2
-          )
-          .maybeSingle()
+        data: ronaldoData,
+        error: ronaldoError,
+      } = await supabase
+        .from("career_stats")
+        .select(`
+          total_goals,
+          total_assists,
+          total_games,
+          total_wins,
+          total_draws,
+          total_losses,
+          total_minutes,
+          penalties_scored,
+          penalties_missed,
+          free_kick_goals,
+          header_goals,
+          left_foot_goals,
+          right_foot_goals,
+          outside_box_goals
+        `)
+        .eq("player_id", 2)
+        .maybeSingle()
 
 
       /* =====================================================
