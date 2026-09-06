@@ -33,6 +33,11 @@ interface BlogPost {
   is_published: boolean; is_featured: boolean; published_at: string; read_time: string; views: number
 }
 
+interface DetailedStat {
+  id: number; player_id: number; stat_name: string; stat_label: string
+  stat_value: number; stat_percentage: string; stat_frequency: string
+}
+
 export default function AdminDashboard() {
   const [authenticated, setAuthenticated] = useState(false)
   const [activeTab, setActiveTab] = useState("dashboard")
@@ -81,6 +86,15 @@ export default function AdminDashboard() {
   const [pollData, setPollData] = useState({ messiVotes: 0, ronaldoVotes: 0, messiLive: 0, ronaldoLive: 0 })
   const [pollResetConfirm, setPollResetConfirm] = useState(false)
 
+  // Detailed Stats states
+  const [detailedStats, setDetailedStats] = useState<DetailedStat[]>([])
+  const [editingDetail, setEditingDetail] = useState<DetailedStat | null>(null)
+  const [showAddDetail, setShowAddDetail] = useState(false)
+  const [newDetail, setNewDetail] = useState({
+    player_id: 1, stat_name: "", stat_label: "", stat_value: 0,
+    stat_percentage: "", stat_frequency: "",
+  })
+
   const [newMatch, setNewMatch] = useState({
     player_id: 1, match_number: 0, date: "", competition: "", round: "", venue: "H",
     team: "", opponent: "", team_score: 0, opponent_score: 0, goals: 0, assists: 0,
@@ -115,12 +129,18 @@ export default function AdminDashboard() {
     setPollData({ messiVotes: messiInit, ronaldoVotes: ronaldoInit, messiLive: ml || 0, ronaldoLive: rl || 0 })
   }
 
+  const fetchDetailedStats = async () => {
+    const { data } = await supabase.from("detailed_stats").select("*").order("stat_name", { ascending: true })
+    setDetailedStats(data || [])
+  }
+
   useEffect(() => {
     if (activeTab === "matches") fetchMatches()
     if (activeTab === "players") fetchCareerStats()
     if (activeTab === "records") fetchRecords()
     if (activeTab === "blog") fetchBlogPosts()
     if (activeTab === "poll") fetchPollData()
+    if (activeTab === "detailed") fetchDetailedStats()
   }, [activeTab])
 
   const resetNewMatch = () => { setNewMatch({ player_id: 1, match_number: 0, date: "", competition: "", round: "", venue: "H", team: "", opponent: "", team_score: 0, opponent_score: 0, goals: 0, assists: 0, minutes_played: 90, rating: null, shootout_info: "", is_home: true, result: "W" }) }
@@ -158,6 +178,30 @@ export default function AdminDashboard() {
   const handleAddRecord = async (e: React.FormEvent) => { e.preventDefault(); const { error } = await supabase.from("records").insert(newRecord); if (!error) { setShowAddRecord(false); setNewRecord({ player_id: 1, record_type: "World", category: "", title: "", description: "", value: "", sort_order: 0 }); fetchRecords(); fetchStats() } else alert("Error: " + error.message) }
   const handleUpdateRecord = async (e: React.FormEvent) => { e.preventDefault(); if (!editingRecord) return; const { error } = await supabase.from("records").update(editingRecord).eq("id", editingRecord.id); if (!error) { setEditingRecord(null); fetchRecords(); fetchStats() } else alert("Error: " + error.message) }
   const handleDeleteRecord = async (id: number) => { await supabase.from("records").delete().eq("id", id); setDeleteRecordConfirm(null); fetchRecords(); fetchStats() }
+
+  // Detailed Stats CRUD
+  const handleAddDetail = async (e: React.FormEvent) => {
+    e.preventDefault()
+    const { error } = await supabase.from("detailed_stats").insert(newDetail)
+    if (!error) {
+      setShowAddDetail(false)
+      setNewDetail({ player_id: 1, stat_name: "", stat_label: "", stat_value: 0, stat_percentage: "", stat_frequency: "" })
+      fetchDetailedStats()
+    } else alert("Error: " + error.message)
+  }
+
+  const handleUpdateDetail = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!editingDetail) return
+    const { error } = await supabase.from("detailed_stats").update(editingDetail).eq("id", editingDetail.id)
+    if (!error) { setEditingDetail(null); fetchDetailedStats() }
+    else alert("Error: " + error.message)
+  }
+
+  const handleDeleteDetail = async (id: number) => {
+    await supabase.from("detailed_stats").delete().eq("id", id)
+    fetchDetailedStats()
+  }
 
   // Blog CRUD
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, isEdit: boolean) => {
@@ -208,6 +252,7 @@ export default function AdminDashboard() {
     { id: "records", label: "📋 Records" },
     { id: "blog", label: "📝 Blog" },
     { id: "poll", label: "🗳️ Poll" },
+    { id: "detailed", label: "📈 Detailed Stats" },
   ]
 
   const filteredMatches = matches.filter(m => { if (matchFilter !== "all" && m.player_id !== parseInt(matchFilter)) return false; if (matchSearch) { const q = matchSearch.toLowerCase(); return (m.team || "").toLowerCase().includes(q) || (m.opponent || "").toLowerCase().includes(q) || (m.competition || "").toLowerCase().includes(q) } return true })
@@ -365,6 +410,149 @@ export default function AdminDashboard() {
           {activeTab === "poll" && (
             <div className="space-y-6"><h2 className="text-xl font-bold text-white">Poll Management</h2><div className="grid grid-cols-1 lg:grid-cols-2 gap-4"><div className="bg-gray-900/80 border border-gray-700/60 rounded-2xl p-4 lg:p-6"><h3 className="text-sm font-bold text-white mb-4">Vote Counts</h3><div className="space-y-3 text-sm"><div className="bg-blue-500/5 rounded-xl p-4 border border-blue-500/10"><div className="flex justify-between"><span className="text-blue-400 font-bold">Messi</span><span className="text-white font-bold text-lg">{pollData.messiVotes.toLocaleString()}</span></div><div className="flex justify-between text-xs"><span className="text-gray-500">Live</span><span className="text-gray-400">+{pollData.messiLive.toLocaleString()}</span></div></div><div className="bg-red-500/5 rounded-xl p-4 border border-red-500/10"><div className="flex justify-between"><span className="text-red-400 font-bold">Ronaldo</span><span className="text-white font-bold text-lg">{pollData.ronaldoVotes.toLocaleString()}</span></div><div className="flex justify-between text-xs"><span className="text-gray-500">Live</span><span className="text-gray-400">+{pollData.ronaldoLive.toLocaleString()}</span></div></div><div className="border-t border-gray-700 pt-3 flex justify-between"><span className="text-white font-bold">Total</span><span className="text-white font-bold text-lg">{(pollData.messiVotes+pollData.ronaldoVotes).toLocaleString()}</span></div></div></div><div className="bg-gray-900/80 border border-gray-700/60 rounded-2xl p-4 lg:p-6"><h3 className="text-sm font-bold text-white mb-4">Actions</h3><button onClick={()=>setPollResetConfirm(true)} className="w-full px-4 py-3 bg-red-500/10 border border-red-500/20 text-red-400 rounded-xl text-sm font-bold hover:bg-red-500/20 mb-4">🗑️ Reset Live Votes</button><p className="text-[10px] text-gray-600">Only deletes live votes. Initial counts remain.</p></div></div>
               {pollResetConfirm&&(<div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"><div className="bg-gray-900 border border-gray-700 rounded-2xl p-6 max-w-sm w-full"><p className="text-white font-bold text-lg mb-2">Reset Votes?</p><div className="flex gap-3 justify-end"><button onClick={()=>setPollResetConfirm(false)} className="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg text-sm">Cancel</button><button onClick={handleResetPoll} className="px-4 py-2 bg-red-500 text-white rounded-lg text-sm font-bold">Reset</button></div></div></div>)}
+            </div>
+          )}
+
+          {/* DETAILED STATS TAB */}
+          {activeTab === "detailed" && (
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-xl font-bold text-white">Detailed Stats</h2>
+                  <p className="text-xs text-gray-500 mt-1">{detailedStats.length} stats</p>
+                </div>
+                <button onClick={() => setShowAddDetail(!showAddDetail)}
+                  className="px-4 py-2 bg-white text-black rounded-xl text-sm font-bold">
+                  {showAddDetail ? "✕ Cancel" : "➕ Add Stat"}
+                </button>
+              </div>
+
+              {(showAddDetail || editingDetail) && (
+                <div className="bg-gray-900/80 border border-gray-700/60 rounded-2xl p-4 lg:p-6">
+                  <h3 className="text-sm font-bold text-white mb-4">
+                    {editingDetail ? "Edit Stat" : "Add New Stat"}
+                  </h3>
+                  <form onSubmit={editingDetail ? handleUpdateDetail : handleAddDetail} className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="text-[10px] text-gray-500 block mb-1">Player</label>
+                      <select
+                        value={editingDetail ? editingDetail.player_id : newDetail.player_id}
+                        onChange={(e) => editingDetail
+                          ? setEditingDetail({ ...editingDetail, player_id: parseInt(e.target.value) })
+                          : setNewDetail({ ...newDetail, player_id: parseInt(e.target.value) })}
+                        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-xs text-white"
+                      >
+                        <option value={1}>Messi</option>
+                        <option value={2}>Ronaldo</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-[10px] text-gray-500 block mb-1">Stat Name (key)</label>
+                      <input
+                        type="text"
+                        value={editingDetail ? editingDetail.stat_name : newDetail.stat_name}
+                        onChange={(e) => editingDetail
+                          ? setEditingDetail({ ...editingDetail, stat_name: e.target.value })
+                          : setNewDetail({ ...newDetail, stat_name: e.target.value })}
+                        placeholder="hat_tricks"
+                        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-xs text-white"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] text-gray-500 block mb-1">Stat Label</label>
+                      <input
+                        type="text"
+                        value={editingDetail ? editingDetail.stat_label : newDetail.stat_label}
+                        onChange={(e) => editingDetail
+                          ? setEditingDetail({ ...editingDetail, stat_label: e.target.value })
+                          : setNewDetail({ ...newDetail, stat_label: e.target.value })}
+                        placeholder="Hat tricks"
+                        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-xs text-white"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] text-gray-500 block mb-1">Stat Value</label>
+                      <input
+                        type="number"
+                        value={editingDetail ? editingDetail.stat_value : newDetail.stat_value}
+                        onChange={(e) => editingDetail
+                          ? setEditingDetail({ ...editingDetail, stat_value: parseInt(e.target.value) || 0 })
+                          : setNewDetail({ ...newDetail, stat_value: parseInt(e.target.value) || 0 })}
+                        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-xs text-white"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] text-gray-500 block mb-1">Percentage (optional)</label>
+                      <input
+                        type="text"
+                        value={editingDetail ? editingDetail.stat_percentage || "" : newDetail.stat_percentage}
+                        onChange={(e) => editingDetail
+                          ? setEditingDetail({ ...editingDetail, stat_percentage: e.target.value })
+                          : setNewDetail({ ...newDetail, stat_percentage: e.target.value })}
+                        placeholder="51%"
+                        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-xs text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] text-gray-500 block mb-1">Frequency (optional)</label>
+                      <input
+                        type="text"
+                        value={editingDetail ? editingDetail.stat_frequency || "" : newDetail.stat_frequency}
+                        onChange={(e) => editingDetail
+                          ? setEditingDetail({ ...editingDetail, stat_frequency: e.target.value })
+                          : setNewDetail({ ...newDetail, stat_frequency: e.target.value })}
+                        placeholder="every 18.9 games"
+                        className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-xs text-white"
+                      />
+                    </div>
+                    <div className="col-span-2 flex gap-2 justify-end pt-3 border-t border-gray-700/50">
+                      <button type="button" onClick={() => { setShowAddDetail(false); setEditingDetail(null) }}
+                        className="px-4 py-2 bg-gray-800 text-gray-400 rounded-lg text-xs">
+                        Cancel
+                      </button>
+                      <button type="submit" className="px-4 py-2 bg-white text-black rounded-lg text-xs font-bold">
+                        {editingDetail ? "Update" : "Add"}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              )}
+
+              <div className="bg-gray-900/80 border border-gray-700/60 rounded-2xl overflow-hidden overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-gray-700/50 bg-gray-800/30">
+                      {["ID", "P", "Stat Name", "Label", "Value", "%", "Frequency", "⚡"].map(h => (
+                        <th key={h} className="text-left py-2 px-3 text-[10px] text-gray-500 uppercase">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {detailedStats.map(s => (
+                      <tr key={s.id} className="border-b border-gray-700/20 hover:bg-gray-800/20">
+                        <td className="py-2 px-3 text-[10px] text-gray-600">{s.id}</td>
+                        <td className="py-2 px-3 text-[10px]">
+                          {s.player_id === 1
+                            ? <span className="text-blue-400 font-bold">M</span>
+                            : <span className="text-red-400 font-bold">R</span>}
+                        </td>
+                        <td className="py-2 px-3 text-[10px] text-gray-400 max-w-[100px] truncate">{s.stat_name}</td>
+                        <td className="py-2 px-3 text-[10px] text-gray-300 max-w-[150px] truncate">{s.stat_label}</td>
+                        <td className="py-2 px-3 text-[10px] text-white font-bold">{s.stat_value?.toLocaleString()}</td>
+                        <td className="py-2 px-3 text-[10px] text-gray-500">{s.stat_percentage || "-"}</td>
+                        <td className="py-2 px-3 text-[10px] text-gray-500 max-w-[150px] truncate">{s.stat_frequency || "-"}</td>
+                        <td className="py-2 px-3 text-center">
+                          <button onClick={() => setEditingDetail(s)} className="text-blue-400 text-xs mr-1">✏️</button>
+                          <button onClick={() => handleDeleteDetail(s.id)} className="text-red-400 text-xs">🗑️</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           )}
 

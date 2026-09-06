@@ -22,6 +22,7 @@ const mainLinks = [
   { href: "/career", label: "Career" },
   { href: "/records", label: "Records" },
   { href: "/who-is-best", label: "Who's Best?" },
+  { href: "/detailed-stats", label: "Detailed Stats" },
 ]
 
 const secondaryLinks = [
