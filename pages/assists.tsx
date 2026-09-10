@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts"
 
 interface AssistsPageProps {
@@ -165,6 +166,12 @@ export default function Assists(props: AssistsPageProps) {
   title="Messi vs Ronaldo Assists | Complete Assists Comparison"
   description="Compare Messi vs Ronaldo assists, including career assists, club and international assists, assist records, and detailed statistics updated for 2026."
 >
+  <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "Assists", url: "/assists" },
+  ]}
+/>
         <div className="bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-14 sm:space-y-16 lg:space-y-20">
 

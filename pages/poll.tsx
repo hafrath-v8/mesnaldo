@@ -2,6 +2,7 @@
 
 import Layout from "../components/layout/Layout"
 import { supabase } from "../lib/supabase"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { GetServerSideProps } from "next"
 import {
   motion,
@@ -416,6 +417,12 @@ export default function Poll({
       title="Messi vs Ronaldo Poll: Vote for the GOAT & See Results"
       description="Vote for Lionel Messi or Cristiano Ronaldo in the GOAT debate and see current fan poll results alongside career goals, assists, trophies and Ballon d'Or totals."
     >
+      <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "Poll", url: "/poll" },
+  ]}
+/>
 
       <div className="bg-black min-h-screen">
 

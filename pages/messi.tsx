@@ -6,6 +6,7 @@ import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { useState, useMemo } from "react"
 import {
   BarChart,
@@ -318,6 +319,12 @@ export default function MessiProfile({
       title="Lionel Messi Stats: Goals, Assists, Matches, Trophies & Career"
       description="Explore Lionel Messi career stats including total goals, assists, appearances, match history, Barcelona and Argentina records, goals by competition, trophies and season-by-season scoring."
     >
+      <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "Lionel Messi", url: "/messi" },
+  ]}
+/>
       <div className="bg-black">
 
         {/* =====================================================

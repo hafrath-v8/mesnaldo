@@ -2,6 +2,7 @@
 import Layout from "../components/layout/Layout"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { BarChart3, Goal, Crosshair, Trophy, Award, ClipboardList, Swords, Globe, TrendingUp, Vote, Smartphone, Star, DollarSign, Tv, Library, FileText, Shield, Eye, ArrowRight, Sparkles, Database, Users, Zap } from "lucide-react"
 
 const STATS = [
@@ -28,6 +29,12 @@ export default function About() {
       title="About Mesnaldo | The Most Detailed Messi vs Ronaldo Comparison"
       description="Mesnaldo is the most comprehensive Messi vs Ronaldo comparison platform. Built by a dedicated team of football data analysts and developers. 2,490+ matches, 258+ records, 100+ awards."
     >
+      <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+  ]}
+/>
       <div className="bg-black min-h-screen">
 
         {/* Hero */}

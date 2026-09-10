@@ -1,165 +1,689 @@
 // pages/terms.tsx
-import Layout from "../components/layout/Layout"
-import { motion } from "framer-motion"
+
 import Head from "next/head"
+import Link from "next/link"
+import Layout from "../components/layout/Layout"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
+
+const SITE_URL = "https://mesnaldo.com"
+const PAGE_URL = `${SITE_URL}/terms`
 
 export default function Terms() {
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${PAGE_URL}#webpage`,
+    url: PAGE_URL,
+    name: "Terms of Service | Mesnaldo",
+    description:
+      "Read the Terms of Service governing the use of Mesnaldo, an independent Messi and Ronaldo football statistics and comparison website.",
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Mesnaldo",
+    },
+    about: {
+      "@type": "Thing",
+      name: "Mesnaldo Terms of Service",
+    },
+    inLanguage: "en",
+    dateModified: "2026-07-01",
+  }
+
   return (
-    <Layout title="Terms of Service - Mesnaldo"
-      description="Terms of Service for Mesnaldo - the ultimate Messi vs Ronaldo comparison platform. Read our terms and conditions.">
-      
+    <Layout
+      title="Terms of Service | Mesnaldo"
+      description="Read the Mesnaldo Terms of Service covering website use, football statistics, intellectual property, user conduct, third-party links, liability and privacy."
+    >
+      {/* =====================================================
+          BREADCRUMB STRUCTURED DATA
+      ===================================================== */}
+
+      <BreadcrumbSchema
+        items={[
+          {
+            name: "Home",
+            url: "/",
+          },
+          {
+            name: "Terms of Service",
+            url: "/terms",
+          },
+        ]}
+      />
+
+      {/* =====================================================
+          PAGE STRUCTURED DATA
+      ===================================================== */}
+
       <Head>
-        <meta name="keywords" content="Mesnaldo terms, terms of service, football statistics terms, Messi vs Ronaldo terms" />
+        <script
+          key="terms-webpage-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(webPageSchema),
+          }}
+        />
       </Head>
 
-      <div className="bg-black min-h-screen">
-        
-        {/* ─── HERO ─── */}
+      <main className="bg-black min-h-screen">
+
+        {/* =====================================================
+            HERO
+        ===================================================== */}
+
         <section className="relative border-b border-gray-800 overflow-hidden">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 text-center relative">
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <p className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-4">Legal</p>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
-                Terms of <span className="text-amber-400">Service</span>
-              </h1>
-              <p className="text-gray-400 text-sm">Last updated: July 2026</p>
-            </motion.div>
+          <div
+            aria-hidden="true"
+            className="
+              absolute
+              inset-0
+              bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.06),transparent_55%)]
+              pointer-events-none
+            "
+          />
+
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 text-center">
+
+            <p className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-4">
+              Legal
+            </p>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
+              Terms of{" "}
+              <span className="text-amber-400">
+                Service
+              </span>
+            </h1>
+
+            <p className="text-gray-400 text-sm">
+              Last updated: July 2026
+            </p>
+
+            <p className="text-gray-500 text-sm leading-relaxed max-w-2xl mx-auto mt-5">
+              These Terms of Service explain the conditions that apply when
+              accessing or using Mesnaldo and its football statistics,
+              comparisons, articles, polls and other website features.
+            </p>
           </div>
         </section>
 
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-10 text-sm text-gray-400 leading-relaxed">
+        {/* =====================================================
+            CONTENT
+        ===================================================== */}
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">1. Acceptance of Terms</h2>
-            <p>
-              By accessing and using Mesnaldo (&quot;the Website&quot;), you accept and agree to be bound by these Terms of Service. 
-              If you do not agree to these terms, please do not use the Website. We reserve the right to modify these terms at any time, 
-              and your continued use of the Website constitutes acceptance of any changes.
-            </p>
-          </section>
+        <div
+          className="
+            max-w-3xl
+            mx-auto
+            px-4
+            sm:px-6
+            lg:px-8
+            py-12
+            sm:py-16
+          "
+        >
+          <div className="space-y-10 text-sm text-gray-400 leading-7">
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">2. Description of Service</h2>
-            <p>
-              Mesnaldo is an independent, fan-made football statistics and comparison platform. We provide statistical data, 
-              visualizations, and comparison tools related to Lionel Messi and Cristiano Ronaldo. All content is for informational 
-              and entertainment purposes only.
-            </p>
-          </section>
+            {/* 1 */}
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">3. Intellectual Property</h2>
-            <p>
-              The Website name &quot;Mesnaldo&quot;, its logo, design, layout, and original content are the intellectual property of Mesnaldo. 
-              All player names, images, club names, and competition names are the property of their respective owners and are used 
-              for identification purposes only under fair use principles. Statistical data is compiled from publicly available sources.
-            </p>
-          </section>
+            <section aria-labelledby="acceptance-of-terms">
+              <h2
+                id="acceptance-of-terms"
+                className="text-xl font-bold text-white mb-3"
+              >
+                1. Acceptance of Terms
+              </h2>
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">4. Disclaimer of Affiliation</h2>
-            <p>
-              Mesnaldo is NOT affiliated with, endorsed by, or connected to Lionel Messi, Cristiano Ronaldo, their respective 
-              clubs (Inter Miami, Al Nassr, Barcelona, Real Madrid, etc.), FIFA, UEFA, or any football governing body. This is 
-              an independent project created by football fans for football fans.
-            </p>
-          </section>
+              <p>
+                By accessing or using Mesnaldo (&quot;the Website&quot;), you
+                agree to these Terms of Service. If you do not agree with these
+                terms, you should discontinue use of the Website.
+              </p>
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">5. Accuracy of Data</h2>
-            <p>
-              While we strive for 100% accuracy in all statistics presented on the Website, we cannot guarantee that all data 
-              is completely error-free. Statistics are compiled from multiple public sources and may contain unintentional 
-              discrepancies. Users are encouraged to report any errors they discover through our Contact page. Mesnaldo shall 
-              not be held liable for any decisions made based on the data presented on this Website.
-            </p>
-          </section>
+              <p className="mt-3">
+                We may update these Terms when necessary to reflect changes to
+                the Website, its services, or applicable requirements. The
+                updated version will be published on this page together with a
+                revised update date.
+              </p>
+            </section>
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">6. User Conduct</h2>
-            <p>When using the Website, you agree not to:</p>
-            <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li>Use the Website for any unlawful purpose</li>
-              <li>Attempt to gain unauthorized access to any part of the Website</li>
-              <li>Use automated tools (bots, scrapers) to extract data without permission</li>
-              <li>Post spam or malicious content through any forms</li>
-              <li>Impersonate any person or entity</li>
-              <li>Interfere with the proper working of the Website</li>
-            </ul>
-          </section>
+            {/* 2 */}
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">7. Poll Voting</h2>
-            <p>
-              The GOAT poll is intended for entertainment purposes. Votes are limited to one per device using browser local storage. 
-              We reserve the right to remove fraudulent votes or reset the poll at any time. The poll results do not constitute 
-              a scientific survey and should not be treated as such.
-            </p>
-          </section>
+            <section aria-labelledby="description-of-service">
+              <h2
+                id="description-of-service"
+                className="text-xl font-bold text-white mb-3"
+              >
+                2. Description of Service
+              </h2>
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">8. Third-Party Links</h2>
-            <p>
-              The Website may contain links to third-party websites or services. Mesnaldo is not responsible for the content, 
-              privacy policies, or practices of any third-party websites. Users access external links at their own risk.
-            </p>
-          </section>
+              <p>
+                Mesnaldo is an independent football statistics and comparison
+                website focused primarily on Lionel Messi and Cristiano
+                Ronaldo.
+              </p>
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">9. Limitation of Liability</h2>
-            <p>
-              Mesnaldo and its operators shall not be liable for any direct, indirect, incidental, consequential, or punitive 
-              damages arising from your use of the Website. The Website is provided &quot;as is&quot; without any warranties, 
-              express or implied.
-            </p>
-          </section>
+              <p className="mt-3">
+                The Website may provide career statistics, match data,
+                comparisons, records, trophies, individual honours,
+                visualizations, articles, polls and related football content.
+                The information is provided for general informational,
+                analytical and entertainment purposes.
+              </p>
+            </section>
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">10. Privacy</h2>
-            <p>
-              Your use of the Website is also governed by our Privacy Policy. Please review our Privacy Policy to understand 
-              how we collect and use information. We do not sell personal data to third parties.
-            </p>
-          </section>
+            {/* 3 */}
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">11. Termination</h2>
-            <p>
-              We reserve the right to terminate or suspend access to the Website at any time, without prior notice, for any 
-              reason including violation of these Terms of Service.
-            </p>
-          </section>
+            <section aria-labelledby="intellectual-property">
+              <h2
+                id="intellectual-property"
+                className="text-xl font-bold text-white mb-3"
+              >
+                3. Intellectual Property
+              </h2>
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">12. Governing Law</h2>
-            <p>
-              These Terms shall be governed by and construed in accordance with applicable laws. Any disputes arising from 
-              these terms shall be resolved through good-faith communication. Users can reach us through the Contact page 
-              for any concerns.
-            </p>
-          </section>
+              <p>
+                Unless otherwise stated, the Mesnaldo name, website design,
+                original written content, graphics, data presentation,
+                comparison formats and other original materials created for
+                Mesnaldo are protected by applicable intellectual property
+                rights.
+              </p>
 
-          <section>
-            <h2 className="text-lg font-bold text-white mb-3">13. Contact Information</h2>
-            <p>
-              For any questions about these Terms of Service, please contact us at:
-            </p>
-            <p className="mt-2">
-              📧 <a href="mailto:hello@mesnaldo.com" className="text-amber-400 hover:underline">hello@mesnaldo.com</a>
-            </p>
-            <p>
-              Or visit our <a href="/contact" className="text-amber-400 hover:underline">Contact page</a>.
-            </p>
-          </section>
+              <p className="mt-3">
+                Player names, club names, competition names, trademarks,
+                logos, photographs and other third-party materials remain the
+                property of their respective owners. References to those names
+                or properties are used for identification, reporting,
+                commentary and informational purposes and do not imply
+                ownership, sponsorship or endorsement by Mesnaldo.
+              </p>
 
-          <div className="text-center pt-8 border-t border-gray-800">
-            <p className="text-xs text-gray-600">
-              © {new Date().getFullYear()} Mesnaldo. All rights reserved.
-            </p>
+              <p className="mt-3">
+                Football statistics displayed by Mesnaldo may be compiled,
+                calculated or organized using information available from
+                multiple sources. Rights in any underlying third-party
+                materials remain with their respective owners.
+              </p>
+            </section>
+
+            {/* 4 */}
+
+            <section aria-labelledby="disclaimer-of-affiliation">
+              <h2
+                id="disclaimer-of-affiliation"
+                className="text-xl font-bold text-white mb-3"
+              >
+                4. Disclaimer of Affiliation
+              </h2>
+
+              <p>
+                Mesnaldo is an independent website and is not officially
+                affiliated with, sponsored by, endorsed by, or operated by
+                Lionel Messi, Cristiano Ronaldo, their clubs, FIFA, UEFA,
+                CONMEBOL, national football associations, leagues, tournament
+                organizers or other football governing bodies unless
+                explicitly stated otherwise.
+              </p>
+            </section>
+
+            {/* 5 */}
+
+            <section aria-labelledby="accuracy-of-data">
+              <h2
+                id="accuracy-of-data"
+                className="text-xl font-bold text-white mb-3"
+              >
+                5. Accuracy of Statistics and Information
+              </h2>
+
+              <p>
+                We aim to provide useful and accurate football statistics, but
+                we do not guarantee that every figure displayed on the Website
+                will always be complete, current or error-free.
+              </p>
+
+              <p className="mt-3">
+                Football statistics can vary between data providers because of
+                differences in definitions, historical records, assist
+                criteria, competition classifications and other methodological
+                factors.
+              </p>
+
+              <p className="mt-3">
+                Users should therefore consider the statistics on Mesnaldo as
+                informational data rather than an official record issued by a
+                football governing body.
+              </p>
+
+              <p className="mt-3">
+                If you believe a statistic is incorrect, you can report it
+                through our{" "}
+                <Link
+                  href="/contact"
+                  className="text-amber-400 hover:text-amber-300 hover:underline"
+                >
+                  Contact page
+                </Link>
+                .
+              </p>
+            </section>
+
+            {/* 6 */}
+
+            <section aria-labelledby="user-conduct">
+              <h2
+                id="user-conduct"
+                className="text-xl font-bold text-white mb-3"
+              >
+                6. User Conduct
+              </h2>
+
+              <p>
+                When using Mesnaldo, you agree not to misuse the Website or
+                interfere with its normal operation.
+              </p>
+
+              <p className="mt-3">
+                Prohibited activities include:
+              </p>
+
+              <ul className="list-disc pl-5 mt-3 space-y-2">
+                <li>
+                  Using the Website for unlawful or fraudulent purposes.
+                </li>
+
+                <li>
+                  Attempting to gain unauthorized access to accounts, servers,
+                  databases or restricted areas of the Website.
+                </li>
+
+                <li>
+                  Intentionally interfering with the security, availability or
+                  normal operation of the Website.
+                </li>
+
+                <li>
+                  Distributing malicious software, spam or harmful content
+                  through the Website.
+                </li>
+
+                <li>
+                  Impersonating another person or entity.
+                </li>
+
+                <li>
+                  Using automated systems in a way that places unreasonable
+                  technical load on the Website or attempts to bypass access
+                  controls.
+                </li>
+              </ul>
+            </section>
+
+            {/* 7 */}
+
+            <section aria-labelledby="poll-voting">
+              <h2
+                id="poll-voting"
+                className="text-xl font-bold text-white mb-3"
+              >
+                7. Polls and Voting
+              </h2>
+
+              <p>
+                Mesnaldo may provide public opinion polls, including polls
+                related to the Messi vs Ronaldo debate. These polls are
+                intended primarily for entertainment and community
+                participation.
+              </p>
+
+              <p className="mt-3">
+                Browser-based mechanisms may be used to discourage repeated
+                voting from the same browser or device. Such mechanisms do not
+                guarantee that every vote represents a unique individual.
+              </p>
+
+              <p className="mt-3">
+                Poll results are not scientific surveys and should not be
+                interpreted as statistically representative measurements of
+                global public opinion.
+              </p>
+
+              <p className="mt-3">
+                We may investigate or remove votes that appear to result from
+                abuse, automation, manipulation or technical errors.
+              </p>
+            </section>
+
+            {/* 8 */}
+
+            <section aria-labelledby="third-party-links">
+              <h2
+                id="third-party-links"
+                className="text-xl font-bold text-white mb-3"
+              >
+                8. Third-Party Links and Services
+              </h2>
+
+              <p>
+                Mesnaldo may contain links to external websites, data sources,
+                social platforms, advertisements or third-party services.
+              </p>
+
+              <p className="mt-3">
+                Those external services operate independently from Mesnaldo.
+                We are not responsible for their content, availability,
+                security, terms, privacy policies or business practices.
+              </p>
+
+              <p className="mt-3">
+                Users should review the applicable terms and privacy policies
+                of third-party services before using them.
+              </p>
+            </section>
+
+            {/* 9 */}
+
+            <section aria-labelledby="advertising">
+              <h2
+                id="advertising"
+                className="text-xl font-bold text-white mb-3"
+              >
+                9. Advertising
+              </h2>
+
+              <p>
+                Mesnaldo may display advertising or use third-party advertising
+                services. Advertisements may be provided by external
+                advertising partners and may be selected based on contextual,
+                technical or other permitted signals.
+              </p>
+
+              <p className="mt-3">
+                The appearance of an advertisement on Mesnaldo does not
+                necessarily constitute an endorsement of the advertised
+                product, service or organization.
+              </p>
+
+              <p className="mt-3">
+                Information about cookies, advertising technologies and data
+                processing should be read together with our{" "}
+                <Link
+                  href="/privacy"
+                  className="text-amber-400 hover:text-amber-300 hover:underline"
+                >
+                  Privacy Policy
+                </Link>
+                .
+              </p>
+            </section>
+
+            {/* 10 */}
+
+            <section aria-labelledby="limitation-of-liability">
+              <h2
+                id="limitation-of-liability"
+                className="text-xl font-bold text-white mb-3"
+              >
+                10. Disclaimer and Limitation of Liability
+              </h2>
+
+              <p>
+                Mesnaldo is provided on an &quot;as available&quot; basis.
+                While we make reasonable efforts to maintain the Website, we
+                cannot guarantee uninterrupted availability or that all
+                information will be free from errors or omissions.
+              </p>
+
+              <p className="mt-3">
+                To the extent permitted by applicable law, Mesnaldo and its
+                operators will not be responsible for losses or damages
+                resulting solely from reliance on information displayed on the
+                Website, interruptions in availability, or the actions of
+                independent third-party services.
+              </p>
+
+              <p className="mt-3">
+                Nothing in these Terms is intended to exclude or limit rights
+                or liabilities that cannot legally be excluded under
+                applicable law.
+              </p>
+            </section>
+
+            {/* 11 */}
+
+            <section aria-labelledby="privacy">
+              <h2
+                id="privacy"
+                className="text-xl font-bold text-white mb-3"
+              >
+                11. Privacy
+              </h2>
+
+              <p>
+                Your use of Mesnaldo is also subject to our Privacy Policy,
+                which explains how information may be collected, used and
+                processed when you use the Website.
+              </p>
+
+              <p className="mt-3">
+                Please read the{" "}
+                <Link
+                  href="/privacy"
+                  className="text-amber-400 hover:text-amber-300 hover:underline"
+                >
+                  Mesnaldo Privacy Policy
+                </Link>{" "}
+                for more information.
+              </p>
+            </section>
+
+            {/* 12 */}
+
+            <section aria-labelledby="availability">
+              <h2
+                id="availability"
+                className="text-xl font-bold text-white mb-3"
+              >
+                12. Website Availability and Changes
+              </h2>
+
+              <p>
+                We may add, modify, suspend or discontinue particular Website
+                features when necessary. This may include statistics,
+                comparison tools, articles, polls or other functionality.
+              </p>
+
+              <p className="mt-3">
+                We may also restrict access when reasonably necessary for
+                maintenance, security, abuse prevention or compliance with
+                applicable requirements.
+              </p>
+            </section>
+
+            {/* 13 */}
+
+            <section aria-labelledby="governing-law">
+              <h2
+                id="governing-law"
+                className="text-xl font-bold text-white mb-3"
+              >
+                13. Governing Law
+              </h2>
+
+              <p>
+                These Terms are intended to operate in accordance with
+                applicable law. Nothing in these Terms removes any mandatory
+                rights available to users under laws that apply to them.
+              </p>
+
+              <p className="mt-3">
+                If a dispute or concern arises regarding Mesnaldo, users are
+                encouraged to contact us first so that the matter can be
+                reviewed and, where possible, resolved through good-faith
+                communication.
+              </p>
+            </section>
+
+            {/* 14 */}
+
+            <section aria-labelledby="changes-to-terms">
+              <h2
+                id="changes-to-terms"
+                className="text-xl font-bold text-white mb-3"
+              >
+                14. Changes to These Terms
+              </h2>
+
+              <p>
+                We may revise these Terms from time to time. When material
+                changes are made, the updated Terms will be published on this
+                page and the &quot;Last updated&quot; date will be changed
+                accordingly.
+              </p>
+
+              <p className="mt-3">
+                Your continued use of the Website after revised Terms become
+                effective constitutes acceptance of those revised Terms to the
+                extent permitted by applicable law.
+              </p>
+            </section>
+
+            {/* 15 */}
+
+            <section aria-labelledby="contact-information">
+              <h2
+                id="contact-information"
+                className="text-xl font-bold text-white mb-3"
+              >
+                15. Contact Information
+              </h2>
+
+              <p>
+                If you have questions, concerns or feedback about these Terms
+                of Service, you can contact Mesnaldo using the following
+                methods.
+              </p>
+
+              <div className="mt-4 space-y-2">
+
+                <p>
+                  Email:{" "}
+                  <a
+                    href="mailto:hello@mesnaldo.com"
+                    className="text-amber-400 hover:text-amber-300 hover:underline"
+                  >
+                    hello@mesnaldo.com
+                  </a>
+                </p>
+
+                <p>
+                  Contact form:{" "}
+                  <Link
+                    href="/contact"
+                    className="text-amber-400 hover:text-amber-300 hover:underline"
+                  >
+                    Contact Mesnaldo
+                  </Link>
+                </p>
+              </div>
+            </section>
+
+            {/* =================================================
+                RELATED LEGAL LINKS
+            ================================================= */}
+
+            <section
+              aria-labelledby="related-pages"
+              className="pt-8 border-t border-gray-800"
+            >
+              <h2
+                id="related-pages"
+                className="text-lg font-bold text-white mb-4"
+              >
+                Related Pages
+              </h2>
+
+              <div className="flex flex-wrap gap-3">
+
+                <Link
+                  href="/privacy"
+                  className="
+                    inline-flex
+                    items-center
+                    px-4
+                    py-2.5
+                    rounded-xl
+                    border
+                    border-gray-800
+                    bg-gray-900/50
+                    text-gray-300
+                    hover:text-white
+                    hover:border-gray-700
+                    transition-colors
+                  "
+                >
+                  Privacy Policy
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="
+                    inline-flex
+                    items-center
+                    px-4
+                    py-2.5
+                    rounded-xl
+                    border
+                    border-gray-800
+                    bg-gray-900/50
+                    text-gray-300
+                    hover:text-white
+                    hover:border-gray-700
+                    transition-colors
+                  "
+                >
+                  Contact
+                </Link>
+
+                <Link
+                  href="/about"
+                  className="
+                    inline-flex
+                    items-center
+                    px-4
+                    py-2.5
+                    rounded-xl
+                    border
+                    border-gray-800
+                    bg-gray-900/50
+                    text-gray-300
+                    hover:text-white
+                    hover:border-gray-700
+                    transition-colors
+                  "
+                >
+                  About Mesnaldo
+                </Link>
+              </div>
+            </section>
+
+            {/* =================================================
+                COPYRIGHT
+            ================================================= */}
+
+            <footer className="text-center pt-8 border-t border-gray-800">
+              <p className="text-xs text-gray-600">
+                © {new Date().getFullYear()} Mesnaldo. All rights reserved.
+              </p>
+            </footer>
+
           </div>
-
         </div>
-      </div>
+      </main>
     </Layout>
   )
 }

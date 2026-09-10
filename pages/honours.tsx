@@ -1,6 +1,7 @@
 import Layout from "../components/layout/Layout"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { Trophy, Award, Star, Medal, ChevronDown, Crown } from "lucide-react"
 import { useState } from "react"
 
@@ -102,6 +103,12 @@ export default function Awards() {
 title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
       description="Every individual honour: Ballon d'Or (8-5), FIFA Best, Golden Shoe, Pichichi, Champions League top scorer, and 100+ more. Complete Messi vs Ronaldo honours comparison."
     >
+      <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "Honours", url: "/honours" },
+  ]}
+/>
       <div className="bg-black min-h-screen">
         <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
           

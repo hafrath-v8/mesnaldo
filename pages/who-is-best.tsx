@@ -6,7 +6,7 @@ import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import {
   Trophy,
   Star,
@@ -114,6 +114,7 @@ export default function WhoIsBest({
         title="Messi vs Ronaldo: Who Is Better?"
         description="Compare Lionel Messi and Cristiano Ronaldo across career goals, assists, trophies, Champions League success, international football and individual awards."
       >
+        
         <div className="flex items-center justify-center min-h-screen bg-black">
 
           <div className="w-10 h-10 rounded-full border-2 border-white/10 border-t-blue-500 border-r-red-500 animate-spin" />
@@ -1177,6 +1178,15 @@ export default function WhoIsBest({
       title="Messi vs Ronaldo: Who Is Better? 13 Categories Compared"
       description="Messi vs Ronaldo: who is better? Compare Lionel Messi and Cristiano Ronaldo across goals, assists, Champions League, international success, Ballon d'Or awards, penalties, free kicks, headers, trophies and more."
     >
+      <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    {
+      name: "Who Is Best?",
+      url: "/who-is-best",
+    },
+  ]}
+/>
       <div className="bg-black min-h-screen">
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-12">

@@ -6,6 +6,7 @@ import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { useState, useMemo } from "react"
 import {
   BarChart,
@@ -676,6 +677,12 @@ export default function RonaldoProfile({
       title="Cristiano Ronaldo Stats: Goals, Assists, Matches, Trophies & Career"
       description="Explore Cristiano Ronaldo career stats including total goals, assists, appearances, match history, Real Madrid and Portugal records, goals by competition, trophies and yearly scoring."
     >
+      <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "Cristiano Ronaldo", url: "/ronaldo" },
+  ]}
+/>
       <div className="bg-black">
 
         {/* =================================================

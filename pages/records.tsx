@@ -4,7 +4,7 @@ import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
 import { useState, useMemo } from "react"
-
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 interface RecordItem {
   id: number
   player_id: number
@@ -62,6 +62,12 @@ export default function Records({ records }: RecordsPageProps) {
    <Layout 
   title="Messi vs Ronaldo Records | Every Record, Guinness World Records & Achievements" 
   description="World records held by Messi and Ronaldo. Over 258 verified records including Ballon d'Or, Champions League, and international milestones.">
+    <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "Records", url: "/records" },
+  ]}
+/>
     <div className="bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-8">
 

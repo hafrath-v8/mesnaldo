@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next" 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
 
 interface GoalsPageProps {
@@ -185,6 +186,18 @@ export default function Goals(props: GoalsPageProps) {
 <Layout 
   title="Messi vs Ronaldo Goals: Who Has Scored More? Complete Stats" 
   description="How many goals does Ronaldo have? Messi? Compare total career goals, goals per season, free kicks, penalties, headers, and every goal breakdown."> 
+  <BreadcrumbSchema
+      items={[
+        {
+          name: "Home",
+          url: "/",
+        },
+        {
+          name: "Goals",
+          url: "/goals",
+        },
+      ]}
+    />
       <div className="bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-14 sm:space-y-16 lg:space-y-20">
 

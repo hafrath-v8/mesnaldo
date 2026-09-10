@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabase"
 import { GetStaticProps } from "next"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { Trophy, Star, Globe, Award, Medal, Users, Crown } from "lucide-react"
 
 interface TrophiesPageProps {
@@ -53,7 +54,13 @@ export default function Trophies({ messi, ronaldo }: TrophiesPageProps) {
   return (
 <Layout 
 title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
-  description="Messi vs Ronaldo trophy comparison: 48 vs 37 trophies. Compare La Liga, Champions League, World Cup, and every title won.">      
+  description="Messi vs Ronaldo trophy comparison: 48 vs 37 trophies. Compare La Liga, Champions League, World Cup, and every title won."> 
+  <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "Trophies", url: "/trophies" },
+  ]}
+/>     
   <div className="bg-black">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-16 sm:space-y-20">
 

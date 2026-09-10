@@ -3,6 +3,7 @@ import Layout from "../../components/layout/Layout"
 import { supabase } from "../../lib/supabase"
 import { GetStaticProps } from "next"
 import { motion } from "framer-motion"
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -59,6 +60,12 @@ export default function Blog({ posts, featuredPost, categories, totalPosts }: Bl
   title="Messi vs Ronaldo Blog | News, Analysis & Comparison Stories"
   description="Read the latest Messi vs Ronaldo news, in-depth analysis, comparison stories, statistics, records, and football history on Mesnaldo."
 >
+  <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "Blog", url: "/blog" },
+  ]}
+/>
       <div className="bg-black min-h-screen">
         
         {/* HERO */}

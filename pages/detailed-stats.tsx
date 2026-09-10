@@ -3,6 +3,7 @@ import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { Trophy, Target, Zap, Shield, Star, Award, TrendingUp, Goal, Timer, Crosshair, Swords, Users, Crown, Medal, ChartBar, Flame, Rocket, Eye } from "lucide-react"
 
 interface DetailedStatsProps {
@@ -54,6 +55,15 @@ export default function DetailedStats({ stats }: DetailedStatsProps) {
       title="Messi vs Ronaldo Detailed Stats 2026 - Complete Head-to-Head Analysis"
       description="Compare Messi vs Ronaldo detailed stats: hat tricks, key passes, dribbles, xG, aerial duels, match ratings, Man of the Match awards, El Clasico records, UCL knockout stats, and more."
     >
+      <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    {
+      name: "Detailed Stats",
+      url: "/detailed-stats",
+    },
+  ]}
+/>
       <div className="bg-black min-h-screen">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
           

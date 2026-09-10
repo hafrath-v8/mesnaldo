@@ -3,7 +3,7 @@
 import Layout from "../components/layout/Layout"
 import { supabase } from "../lib/supabase"
 import { GetStaticProps } from "next"
-
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { motion } from "framer-motion"
 import { useState } from "react"
 
@@ -1019,7 +1019,12 @@ export default function FAQ({
       title="Messi vs Ronaldo FAQ: Goals, Stats, Trophies & GOAT Questions"
       description="Answers to common Messi vs Ronaldo questions about career goals, assists, trophies, Ballon d'Or awards, head-to-head matches, statistics, methodology and the GOAT debate."
     >
-
+<BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "FAQ", url: "/faq" },
+  ]}
+/>
       <Head>
 
         <script

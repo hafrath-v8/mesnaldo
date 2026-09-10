@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
 import { useState, useMemo } from "react"
 
 interface SeasonStats {
@@ -197,6 +198,12 @@ export default function Career({ messiSeasons, ronaldoSeasons, messiClubs, ronal
   title="Messi vs Ronaldo Career | Complete Career Comparison"
   description="Compare Messi vs Ronaldo's careers, including goals, assists, trophies, records, individual awards, and career statistics in one complete comparison."
 >
+  <BreadcrumbSchema
+  items={[
+    { name: "Home", url: "/" },
+    { name: "Career", url: "/career" },
+  ]}
+/>
         <div className="bg-black min-h-screen">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-10">
 
