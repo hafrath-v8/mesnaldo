@@ -105,7 +105,7 @@ function FullCard({ label, messi, ronaldo, index }: { label: string; messi: Scop
       </div>
       <div className="flex items-center justify-center gap-2 sm:gap-3 mb-5 sm:mb-6 p-3 sm:p-4 bg-gray-800/60 rounded-xl border border-gray-700/50">
         <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-amber-400/30">
-          <Image src={winner === "Messi" ? "/images/messi.webp" : "/images/ronaldo.webp"} alt={winner} fill className="object-cover" />
+          <Image src={winner === "Messi" ? "/images/messi.webp" : "/images/ronaldo.webp"} alt={winner} fill sizes="32px" className="object-cover" />
         </div>
         <span className="text-[11px] sm:text-xs lg:text-sm font-medium text-amber-400">Highest: <span className="font-semibold text-amber-300">{winner}</span> ({maxTotal.toFixed(1)}%)</span>
       </div>
@@ -118,7 +118,7 @@ function FullCard({ label, messi, ronaldo, index }: { label: string; messi: Scop
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                 <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border border-gray-600 flex-shrink-0">
-                  <Image src={p.img} alt={p.name} fill className="object-cover" />
+                  <Image src={p.img} alt={p.name} fill sizes="36px" className="object-cover" />
                 </div>
                 <span className="text-sm sm:text-base font-medium text-white truncate">{p.name}</span>
               </div>
@@ -158,7 +158,7 @@ function GoalsOnlyCard({ label, messi, ronaldo, index }: { label: string; messi:
       </div>
       <div className="flex items-center justify-center gap-2 sm:gap-3 mb-5 sm:mb-6 p-3 sm:p-4 bg-gray-800/60 rounded-xl border border-gray-700/50">
         <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-amber-400/30">
-          <Image src={winner === "Messi" ? "/images/messi.webp" : "/images/ronaldo.webp"} alt={winner} fill className="object-cover" />
+          <Image src={winner === "Messi" ? "/images/messi.webp" : "/images/ronaldo.webp"} alt={winner} fill sizes="32px" className="object-cover" />
         </div>
         <span className="text-[11px] sm:text-xs lg:text-sm font-medium text-amber-400">Most goals: <span className="font-semibold text-amber-300">{winner}</span> ({maxGoals.toLocaleString()})</span>
       </div>
@@ -171,7 +171,7 @@ function GoalsOnlyCard({ label, messi, ronaldo, index }: { label: string; messi:
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                 <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border border-gray-600 flex-shrink-0">
-                  <Image src={p.img} alt={p.name} fill className="object-cover" />
+                  <Image src={p.img} alt={p.name} fill sizes="36px" className="object-cover" />
                 </div>
                 <span className="text-sm sm:text-base font-medium text-white truncate">{p.name}</span>
               </div>
@@ -249,11 +249,6 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
   const ronaldoAvg = (radarData.reduce((s, r) => s + r.ronaldo, 0) / radarData.length).toFixed(1)
   const messiAvg = (radarData.reduce((s, r) => s + r.messi, 0) / radarData.length).toFixed(1)
 
-  const imgV = { hidden: { scale: 0.9, opacity: 0 }, visible: { scale: 1, opacity: 1, transition: { duration: 0.5 } } }
-  const statV = { hidden: { y: 10, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.4 } } }
-const vsV = { hidden: { scale: 0, opacity: 0 }, visible: { scale: 1, opacity: 1, transition: { duration: 0.6, type: "spring" as const } } }  
-const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: { duration: 2, repeat: Infinity } } }
-
   const quickLinks = [
     { href: "/goals", label: "Goals" },
     { href: "/head-to-head", label: "H2H" },
@@ -274,46 +269,65 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
       <section className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-900/95 to-black border-b border-gray-800/50 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(59,130,246,0.15),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(239,68,68,0.15),transparent_50%),radial-gradient(circle_at_50%_80%,rgba(245,158,11,0.08),transparent_50%)]" />
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute top-20 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-20 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
         </div>
         <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 z-10">
           <div className="flex items-center justify-center gap-4 sm:gap-8 lg:gap-12 mb-10 sm:mb-14">
-            <motion.div className="relative flex-shrink-0 group" initial="hidden" animate="visible" variants={imgV} whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
+            <div className="relative flex-shrink-0 group">
               <div className="absolute -inset-3 bg-red-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <motion.div className="bg-red-500 w-3 h-3 sm:w-4 sm:h-4 absolute -top-1.5 -right-1.5 rounded-full z-10 ring-2 ring-gray-900 shadow-lg shadow-red-500/50" variants={pulseV} animate="pulse" />
+              <div className="bg-red-500 w-3 h-3 sm:w-4 sm:h-4 absolute -top-1.5 -right-1.5 rounded-full z-10 ring-2 ring-gray-900 shadow-lg shadow-red-500/50" />
               <div className="relative w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-3xl overflow-hidden border-2 border-red-500/40 shadow-2xl shadow-red-500/20 transition-all duration-300 group-hover:border-red-500/60 group-hover:shadow-red-500/30">
-<Image src="/images/ronaldo.webp" alt="Messi vs Ronaldo comparison - Cristiano Ronaldo" width={288} height={288} sizes="(max-width: 768px) 50vw, 288px" className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" priority />              </div>
-            </motion.div>
-            <motion.div className="flex flex-col items-center flex-shrink-0 px-2 sm:px-4" initial="hidden" animate="visible" variants={vsV}>
+                <Image
+                  src="/images/ronaldo.webp"
+                  alt="Messi vs Ronaldo comparison - Cristiano Ronaldo"
+                  width={288}
+                  height={288}
+                  sizes="(max-width: 639px) 128px, (max-width: 767px) 176px, (max-width: 1023px) 224px, 288px"
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                  priority
+                  fetchPriority="high"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col items-center flex-shrink-0 px-2 sm:px-4">
               <span className="relative text-3xl sm:text-5xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500">VS</span>
-            </motion.div>
-            <motion.div className="relative shrink-0 group" initial="hidden" animate="visible" variants={imgV} whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
+            </div>
+            <div className="relative shrink-0 group">
               <div className="absolute -inset-3 bg-blue-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <motion.div className="bg-blue-500 w-3 h-3 sm:w-4 sm:h-4 absolute -top-1.5 -right-1.5 rounded-full z-10 ring-2 ring-gray-900 shadow-lg shadow-blue-500/50" variants={pulseV} animate="pulse" />
+              <div className="bg-blue-500 w-3 h-3 sm:w-4 sm:h-4 absolute -top-1.5 -right-1.5 rounded-full z-10 ring-2 ring-gray-900 shadow-lg shadow-blue-500/50" />
               <div className="relative w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-3xl overflow-hidden border-2 border-blue-500/40 shadow-2xl shadow-blue-500/20 transition-all duration-300 group-hover:border-blue-500/60 group-hover:shadow-blue-500/30">
-<Image src="/images/messi.webp" alt="Messi vs Ronaldo comparison - Lionel Messi" width={288} height={288} sizes="(max-width: 768px) 50vw, 288px" className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" priority />              </div>
-            </motion.div>
+                <Image
+                  src="/images/messi.webp"
+                  alt="Messi vs Ronaldo comparison - Lionel Messi"
+                  width={288}
+                  height={288}
+                  sizes="(max-width: 639px) 128px, (max-width: 767px) 176px, (max-width: 1023px) 224px, 288px"
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                  priority
+                />
+              </div>
+            </div>
           </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 xs:gap-4 max-w-2xl mx-auto place-items-center">            
-  <motion.div className="text-center space-y-1.5" initial="hidden" animate="visible" variants={statV}>
-    <h2 className="font-bold text-white text-sm sm:text-xl lg:text-2xl">Cristiano Ronaldo</h2>
-    <p className="text-gray-400 text-xs sm:text-sm">{ronaldoAge} years</p>
-    <p className="text-gray-500 text-xs sm:text-sm">🇵🇹 Portugal · Al Nassr</p>
-  </motion.div>
-  <div className="hidden sm:flex items-center justify-center">
-    <div className="text-center space-y-1.5">
-      <p className="text-[10px] text-gray-600 uppercase tracking-[0.2em]">Player</p>
-      <p className="text-[10px] text-gray-600 uppercase tracking-[0.2em]">Age</p>
-      <p className="text-[10px] text-gray-600 uppercase tracking-[0.2em]">Nation</p>
-    </div>
-  </div>
-  <motion.div className="text-center space-y-1.5" initial="hidden" animate="visible" variants={statV}>
-    <h2 className="font-bold text-white text-sm sm:text-xl lg:text-2xl">Lionel Messi</h2>
-    <p className="text-gray-400 text-xs sm:text-sm">{messiAge} years</p>
-    <p className="text-gray-500 text-xs sm:text-sm">🇦🇷 Argentina · Inter Miami</p>
-  </motion.div>
-</div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 xs:gap-4 max-w-2xl mx-auto place-items-center">
+            <div className="text-center space-y-1.5">
+              <h2 className="font-bold text-white text-sm sm:text-xl lg:text-2xl">Cristiano Ronaldo</h2>
+              <p className="text-gray-400 text-xs sm:text-sm">{ronaldoAge} years</p>
+              <p className="text-gray-500 text-xs sm:text-sm">🇵🇹 Portugal · Al Nassr</p>
+            </div>
+            <div className="hidden sm:flex items-center justify-center">
+              <div className="text-center space-y-1.5">
+                <p className="text-[10px] text-gray-600 uppercase tracking-[0.2em]">Player</p>
+                <p className="text-[10px] text-gray-600 uppercase tracking-[0.2em]">Age</p>
+                <p className="text-[10px] text-gray-600 uppercase tracking-[0.2em]">Nation</p>
+              </div>
+            </div>
+            <div className="text-center space-y-1.5">
+              <h2 className="font-bold text-white text-sm sm:text-xl lg:text-2xl">Lionel Messi</h2>
+              <p className="text-gray-400 text-xs sm:text-sm">{messiAge} years</p>
+              <p className="text-gray-500 text-xs sm:text-sm">🇦🇷 Argentina · Inter Miami</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -359,7 +373,7 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
               {[{ name: "Messi", matches: messiRecent || [], color: "blue", img: "/images/messi.webp" }, { name: "Ronaldo", matches: ronaldoRecent || [], color: "red", img: "/images/ronaldo.webp" }].map(({ name, matches, color, img }) => (
                 <div key={name} className={`${CARD_BASE} p-5 sm:p-6`}>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-gray-600"><Image src={img} alt={name} fill className="object-cover" /></div>
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-gray-600"><Image src={img} alt={name} fill sizes="40px" className="object-cover" /></div>
                     <h3 className={`text-lg font-bold ${color === "blue" ? "text-blue-400" : "text-red-400"}`}>{name}</h3>
                   </div>
                   <div className="space-y-1.5 max-h-[400px] overflow-y-auto">
@@ -417,13 +431,19 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
             <section>
               <SectionHeading title="Latest Articles" subtitle="From the Mesnaldo Blog" />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {recentBlogs.map((post: any, i: number) => (
-                  <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                {recentBlogs.map((post: any) => (
+                  <div key={post.slug}>
                     <Link href={`/blog/${post.slug}`} className="group block h-full">
                       <div className="bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-2xl overflow-hidden hover:border-gray-600/70 transition-all duration-300 h-full flex flex-col">
                         {post.featured_image && (
                           <div className="relative h-40 bg-gray-800 overflow-hidden">
-                            <img src={post.featured_image} alt={post.title} className="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-500" />
+                            <Image
+                              src={post.featured_image}
+                              alt={post.title}
+                              fill
+                              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
                           </div>
                         )}
                         <div className="p-5 flex flex-col flex-1">
@@ -444,7 +464,7 @@ const pulseV = { pulse: { scale: [1, 1.1, 1], opacity: [1, 0.8, 1], transition: 
                         </div>
                       </div>
                     </Link>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
               <div className="text-center mt-6">
