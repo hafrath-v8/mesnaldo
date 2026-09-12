@@ -622,7 +622,9 @@ export default function Poll({
                         src="/images/messi.webp"
                         alt="Lionel Messi"
                         fill
+                        sizes="112px"
                         priority
+                        fetchPriority="high"
                         className="object-cover"
                       />
 
@@ -733,7 +735,9 @@ export default function Poll({
                         src="/images/ronaldo.webp"
                         alt="Cristiano Ronaldo"
                         fill
+                        sizes="112px"
                         priority
+                        fetchPriority="high"
                         className="object-cover"
                       />
 
@@ -905,6 +909,7 @@ export default function Poll({
                         src="/images/messi.webp"
                         alt="Lionel Messi"
                         fill
+                        sizes="64px"
                         className="object-cover"
                       />
 
@@ -1028,6 +1033,7 @@ export default function Poll({
                         src="/images/ronaldo.webp"
                         alt="Cristiano Ronaldo"
                         fill
+                        sizes="64px"
                         className="object-cover"
                       />
 

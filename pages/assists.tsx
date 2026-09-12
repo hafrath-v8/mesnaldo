@@ -52,7 +52,7 @@ function StatCard({ label, messiValue, ronaldoValue, suffix = "", lowerIsBetter 
       <div className="flex items-center justify-center gap-5 sm:gap-8 mb-3">
         <div className="text-center flex-1">
           <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-blue-500/30 mx-auto mb-2 shadow-lg shadow-blue-500/10">
-            <Image src="/images/messi.webp" alt="Messi" fill className="object-cover" />
+            <Image src="/images/messi.webp" alt="Messi" fill sizes="56px" className="object-cover" />
           </div>
           <p className={`text-xl sm:text-2xl font-black ${winner === "messi" ? "text-blue-400" : "text-gray-400"}`}>{m.toLocaleString()}{suffix}</p>
           <p className="text-[10px] text-gray-600 mt-0.5">Messi</p>
@@ -61,7 +61,7 @@ function StatCard({ label, messiValue, ronaldoValue, suffix = "", lowerIsBetter 
         <span className="text-xs text-gray-700 font-medium pt-6">vs</span>
         <div className="text-center flex-1">
           <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-red-500/30 mx-auto mb-2 shadow-lg shadow-red-500/10">
-            <Image src="/images/ronaldo.webp" alt="Ronaldo" fill className="object-cover" />
+            <Image src="/images/ronaldo.webp" alt="Ronaldo" fill sizes="56px" className="object-cover" />
           </div>
           <p className={`text-xl sm:text-2xl font-black ${winner === "ronaldo" ? "text-red-400" : "text-gray-400"}`}>{r.toLocaleString()}{suffix}</p>
           <p className="text-[10px] text-gray-600 mt-0.5">Ronaldo</p>
@@ -93,7 +93,7 @@ function TeamBreakdownChart({ player, data, color, img }: { player: string; data
     <div className={`${CARD_BASE} p-5 sm:p-6`}>
       <div className="flex items-center gap-3 mb-4">
         <div className={`relative w-10 h-10 rounded-full overflow-hidden border-2 ${color === "blue" ? "border-blue-500/30" : "border-red-500/30"}`}>
-          <Image src={img} alt={player} fill className="object-cover" />
+          <Image src={img} alt={player} fill sizes="40px" className="object-cover" />
         </div>
         <div>
           <h3 className={`font-bold text-sm ${color === "blue" ? "text-blue-400" : "text-red-400"}`}>{player}</h3>
@@ -185,7 +185,7 @@ export default function Assists(props: AssistsPageProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-2xl mx-auto">
               <div className={`${CARD_BASE} p-6 sm:p-8 text-center`}>
                 <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-blue-500/40 mx-auto mb-4 shadow-xl shadow-blue-500/20">
-                  <Image src="/images/messi.webp" alt="Messi" fill className="object-cover" />
+                  <Image src="/images/messi.webp" alt="Messi" fill sizes="96px" priority fetchPriority="high" className="object-cover" />
                 </div>
                 <motion.p initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ type: "spring" }}
                   className="text-4xl sm:text-5xl lg:text-6xl font-black text-blue-400">{messiTotal.toLocaleString()}</motion.p>
@@ -193,7 +193,7 @@ export default function Assists(props: AssistsPageProps) {
               </div>
               <div className={`${CARD_BASE} p-6 sm:p-8 text-center`}>
                 <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-red-500/40 mx-auto mb-4 shadow-xl shadow-red-500/20">
-                  <Image src="/images/ronaldo.webp" alt="Ronaldo" fill className="object-cover" />
+                  <Image src="/images/ronaldo.webp" alt="Ronaldo" fill sizes="96px" priority fetchPriority="high" className="object-cover" />
                 </div>
                 <motion.p initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ type: "spring" }}
                   className="text-4xl sm:text-5xl lg:text-6xl font-black text-red-400">{ronaldoTotal.toLocaleString()}</motion.p>

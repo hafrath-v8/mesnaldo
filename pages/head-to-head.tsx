@@ -578,6 +578,7 @@ export default function HeadToHead({
                       sizes="80px"
                       className="object-cover"
                       priority
+                      fetchPriority="high"
                     />
 
                   </div>
@@ -625,6 +626,7 @@ export default function HeadToHead({
                       sizes="80px"
                       className="object-cover"
                       priority
+                      fetchPriority="high"
                     />
 
                   </div>

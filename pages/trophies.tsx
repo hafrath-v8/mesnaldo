@@ -78,7 +78,7 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
               {/* Messi */}
               <div className="text-center">
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-blue-500/30 mx-auto mb-3">
-                  <Image src="/images/messi.webp" alt="Messi" fill className="object-cover" />
+                  <Image src="/images/messi.webp" alt="Messi" fill sizes="80px" priority fetchPriority="high" className="object-cover" />
                 </div>
                 <p className="text-xs text-gray-500 mb-1">Lionel Messi</p>
                 <p className="text-4xl sm:text-5xl lg:text-6xl font-black text-blue-400">{messiTotal}</p>
@@ -98,7 +98,7 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
               {/* Ronaldo */}
               <div className="text-center">
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-red-500/30 mx-auto mb-3">
-                  <Image src="/images/ronaldo.webp" alt="Ronaldo" fill className="object-cover" />
+                  <Image src="/images/ronaldo.webp" alt="Ronaldo" fill sizes="80px" priority fetchPriority="high" className="object-cover" />
                 </div>
                 <p className="text-xs text-gray-500 mb-1">Cristiano Ronaldo</p>
                 <p className="text-4xl sm:text-5xl lg:text-6xl font-black text-red-400">{ronaldoTotal}</p>

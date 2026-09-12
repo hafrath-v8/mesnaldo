@@ -134,7 +134,7 @@ title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
         <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4">
           <div className="absolute inset-0 rounded-full border-2 border-blue-500/20" />
           <div className="absolute inset-1 rounded-full overflow-hidden">
-            <Image src="/images/messi.webp" alt="Messi" fill className="object-cover grayscale-[20%]" />
+            <Image src="/images/messi.webp" alt="Messi" fill sizes="96px" priority fetchPriority="high" className="object-cover grayscale-[20%]" />
           </div>
         </div>
         <div>
@@ -161,7 +161,7 @@ title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
         <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4">
           <div className="absolute inset-0 rounded-full border-2 border-red-500/20" />
           <div className="absolute inset-1 rounded-full overflow-hidden">
-            <Image src="/images/ronaldo.webp" alt="Ronaldo" fill className="object-cover grayscale-[20%]" />
+            <Image src="/images/ronaldo.webp" alt="Ronaldo" fill sizes="96px" priority fetchPriority="high" className="object-cover grayscale-[20%]" />
           </div>
         </div>
         <div>

@@ -715,7 +715,9 @@ export default function RonaldoProfile({
                   src="/images/ronaldo.webp"
                   alt="Cristiano Ronaldo"
                   fill
+                  sizes="(max-width: 639px) 128px, (max-width: 1023px) 160px, 192px"
                   priority
+                  fetchPriority="high"
                   className="object-cover"
                 />
               </motion.div>

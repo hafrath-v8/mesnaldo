@@ -1255,7 +1255,9 @@ export default function WhoIsBest({
                     src="/images/messi.webp"
                     alt="Lionel Messi"
                     fill
+                    sizes="80px"
                     priority
+                    fetchPriority="high"
                     className="object-cover"
                   />
 
@@ -1299,7 +1301,9 @@ export default function WhoIsBest({
                     src="/images/ronaldo.webp"
                     alt="Cristiano Ronaldo"
                     fill
+                    sizes="80px"
                     priority
+                    fetchPriority="high"
                     className="object-cover"
                   />
 
