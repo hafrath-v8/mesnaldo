@@ -16,7 +16,7 @@ export default function Document() {
           sizes="any"
         />
 
-        {/* Optional PNG icons */}
+        {/* PNG icon */}
         <link
           rel="icon"
           type="image/png"
@@ -24,6 +24,7 @@ export default function Document() {
           href="/favicon-32x32.png"
         />
 
+        {/* Apple touch icon */}
         <link
           rel="apple-touch-icon"
           href="/apple-touch-icon.png"
@@ -33,24 +34,6 @@ export default function Document() {
         <meta
           name="theme-color"
           content="#0a0a0a"
-        />
-
-        {/* Improve connection to font servers */}
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-        />
-
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        {/* Inter */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
         />
       </Head>
 
