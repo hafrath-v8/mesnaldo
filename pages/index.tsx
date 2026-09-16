@@ -24,13 +24,13 @@ interface HomeProps {
   recentBlogs: any[]
 }
 
-const TROPHIES = { messi: { total: 47, league: 13, ucl: 4, wc: 1 }, ronaldo: { total: 37, league: 8, ucl: 5, wc: 0 } }
+const TROPHIES = { messi: { total: 48, league: 13, ucl: 4, wc: 1, cont: 2 }, ronaldo: { total: 37, league: 8, ucl: 5, wc: 0, cont: 1 } }
 const BALLON = { messi: { total: 8, top2: 13, top3: 14, nom: 16 }, ronaldo: { total: 5, top2: 11, top3: 12, nom: 18 } }
 
 const INT = new Set(["World Cup Qualifier","International Friendly","Copa America","World Cup","Finalissima","UEFA Euros","Euros Qualifier","Nations League","Confederations Cup"])
 const USA_SAUDI = new Set(["MLS","MLS Cup","Leagues Cup","Champions Cup","US Open Cup","Saudi Pro League","Saudi King Cup","Saudi Super Cup","AFC Champions League","AFC Champions League 2","Arab Club Champions Cup"])
 const LEAGUE = new Set(["La Liga","MLS","Ligue 1","Premier League","Saudi Pro League","Serie A","Primeira Liga"])
-const UCL = new Set(["Champs League","Champions League","UEFA Champions League"])
+const UCL = new Set(["Champs League","Champions League"])
 const WC = new Set(["World Cup"])
 
 
@@ -88,14 +88,14 @@ function CardWrapper({ children, index }: { children: React.ReactNode; index: nu
 
 function FullCard({ label, messi, ronaldo, index }: { label: string; messi: ScopeStats; ronaldo: ScopeStats; index: number }) {
   if (messi.apps === 0 && ronaldo.apps === 0) return null
-  const mGoalRate = messi.apps > 0 ? messi.goals / messi.apps : 0
-  const mAssistRate = messi.apps > 0 ? messi.assists / messi.apps : 0
-  const rGoalRate = ronaldo.apps > 0 ? ronaldo.goals / ronaldo.apps : 0
-  const rAssistRate = ronaldo.apps > 0 ? ronaldo.assists / ronaldo.apps : 0
-  const mTotal = mGoalRate + mAssistRate
-  const rTotal = rGoalRate + rAssistRate
-  const leader = mTotal > rTotal ? "Messi" : rTotal > mTotal ? "Ronaldo" : null
-  const maxTotal = Math.max(mTotal, rTotal, 0.01)
+  const mGoalEff = messi.apps > 0 ? (messi.goals / messi.apps) * 100 : 0
+  const mAssistEff = messi.apps > 0 ? (messi.assists / messi.apps) * 100 : 0
+  const rGoalEff = ronaldo.apps > 0 ? (ronaldo.goals / ronaldo.apps) * 100 : 0
+  const rAssistEff = ronaldo.apps > 0 ? (ronaldo.assists / ronaldo.apps) * 100 : 0
+  const mTotal = mGoalEff + mAssistEff
+  const rTotal = rGoalEff + rAssistEff
+  const winner = mTotal >= rTotal ? "Messi" : "Ronaldo"
+  const maxTotal = Math.max(mTotal, rTotal, 1)
 
   return (
     <CardWrapper index={index}>
@@ -105,14 +105,14 @@ function FullCard({ label, messi, ronaldo, index }: { label: string; messi: Scop
       </div>
       <div className="flex items-center justify-center gap-2 sm:gap-3 mb-5 sm:mb-6 p-3 sm:p-4 bg-gray-800/60 rounded-xl border border-gray-700/50">
         <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-amber-400/30">
-          <Image src={leader === "Messi" ? "/images/messi.webp" : leader === "Ronaldo" ? "/images/ronaldo.webp" : "/images/messi.webp"} alt={leader || "Level"} fill sizes="32px" className="object-cover" />
+          <Image src={winner === "Messi" ? "/images/messi.webp" : "/images/ronaldo.webp"} alt={winner} fill sizes="32px" className="object-cover" />
         </div>
-        <span className="text-[11px] sm:text-xs lg:text-sm font-medium text-amber-400">{leader ? <>Higher G+A rate: <span className="font-semibold text-amber-300">{leader}</span> ({maxTotal.toFixed(2)} per app)</> : <>G+A rate: <span className="font-semibold text-amber-300">Level</span> ({maxTotal.toFixed(2)} per app)</>}</span>
+        <span className="text-[11px] sm:text-xs lg:text-sm font-medium text-amber-400">Highest: <span className="font-semibold text-amber-300">{winner}</span> ({maxTotal.toFixed(1)}%)</span>
       </div>
       <div className="space-y-5 sm:space-y-6">
         {[
-          { name: "Messi", img: "/images/messi.webp", goals: messi.goals, assists: messi.assists, apps: messi.apps, goalRate: mGoalRate, assistRate: mAssistRate, total: mTotal, gc: "bg-blue-500", ac: "bg-blue-700 " },
-          { name: "Ronaldo", img: "/images/ronaldo.webp", goals: ronaldo.goals, assists: ronaldo.assists, apps: ronaldo.apps, goalRate: rGoalRate, assistRate: rAssistRate, total: rTotal, gc: "bg-red-500", ac: "bg-red-700" },
+          { name: "Messi", img: "/images/messi.webp", goals: messi.goals, assists: messi.assists, apps: messi.apps, goalEff: mGoalEff, assistEff: mAssistEff, total: mTotal, gc: "bg-blue-500", ac: "bg-blue-700 " },
+          { name: "Ronaldo", img: "/images/ronaldo.webp", goals: ronaldo.goals, assists: ronaldo.assists, apps: ronaldo.apps, goalEff: rGoalEff, assistEff: rAssistEff, total: rTotal, gc: "bg-red-500", ac: "bg-red-700" },
         ].map((p) => (
           <div key={p.name} className="space-y-2">
             <div className="flex items-center justify-between gap-2">
@@ -122,11 +122,11 @@ function FullCard({ label, messi, ronaldo, index }: { label: string; messi: Scop
                 </div>
                 <span className="text-sm sm:text-base font-medium text-white truncate">{p.name}</span>
               </div>
-              <span className="text-base sm:text-lg lg:text-xl font-bold text-white shrink-0">{p.total.toFixed(2)} per app</span>
+              <span className="text-base sm:text-lg lg:text-xl font-bold text-white shrink-0">{p.total.toFixed(1)}%</span>
             </div>
             <div className="w-full bg-gray-800/50 rounded-full h-5 sm:h-6 relative overflow-hidden border border-gray-700/30">
-              <motion.div initial={{ width: 0 }} whileInView={{ width: `${(p.goalRate / maxTotal) * 100}%` }} viewport={{ once: true }} transition={{ duration: 0.7, delay: index * 0.1 + 0.2 }} className={`${p.gc} h-full absolute top-0 left-0 rounded-full`} />
-              <motion.div initial={{ width: 0 }} whileInView={{ width: `${(p.assistRate / maxTotal) * 100}%` }} viewport={{ once: true }} transition={{ duration: 0.7, delay: index * 0.1 + 0.4 }} className={`${p.ac} h-full absolute top-0 left-0 rounded-full`} />
+              <motion.div initial={{ width: 0 }} whileInView={{ width: `${p.goalEff}%` }} viewport={{ once: true }} transition={{ duration: 0.7, delay: index * 0.1 + 0.2 }} className={`${p.gc} h-full absolute top-0 left-0 rounded-full`} />
+              <motion.div initial={{ width: 0 }} whileInView={{ width: `${p.assistEff}%` }} viewport={{ once: true }} transition={{ duration: 0.7, delay: index * 0.1 + 0.4 }} className={`${p.ac} h-full absolute top-0 left-0 rounded-full`} />
             </div>
             <div className="flex flex-wrap justify-between gap-x-3 gap-y-1 text-[10px] sm:text-xs text-gray-400">
               <div className="flex items-center gap-2 sm:gap-4">
@@ -146,7 +146,7 @@ function GoalsOnlyCard({ label, messi, ronaldo, index }: { label: string; messi:
   if (messi.apps === 0 && ronaldo.apps === 0) return null
   const mGoalEff = messi.apps > 0 ? (messi.goals / messi.apps) * 100 : 0
   const rGoalEff = ronaldo.apps > 0 ? (ronaldo.goals / ronaldo.apps) * 100 : 0
-  const leader = messi.goals > ronaldo.goals ? "Messi" : ronaldo.goals > messi.goals ? "Ronaldo" : null
+  const winner = messi.goals >= ronaldo.goals ? "Messi" : "Ronaldo"
   const maxGoals = Math.max(messi.goals, ronaldo.goals, 1)
   const barMax = Math.max(mGoalEff, rGoalEff, 1) * 1.15
 
@@ -158,9 +158,9 @@ function GoalsOnlyCard({ label, messi, ronaldo, index }: { label: string; messi:
       </div>
       <div className="flex items-center justify-center gap-2 sm:gap-3 mb-5 sm:mb-6 p-3 sm:p-4 bg-gray-800/60 rounded-xl border border-gray-700/50">
         <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-amber-400/30">
-          <Image src={leader === "Messi" ? "/images/messi.webp" : leader === "Ronaldo" ? "/images/ronaldo.webp" : "/images/messi.webp"} alt={leader || "Level"} fill sizes="32px" className="object-cover" />
+          <Image src={winner === "Messi" ? "/images/messi.webp" : "/images/ronaldo.webp"} alt={winner} fill sizes="32px" className="object-cover" />
         </div>
-        <span className="text-[11px] sm:text-xs lg:text-sm font-medium text-amber-400">{leader ? <>Most goals: <span className="font-semibold text-amber-300">{leader}</span> ({maxGoals.toLocaleString()})</> : <>Goals: <span className="font-semibold text-amber-300">Level</span> ({maxGoals.toLocaleString()})</>}</span>
+        <span className="text-[11px] sm:text-xs lg:text-sm font-medium text-amber-400">Most goals: <span className="font-semibold text-amber-300">{winner}</span> ({maxGoals.toLocaleString()})</span>
       </div>
       <div className="space-y-5 sm:space-y-6">
         {[
@@ -175,7 +175,7 @@ function GoalsOnlyCard({ label, messi, ronaldo, index }: { label: string; messi:
                 </div>
                 <span className="text-sm sm:text-base font-medium text-white truncate">{p.name}</span>
               </div>
-              <span className="text-base sm:text-lg lg:text-xl font-bold text-white shrink-0">{(p.goalEff / 100).toFixed(2)} per app</span>
+              <span className="text-base sm:text-lg lg:text-xl font-bold text-white shrink-0">{p.goalEff.toFixed(1)}%</span>
             </div>
             <div className="w-full bg-gray-800/50 rounded-full h-5 sm:h-6 relative overflow-hidden border border-gray-700/30">
               <motion.div initial={{ width: 0 }} whileInView={{ width: `${(p.goalEff / barMax) * 100}%` }} viewport={{ once: true }} transition={{ duration: 0.7, delay: index * 0.1 + 0.2 }} className={`${p.gc} h-full absolute top-0 left-0 rounded-full`} />
@@ -208,8 +208,7 @@ async function fetchAllMatches(playerId: number) {
     const { data, error } = await supabase
       .from("matches").select("*").eq("player_id", playerId)
       .range(from, from + pageSize - 1).order("id", { ascending: true })
-    if (error) throw error
-    if (!data || data.length === 0) break
+    if (error || !data || data.length === 0) break
     allRows = allRows.concat(data)
     if (data.length < pageSize) break
     from += pageSize
@@ -221,8 +220,8 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
   if (!messi || !ronaldo) {
     return (
 <Layout
-        title="Messi vs Ronaldo Stats | Goals, Assists, Trophies & Career"
-        description="Compare Lionel Messi and Cristiano Ronaldo using Mesnaldo career and match data, including goals, assists, appearances, competition splits, trophies and recent matches."
+        title="Messi vs Ronaldo: Goals, Assists, Trophies, Records & Career Stats"
+        description="Compare Lionel Messi vs Cristiano Ronaldo career stats including goals, assists, appearances, trophies, Champions League, World Cup, international records, recent matches and more."
       >        <div className="flex items-center justify-center min-h-screen bg-black">
           <div className="w-10 h-10 rounded-full border-2 border-white/10 border-t-blue-500 border-r-red-500 animate-spin" />
         </div> 
@@ -247,6 +246,8 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
     { stat: "Penalties", ronaldo: safeNum(ronaldo.penalties_scored), messi: safeNum(messi.penalties_scored) },
   ]
   const radarData = radarRaw.map(r => { const mx = Math.max(r.ronaldo, r.messi) || 1; return { ...r, ronaldo: +((r.ronaldo / mx) * 100).toFixed(1), messi: +((r.messi / mx) * 100).toFixed(1) } })
+  const ronaldoAvg = (radarData.reduce((s, r) => s + r.ronaldo, 0) / radarData.length).toFixed(1)
+  const messiAvg = (radarData.reduce((s, r) => s + r.messi, 0) / radarData.length).toFixed(1)
 
   const quickLinks = [
     { href: "/goals", label: "Goals" },
@@ -261,10 +262,10 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
 
   return (
 <Layout
-      title="Messi vs Ronaldo Stats | Goals, Assists, Trophies & Career"
-      description="Compare Lionel Messi and Cristiano Ronaldo using Mesnaldo career and match data, including goals, assists, appearances, competition splits, trophies and recent matches."
+      title="Messi vs Ronaldo: Goals, Assists, Trophies, Records & Career Stats"
+      description="Compare Lionel Messi vs Cristiano Ronaldo career stats including goals, assists, appearances, trophies, Champions League, World Cup, international records, recent matches and more."
     >    
-<h1 className="sr-only">Messi vs Ronaldo Career Statistics and Comparison</h1>
+<h1 className="sr-only">Messi vs Ronaldo: Who is Better? Complete Stats, Records & Career Comparison</h1>
       <section className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-900/95 to-black border-b border-gray-800/50 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(59,130,246,0.15),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(239,68,68,0.15),transparent_50%),radial-gradient(circle_at_50%_80%,rgba(245,158,11,0.08),transparent_50%)]" />
@@ -333,18 +334,9 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
       <div className="w-full bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-12 sm:space-y-16 lg:space-y-20">
 
-          <div className="rounded-2xl border border-gray-800 bg-gray-900/40 p-4 sm:p-5">
-            <p className="text-xs sm:text-sm text-gray-400 leading-6">
-              <strong className="text-gray-200">Data scope:</strong> dynamic career and match figures come from the Mesnaldo database.
-              Competition labels and assist definitions can differ between providers. Team-trophy figures follow the counting scope used on
-              the <Link href="/trophies" className="text-amber-400 hover:text-amber-300">Trophies</Link> page.
-              See <Link href="/methodology" className="text-amber-400 hover:text-amber-300">Methodology</Link> for definitions and update notes.
-            </p>
-          </div>
-
           {/* Existing sections unchanged */}
           <section>
-            <SectionHeading title="Player Comparison" subtitle="Category-by-category normalized view" />
+            <SectionHeading title="Player Comparison" subtitle="Normalized across key career metrics" />
             <div className={`${CARD_BASE} p-5 sm:p-6 lg:p-8`}>
               <div className="h-72 sm:h-80 md:h-96 max-w-xl mx-auto">
                 <ResponsiveContainer width="100%" height="100%">
@@ -357,10 +349,10 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
                   </RadarChart>
                 </ResponsiveContainer>
               </div>
-              <p className="mt-5 text-center text-xs sm:text-sm text-gray-500 leading-6">
-                Each radar axis is normalized independently to the higher value in that category.
-                The chart is descriptive and does not produce an overall player score.
-              </p>
+              <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto mt-6">
+                <div className="text-center p-3 bg-red-500/10 rounded-xl border border-red-500/20"><p className="text-xl font-black text-red-400">{ronaldoAvg}</p><p className="text-[10px] text-gray-400 mt-1">Ronaldo Avg</p></div>
+                <div className="text-center p-3 bg-blue-500/10 rounded-xl border border-blue-500/20"><p className="text-xl font-black text-blue-400">{messiAvg}</p><p className="text-[10px] text-gray-400 mt-1">Messi Avg</p></div>
+              </div>
             </div>
           </section>
 
@@ -490,7 +482,7 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
   <div className="max-w-4xl mx-auto">
 
     <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
-      Messi vs Ronaldo Career Stats, Goals, Assists, Trophies & Records
+      Messi vs Ronaldo: Complete Career Stats, Goals, Assists, Trophies & Records
     </h2>
 
     <div className="space-y-7 text-sm text-gray-400 leading-8">
@@ -738,10 +730,6 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
       <h3 className="text-xl font-bold text-white mt-10">
         Messi vs Ronaldo Assists and Playmaking
       </h3>
-      <p className="mt-3 text-xs sm:text-sm text-gray-500 leading-6">
-        Assist totals can differ between providers because assist definitions are not fully standardized.
-        The figures below follow the definitions and match coverage stored in the Mesnaldo database.
-      </p>
 
       {(() => {
         const difference = Math.abs(
@@ -936,8 +924,8 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
         Messi represents Argentina while Ronaldo represents Portugal, and both
         have spent many years as central figures for their national teams.
         International statistics include World Cup matches, continental
-        tournaments, qualifiers, Nations League fixtures, international friendlies
-        and other national-team matches represented by the database.
+        tournaments, qualifiers, Nations League fixtures and other official
+        national-team competitions represented by the database.
       </p>
 
       <p>
@@ -1009,7 +997,7 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
       <p>
         Individual statistics describe what a player contributes on the
         pitch, while trophies record what his teams ultimately achieved.
-        Using the same team-trophy counting scope as Mesnaldo's trophies page,
+        According to the trophy totals currently configured on this page,
         Messi has{" "}
         <strong className="text-blue-400">
           {TROPHIES.messi.total}
@@ -1021,7 +1009,7 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
       </p>
 
       <p>
-        Within that counting scope, Messi's total includes{" "}
+        Messi's total currently includes{" "}
         <strong className="text-white">
           {TROPHIES.messi.league} league titles
         </strong>,{" "}
@@ -1068,10 +1056,27 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
           {BALLON.ronaldo.total}
         </strong>.
       </p>
+
       <p>
-        Ballon d&apos;Or wins are only one part of the individual-awards comparison.
-        Placements, nominations and other honours use different criteria, so Mesnaldo keeps
-        the broader award-by-award context on the dedicated Honours page.
+        The comparison extends beyond victories. Messi has been represented
+        in the site's data with{" "}
+        <strong className="text-white">
+          {BALLON.messi.top2} top-two finishes
+        </strong>{" "}
+        and{" "}
+        <strong className="text-white">
+          {BALLON.messi.top3} top-three finishes
+        </strong>,
+        while Ronaldo has{" "}
+        <strong className="text-white">
+          {BALLON.ronaldo.top2} top-two finishes
+        </strong>{" "}
+        and{" "}
+        <strong className="text-white">
+          {BALLON.ronaldo.top3} top-three finishes
+        </strong>.
+        Their sustained presence near the top of individual award voting
+        illustrates how long both remained among football's elite.
       </p>
 
 
@@ -1278,7 +1283,7 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
         club-level and international records. Some relate to total goals,
         others to individual competitions, consecutive scoring runs, awards
         or career milestones. Because records describe different
-        achievements, a category-by-category comparison can be more useful than simply
+        achievements, a complete comparison is more useful than simply
         counting how many record headlines each player has.
       </p>
 
@@ -1548,7 +1553,7 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
       ====================================================== */}
 
       <h2 className="text-2xl font-black text-white mt-14">
-        Messi vs Ronaldo Comparison Overview
+        The Complete Messi vs Ronaldo Comparison
       </h2>
 
       <p>
@@ -1625,13 +1630,8 @@ export const getStaticProps: GetStaticProps = async () => {
       scopes = buildScopes(messiAll as Match[], ronaldoAll as Match[])
     }
 
-    const byRecentDate = (a: any, b: any) => {
-      const aTime = a.match_date ? new Date(a.match_date).getTime() : safeNum(a.id)
-      const bTime = b.match_date ? new Date(b.match_date).getTime() : safeNum(b.id)
-      return bTime - aTime
-    }
-    const messiRecent = [...messiAll].sort(byRecentDate).slice(0, 10)
-    const ronaldoRecent = [...ronaldoAll].sort(byRecentDate).slice(0, 10)
+    const messiRecent = messiAll.slice(-10).reverse()
+    const ronaldoRecent = ronaldoAll.slice(-10).reverse()
 
     // Fetch recent blog posts
     const { data: recentBlogs, error: blogError } = await supabase
@@ -1673,10 +1673,10 @@ export const getStaticProps: GetStaticProps = async () => {
         messi, ronaldo, scopes, messiRecent, ronaldoRecent, 
         recentBlogs: recentBlogs || [] 
       })), 
-      revalidate: 300
+      revalidate: 60
     }
   } catch (e) {
     console.error("Error:", e)
-    return { props: { messi: null, ronaldo: null, scopes: [], messiRecent: [], ronaldoRecent: [], recentBlogs: [] }, revalidate: 300 }
+    return { props: { messi: null, ronaldo: null, scopes: [], messiRecent: [], ronaldoRecent: [], recentBlogs: [] }, revalidate: 60 }
   }
 }
