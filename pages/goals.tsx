@@ -1,5 +1,6 @@
 // pages/goals.tsx
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next" 
 import { motion } from "framer-motion"
@@ -33,7 +34,7 @@ interface GoalsPageProps {
   messiGoalsInDraws: number; ronaldoGoalsInDraws: number
   messiGoalsInLosses: number; ronaldoGoalsInLosses: number
   messiMultiGoalMatches: number; ronaldoMultiGoalMatches: number
-  messiStarterGoals: number; ronaldoStarterGoals: number
+  messiLongAppearanceGoals: number; ronaldoLongAppearanceGoals: number
 }
 
 const CARD_BASE = "bg-gray-900/80 backdrop-blur border border-gray-700/60 rounded-2xl"
@@ -45,7 +46,10 @@ const FINALS_ROUNDS = ["Final", "final"]
 const MESSI_COLORS = ["#3B82F6", "#60A5FA", "#93C5FD", "#2563EB", "#1D4ED8", "#1E40AF"]
 const RONALDO_COLORS = ["#EF4444", "#F87171", "#FCA5A5", "#DC2626", "#B91C1C", "#991B1B"]
 
-function safeNum(val: any): number { return typeof val === 'number' ? val : 0 }
+function safeNum(val: any): number { return typeof val === 'number' && Number.isFinite(val) ? val : 0 }
+function safePercent(part: number, total: number): string {
+  return total > 0 ? ((part / total) * 100).toFixed(1) : "0.0"
+}
 
 function StatCard({ label, messiValue, ronaldoValue, suffix = "", lowerIsBetter = false }: {
   label: string; messiValue: number; ronaldoValue: number; suffix?: string; lowerIsBetter?: boolean
@@ -127,7 +131,7 @@ function TeamBreakdownChart({ player, data, color, img }: { player: string; data
               <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: colors[i % colors.length] }} />
               <span className="text-xs text-gray-300 flex-1 truncate">{d.team}</span>
               <span className={`text-xs font-bold ${color === "blue" ? "text-blue-400" : "text-red-400"}`}>{d.goals}</span>
-              <span className="text-[10px] text-gray-600">{((d.goals / total) * 100).toFixed(1)}%</span>
+              <span className="text-[10px] text-gray-600">{safePercent(d.goals, total)}%</span>
             </div>
           ))}
         </div>
@@ -142,7 +146,7 @@ async function fetchAllMatches(playerId: number) {
   let from = 0
   while (true) {
     const { data, error } = await supabase
-      .from("matches").select("goals, team, competition, opponent, round, venue, result, team_score, opponent_score, minutes_played")
+      .from("matches").select("goals, team, competition, opponent, round, venue, is_home, result, team_score, opponent_score, minutes_played")
       .eq("player_id", playerId).range(from, from + pageSize - 1).order("id", { ascending: true })
     if (error || !data || data.length === 0) break
     allRows = allRows.concat(data)
@@ -153,7 +157,7 @@ async function fetchAllMatches(playerId: number) {
 }
 
 export default function Goals(props: GoalsPageProps) {
-  const { messi, ronaldo, messiIntlGoals, ronaldoIntlGoals, messiUclGoals, ronaldoUclGoals, messiClubGoals, ronaldoClubGoals, messiNonPenaltyGoals, ronaldoNonPenaltyGoals, messiFriendlyGoals, ronaldoFriendlyGoals, messiCompetitiveGoals, ronaldoCompetitiveGoals, messiKnockoutGoals, ronaldoKnockoutGoals, messiGroupStageGoals, ronaldoGroupStageGoals, messiHatTricks, ronaldoHatTricks, messiWinningGoals, ronaldoWinningGoals, messiHomeGoals, ronaldoHomeGoals, messiAwayGoals, ronaldoAwayGoals, messiBraceCount, ronaldoBraceCount, messiSuperSubGoals, ronaldoSuperSubGoals, messiDerbyGoals, ronaldoDerbyGoals, messiFinalsGoals, ronaldoFinalsGoals, messiTeamBreakdown, ronaldoTeamBreakdown, messiPenaltyConversion, ronaldoPenaltyConversion, messiGoalsInWins, ronaldoGoalsInWins, messiGoalsInDraws, ronaldoGoalsInDraws, messiGoalsInLosses, ronaldoGoalsInLosses, messiMultiGoalMatches, ronaldoMultiGoalMatches, messiStarterGoals, ronaldoStarterGoals } = props
+  const { messi, ronaldo, messiIntlGoals, ronaldoIntlGoals, messiUclGoals, ronaldoUclGoals, messiClubGoals, ronaldoClubGoals, messiNonPenaltyGoals, ronaldoNonPenaltyGoals, messiFriendlyGoals, ronaldoFriendlyGoals, messiCompetitiveGoals, ronaldoCompetitiveGoals, messiKnockoutGoals, ronaldoKnockoutGoals, messiGroupStageGoals, ronaldoGroupStageGoals, messiHatTricks, ronaldoHatTricks, messiWinningGoals, ronaldoWinningGoals, messiHomeGoals, ronaldoHomeGoals, messiAwayGoals, ronaldoAwayGoals, messiBraceCount, ronaldoBraceCount, messiSuperSubGoals, ronaldoSuperSubGoals, messiDerbyGoals, ronaldoDerbyGoals, messiFinalsGoals, ronaldoFinalsGoals, messiTeamBreakdown, ronaldoTeamBreakdown, messiPenaltyConversion, ronaldoPenaltyConversion, messiGoalsInWins, ronaldoGoalsInWins, messiGoalsInDraws, ronaldoGoalsInDraws, messiGoalsInLosses, ronaldoGoalsInLosses, messiMultiGoalMatches, ronaldoMultiGoalMatches, messiLongAppearanceGoals, ronaldoLongAppearanceGoals } = props
 
   if (!messi || !ronaldo) {
     return (
@@ -167,10 +171,14 @@ export default function Goals(props: GoalsPageProps) {
 
   const messiTotal = safeNum(messi.total_goals)
   const ronaldoTotal = safeNum(ronaldo.total_goals)
-  const messiGames = safeNum(messi.total_games) || 1
-  const ronaldoGames = safeNum(ronaldo.total_games) || 1
-  const messiMinutes = safeNum(messi.total_minutes) || 1
-  const ronaldoMinutes = safeNum(ronaldo.total_minutes) || 1
+  const messiGames = safeNum(messi.total_games)
+  const ronaldoGames = safeNum(ronaldo.total_games)
+  const messiMinutes = safeNum(messi.total_minutes)
+  const ronaldoMinutes = safeNum(ronaldo.total_minutes)
+  const messiGoalsPerGame = messiGames > 0 ? +(messiTotal / messiGames).toFixed(2) : 0
+  const ronaldoGoalsPerGame = ronaldoGames > 0 ? +(ronaldoTotal / ronaldoGames).toFixed(2) : 0
+  const messiMinutesPerGoal = messiTotal > 0 && messiMinutes > 0 ? Math.round(messiMinutes / messiTotal) : 0
+  const ronaldoMinutesPerGoal = ronaldoTotal > 0 && ronaldoMinutes > 0 ? Math.round(ronaldoMinutes / ronaldoTotal) : 0
 
   const goalTypeData = [
     { name: "Left Foot", messi: safeNum(messi.left_foot_goals), ronaldo: safeNum(ronaldo.left_foot_goals) },
@@ -184,8 +192,8 @@ export default function Goals(props: GoalsPageProps) {
 
   return (
 <Layout 
-  title="Messi vs Ronaldo Goals: Who Has Scored More? Complete Stats" 
-  description="How many goals does Ronaldo have? Messi? Compare total career goals, goals per season, free kicks, penalties, headers, and every goal breakdown."> 
+  title="Messi vs Ronaldo Goals | Career Scoring Comparison" 
+  description="Compare Lionel Messi and Cristiano Ronaldo career goal statistics in the Mesnaldo dataset, including totals, scoring rates, penalties, free kicks, headers and competition splits."> 
   <BreadcrumbSchema
       items={[
         {
@@ -198,12 +206,24 @@ export default function Goals(props: GoalsPageProps) {
         },
       ]}
     />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <MethodologyNote />
+      </div>
+
       <div className="bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-14 sm:space-y-16 lg:space-y-20">
 
           <div className="text-center">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">Goals Comparison</h1>
-            <p className="text-gray-500 mt-3 text-sm sm:text-base">Complete career goal statistics</p>
+            <p className="text-gray-500 mt-3 text-sm sm:text-base">Career goal statistics from the Mesnaldo dataset</p>
+          </div>
+
+          <div className="rounded-xl border border-gray-800 bg-gray-900/40 px-4 py-3 max-w-4xl mx-auto">
+            <p className="text-xs sm:text-sm text-gray-400 leading-6">
+              Figures on this page follow the scope and classifications stored in the Mesnaldo database.
+              Match-derived splits can differ from external sources when competition names, venue labels,
+              round names or historical match coverage use different conventions.
+            </p>
           </div>
 
           {/* Total Goals */}
@@ -270,8 +290,8 @@ export default function Goals(props: GoalsPageProps) {
               <StatCard label="Braces (2 goals)" messiValue={messiBraceCount} ronaldoValue={ronaldoBraceCount} />
               <StatCard label="Multi-Goal Matches" messiValue={messiMultiGoalMatches} ronaldoValue={ronaldoMultiGoalMatches} />
               <StatCard label="Winning Goals" messiValue={messiWinningGoals} ronaldoValue={ronaldoWinningGoals} />
-              <StatCard label="Starter Goals" messiValue={messiStarterGoals} ronaldoValue={ronaldoStarterGoals} />
-              <StatCard label="Super Sub Goals" messiValue={messiSuperSubGoals} ronaldoValue={ronaldoSuperSubGoals} />
+              <StatCard label="Goals in 45+ Minute Appearances" messiValue={messiLongAppearanceGoals} ronaldoValue={ronaldoLongAppearanceGoals} />
+              <StatCard label="Goals in ≤30 Minute Appearances" messiValue={messiSuperSubGoals} ronaldoValue={ronaldoSuperSubGoals} />
               <StatCard label="Home Goals" messiValue={messiHomeGoals} ronaldoValue={ronaldoHomeGoals} />
               <StatCard label="Away Goals" messiValue={messiAwayGoals} ronaldoValue={ronaldoAwayGoals} />
               <StatCard label="Derby Goals" messiValue={messiDerbyGoals} ronaldoValue={ronaldoDerbyGoals} />
@@ -317,8 +337,8 @@ export default function Goals(props: GoalsPageProps) {
           <section>
             <SectionHeading title="Efficiency" />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-lg mx-auto">
-              <StatCard label="Goals Per Game" messiValue={+(messiTotal / messiGames).toFixed(2)} ronaldoValue={+(ronaldoTotal / ronaldoGames).toFixed(2)} />
-              <StatCard label="Minutes Per Goal" messiValue={Math.round(messiMinutes / messiTotal)} ronaldoValue={Math.round(ronaldoMinutes / ronaldoTotal)} suffix=" min" lowerIsBetter />
+              <StatCard label="Goals Per Game" messiValue={messiGoalsPerGame} ronaldoValue={ronaldoGoalsPerGame} />
+              <StatCard label="Minutes Per Goal" messiValue={messiMinutesPerGoal} ronaldoValue={ronaldoMinutesPerGoal} suffix=" min" lowerIsBetter />
             </div>
           </section>
 {/* =========================================================
@@ -329,7 +349,7 @@ export default function Goals(props: GoalsPageProps) {
   <div className="max-w-4xl mx-auto">
 
     <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
-      Messi vs Ronaldo Goals: Complete Career Goal Comparison
+      Messi vs Ronaldo Goals: Career Scoring Comparison
     </h2>
 
     <div className="space-y-7 text-sm text-gray-400 leading-8">
@@ -414,8 +434,8 @@ export default function Goals(props: GoalsPageProps) {
       {/* GOALS PER GAME */}
 
       {(() => {
-        const messiGPG = messiTotal / messiGames
-        const ronaldoGPG = ronaldoTotal / ronaldoGames
+        const messiGPG = messiGames > 0 ? messiTotal / messiGames : 0
+        const ronaldoGPG = ronaldoGames > 0 ? ronaldoTotal / ronaldoGames : 0
 
         return (
           <>
@@ -1030,17 +1050,16 @@ export default function Goals(props: GoalsPageProps) {
       {/* STARTER / SUB */}
 
       <h3 className="text-xl font-bold text-white mt-10">
-        Goals as a Starter and Substitute
+        Goals by Appearance Length
       </h3>
 
       <p>
         The match data also provides a view of goals relative to playing
         time. Messi has{" "}
         <strong className="text-blue-400">
-          {messiStarterGoals.toLocaleString()}
+          {messiLongAppearanceGoals.toLocaleString()}
         </strong>{" "}
-        goals in matches classified by this page as starter-level playing
-        time and{" "}
+        goals in appearances lasting at least 45 minutes and{" "}
         <strong className="text-blue-400">
           {messiSuperSubGoals.toLocaleString()}
         </strong>{" "}
@@ -1050,9 +1069,9 @@ export default function Goals(props: GoalsPageProps) {
       <p>
         Ronaldo has{" "}
         <strong className="text-red-400">
-          {ronaldoStarterGoals.toLocaleString()}
+          {ronaldoLongAppearanceGoals.toLocaleString()}
         </strong>{" "}
-        starter goals and{" "}
+        goals in appearances lasting at least 45 minutes and{" "}
         <strong className="text-red-400">
           {ronaldoSuperSubGoals.toLocaleString()}
         </strong>{" "}
@@ -1132,7 +1151,7 @@ export default function Goals(props: GoalsPageProps) {
       </p>
 
       <p>
-        The fairest approach is therefore to compare several metrics at the
+        One useful approach is therefore to compare several metrics at the
         same time. A player can lead one area while trailing another, and that
         does not make either statistic invalid. It simply means the two
         careers have produced different strengths.
@@ -1170,11 +1189,11 @@ export default function Goals(props: GoalsPageProps) {
         Based on the current career totals and appearances used by this page,
         Messi averages{" "}
         <strong className="text-blue-400">
-          {(messiTotal / messiGames).toFixed(3)}
+          {(messiGames > 0 ? messiTotal / messiGames : 0).toFixed(3)}
         </strong>{" "}
         goals per appearance and Ronaldo averages{" "}
         <strong className="text-red-400">
-          {(ronaldoTotal / ronaldoGames).toFixed(3)}
+          {(ronaldoGames > 0 ? ronaldoTotal / ronaldoGames : 0).toFixed(3)}
         </strong>.
       </p>
 
@@ -1348,8 +1367,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const ronaldoClubGoals = (ronaldo?.total_goals || 0) - ronaldoIntlGoals
     const messiNonPenaltyGoals = (messi?.total_goals || 0) - (messi?.penalties_scored || 0)
     const ronaldoNonPenaltyGoals = (ronaldo?.total_goals || 0) - (ronaldo?.penalties_scored || 0)
-    const messiPenaltyConversion = +(((messi?.penalties_scored || 0) / ((messi?.penalties_scored || 0) + (messi?.penalties_missed || 0))) * 100).toFixed(1)
-    const ronaldoPenaltyConversion = +(((ronaldo?.penalties_scored || 0) / ((ronaldo?.penalties_scored || 0) + (ronaldo?.penalties_missed || 0))) * 100).toFixed(1)
+    const getPenaltyConversion = (scored: number, missed: number) => {
+      const attempts = scored + missed
+      return attempts > 0 ? +((scored / attempts) * 100).toFixed(1) : 0
+    }
+    const messiPenaltyConversion = getPenaltyConversion(messi?.penalties_scored || 0, messi?.penalties_missed || 0)
+    const ronaldoPenaltyConversion = getPenaltyConversion(ronaldo?.penalties_scored || 0, ronaldo?.penalties_missed || 0)
     const messiGoalsInWins = sumGoals(messiMatches.filter(m => m.result === "W"))
     const ronaldoGoalsInWins = sumGoals(ronaldoMatches.filter(m => m.result === "W"))
     const messiGoalsInDraws = sumGoals(messiMatches.filter(m => m.result === "D"))
@@ -1358,8 +1381,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const ronaldoGoalsInLosses = sumGoals(ronaldoMatches.filter(m => m.result === "L"))
     const messiMultiGoalMatches = messiMatches.filter(m => (m.goals || 0) >= 2).length
     const ronaldoMultiGoalMatches = ronaldoMatches.filter(m => (m.goals || 0) >= 2).length
-    const messiStarterGoals = sumGoals(messiMatches.filter(m => (m.minutes_played || 0) >= 45))
-    const ronaldoStarterGoals = sumGoals(ronaldoMatches.filter(m => (m.minutes_played || 0) >= 45))
+    const messiLongAppearanceGoals = sumGoals(messiMatches.filter(m => (m.minutes_played || 0) >= 45))
+    const ronaldoLongAppearanceGoals = sumGoals(ronaldoMatches.filter(m => (m.minutes_played || 0) >= 45))
     const messiFriendlyGoals = sumGoals(messiMatches.filter(m => FRIENDLY_COMPETITIONS.includes(m.competition || "")))
     const ronaldoFriendlyGoals = sumGoals(ronaldoMatches.filter(m => FRIENDLY_COMPETITIONS.includes(m.competition || "")))
     const messiCompetitiveGoals = (messi?.total_goals || 0) - messiFriendlyGoals
@@ -1375,10 +1398,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const ronaldoBraceCount = ronaldoMatches.filter(m => (m.goals || 0) === 2).length
     const messiWinningGoals = messiMatches.filter(m => m.result === "W" && (m.team_score || 0) - (m.opponent_score || 0) === 1 && (m.goals || 0) > 0).length
     const ronaldoWinningGoals = ronaldoMatches.filter(m => m.result === "W" && (m.team_score || 0) - (m.opponent_score || 0) === 1 && (m.goals || 0) > 0).length
-    const messiHomeGoals = sumGoals(messiMatches.filter(m => m.venue === "H" || m.is_home === true))
-    const ronaldoHomeGoals = sumGoals(ronaldoMatches.filter(m => m.venue === "H" || m.is_home === true))
-    const messiAwayGoals = sumGoals(messiMatches.filter(m => m.venue === "A" || m.is_home === false))
-    const ronaldoAwayGoals = sumGoals(ronaldoMatches.filter(m => m.venue === "A" || m.is_home === false))
+    const isHomeMatch = (m: any) => m.venue === "H" || (m.venue == null && m.is_home === true)
+    const isAwayMatch = (m: any) => m.venue === "A" || (m.venue == null && m.is_home === false)
+    const messiHomeGoals = sumGoals(messiMatches.filter(isHomeMatch))
+    const ronaldoHomeGoals = sumGoals(ronaldoMatches.filter(isHomeMatch))
+    const messiAwayGoals = sumGoals(messiMatches.filter(isAwayMatch))
+    const ronaldoAwayGoals = sumGoals(ronaldoMatches.filter(isAwayMatch))
     const messiSuperSubGoals = sumGoals(messiMatches.filter(m => (m.minutes_played || 0) <= 30))
     const ronaldoSuperSubGoals = sumGoals(ronaldoMatches.filter(m => (m.minutes_played || 0) <= 30))
     const messiDerbyGoals = sumGoals(messiMatches.filter(m => DERBY_MATCHES.has(m.opponent || "")))
@@ -1410,7 +1435,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         messiGoalsInDraws, ronaldoGoalsInDraws,
         messiGoalsInLosses, ronaldoGoalsInLosses,
         messiMultiGoalMatches, ronaldoMultiGoalMatches,
-        messiStarterGoals, ronaldoStarterGoals,
+        messiLongAppearanceGoals, ronaldoLongAppearanceGoals,
       },
     }
   } catch (e) {
@@ -1428,7 +1453,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         messiPenaltyConversion: 0, ronaldoPenaltyConversion: 0,
         messiGoalsInWins: 0, ronaldoGoalsInWins: 0, messiGoalsInDraws: 0, ronaldoGoalsInDraws: 0,
         messiGoalsInLosses: 0, ronaldoGoalsInLosses: 0, messiMultiGoalMatches: 0, ronaldoMultiGoalMatches: 0,
-        messiStarterGoals: 0, ronaldoStarterGoals: 0,
+        messiLongAppearanceGoals: 0, ronaldoLongAppearanceGoals: 0,
       },
     }
   }

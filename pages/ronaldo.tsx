@@ -1,6 +1,7 @@
 // pages/ronaldo.tsx
 
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
@@ -238,7 +239,7 @@ const HONOURS = [
   },
   {
     name: "UEFA Nations League",
-    count: 1,
+    count: 2,
     icon: "🌍",
   },
   {
@@ -674,8 +675,8 @@ export default function RonaldoProfile({
 
   return (
     <Layout
-      title="Cristiano Ronaldo Stats: Goals, Assists, Matches, Trophies & Career"
-      description="Explore Cristiano Ronaldo career stats including total goals, assists, appearances, match history, Real Madrid and Portugal records, goals by competition, trophies and yearly scoring."
+      title="Cristiano Ronaldo Stats | Goals, Assists, Matches & Career"
+      description="Explore Cristiano Ronaldo career statistics from the Mesnaldo dataset, including goals, assists, appearances, match history, team breakdowns and scoring trends."
     >
       <BreadcrumbSchema
   items={[

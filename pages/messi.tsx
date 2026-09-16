@@ -1,6 +1,7 @@
 // pages/messi.tsx
 
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
@@ -316,8 +317,8 @@ export default function MessiProfile({
 
   return (
     <Layout
-      title="Lionel Messi Stats: Goals, Assists, Matches, Trophies & Career"
-      description="Explore Lionel Messi career stats including total goals, assists, appearances, match history, Barcelona and Argentina records, goals by competition, trophies and season-by-season scoring."
+      title="Lionel Messi Stats | Goals, Assists, Matches & Career"
+      description="Explore Lionel Messi career statistics from the Mesnaldo dataset, including goals, assists, appearances, match history, team breakdowns and scoring trends."
     >
       <BreadcrumbSchema
   items={[
@@ -2213,7 +2214,7 @@ export const getServerSideProps: GetServerSideProps =
         Later, connect this to your trophies database
         so you maintain the number in only one place.
       */
-      const totalTrophies = 48
+      const totalTrophies = 47
 
 
       return {

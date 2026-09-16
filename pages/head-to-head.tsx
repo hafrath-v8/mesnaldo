@@ -8,6 +8,7 @@ import { useMemo, useState } from "react"
 import { motion } from "framer-motion"
 
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { supabase } from "../lib/supabase"
 
 
@@ -500,6 +501,10 @@ export default function HeadToHead({
 
 
       <div className="bg-black min-h-screen">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <MethodologyNote />
+      </div>
+
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-12 sm:space-y-16">
 

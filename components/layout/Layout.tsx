@@ -114,6 +114,10 @@ const secondaryLinks: NavigationLink[] = [
     href: "/about",
     label: "About",
   },
+  {
+    href: "/methodology",
+    label: "Methodology",
+  },
 ]
 
 
@@ -179,6 +183,10 @@ const footerLinks: Record<
     {
       href: "/about",
       label: "About Mesnaldo",
+    },
+    {
+      href: "/methodology",
+      label: "Methodology",
     },
   ],
 
@@ -1653,6 +1661,21 @@ export default function Layout({
               >
 
                 Contact
+
+              </Link>
+
+              <Link
+                href="/methodology"
+                prefetch={false}
+                onMouseEnter={() =>
+                  prefetchRoute(
+                    "/methodology"
+                  )
+                }
+                className="hover:text-gray-400 transition-colors"
+              >
+
+                Methodology
 
               </Link>
 

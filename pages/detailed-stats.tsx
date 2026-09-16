@@ -1,4 +1,5 @@
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
@@ -47,13 +48,13 @@ export default function DetailedStats({ stats }: DetailedStatsProps) {
   const totalRonaldoWins = Object.entries(groupedStats).filter(([_, items]) => {
     const m = items.find(s => s.player_id === 1)
     const r = items.find(s => s.player_id === 2)
-    return m && r && m.stat_value > r.stat_value
+    return m && r && r.stat_value > m.stat_value
   }).length
 
   return (
     <Layout 
-      title="Messi vs Ronaldo Detailed Stats 2026 - Complete Head-to-Head Analysis"
-      description="Compare Messi vs Ronaldo detailed stats: hat tricks, key passes, dribbles, xG, aerial duels, match ratings, Man of the Match awards, El Clasico records, UCL knockout stats, and more."
+      title="Messi vs Ronaldo Detailed Stats 2026 | Head-to-Head Comparison"
+      description="Compare Lionel Messi and Cristiano Ronaldo across the detailed statistical categories available in the Mesnaldo dataset, including scoring, creation and selected advanced metrics."
     >
       <BreadcrumbSchema
   items={[
@@ -64,6 +65,11 @@ export default function DetailedStats({ stats }: DetailedStatsProps) {
     },
   ]}
 />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <MethodologyNote />
+          <p className="mt-3 text-xs sm:text-sm text-gray-500 leading-6">Categories are not equally weighted and may use different statistical definitions. Lead counts summarize this dataset; they are not an overall player rating.</p>
+      </div>
+
       <div className="bg-black min-h-screen">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
           
@@ -77,19 +83,19 @@ export default function DetailedStats({ stats }: DetailedStatsProps) {
               Messi vs Ronaldo <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Detailed Stats</span>
             </h1>
             <p className="text-gray-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
-              The most comprehensive head-to-head comparison of Lionel Messi and Cristiano Ronaldo. Every advanced metric analyzed in detail.
+              A detailed head-to-head comparison of Lionel Messi and Cristiano Ronaldo across the statistical categories available in our dataset.
             </p>
             
             {/* Quick Score */}
             <div className="flex items-center justify-center gap-6 mt-6">
               <div className="bg-blue-500/5 border border-blue-500/20 rounded-2xl px-6 py-4">
                 <p className="text-2xl font-black text-blue-400">{totalMessiWins}</p>
-                <p className="text-[10px] text-gray-500 mt-1">Messi Leads</p>
+                <p className="text-[10px] text-gray-500 mt-1">Categories Messi Leads</p>
               </div>
               <div className="text-gray-600 text-2xl font-black">vs</div>
               <div className="bg-red-500/5 border border-red-500/20 rounded-2xl px-6 py-4">
                 <p className="text-2xl font-black text-red-400">{totalRonaldoWins}</p>
-                <p className="text-[10px] text-gray-500 mt-1">Ronaldo Leads</p>
+                <p className="text-[10px] text-gray-500 mt-1">Categories Ronaldo Leads</p>
               </div>
             </div>
           </div>
@@ -1209,7 +1215,7 @@ export default function DetailedStats({ stats }: DetailedStatsProps) {
 
 
       {/* =====================================================
-          CATEGORY SCORE
+          CATEGORY COUNT
       ====================================================== */}
 
       <h3 className="text-white text-lg font-bold mt-10">
@@ -1252,7 +1258,7 @@ export default function DetailedStats({ stats }: DetailedStatsProps) {
         <p>
           The two players currently lead the same number of categories in this
           dataset. The tie reinforces the importance of examining individual
-          metrics rather than relying only on an overall category score.
+          metrics rather than relying only on an overall category count.
         </p>
       )}
 
@@ -1478,7 +1484,7 @@ export default function DetailedStats({ stats }: DetailedStatsProps) {
         return (
           <>
             <h3 className="text-white font-bold mt-7">
-              Who is better in the air, Messi or Ronaldo?
+              What do the aerial-duel statistics show for Messi and Ronaldo?
             </h3>
 
             <p>

@@ -1,6 +1,7 @@
 // pages/who-is-best.tsx
 
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
@@ -698,7 +699,7 @@ export default function WhoIsBest({
         75,
 
       verdictText:
-        "Both players built major international careers. Messi's résumé includes the FIFA World Cup and Copa América, while Ronaldo's includes the UEFA European Championship and Nations League success. Because the World Cup carries unique historical weight, this comparison gives Messi the edge in international team honours.",
+        "Both players built major international careers. Messi's résumé includes the FIFA World Cup and Copa América, while Ronaldo's includes the UEFA European Championship and Nations League success. Because the World Cup carries unique historical weight, this comparison shows a difference in the types of international team honours each player has won.",
 
       messiWins:
         true,
@@ -1088,7 +1089,7 @@ export default function WhoIsBest({
         Crown,
 
       messiMain:
-        "48 configured trophies",
+        "47 configured trophies",
 
       ronaldoMain:
         "37 configured trophies",
@@ -1109,7 +1110,7 @@ export default function WhoIsBest({
         100,
 
       bar2:
-        (37 / 48) *
+        (37 / 47) *
         100,
 
       verdictText:
@@ -1175,8 +1176,8 @@ export default function WhoIsBest({
 
   return (
     <Layout
-      title="Messi vs Ronaldo: Who Is Better? 13 Categories Compared"
-      description="Messi vs Ronaldo: who is better? Compare Lionel Messi and Cristiano Ronaldo across goals, assists, Champions League, international success, Ballon d'Or awards, penalties, free kicks, headers, trophies and more."
+      title="Messi vs Ronaldo Comparison | 13 Statistical Categories"
+      description="Compare Lionel Messi and Cristiano Ronaldo across 13 statistical categories including goals, assists, scoring rates, major honours and selected career metrics."
     >
       <BreadcrumbSchema
   items={[
@@ -1188,6 +1189,7 @@ export default function WhoIsBest({
   ]}
 />
       <div className="bg-black min-h-screen">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6"><MethodologyNote /><p className="mt-3 text-xs sm:text-sm text-gray-500 leading-6">Category counts are descriptive only. The categories use different units and importance, so they are not an objective overall player score.</p></div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-12">
 
@@ -1602,7 +1604,7 @@ export default function WhoIsBest({
             <Crown className="w-10 h-10 text-amber-400 mx-auto mb-4" />
 
             <h2 className="text-xl sm:text-2xl font-black text-white mb-3">
-              The Final Verdict
+              The Comparison Summary
             </h2>
 
             <p className="text-sm text-gray-400 leading-relaxed max-w-2xl mx-auto mb-3">

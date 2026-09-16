@@ -1,5 +1,6 @@
 // pages/trophies.tsx
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { supabase } from "../lib/supabase"
 import { GetStaticProps } from "next"
 import { motion } from "framer-motion"
@@ -24,7 +25,7 @@ function SectionHeading({ title, subtitle }: { title: string; subtitle?: string 
 }
 
 const TROPHY_DATA = [
-  { icon: Trophy, label: "League Titles", messi: 13, ronaldo: 8 },
+  { icon: Trophy, label: "League Titles", messi: 12, ronaldo: 8 },
   { icon: Star, label: "Champions League", messi: 4, ronaldo: 5 },
   { icon: Award, label: "Domestic Cup", messi: 8, ronaldo: 6 },
   { icon: Medal, label: "Domestic Super Cup", messi: 9, ronaldo: 7 },
@@ -53,14 +54,18 @@ export default function Trophies({ messi, ronaldo }: TrophiesPageProps) {
 
   return (
 <Layout 
-title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
-  description="Messi vs Ronaldo trophy comparison: 48 vs 37 trophies. Compare La Liga, Champions League, World Cup, and every title won."> 
+title="Messi vs Ronaldo Trophies | Team Honours Comparison"
+  description="Compare Lionel Messi and Cristiano Ronaldo team honours by competition category, including league titles, Champions League trophies, domestic cups and international titles."> 
   <BreadcrumbSchema
   items={[
     { name: "Home", url: "/" },
     { name: "Trophies", url: "/trophies" },
   ]}
-/>     
+/>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <MethodologyNote />
+      </div>
+     
   <div className="bg-black">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-16 sm:space-y-20">
 
@@ -68,7 +73,7 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
           <div className="text-center">
             <p className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-3">Silverware</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight">
-              Trophies & <span className="text-amber-400">Awards</span>
+              Team <span className="text-amber-400">Trophies</span>
             </h1>
           </div>
 
@@ -89,9 +94,9 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
               <div className="text-center">
                 <p className="text-2xl sm:text-3xl font-black text-amber-400/80">VS</p>
                 <div className="flex items-center justify-center gap-3 mt-2">
-                  <span className="text-xs text-blue-400 font-bold">{messiWins} won</span>
+                  <span className="text-xs text-blue-400 font-bold">{messiWins} category leads</span>
                   <span className="text-[10px] text-gray-700">•</span>
-                  <span className="text-xs text-red-400 font-bold">{ronaldoWins} won</span>
+                  <span className="text-xs text-red-400 font-bold">{ronaldoWins} category leads</span>
                 </div>
               </div>
 
@@ -121,7 +126,15 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
 
           {/* ─── TROPHY LIST ─── */}
           <section>
-            <SectionHeading title="Trophy Cabinet" subtitle="Head to head comparison" />
+            <SectionHeading title="Trophy Cabinet" subtitle="Team honours grouped by Mesnaldo category" />
+            <div className="mb-6 rounded-xl border border-gray-800 bg-gray-900/40 px-4 py-3">
+              <p className="text-xs sm:text-sm text-gray-400 leading-6">
+                Trophy totals can vary between sources because competitions such as super cups,
+                youth titles and certain regional events are not always classified the same way.
+                The figures below follow the categories shown on this page; individual awards such
+                as the Ballon d&apos;Or are displayed separately and are not included in these totals.
+              </p>
+            </div>
             <div className="space-y-2">
               {TROPHY_DATA.map((item, i) => {
                 const total = item.messi + item.ronaldo
@@ -214,7 +227,7 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
   <div className="max-w-4xl mx-auto">
 
     <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
-      Messi vs Ronaldo Trophies: Complete Career Honours Comparison
+      Messi vs Ronaldo Trophies: Career Team Honours Comparison
     </h2>
 
     <div className="space-y-7 text-sm text-gray-400 leading-8">
@@ -247,7 +260,7 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
       {/* TOTAL TROPHIES */}
 
       <h3 className="text-xl font-bold text-white mt-10">
-        Who Has More Trophies, Messi or Ronaldo?
+        Messi vs Ronaldo Total Trophy Count
       </h3>
 
       <p>
@@ -257,6 +270,13 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
         trophies, while{" "}
         <strong className="text-red-400">Cristiano Ronaldo</strong> has won{" "}
         <strong className="text-white">{ronaldoTotal}</strong>.
+      </p>
+
+      <p>
+        Mesnaldo uses the category definitions shown in the table above. Published
+        totals can differ between football sources when they apply different rules
+        to super cups, youth honours or other competitions, so the category
+        breakdown is more informative than the headline total alone.
       </p>
 
       {(() => {
@@ -538,7 +558,7 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
       {/* CATEGORY WINS */}
 
       <h3 className="text-xl font-bold text-white mt-10">
-        Who Leads More Trophy Categories?
+        Trophy Category Counts
       </h3>
 
       <p>
@@ -670,7 +690,7 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
       </p>
 
       <p>
-        A balanced comparison therefore considers both collective honours and
+        A broader comparison can therefore consider both collective honours and
         individual production.
       </p>
 
@@ -800,8 +820,8 @@ title="Messi vs Ronaldo Trophies Comparison | Who Has More Trophies?"
       </p>
 
       <p>
-        The total trophy count gives a useful starting point, but the deeper
-        comparison comes from examining each category separately. League
+        The total trophy count gives a useful starting point, while examining
+        each category separately provides additional context. League
         titles show season-long consistency, Champions League trophies show
         continental success, domestic cups reflect knockout performance and
         international titles represent achievement with the national team.

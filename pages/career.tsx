@@ -1,5 +1,6 @@
 // pages/career.tsx
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
@@ -97,9 +98,8 @@ function buildSeasons(matches: any[]): SeasonStats[] {
     const clubs = seasonClubs[season] || {}
     const mainClub = Object.entries(clubs).sort(([, a], [, b]) => b - a)[0]?.[0] || "Unknown"
     
-    // Determine trophies (simplified - major trophies based on competition names)
+    // Trophy data is not inferred from match competition names.
     const trophies: string[] = []
-    const comps = Array.from(data.competitions)
     
     return {
       season,
@@ -195,8 +195,8 @@ export default function Career({ messiSeasons, ronaldoSeasons, messiClubs, ronal
 
   return (
 <Layout
-  title="Messi vs Ronaldo Career | Complete Career Comparison"
-  description="Compare Messi vs Ronaldo's careers, including goals, assists, trophies, records, individual awards, and career statistics in one complete comparison."
+  title="Messi vs Ronaldo Career | Career Statistics Comparison"
+  description="Compare Lionel Messi and Cristiano Ronaldo career statistics from the Mesnaldo match dataset, including appearances, goals, assists, clubs and season groupings."
 >
   <BreadcrumbSchema
   items={[
@@ -204,6 +204,11 @@ export default function Career({ messiSeasons, ronaldoSeasons, messiClubs, ronal
     { name: "Career", url: "/career" },
   ]}
 />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <MethodologyNote />
+          <p className="mt-3 text-xs sm:text-sm text-gray-500 leading-6">Season rows use an August-to-July grouping for consistency. Calendar-year competitions such as MLS and international football do not always align with that convention, so these are dataset groupings rather than official league-season labels.</p>
+      </div>
+
         <div className="bg-black min-h-screen">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-10">
 
@@ -265,7 +270,7 @@ export default function Career({ messiSeasons, ronaldoSeasons, messiClubs, ronal
 
             {bestSeason && (
               <div className="mt-4 pt-4 border-t border-gray-800 flex items-center justify-center gap-2 text-xs text-gray-500">
-                <span>Best Season:</span>
+                <span>Highest-Scoring Season:</span>
                 <span className="text-white font-bold">{bestSeason.season}</span>
                 <span>·</span>
                 <span className="text-emerald-400 font-bold">{bestSeason.goals} goals</span>
@@ -567,7 +572,7 @@ export default function Career({ messiSeasons, ronaldoSeasons, messiClubs, ronal
       {/* BEST SEASONS */}
 
       <h3 className="text-xl font-bold text-white mt-10">
-        Messi and Ronaldo&apos;s Best Scoring Seasons
+        Messi and Ronaldo&apos;s Highest-Scoring Seasons
       </h3>
 
       {messiSeasons.length > 0 && (

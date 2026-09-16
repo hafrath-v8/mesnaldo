@@ -1,5 +1,6 @@
 // pages/assists.tsx
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
@@ -17,7 +18,7 @@ interface AssistsPageProps {
   messiAssistsInLosses: number; ronaldoAssistsInLosses: number
   messiHomeAssists: number; ronaldoHomeAssists: number
   messiAwayAssists: number; ronaldoAwayAssists: number
-  messiStarterAssists: number; ronaldoStarterAssists: number
+  messiLongAppearanceAssists: number; ronaldoLongAppearanceAssists: number
   messiSuperSubAssists: number; ronaldoSuperSubAssists: number
   messiMultiAssistMatches: number; ronaldoMultiAssistMatches: number
   messiHatTrickAssists: number; ronaldoHatTrickAssists: number
@@ -34,7 +35,7 @@ const UCL_COMPETITIONS = ["Champs League", "Champions League", "Champions League
 const MESSI_COLORS = ["#3B82F6", "#60A5FA", "#93C5FD", "#2563EB", "#1D4ED8", "#1E40AF"]
 const RONALDO_COLORS = ["#EF4444", "#F87171", "#FCA5A5", "#DC2626", "#B91C1C", "#991B1B"]
 
-function safeNum(val: any): number { return typeof val === 'number' ? val : 0 }
+function safeNum(val: any): number { return typeof val === 'number' && Number.isFinite(val) ? val : 0 }
 
 function StatCard({ label, messiValue, ronaldoValue, suffix = "", lowerIsBetter = false }: {
   label: string; messiValue: number; ronaldoValue: number; suffix?: string; lowerIsBetter?: boolean
@@ -131,7 +132,7 @@ async function fetchAllMatches(playerId: number) {
   let from = 0
   while (true) {
     const { data, error } = await supabase
-      .from("matches").select("assists, goals, team, competition, round, venue, result, minutes_played")
+      .from("matches").select("assists, goals, team, competition, round, venue, is_home, result, minutes_played")
       .eq("player_id", playerId).range(from, from + pageSize - 1).order("id", { ascending: true })
     if (error || !data || data.length === 0) break
     allRows = allRows.concat(data)
@@ -142,7 +143,7 @@ async function fetchAllMatches(playerId: number) {
 }
 
 export default function Assists(props: AssistsPageProps) {
-  const { messi, ronaldo, messiIntlAssists, ronaldoIntlAssists, messiUclAssists, ronaldoUclAssists, messiClubAssists, ronaldoClubAssists, messiAssistsInWins, ronaldoAssistsInWins, messiAssistsInDraws, ronaldoAssistsInDraws, messiAssistsInLosses, ronaldoAssistsInLosses, messiHomeAssists, ronaldoHomeAssists, messiAwayAssists, ronaldoAwayAssists, messiStarterAssists, ronaldoStarterAssists, messiSuperSubAssists, ronaldoSuperSubAssists, messiMultiAssistMatches, ronaldoMultiAssistMatches, messiHatTrickAssists, ronaldoHatTrickAssists, messiTeamBreakdown, ronaldoTeamBreakdown, messiGoalContributions, ronaldoGoalContributions, messiAssistsPerGame, ronaldoAssistsPerGame, messiMinutesPerAssist, ronaldoMinutesPerAssist } = props
+  const { messi, ronaldo, messiIntlAssists, ronaldoIntlAssists, messiUclAssists, ronaldoUclAssists, messiClubAssists, ronaldoClubAssists, messiAssistsInWins, ronaldoAssistsInWins, messiAssistsInDraws, ronaldoAssistsInDraws, messiAssistsInLosses, ronaldoAssistsInLosses, messiHomeAssists, ronaldoHomeAssists, messiAwayAssists, ronaldoAwayAssists, messiLongAppearanceAssists, ronaldoLongAppearanceAssists, messiSuperSubAssists, ronaldoSuperSubAssists, messiMultiAssistMatches, ronaldoMultiAssistMatches, messiHatTrickAssists, ronaldoHatTrickAssists, messiTeamBreakdown, ronaldoTeamBreakdown, messiGoalContributions, ronaldoGoalContributions, messiAssistsPerGame, ronaldoAssistsPerGame, messiMinutesPerAssist, ronaldoMinutesPerAssist } = props
 
   if (!messi || !ronaldo) {
     return (
@@ -163,8 +164,8 @@ export default function Assists(props: AssistsPageProps) {
 
   return (
 <Layout
-  title="Messi vs Ronaldo Assists | Complete Assists Comparison"
-  description="Compare Messi vs Ronaldo assists, including career assists, club and international assists, assist records, and detailed statistics updated for 2026."
+  title="Messi vs Ronaldo Assists | Career Playmaking Comparison"
+  description="Compare Lionel Messi and Cristiano Ronaldo assist statistics in the Mesnaldo dataset, including career, club, international and Champions League splits."
 >
   <BreadcrumbSchema
   items={[
@@ -172,6 +173,11 @@ export default function Assists(props: AssistsPageProps) {
     { name: "Assists", url: "/assists" },
   ]}
 />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <MethodologyNote />
+          <p className="mt-3 text-xs sm:text-sm text-gray-500 leading-6">Assist totals can differ between providers because assist definitions are not fully standardized. Figures here follow Mesnaldo&apos;s database definitions and match coverage.</p>
+      </div>
+
         <div className="bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-14 sm:space-y-16 lg:space-y-20">
 
@@ -234,8 +240,8 @@ export default function Assists(props: AssistsPageProps) {
               <StatCard label="Goal Contributions" messiValue={messiGoalContributions} ronaldoValue={ronaldoGoalContributions} />
               <StatCard label="Home Assists" messiValue={messiHomeAssists} ronaldoValue={ronaldoHomeAssists} />
               <StatCard label="Away Assists" messiValue={messiAwayAssists} ronaldoValue={ronaldoAwayAssists} />
-              <StatCard label="Starter Assists" messiValue={messiStarterAssists} ronaldoValue={ronaldoStarterAssists} />
-              <StatCard label="Super Sub Assists" messiValue={messiSuperSubAssists} ronaldoValue={ronaldoSuperSubAssists} />
+              <StatCard label="Assists in 45+ Minute Appearances" messiValue={messiLongAppearanceAssists} ronaldoValue={ronaldoLongAppearanceAssists} />
+              <StatCard label="Assists in ≤30 Minute Appearances" messiValue={messiSuperSubAssists} ronaldoValue={ronaldoSuperSubAssists} />
               <StatCard label="Multi-Assist Matches" messiValue={messiMultiAssistMatches} ronaldoValue={ronaldoMultiAssistMatches} />
               <StatCard label="Hat-Trick Assists" messiValue={messiHatTrickAssists} ronaldoValue={ronaldoHatTrickAssists} />
             </div>
@@ -246,7 +252,7 @@ export default function Assists(props: AssistsPageProps) {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 max-w-3xl mx-auto">
               <StatCard label="Assists Per Game" messiValue={messiAssistsPerGame} ronaldoValue={ronaldoAssistsPerGame} />
               <StatCard label="Minutes Per Assist" messiValue={messiMinutesPerAssist} ronaldoValue={ronaldoMinutesPerAssist} suffix=" min" lowerIsBetter />
-              <StatCard label="G+A Per Game" messiValue={+((safeNum(messi.total_goals) + messiTotal) / messiGames).toFixed(2)} ronaldoValue={+((safeNum(ronaldo.total_goals) + ronaldoTotal) / ronaldoGames).toFixed(2)} />
+              <StatCard label="G+A Per Game" messiValue={+(messiGames > 0 ? ((safeNum(messi.total_goals) + messiTotal) / messiGames).toFixed(2) : "0.00")} ronaldoValue={+(ronaldoGames > 0 ? ((safeNum(ronaldo.total_goals) + ronaldoTotal) / ronaldoGames).toFixed(2) : "0.00")} />
             </div>
           </section>
 {/* =========================================================
@@ -257,7 +263,7 @@ export default function Assists(props: AssistsPageProps) {
   <div className="max-w-4xl mx-auto">
 
     <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
-      Messi vs Ronaldo Assists: Complete Career Playmaking Comparison
+      Messi vs Ronaldo Assists: Career Playmaking Comparison
     </h2>
 
     <div className="space-y-7 text-sm text-gray-400 leading-8">
@@ -266,7 +272,7 @@ export default function Assists(props: AssistsPageProps) {
 
       <p>
         The <strong className="text-white">Messi vs Ronaldo assists</strong>{" "}
-        comparison is one of the best ways to understand the creative side of
+        comparison is one useful way to examine the creative side of
         their rivalry. Both Lionel Messi and Cristiano Ronaldo are known
         primarily for extraordinary goal-scoring careers, but they have also
         created a huge number of goals for teammates through passing, crossing,
@@ -483,7 +489,7 @@ export default function Assists(props: AssistsPageProps) {
       </h3>
 
       <p>
-        One of the best ways to combine scoring and playmaking is to look at
+        One way to combine scoring and playmaking is to look at
         total goal contributions, calculated as goals plus assists.
         Messi currently has{" "}
         <strong className="text-blue-400">
@@ -684,13 +690,13 @@ export default function Assists(props: AssistsPageProps) {
       {/* STARTER / SUB */}
 
       <h3 className="text-xl font-bold text-white mt-10">
-        Assists as a Starter and Substitute
+        Assists by Appearance Length
       </h3>
 
       <p>
         Playing time can also affect assist opportunities. Messi has{" "}
         <strong className="text-blue-400">
-          {messiStarterAssists.toLocaleString()}
+          {messiLongAppearanceAssists.toLocaleString()}
         </strong>{" "}
         assists in appearances classified by this page as starter-level
         playing time, and{" "}
@@ -703,7 +709,7 @@ export default function Assists(props: AssistsPageProps) {
       <p>
         Ronaldo has{" "}
         <strong className="text-red-400">
-          {ronaldoStarterAssists.toLocaleString()}
+          {ronaldoLongAppearanceAssists.toLocaleString()}
         </strong>{" "}
         starter assists and{" "}
         <strong className="text-red-400">
@@ -804,7 +810,7 @@ export default function Assists(props: AssistsPageProps) {
       </p>
 
       <p>
-        The best way to compare Messi and Ronaldo as creators is therefore to
+        A useful way to compare Messi and Ronaldo as creators is therefore to
         consider several categories together rather than looking only at one
         total.
       </p>
@@ -1003,12 +1009,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const ronaldoAssistsInDraws = sumAssists(ronaldoMatches.filter(m => m.result === "D"))
     const messiAssistsInLosses = sumAssists(messiMatches.filter(m => m.result === "L"))
     const ronaldoAssistsInLosses = sumAssists(ronaldoMatches.filter(m => m.result === "L"))
-    const messiHomeAssists = sumAssists(messiMatches.filter(m => m.venue === "H" || m.is_home === true))
-    const ronaldoHomeAssists = sumAssists(ronaldoMatches.filter(m => m.venue === "H" || m.is_home === true))
-    const messiAwayAssists = sumAssists(messiMatches.filter(m => m.venue === "A" || m.is_home === false))
-    const ronaldoAwayAssists = sumAssists(ronaldoMatches.filter(m => m.venue === "A" || m.is_home === false))
-    const messiStarterAssists = sumAssists(messiMatches.filter(m => (m.minutes_played || 0) >= 45))
-    const ronaldoStarterAssists = sumAssists(ronaldoMatches.filter(m => (m.minutes_played || 0) >= 45))
+    const isHomeMatch = (m: any) => m.venue === "H" || (m.venue == null && m.is_home === true)
+    const isAwayMatch = (m: any) => m.venue === "A" || (m.venue == null && m.is_home === false)
+    const messiHomeAssists = sumAssists(messiMatches.filter(isHomeMatch))
+    const ronaldoHomeAssists = sumAssists(ronaldoMatches.filter(isHomeMatch))
+    const messiAwayAssists = sumAssists(messiMatches.filter(isAwayMatch))
+    const ronaldoAwayAssists = sumAssists(ronaldoMatches.filter(isAwayMatch))
+    const messiLongAppearanceAssists = sumAssists(messiMatches.filter(m => (m.minutes_played || 0) >= 45))
+    const ronaldoLongAppearanceAssists = sumAssists(ronaldoMatches.filter(m => (m.minutes_played || 0) >= 45))
     const messiSuperSubAssists = sumAssists(messiMatches.filter(m => (m.minutes_played || 0) <= 30))
     const ronaldoSuperSubAssists = sumAssists(ronaldoMatches.filter(m => (m.minutes_played || 0) <= 30))
     const messiMultiAssistMatches = messiMatches.filter(m => (m.assists || 0) >= 2).length
@@ -1034,7 +1042,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         messiClubAssists, ronaldoClubAssists, messiAssistsInWins, ronaldoAssistsInWins,
         messiAssistsInDraws, ronaldoAssistsInDraws, messiAssistsInLosses, ronaldoAssistsInLosses,
         messiHomeAssists, ronaldoHomeAssists, messiAwayAssists, ronaldoAwayAssists,
-        messiStarterAssists, ronaldoStarterAssists, messiSuperSubAssists, ronaldoSuperSubAssists,
+        messiLongAppearanceAssists, ronaldoLongAppearanceAssists, messiSuperSubAssists, ronaldoSuperSubAssists,
         messiMultiAssistMatches, ronaldoMultiAssistMatches, messiHatTrickAssists, ronaldoHatTrickAssists,
         messiTeamBreakdown: getTeamBreakdown(messiMatches),
         ronaldoTeamBreakdown: getTeamBreakdown(ronaldoMatches),
@@ -1050,7 +1058,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         messiClubAssists: 0, ronaldoClubAssists: 0, messiAssistsInWins: 0, ronaldoAssistsInWins: 0,
         messiAssistsInDraws: 0, ronaldoAssistsInDraws: 0, messiAssistsInLosses: 0, ronaldoAssistsInLosses: 0,
         messiHomeAssists: 0, ronaldoHomeAssists: 0, messiAwayAssists: 0, ronaldoAwayAssists: 0,
-        messiStarterAssists: 0, ronaldoStarterAssists: 0, messiSuperSubAssists: 0, ronaldoSuperSubAssists: 0,
+        messiLongAppearanceAssists: 0, ronaldoLongAppearanceAssists: 0, messiSuperSubAssists: 0, ronaldoSuperSubAssists: 0,
         messiMultiAssistMatches: 0, ronaldoMultiAssistMatches: 0, messiHatTrickAssists: 0, ronaldoHatTrickAssists: 0,
         messiTeamBreakdown: [], ronaldoTeamBreakdown: [], messiGoalContributions: 0, ronaldoGoalContributions: 0,
         messiAssistsPerGame: 0, ronaldoAssistsPerGame: 0, messiMinutesPerAssist: 0, ronaldoMinutesPerAssist: 0,

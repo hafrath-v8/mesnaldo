@@ -1,99 +1,142 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+import type { GetServerSideProps } from "next"
+import { supabase } from "../lib/supabase"
 
-  <url>
-    <loc>https://mesnaldo.com/</loc>
-    <priority>1.0</priority>
-  </url>
+const SITE_URL = "https://mesnaldo.com"
 
-  <url>
-    <loc>https://mesnaldo.com/goals</loc>
-    <priority>0.9</priority>
-  </url>
+const staticPages = [
+  { path: "/", priority: "1.0", changefreq: "daily" },
 
-  <url>
-    <loc>https://mesnaldo.com/assists</loc>
-    <priority>0.9</priority>
-  </url>
+  { path: "/goals", priority: "0.9", changefreq: "daily" },
+  { path: "/assists", priority: "0.9", changefreq: "daily" },
+  { path: "/who-is-best", priority: "0.9", changefreq: "weekly" },
+  { path: "/trophies", priority: "0.9", changefreq: "weekly" },
+  { path: "/head-to-head", priority: "0.9", changefreq: "weekly" },
 
-  <url>
-    <loc>https://mesnaldo.com/who-is-best</loc>
-    <priority>0.9</priority>
-  </url>
+  { path: "/career", priority: "0.8", changefreq: "weekly" },
+  { path: "/honours", priority: "0.8", changefreq: "weekly" },
+  { path: "/records", priority: "0.8", changefreq: "weekly" },
+  { path: "/detailed-stats", priority: "0.8", changefreq: "weekly" },
 
-  <url>
-    <loc>https://mesnaldo.com/trophies</loc>
-    <priority>0.9</priority>
-  </url>
+  { path: "/messi", priority: "0.8", changefreq: "weekly" },
+  { path: "/ronaldo", priority: "0.8", changefreq: "weekly" },
 
-  <url>
-    <loc>https://mesnaldo.com/head-to-head</loc>
-    <priority>0.9</priority>
-  </url>
+  { path: "/blog", priority: "0.8", changefreq: "daily" },
 
-  <url>
-    <loc>https://mesnaldo.com/career</loc>
-    <priority>0.8</priority>
-  </url>
+  { path: "/poll", priority: "0.7", changefreq: "daily" },
 
-  <url>
-    <loc>https://mesnaldo.com/honours</loc>
-    <priority>0.8</priority>
-  </url>
+  { path: "/methodology", priority: "0.7", changefreq: "monthly" },
 
-  <url>
-    <loc>https://mesnaldo.com/records</loc>
-    <priority>0.8</priority>
-  </url>
+  { path: "/about", priority: "0.6", changefreq: "monthly" },
+  { path: "/faq", priority: "0.6", changefreq: "monthly" },
 
-  <url>
-    <loc>https://mesnaldo.com/detailed-stats</loc>
-    <priority>0.8</priority>
-  </url>
+  { path: "/contact", priority: "0.5", changefreq: "monthly" },
 
+  { path: "/privacy", priority: "0.4", changefreq: "yearly" },
+  { path: "/terms", priority: "0.4", changefreq: "yearly" },
+]
+
+function escapeXml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;")
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  try {
+    const { data: posts, error } = await supabase
+      .from("blog_posts")
+      .select("slug, published_at, created_at")
+      .eq("is_published", true)
+      .order("published_at", { ascending: false })
+
+    if (error) {
+      console.error("Sitemap blog fetch error:", error)
+    }
+
+    const staticUrls = staticPages
+      .map(
+        (page) => `
   <url>
-    <loc>https://mesnaldo.com/poll</loc>
+    <loc>${SITE_URL}${page.path}</loc>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`
+      )
+      .join("")
+
+    const blogUrls = (posts ?? [])
+      .filter(
+        (post) =>
+          typeof post.slug === "string" &&
+          post.slug.trim().length > 0
+      )
+      .map((post) => {
+        const lastModified =
+          post.published_at ||
+          post.created_at
+
+        return `
+  <url>
+    <loc>${SITE_URL}/blog/${escapeXml(post.slug)}</loc>
+    ${
+      lastModified
+        ? `<lastmod>${new Date(lastModified).toISOString()}</lastmod>`
+        : ""
+    }
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
+  </url>`
+      })
+      .join("")
 
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${staticUrls}
+${blogUrls}
+</urlset>`
+
+    res.setHeader("Content-Type", "application/xml")
+    res.setHeader(
+      "Cache-Control",
+      "public, s-maxage=3600, stale-while-revalidate=86400"
+    )
+
+    res.write(sitemap)
+    res.end()
+
+    return {
+      props: {},
+    }
+  } catch (error) {
+    console.error("Sitemap generation error:", error)
+
+    const fallbackSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${staticPages
+  .map(
+    (page) => `
   <url>
-    <loc>https://mesnaldo.com/messi</loc>
-    <priority>0.8</priority>
-  </url>
+    <loc>${SITE_URL}${page.path}</loc>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`
+  )
+  .join("")}
+</urlset>`
 
-  <url>
-    <loc>https://mesnaldo.com/ronaldo</loc>
-    <priority>0.8</priority>
-  </url>
+    res.setHeader("Content-Type", "application/xml")
+    res.write(fallbackSitemap)
+    res.end()
 
-  <url>
-    <loc>https://mesnaldo.com/blog</loc>
-    <priority>0.8</priority>
-  </url>
+    return {
+      props: {},
+    }
+  }
+}
 
-  <url>
-    <loc>https://mesnaldo.com/about</loc>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://mesnaldo.com/faq</loc>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://mesnaldo.com/contact</loc>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://mesnaldo.com/privacy</loc>
-    <priority>0.4</priority>
-  </url>
-
-  <url>
-    <loc>https://mesnaldo.com/terms</loc>
-    <priority>0.4</priority>
-  </url>
-
-</urlset>
+export default function Sitemap() {
+  return null
+}

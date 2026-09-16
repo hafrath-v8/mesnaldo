@@ -1,4 +1,5 @@
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema"
@@ -6,7 +7,7 @@ import { Trophy, Award, Star, Medal, ChevronDown, Crown } from "lucide-react"
 import { useState } from "react"
 
 const MAJOR_AWARDS = [
-  { title: "Ballon d'Or", icon: Trophy, messi: { count: 8, details: "2009, 2010, 2011, 2012*, 2015*, 2019, 2021, 2023", years: [2009,2010,2011,2012,2015,2019,2021,2023] }, ronaldo: { count: 5, details: "2008, 2013*, 2014*, 2016, 2017", years: [2008,2013,2014,2016,2017] }, note: "*Merged with FIFA World Player of the Year" },
+  { title: "Ballon d'Or", icon: Trophy, messi: { count: 8, details: "2009, 2010, 2011, 2012, 2015, 2019, 2021, 2023", years: [2009,2010,2011,2012,2015,2019,2021,2023] }, ronaldo: { count: 5, details: "2008, 2013, 2014, 2016, 2017", years: [2008,2013,2014,2016,2017] }, note: "From 2010 to 2015, the Ballon d'Or and FIFA World Player of the Year were combined as the FIFA Ballon d'Or." },
   { title: "FIFA The Best / World Player of the Year", icon: Award, messi: { count: 8, details: "2009, 2010, 2011, 2012, 2015, 2019, 2022, 2023", years: [2009,2010,2011,2012,2015,2019,2022,2023] }, ronaldo: { count: 5, details: "2008, 2013, 2014, 2016, 2017", years: [2008,2013,2014,2016,2017] } },
   { title: "European Golden Shoe", icon: Star, messi: { count: 6, details: "2010 (34), 2012 (50), 2013 (46), 2017 (37), 2018 (34), 2019 (36)", years: [2010,2012,2013,2017,2018,2019] }, ronaldo: { count: 4, details: "2008 (31), 2011 (40), 2014 (31), 2015 (48)", years: [2008,2011,2014,2015] } },
   { title: "FIFA World Cup Golden Ball", icon: Medal, messi: { count: 2, details: "2014, 2022", years: [2014,2022] }, ronaldo: { count: 0, details: "—", years: [] } },
@@ -100,8 +101,8 @@ export default function Awards() {
 
   return (
     <Layout 
-title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
-      description="Every individual honour: Ballon d'Or (8-5), FIFA Best, Golden Shoe, Pichichi, Champions League top scorer, and 100+ more. Complete Messi vs Ronaldo honours comparison."
+title="Messi vs Ronaldo Individual Awards | Honours Compared"
+      description="Compare selected individual honours and scoring awards for Lionel Messi and Cristiano Ronaldo, including the Ballon d’Or, FIFA awards, Golden Shoes and league honours."
     >
       <BreadcrumbSchema
   items={[
@@ -109,6 +110,10 @@ title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
     { name: "Honours", url: "/honours" },
   ]}
 />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <MethodologyNote />
+      </div>
+
       <div className="bg-black min-h-screen">
         <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 py-16 sm:py-20 lg:py-24">
           
@@ -203,6 +208,13 @@ title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
 </div>
 
           {/* Awards List */}
+          <div className="mb-6 rounded-xl border border-gray-800 bg-gray-900/40 px-4 py-3">
+            <p className="text-xs sm:text-sm text-gray-400 leading-6">
+              This page is a curated comparison of selected individual awards, scoring honours,
+              placements and recognitions. Categories use different criteria and should not be
+              added together as if every entry has equal significance.
+            </p>
+          </div>
           <div className="space-y-1.5">
             {MAJOR_AWARDS.map((award, i) => (
               <motion.div
@@ -262,7 +274,7 @@ title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
   <div className="max-w-4xl mx-auto">
 
     <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
-      Messi vs Ronaldo Individual Awards: Complete Career Honours Comparison
+      Messi vs Ronaldo Individual Awards: Career Honours Comparison
     </h2>
 
     <div className="space-y-7 text-sm text-gray-400 leading-8">
@@ -617,7 +629,7 @@ title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
       {/* CATEGORY LEADERS */}
 
       <h3 className="text-xl font-bold text-white mt-10">
-        Who Leads More Individual Award Categories?
+        Individual Award Category Counts
       </h3>
 
       <p>
@@ -678,10 +690,10 @@ title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
       </p>
 
       <p>
-        A balanced Messi vs Ronaldo comparison should therefore examine both.
-        Team honours show collective success, while individual awards provide
-        stronger evidence of how consistently each player was recognised for
-        personal performance.
+        A broader Messi vs Ronaldo comparison can therefore examine both.
+        Team honours show collective success, while individual awards show how
+        each player was recognised for personal performance under the criteria
+        of the relevant award.
       </p>
 
 
@@ -806,14 +818,13 @@ title="Messi vs Ronaldo Individual Awards | 100+ Honours Compared"
       </p>
 
       <p>
-        Messi holds the advantage in several major categories, including the
-        Ballon d&apos;Or and European Golden Shoe, while Ronaldo leads or
-        remains highly competitive in several scoring, UEFA and league-related
-        awards.
+        In the categories listed here, Messi has more wins in awards such as the
+        Ballon d&apos;Or and European Golden Shoe, while Ronaldo has more wins in
+        several scoring, UEFA and league-related categories.
       </p>
 
       <p>
-        The strongest comparison comes from looking at each award separately.
+        One useful approach is to look at each award separately.
         Rather than treating every honour as equal, Mesnaldo allows visitors
         to compare the type of award, number of wins and the years in which
         each player received it.

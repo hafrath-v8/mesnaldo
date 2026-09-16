@@ -114,10 +114,10 @@ export default function Blog({ posts, featuredPost, categories, totalPosts }: Bl
                         <span className="text-[11px] text-gray-500">{featuredPost.read_time} min read</span>
                         <span className="text-[11px] text-gray-600">{featuredPost.views?.toLocaleString()} views</span>
                       </div>
-                      <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white mb-3 group-hover:text-amber-400 transition-colors">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-tight font-black text-white mb-4 group-hover:text-amber-400 transition-colors">
                         {featuredPost.title}
                       </h2>
-                      <p className="text-sm text-gray-400 leading-relaxed mb-4 line-clamp-3">{featuredPost.excerpt}</p>
+                      <p className="text-base text-gray-400 leading-7 mb-5 line-clamp-3">{featuredPost.excerpt}</p>
                       <div className="flex items-center gap-3 text-xs text-gray-500">
                         <span>{featuredPost.author}</span>
                         <span>·</span>
@@ -164,7 +164,7 @@ export default function Blog({ posts, featuredPost, categories, totalPosts }: Bl
           ) : (
             <>
               <p className="text-xs text-gray-600">Showing {filteredPosts.length} of {totalPosts} articles</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredPosts.map((post, i) => (
                   <motion.div key={post.id} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
                     <Link href={`/blog/${post.slug}`} className="group block h-full">
@@ -183,7 +183,7 @@ export default function Blog({ posts, featuredPost, categories, totalPosts }: Bl
                             </span>
                           </div>
                         </div>
-                        <div className="p-5 flex flex-col flex-1">
+                        <div className="p-5 sm:p-6 flex flex-col flex-1">
                           <div className="flex items-center gap-2 text-[10px] text-gray-500 mb-2">
                             <span>{new Date(post.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             <span>·</span>
@@ -191,10 +191,10 @@ export default function Blog({ posts, featuredPost, categories, totalPosts }: Bl
                             <span>·</span>
                             <span>{post.views?.toLocaleString() || 0} views</span>
                           </div>
-                          <h3 className="text-sm font-bold text-white mb-2 group-hover:text-amber-400 transition-colors line-clamp-2">
+                          <h3 className="text-base sm:text-lg font-extrabold leading-snug text-white mb-3 group-hover:text-amber-400 transition-colors line-clamp-2">
                             {post.title}
                           </h3>
-                          <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 flex-1">{post.excerpt}</p>
+                          <p className="text-sm text-gray-400 leading-6 line-clamp-3 flex-1">{post.excerpt}</p>
                           <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-gray-800/50">
                             {post.tags?.slice(0, 3).map(tag => (
                               <span key={tag} className="text-[9px] text-gray-600 bg-gray-800/50 px-2 py-0.5 rounded-full">{tag}</span>
@@ -209,21 +209,25 @@ export default function Blog({ posts, featuredPost, categories, totalPosts }: Bl
             </>
           )}
 
-          {/* NEWSLETTER CTA */}
+          {/* READING CTA */}
           <div className="bg-gradient-to-r from-amber-500/5 via-amber-500/10 to-amber-500/5 border border-amber-500/20 rounded-3xl p-8 sm:p-10 text-center">
-            <span className="text-4xl block mb-3">📬</span>
-            <h2 className="text-xl sm:text-2xl font-black text-white mb-2">Stay Updated</h2>
-            <p className="text-sm text-gray-400 mb-5 max-w-md mx-auto">
-              Get the latest articles, stats updates, and rare insights delivered straight to your inbox.
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400 mb-3">
+              Explore Mesnaldo
             </p>
-            <form className="flex items-center gap-2 max-w-sm mx-auto" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Enter your email" required
-                className="flex-1 bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-gray-500" />
-              <button type="submit" className="px-5 py-2.5 bg-amber-500 text-black rounded-xl text-xs font-bold hover:bg-amber-400 transition-colors">
-                Subscribe
-              </button>
-            </form>
-            <p className="text-[10px] text-gray-600 mt-3">No spam. Unsubscribe anytime.</p>
+            <h2 className="text-xl sm:text-2xl font-black text-white mb-3">
+              Go deeper than the headline numbers
+            </h2>
+            <p className="text-sm sm:text-base text-gray-400 leading-7 mb-6 max-w-2xl mx-auto">
+              Compare goals, assists, records, career statistics and the methodology behind the numbers.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href="/detailed-stats" className="px-5 py-2.5 bg-amber-500 text-black rounded-xl text-xs font-bold hover:bg-amber-400 transition-colors">
+                Detailed Stats
+              </Link>
+              <Link href="/methodology" className="px-5 py-2.5 bg-gray-900 border border-gray-700 text-white rounded-xl text-xs font-bold hover:border-gray-500 transition-colors">
+                Methodology
+              </Link>
+            </div>
           </div>
 
           {/* STATS */}
@@ -237,8 +241,8 @@ export default function Blog({ posts, featuredPost, categories, totalPosts }: Bl
               <p className="text-[10px] text-gray-500 uppercase tracking-wider">Categories</p>
             </div>
             <div>
-              <p className="text-2xl font-black text-white">Weekly</p>
-              <p className="text-[10px] text-gray-500 uppercase tracking-wider">Updates</p>
+              <p className="text-2xl font-black text-white">48+</p>
+              <p className="text-[10px] text-gray-500 uppercase tracking-wider">Deep Dives</p>
             </div>
           </div>
 

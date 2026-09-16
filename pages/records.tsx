@@ -1,5 +1,6 @@
 // pages/records.tsx
 import Layout from "../components/layout/Layout"
+import MethodologyNote from "../components/seo/MethodologyNote"
 import { supabase } from "../lib/supabase"
 import { GetServerSideProps } from "next"
 import { motion } from "framer-motion"
@@ -60,14 +61,18 @@ export default function Records({ records }: RecordsPageProps) {
 
   return (
    <Layout 
-  title="Messi vs Ronaldo Records | Every Record, Guinness World Records & Achievements" 
-  description="World records held by Messi and Ronaldo. Over 258 verified records including Ballon d'Or, Champions League, and international milestones.">
+  title="Messi vs Ronaldo Records | Career Milestones & Achievements" 
+  description="Explore Messi and Ronaldo record entries and career milestones across club football, international football, major competitions and individual achievements.">
     <BreadcrumbSchema
   items={[
     { name: "Home", url: "/" },
     { name: "Records", url: "/records" },
   ]}
 />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <MethodologyNote />
+      </div>
+
     <div className="bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-8">
 
@@ -77,7 +82,7 @@ export default function Records({ records }: RecordsPageProps) {
               World <span className="text-amber-400">Records</span>
             </h1>
             <p className="text-gray-500 mt-3 text-sm max-w-xl mx-auto">
-              Complete collection of world records, European records, club records, and national team records.
+              Explore the record entries and career milestones currently included in the Mesnaldo database across world, European, club and international football.
             </p>
           </div>
 
@@ -241,7 +246,7 @@ export default function Records({ records }: RecordsPageProps) {
   <div className="max-w-4xl mx-auto">
 
     <h2 className="text-2xl sm:text-3xl font-black text-white mb-7 text-center">
-      Messi vs Ronaldo Records: Complete Career Record Comparison
+      Messi vs Ronaldo Records: Career Milestones and Record Comparison
     </h2>
 
     <div className="space-y-7 text-sm text-gray-400 leading-8">
@@ -306,7 +311,7 @@ export default function Records({ records }: RecordsPageProps) {
       </h3>
 
       <p>
-        Both Messi and Ronaldo have set records at the highest levels of
+        Both Messi and Ronaldo have reached notable records and milestones at the highest levels of
         football. Their careers include milestones connected with goals,
         appearances, major tournaments, individual awards, club competitions
         and international football.
@@ -470,7 +475,7 @@ export default function Records({ records }: RecordsPageProps) {
 
       <p>
         One of the defining features of both Messi and Ronaldo is longevity.
-        Their careers remained at elite level across many seasons, allowing
+        Their careers have extended across many seasons at the highest levels of the game, allowing
         both players to reach milestones that require sustained performance
         over a long period.
       </p>

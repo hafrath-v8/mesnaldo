@@ -66,6 +66,39 @@ export default function BlogPost({
 
   const articleUrl = `https://mesnaldo.com/blog/${post.slug}`
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    url: articleUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": articleUrl,
+    },
+    ...(post.featured_image && {
+      image: [post.featured_image],
+    }),
+    datePublished: post.published_at,
+    author: {
+      "@type": "Organization",
+      name: post.author || "Mesnaldo",
+      url: "https://mesnaldo.com/about",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Mesnaldo",
+      url: "https://mesnaldo.com",
+    },
+    ...(post.category && {
+      articleSection: post.category,
+    }),
+    ...(post.tags?.length > 0 && {
+      keywords: post.tags.join(", "),
+    }),
+    inLanguage: "en",
+  }
+
   return (
     <Layout
       title={`${post.title} | Mesnaldo Blog`}
@@ -95,6 +128,14 @@ export default function BlogPost({
           ARTICLE META
       ===================================================== */}
       <Head>
+        <script
+          key="blogposting-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(articleSchema),
+          }}
+        />
+
         <meta
           property="og:title"
           content={post.title}
@@ -271,7 +312,7 @@ export default function BlogPost({
         {/* =====================================================
             ARTICLE CONTENT
         ===================================================== */}
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
 
           {post.featured_image && (
             <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden mb-10 bg-gray-800">
@@ -299,35 +340,120 @@ export default function BlogPost({
               duration: 0.4,
             }}
             className="
-              prose
-              prose-invert
-              prose-lg
               max-w-none
+              text-[16px]
+              sm:text-[17px]
+              text-gray-300
 
-              prose-headings:text-white
-              prose-headings:font-black
+              [&_h2]:mt-16
+              [&_h2]:mb-6
+              [&_h2]:border-l-4
+              [&_h2]:border-amber-400
+              [&_h2]:bg-gradient-to-r
+              [&_h2]:from-amber-500/10
+              [&_h2]:to-transparent
+              [&_h2]:px-5
+              [&_h2]:py-4
+              [&_h2]:text-2xl
+              sm:[&_h2]:text-3xl
+              [&_h2]:font-black
+              [&_h2]:leading-tight
+              [&_h2]:tracking-tight
+              [&_h2]:text-white
+              [&_h2]:rounded-r-xl
 
-              prose-p:text-gray-300
-              prose-p:leading-relaxed
+              [&_h3]:mt-10
+              [&_h3]:mb-4
+              [&_h3]:text-xl
+              sm:[&_h3]:text-2xl
+              [&_h3]:font-extrabold
+              [&_h3]:leading-tight
+              [&_h3]:text-amber-300
 
-              prose-strong:text-white
-              prose-strong:font-bold
+              [&_h4]:mt-8
+              [&_h4]:mb-3
+              [&_h4]:text-lg
+              [&_h4]:font-bold
+              [&_h4]:text-white
 
-              prose-a:text-amber-400
-              prose-a:no-underline
-              hover:prose-a:underline
+              [&_p]:my-5
+              [&_p]:max-w-[72ch]
+              [&_p]:text-[16px]
+              sm:[&_p]:text-[17px]
+              [&_p]:leading-[1.9]
+              [&_p]:text-gray-300
 
-              prose-ul:text-gray-300
-              prose-ol:text-gray-300
+              [&_strong]:font-bold
+              [&_strong]:text-white
 
-              prose-blockquote:border-amber-400
-              prose-blockquote:text-gray-400
+              [&_a]:font-semibold
+              [&_a]:text-amber-400
+              [&_a]:underline
+              [&_a]:decoration-amber-500/40
+              [&_a]:underline-offset-4
+              hover:[&_a]:text-amber-300
 
-              prose-code:text-amber-400
-              prose-code:bg-gray-800
-              prose-code:px-1.5
-              prose-code:py-0.5
-              prose-code:rounded
+              [&_ul]:my-7
+              [&_ul]:space-y-3
+              [&_ul]:pl-6
+              [&_ul]:list-disc
+              [&_ol]:my-7
+              [&_ol]:space-y-3
+              [&_ol]:pl-6
+              [&_ol]:list-decimal
+              [&_li]:pl-1
+              [&_li]:leading-7
+              [&_li]:text-gray-300
+              [&_li::marker]:text-amber-400
+              [&_li::marker]:font-bold
+
+              [&_blockquote]:my-10
+              [&_blockquote]:rounded-2xl
+              [&_blockquote]:border
+              [&_blockquote]:border-amber-500/20
+              [&_blockquote]:border-l-4
+              [&_blockquote]:border-l-amber-400
+              [&_blockquote]:bg-amber-500/[0.06]
+              [&_blockquote]:px-6
+              [&_blockquote]:py-5
+              [&_blockquote]:text-gray-200
+
+              [&_hr]:my-14
+              [&_hr]:border-gray-800
+
+              [&_table]:my-10
+              [&_table]:w-full
+              [&_table]:border-collapse
+              [&_table]:overflow-hidden
+              [&_table]:rounded-xl
+              [&_table]:text-sm
+              [&_thead]:bg-gray-900
+              [&_th]:border
+              [&_th]:border-gray-800
+              [&_th]:px-4
+              [&_th]:py-3
+              [&_th]:text-left
+              [&_th]:font-bold
+              [&_th]:text-white
+              [&_td]:border
+              [&_td]:border-gray-800
+              [&_td]:px-4
+              [&_td]:py-3
+              [&_td]:text-gray-300
+
+              [&_div]:my-10
+              [&_div]:rounded-2xl
+              [&_div]:border
+              [&_div]:border-gray-800
+              [&_div]:bg-gray-900/60
+              [&_div]:p-5
+              sm:[&_div]:p-7
+
+              [&_div_p]:my-2
+              [&_div_p]:max-w-none
+              [&_div_p]:leading-7
+
+              [&_div_.text-amber-400]:text-amber-400
             "
             dangerouslySetInnerHTML={{
               __html: post.content,
@@ -342,7 +468,7 @@ export default function BlogPost({
           <section className="border-t border-gray-800">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
 
-              <h2 className="text-lg font-bold text-white mb-6">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-6">
                 Related Articles
               </h2>
 

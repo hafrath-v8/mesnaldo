@@ -8,7 +8,7 @@ export default function Privacy() {
   return (
     <Layout 
       title="Privacy Policy - Mesnaldo | How We Handle Your Data"
-      description="Privacy Policy for Mesnaldo - Learn how we collect, use, and protect your personal information when you use our Messi vs Ronaldo comparison platform.">
+      description="Privacy Policy for Mesnaldo, explaining site analytics, cookies, advertising technologies and information users may provide directly.">
       
       <Head>
         <meta name="keywords" content="Mesnaldo privacy policy, football statistics privacy, data protection, cookie policy" />
@@ -31,7 +31,7 @@ export default function Privacy() {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
                 Privacy <span className="text-amber-400">Policy</span>
               </h1>
-              <p className="text-gray-400 text-sm">Last updated: July 2026</p>
+              <p className="text-gray-400 text-sm">Last updated: September 2026</p>
             </motion.div>
           </div>
         </section>
@@ -55,8 +55,6 @@ export default function Privacy() {
             </p>
             <ul className="list-disc pl-5 space-y-1 mb-3">
               <li>Cast a vote in our GOAT poll (stored locally in your browser)</li>
-              <li>Submit a message through our Contact form (name, email, message)</li>
-              <li>Subscribe to our newsletter (email address)</li>
               <li>Contact us via email directly</li>
             </ul>
 
@@ -104,7 +102,6 @@ export default function Privacy() {
               <li>To understand and analyze how you use our website</li>
               <li>To develop new products, services, features, and functionality</li>
               <li>To communicate with you, either directly or through one of our partners</li>
-              <li>To send you emails (if you have subscribed to our newsletter)</li>
               <li>To find and prevent fraud</li>
               <li>To display the GOAT poll results accurately</li>
             </ul>
@@ -134,7 +131,6 @@ export default function Privacy() {
               We implement appropriate technical and organizational security measures to protect your personal information. All data is stored on secure servers provided by Supabase and Vercel. However, no method of transmission over the Internet or method of electronic storage is 100% secure.
             </p>
             <ul className="list-disc pl-5 space-y-1 mb-3">
-              <li>Contact form submissions are stored securely in our database</li>
               <li>Poll votes are stored in our database with minimal information</li>
               <li>We do not store credit card information or financial data</li>
               <li>We do not collect sensitive personal information</li>
@@ -207,7 +203,7 @@ export default function Privacy() {
               <li>Object to processing of their personal data</li>
             </ul>
             <p>
-              Our legal basis for processing your data is legitimate interest (providing and improving our service) and consent (for newsletter subscriptions and marketing communications).
+              Where applicable, processing may rely on legitimate interests in operating and improving the site, consent for optional technologies, or other lawful bases required by applicable law.
             </p>
           </section>
 
