@@ -4,35 +4,26 @@ import { supabase } from "../lib/supabase"
 const SITE_URL = "https://mesnaldo.com"
 
 const staticPages = [
-  { path: "/", priority: "1.0", changefreq: "daily" },
-
-  { path: "/goals", priority: "0.9", changefreq: "daily" },
-  { path: "/assists", priority: "0.9", changefreq: "daily" },
-  { path: "/who-is-best", priority: "0.9", changefreq: "weekly" },
-  { path: "/trophies", priority: "0.9", changefreq: "weekly" },
-  { path: "/head-to-head", priority: "0.9", changefreq: "weekly" },
-
-  { path: "/career", priority: "0.8", changefreq: "weekly" },
-  { path: "/honours", priority: "0.8", changefreq: "weekly" },
-  { path: "/records", priority: "0.8", changefreq: "weekly" },
-  { path: "/detailed-stats", priority: "0.8", changefreq: "weekly" },
-
-  { path: "/messi", priority: "0.8", changefreq: "weekly" },
-  { path: "/ronaldo", priority: "0.8", changefreq: "weekly" },
-
-  { path: "/blog", priority: "0.8", changefreq: "daily" },
-
-  { path: "/poll", priority: "0.7", changefreq: "daily" },
-
-  { path: "/methodology", priority: "0.7", changefreq: "monthly" },
-
-  { path: "/about", priority: "0.6", changefreq: "monthly" },
-  { path: "/faq", priority: "0.6", changefreq: "monthly" },
-
-  { path: "/contact", priority: "0.5", changefreq: "monthly" },
-
-  { path: "/privacy", priority: "0.4", changefreq: "yearly" },
-  { path: "/terms", priority: "0.4", changefreq: "yearly" },
+  "/",
+  "/goals",
+  "/assists",
+  "/who-is-best",
+  "/trophies",
+  "/head-to-head",
+  "/career",
+  "/honours",
+  "/records",
+  "/detailed-stats",
+  "/messi",
+  "/ronaldo",
+  "/blog",
+  "/poll",
+  "/methodology",
+  "/about",
+  "/faq",
+  "/contact",
+  "/privacy",
+  "/terms",
 ]
 
 function escapeXml(value: string) {
@@ -58,11 +49,9 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
     const staticUrls = staticPages
       .map(
-        (page) => `
+        (path) => `
   <url>
-    <loc>${SITE_URL}${page.path}</loc>
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
+    <loc>${escapeXml(`${SITE_URL}${path}`)}</loc>
   </url>`
       )
       .join("")
@@ -75,19 +64,24 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       )
       .map((post) => {
         const lastModified =
-          post.published_at ||
-          post.created_at
+          post.published_at || post.created_at
+
+        let lastmod = ""
+
+        if (lastModified) {
+          const date = new Date(lastModified)
+
+          if (!Number.isNaN(date.getTime())) {
+            lastmod = `<lastmod>${date.toISOString()}</lastmod>`
+          }
+        }
 
         return `
   <url>
-    <loc>${SITE_URL}/blog/${escapeXml(post.slug)}</loc>
-    ${
-      lastModified
-        ? `<lastmod>${new Date(lastModified).toISOString()}</lastmod>`
-        : ""
-    }
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>${escapeXml(
+      `${SITE_URL}/blog/${post.slug.trim()}`
+    )}</loc>
+    ${lastmod}
   </url>`
       })
       .join("")
@@ -98,14 +92,17 @@ ${staticUrls}
 ${blogUrls}
 </urlset>`
 
-    res.setHeader("Content-Type", "application/xml")
+    res.statusCode = 200
+    res.setHeader(
+      "Content-Type",
+      "application/xml; charset=utf-8"
+    )
     res.setHeader(
       "Cache-Control",
       "public, s-maxage=3600, stale-while-revalidate=86400"
     )
 
-    res.write(sitemap)
-    res.end()
+    res.end(sitemap)
 
     return {
       props: {},
@@ -113,23 +110,27 @@ ${blogUrls}
   } catch (error) {
     console.error("Sitemap generation error:", error)
 
+    const fallbackUrls = staticPages
+      .map(
+        (path) => `
+  <url>
+    <loc>${escapeXml(`${SITE_URL}${path}`)}</loc>
+  </url>`
+      )
+      .join("")
+
     const fallbackSitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${staticPages
-  .map(
-    (page) => `
-  <url>
-    <loc>${SITE_URL}${page.path}</loc>
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
-  </url>`
-  )
-  .join("")}
+${fallbackUrls}
 </urlset>`
 
-    res.setHeader("Content-Type", "application/xml")
-    res.write(fallbackSitemap)
-    res.end()
+    res.statusCode = 200
+    res.setHeader(
+      "Content-Type",
+      "application/xml; charset=utf-8"
+    )
+
+    res.end(fallbackSitemap)
 
     return {
       props: {},
