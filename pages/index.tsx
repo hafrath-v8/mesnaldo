@@ -24,7 +24,7 @@ interface HomeProps {
   recentBlogs: any[]
 }
 
-const TROPHIES = { messi: { total: 47, league: 13, ucl: 4, wc: 1 }, ronaldo: { total: 37, league: 8, ucl: 5, wc: 0 } }
+const TROPHIES = { messi: { total: 47, league: 12, ucl: 4, wc: 1 }, ronaldo: { total: 37, league: 8, ucl: 5, wc: 0 } }
 const BALLON = { messi: { total: 8, top2: 13, top3: 14, nom: 16 }, ronaldo: { total: 5, top2: 11, top3: 12, nom: 18 } }
 
 const INT = new Set(["World Cup Qualifier","International Friendly","Copa America","World Cup","Finalissima","UEFA Euros","Euros Qualifier","Nations League","Confederations Cup"])
@@ -415,7 +415,7 @@ export default function Home({ messi, ronaldo, scopes, messiRecent, ronaldoRecen
                   <div className="bg-red-500/5 rounded-xl p-4 text-center border border-red-500/10"><p className="text-xs text-gray-500 mb-1">Ronaldo</p><p className="text-3xl font-black text-red-400">{TROPHIES.ronaldo.total}</p></div>
                 </div>
                 <div className="space-y-2">
-                  {[{ label: "League Titles", m: TROPHIES.messi.league, r: TROPHIES.ronaldo.league },{ label: "Champions League", m: TROPHIES.messi.ucl, r: TROPHIES.ronaldo.ucl },{ label: "World Cup", m: TROPHIES.messi.wc, r: TROPHIES.ronaldo.wc },{ label: "Continental Cup", m: TROPHIES.messi.cont, r: TROPHIES.ronaldo.cont }].map((row, i) => (
+                  {[{ label: "League Titles", m: TROPHIES.messi.league, r: TROPHIES.ronaldo.league },{ label: "Champions League", m: TROPHIES.messi.ucl, r: TROPHIES.ronaldo.ucl },{ label: "World Cup", m: TROPHIES.messi.wc, r: TROPHIES.ronaldo.wc }].map((row, i) => (
                     <div key={i} className="flex items-center gap-3"><span className="text-sm text-gray-400 flex-1">{row.label}</span><span className={`text-sm font-bold ${row.m > row.r ? "text-blue-400" : "text-gray-500"}`}>{row.m}</span><span className="text-gray-700 text-xs">|</span><span className={`text-sm font-bold ${row.r > row.m ? "text-red-400" : "text-gray-500"}`}>{row.r}</span></div>
                   ))}
                 </div>
